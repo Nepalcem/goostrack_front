@@ -9,11 +9,12 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding-top: 15px;
+  padding-top: 24px;
 
   /*----Стиль для планшета 768-1440 (адаптивний)----*/
   @media screen and (min-width: 768px) {
     max-width: 768px;
+    padding: 0 32px;
   }
 
   /*----Стиль для компа від 1440 (адаптивний)----*/
