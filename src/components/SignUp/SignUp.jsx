@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
-import { MainStyled } from './SignUp.styled';
+import { MainStyled, StyledLink } from './SignUp.styled';
 
 const SignUp = () => {
   return (
     <MainStyled>
       <RegisterForm />
-      <Link to="/login">Log In</Link>
+      <StyledLink to="/login">Log In</StyledLink>
     </MainStyled>
   );
 };
