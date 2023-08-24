@@ -1,17 +1,20 @@
 import { Container } from '../App/App.styled';
-import { Section404 } from './Msg404.styled';
+import { MessageBlock, InformationMessage, LinkToMain } from './Msg404.styled';
 
 const Msg404 = () => {
   return (
-    <Section404>
+    <main>
       <Container>
-        <p>
-          We’re sorry, the page you requested could not be found. Please go back
-          to the homepage.
-        </p>
-        {/* <NavLink to="/">Go to the Main Page</NavLink> */}
+        <MessageBlock>
+          <p>Тут має бути картинка 404!!!</p>
+          <InformationMessage>
+            We’re sorry, the page you requested could not be found. Please go
+            back to the homepage.
+          </InformationMessage>
+          <LinkToMain to="/">Back to home</LinkToMain>
+        </MessageBlock>
       </Container>
-    </Section404>
+    </main>
   );
 };
 
