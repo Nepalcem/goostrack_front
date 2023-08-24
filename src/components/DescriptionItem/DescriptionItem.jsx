@@ -1,5 +1,10 @@
 import {
   DescriptionItemBlock,
+  DescriptionItemTextBlock,
+  ItemNumber,
+  ItemMarkBlock,
+  ItemMark,
+  ItemHeader,
   ItemText,
   ImageThumb,
 } from './DescriptionItem.styled';
@@ -22,10 +27,19 @@ const DescriptionItem = ({ listOfDescriptions }) => {
 
   return (
     <DescriptionItemBlock>
-      <span>1.</span>
-      <span>{listOfDescriptions.mark}</span>
-      <h2>{listOfDescriptions.fieldname}</h2>
-      <ItemText>{listOfDescriptions.review}</ItemText>
+      <DescriptionItemTextBlock>
+        <ItemNumber>{listOfDescriptions.number}.</ItemNumber>
+
+        {listOfDescriptions.mark && (
+          <ItemMarkBlock>
+            <ItemMark>{listOfDescriptions.mark}</ItemMark>
+          </ItemMarkBlock>
+        )}
+
+        <ItemHeader>{listOfDescriptions.fieldname}</ItemHeader>
+        <ItemText>{listOfDescriptions.review}</ItemText>
+      </DescriptionItemTextBlock>
+
       <ImageThumb>
         <img src={imageUrl} alt="view" />
       </ImageThumb>

@@ -3,6 +3,7 @@ import { DescriptionBlock, DescriptionContainer } from './Description.styled';
 
 const listOfDescriptions = [
   {
+    number: '1',
     mark: 'Calendar',
     fieldname: 'view',
     review:
@@ -10,12 +11,14 @@ const listOfDescriptions = [
     image: 'DescriptionImage1',
   },
   {
+    number: '2',
     fieldname: 'SIDEBAR',
     review:
       'GooseTrack offers easy access to your account settings, calendar, and filters. The "My Account" section allows you to manage your profile information and preferences, while the calendar provides a quick and convenient way to view your upcoming events and tasks.',
     image: 'DescriptionImage2',
   },
   {
+    number: '3',
     mark: 'all in',
     fieldname: 'one',
     review:
