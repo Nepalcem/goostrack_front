@@ -2,6 +2,7 @@ import {
   AuthSectionBlock,
   AuthSectionContainer,
   Img,
+  HeroText,
 } from './AuthSection.styled';
 // import { Container } from '../App/App.styled';
 
@@ -12,7 +13,7 @@ const AuthSection = () => {
     <AuthSectionBlock>
       <AuthSectionContainer>
         <Img src={GooseSVG} />
-        <p>GooseTrack</p>
+        <HeroText>GooseTrack</HeroText>
         <button type="button">Log in </button>
         <button type="button">Sign up</button>
       </AuthSectionContainer>
