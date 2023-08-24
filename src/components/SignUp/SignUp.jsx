@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import { MainStyled, StyledLink } from './SignUp.styled';
 
