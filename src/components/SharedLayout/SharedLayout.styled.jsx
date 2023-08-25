@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-
 import { NavLink } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
 
 export const Main = styled.main`
   background-color: #f7f6f9;
@@ -40,6 +40,7 @@ export const MainContent = styled.div`
   @media screen and (min-width: 1440px) {
     padding-left: 32px;
     padding-right: 32px;
+    width: 100%;
   }
 `;
 
@@ -269,9 +270,9 @@ export const LeftMenuItemLink = styled(NavLink)`
   }
 `;
 
-export const LeftMenuItemIco = styled.img`
+export const LeftMenuItemIco = styled(ReactSVG)`
   margin-right: 10px;
-  /* stroke: currentColor; */
+  stroke: currentColor;
 `;
 
 export const LeftMenuItemText = styled.p`
