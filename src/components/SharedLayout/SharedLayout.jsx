@@ -27,17 +27,17 @@ import {
   LogOutIcoEl,
 } from './SharedLayout.styled';
 
-import BurgerMenuIce from '../../images/burger-menu-01.svg';
-import ThemeIcoButton from '../../images/theme-ico-button-moon.svg';
-import UserAvatar from '../../images/user-avatar.png';
+import BurgerMenuIce from '../../images/svg/menu.svg';
+import ThemeIcoButton from '../../images/svg/moon.svg';
+import UserAvatar from '../../images/svg/photo-user.svg';
 
 import LogoGoose from '../../images/logo-goose-left-menu.png';
 
-import AccountIco from '../../images/user-check-01.svg';
-import CalendarIco from '../../images/calendar-check-02.svg';
-import StatisticsIco from '../../images/chart-2.svg';
+import AccountIco from '../../images/svg/user.svg';
+import CalendarIco from '../../images/svg/calendar.svg';
+import StatisticsIco from '../../images/svg/chart.svg';
 
-import LogOutIco from '../../images/log-out-01.svg';
+import LogOutIco from '../../images/svg/log-out.svg';
 
 const SharedLayout = () => {
   return (
