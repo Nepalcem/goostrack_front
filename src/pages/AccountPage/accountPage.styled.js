@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import userAvatarPlusIcon from '../../images/accountPage/userAvatarPlus.svg';
 
 
 export const AccountPageContainer = styled.div`
