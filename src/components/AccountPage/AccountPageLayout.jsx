@@ -3,7 +3,15 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import defaultProfileAvatar from '../../images/accountPage/default-profile-avatar.png';
 import userAvatarPlusIcon from '../../images/accountPage/userAvatarPlus.svg';
-import { AccountPageContainer, AccountPageAvatar,UserAvatarPlus,AccountAvatarPlusIcon } from './accountPage.styled';
+import {
+  AccountPageContainer,
+  AccountPageAvatar,
+  UserAvatarPlus,
+  AccountAvatarPlusIcon,
+  AccountUserName,
+  AccountUserNameTitle,
+  AccountUserNameRole
+} from './AccountPageLayout.styled';
 
 const userValidationSchema = Yup.object().shape({
   userName: Yup.string().required('User Name is required'),
@@ -13,23 +21,18 @@ const userValidationSchema = Yup.object().shape({
   skype: Yup.string(),
 });
 //Formik initial values will be taken from db User
-const AccountPage = () => {
+const AccountPageLayout = () => {
   return (
     <AccountPageContainer>
-        <div className="overlap-group">
-          {/* Profile image border on hover and plus icon as a pseudo for .plus */}
-          <UserAvatarPlus>
-            <AccountPageAvatar
-              alt="Plus"
-              src={defaultProfileAvatar}
-            />
-            <AccountAvatarPlusIcon src={userAvatarPlusIcon}/>
-          </UserAvatarPlus>
-      </div>
-      <div className="user">
-        <div className="text-wrapper">Nadiia Doe</div>
-        <div className="div">User</div>
-      </div>
+      {/* Profile image border on hover and plus icon as a pseudo for .plus */}
+      <UserAvatarPlus>
+        <AccountPageAvatar alt="Plus" src={defaultProfileAvatar} />
+        <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
+      </UserAvatarPlus>
+      <AccountUserName>
+        <AccountUserNameTitle>Nadiia Doe</AccountUserNameTitle>
+        <AccountUserNameRole>User</AccountUserNameRole>
+      </AccountUserName>
 
       <Formik
         initialValues={{
@@ -113,4 +116,4 @@ const AccountPage = () => {
   );
 };
 
-export default AccountPage;
+export default AccountPageLayout;
