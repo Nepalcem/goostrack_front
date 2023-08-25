@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom';
 import {
   AuthSectionBlock,
   AuthSectionContainer,
   Img,
   HeroText,
+  LoginIco,
 } from './AuthSection.styled';
 // import { Container } from '../App/App.styled';
-
+import LoginSVG from '../../images/svg/log-in.svg';
 import GooseSVG from '../../images/goose-main.svg';
-import { Link } from 'react-router-dom';
 
 const AuthSection = () => {
   return (
@@ -15,7 +16,10 @@ const AuthSection = () => {
       <AuthSectionContainer>
         <Img src={GooseSVG} />
         <HeroText>GooseTrack</HeroText>
-        <Link to="/login">Log in </Link>
+        <Link to="/login">
+          Log in
+          <LoginIco src={LoginSVG} />
+        </Link>
         <Link to="/register">Sign up</Link>
       </AuthSectionContainer>
     </AuthSectionBlock>

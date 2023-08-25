@@ -6,8 +6,8 @@ import { Route, Routes } from 'react-router-dom';
 // const NotFound = lazy(() => import('../pages/NotFound'));
 
 import MainPage from '../../pages/MainPage';
-import RegisterPage from '../../pages/RegisterPage';
-import LoginPage from '../../pages/LoginPage';
+import RegisterPage from '../../pages/RegisterPage/RegisterPage';
+import LoginPage from '../../pages/LoginPage/LoginPage';
 import NotFound from '../../pages/NotFound';
 import AccountPage from '../../pages/AccountPage/AccountPage';
 import StatisticsPage from '../../pages/StatisticsPage';
