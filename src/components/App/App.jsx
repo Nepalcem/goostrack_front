@@ -9,7 +9,7 @@ import MainPage from '../../pages/MainPage';
 import RegisterPage from '../../pages/RegisterPage';
 import LoginPage from '../../pages/LoginPage';
 import NotFound from '../../pages/NotFound';
-import AccountPage from '../../pages/AccountPage';
+import AccountPage from '../../pages/AccountPage/AccountPage';
 import StatisticsPage from '../../pages/StatisticsPage';
 import SharedLayout from '../SharedLayout/SharedLayout';
 import CalendarPage from '../../pages/CalendarPage';
