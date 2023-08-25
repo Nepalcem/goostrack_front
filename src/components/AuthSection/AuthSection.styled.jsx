@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import { Container } from '../App/App.styled';
+import { ReactSVG } from 'react-svg';
+
+export const LoginIco = styled(ReactSVG)`
+  margin-left: 10px;
+`;
 
 export const AuthSectionBlock = styled.section`
   background-color: #3e85f3;
