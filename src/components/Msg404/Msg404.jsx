@@ -1,12 +1,25 @@
 import { Container } from '../App/App.styled';
-import { MessageBlock, InformationMessage, LinkToMain } from './Msg404.styled';
+import {
+  MessageBlock,
+  ErrImgContainer,
+  Text4FromImg,
+  InformationMessage,
+  LinkToMain,
+} from './Msg404.styled';
+
+import ErrGooseImage from '../../images/NotFoundPage/mobile_error.png';
 
 const Msg404 = () => {
   return (
     <main>
       <Container>
         <MessageBlock>
-          <p>Тут має бути картинка 404!!!</p>
+          <ErrImgContainer>
+            <Text4FromImg>4</Text4FromImg>
+            <img src={ErrGooseImage} alt="error page" />
+            <Text4FromImg>4</Text4FromImg>
+          </ErrImgContainer>
+
           <InformationMessage>
             We’re sorry, the page you requested could not be found. Please go
             back to the homepage.

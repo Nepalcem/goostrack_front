@@ -9,6 +9,22 @@ export const MessageBlock = styled.div`
   height: 100vh;
 `;
 
+export const ErrImgContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Text4FromImg = styled.span`
+  color: #3e85f3;
+  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
+    0px 47px 355px rgba(0, 0, 0, 0.07);
+  font-family: Inter;
+  font-size: 100px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+`;
+
 export const InformationMessage = styled.h1`
   margin-bottom: 24px;
   margin-left: 27px;
@@ -22,6 +38,10 @@ export const InformationMessage = styled.h1`
 
   text-align: center;
   color: rgba(17, 17, 17, 0.7);
+
+  @media screen and (min-width: 768px) {
+    width: 390px;
+  }
 `;
 
 export const LinkToMain = styled(Link)`
