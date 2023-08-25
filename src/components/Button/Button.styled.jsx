@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { primaryColor, whiteColor } from 'utils/variables';
 
 export const ButtonStyled = styled.button`
   cursor: pointer;
@@ -15,10 +16,10 @@ export const ButtonStyled = styled.button`
 
   border-width: 0;
   border-radius: 16px;
-  background-color: #3e85f3;
+  background-color: ${primaryColor};
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
-  color: #ffffff;
+  color: ${whiteColor};
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -29,7 +30,7 @@ export const ButtonStyled = styled.button`
   transition: background-color 250ms linear;
 
   &:hover {
-    background-color: #2b78ef;
+    background-color: ${primaryColor};
   }
 
   @media screen and (min-width: 768px) {

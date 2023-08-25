@@ -1,12 +1,29 @@
 import styled from 'styled-components';
 
 import { Field } from 'formik';
+import { ReactSVG } from 'react-svg';
+import {
+  blackcolor,
+  lightBlueColor,
+  primaryColor,
+  whiteColor,
+} from 'utils/variables';
+
+export const SignUpIcon = styled(ReactSVG)`
+  stroke: white;
+  width: 18px;
+  height: 18px;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
 
 export const FormContainer = styled.div`
   width: 335px;
   padding: 40px 24px;
 
-  background-color: #ffffff;
+  background-color: ${whiteColor};
   border-radius: 8px;
 
   margin-bottom: 18px;
@@ -19,7 +36,7 @@ export const FormContainer = styled.div`
 `;
 
 export const FormTitle = styled.h1`
-  color: #3e85f3;
+  color: ${primaryColor};
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   font-family: Inter;
@@ -46,7 +63,7 @@ export const InputContainer = styled.div`
 
 export const Label = styled.label`
   display: block;
-  color: #111111;
+  color: ${blackcolor};
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -65,10 +82,10 @@ export const Input = styled(Field)`
   /* height: 46px; */
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.6);
-  background: #ffffff;
+  background: ${whiteColor};
   padding: 14px;
 
-  color: #111111;
+  color: ${blackcolor};
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -76,7 +93,7 @@ export const Input = styled(Field)`
   line-height: 1.28571;
 
   &::placeholder {
-    color: #dce3e5;
+    color: ${lightBlueColor};
   }
 
   @media screen and (min-width: 768px) {
