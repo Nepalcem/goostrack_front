@@ -1,5 +1,18 @@
-import React from 'react';
+// import RegisterForm from '../RegisterForm/RegisterForm';
+// import { MainStyled, StyledLink } from './SignUp.styled';
 
+// const SignUp = () => {
+//   return (
+//     <MainStyled>
+//       <RegisterForm />
+//       <StyledLink to="/login">Log In</StyledLink>
+//     </MainStyled>
+//   );
+// };
+
+// export default SignUp;
+
+import React from 'react';
 // Стилізовані компоненти
 import {
   FormContainer,
@@ -8,7 +21,7 @@ import {
   Label,
   Input,
   Button,
-} from './RegisterForm.styled';
+} from './LoginForm.styled';
 
 // Бібліотека формік
 import { Formik, Form, ErrorMessage } from 'formik';
@@ -20,10 +33,6 @@ import * as yup from 'yup';
 // ПЕРЕВІРИТИ ШОБ ЗБІГАЛАСЬ З БЕКЕНДОМ
 // https://www.npmjs.com/package/yup
 const schema = yup.object().shape({
-  name: yup.string()
-  .required()
-  .min(4)
-  .max(30),
   email: yup.string()
   .email()
   .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'Email must contain only Latin characters')
@@ -37,7 +46,7 @@ const schema = yup.object().shape({
 //  Компонент форми
 const RegisterForm = () => {
   // початкові значення полів форми
-  const initialValues = { name: '', email: '', password: '' };
+  const initialValues = { email: '', password: '' };
 
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
@@ -49,18 +58,14 @@ const RegisterForm = () => {
 
   return (
     <FormContainer>
-      <FormTitle>Sign Up</FormTitle>
+      <FormTitle>Log In</FormTitle>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
         <Form autoComplete="off">
-          <InputContainer>
-            <Label htmlFor="name">Name</Label>
-            <Input type="text" name="name" placeholder="Enter your name" />
-            <ErrorMessage name="name" />
-          </InputContainer>
+
 
           <InputContainer>
             <Label htmlFor="email">Email </Label>
@@ -79,7 +84,7 @@ const RegisterForm = () => {
           </InputContainer>
 
           <Button type="submit">
-            Sign Up
+              Log In
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -103,3 +108,4 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
+
