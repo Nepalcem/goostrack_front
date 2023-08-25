@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 
 import { Field } from 'formik';
+import { ReactSVG } from 'react-svg';
+
+export const SignUpIcon = styled(ReactSVG)`
+  stroke: white;
+  width: 18px;
+  height: 18px;
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
 
 export const FormContainer = styled.div`
   width: 335px;

@@ -7,7 +7,9 @@ import {
   InputContainer,
   Label,
   Input,
+  SignUpIcon,
 } from './RegisterForm.styled';
+import SignUpSVG from '../../images/svg/log-in.svg';
 
 // Бібліотека формік
 import { Formik, Form, ErrorMessage } from 'formik';
@@ -20,18 +22,16 @@ import { Button } from 'components/Button/Button';
 // ПЕРЕВІРИТИ ШОБ ЗБІГАЛАСЬ З БЕКЕНДОМ
 // https://www.npmjs.com/package/yup
 const schema = yup.object().shape({
-  name: yup.string()
-  .required()
-  .min(4)
-  .max(30),
-  email: yup.string()
-  .email()
-  .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'Email must contain only Latin characters')
-  .required(),
-  password: yup.string()
-  .required()
-  .matches()
-  .min(8),
+  name: yup.string().required().min(4).max(30),
+  email: yup
+    .string()
+    .email()
+    .matches(
+      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+      'Email must contain only Latin characters'
+    )
+    .required(),
+  password: yup.string().required().matches().min(8),
 });
 
 //  Компонент форми
@@ -42,7 +42,6 @@ const RegisterForm = () => {
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
     // у обʼєкт values повертаються дані з форми
-    console.log('values', values);
     // тут буде проходити реєстрація
     actions.resetForm();
   };
@@ -81,8 +80,7 @@ const RegisterForm = () => {
           <Button
             textButton="Sign Up"
             type="submit"
-            svg=""
-           
+            svg={<SignUpIcon src={SignUpSVG} />}
           ></Button>
         </Form>
       </Formik>
