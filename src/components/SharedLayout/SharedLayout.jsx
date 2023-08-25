@@ -35,7 +35,7 @@ import LogoGoose from '../../images/logo-goose-left-menu.png';
 
 import AccountIco from '../../images/user-check-01.svg';
 import CalendarIco from '../../images/calendar-check-02.svg';
-import StatisticsIco from '../../images/chart.svg';
+import StatisticsIco from '../../images/chart-2.svg';
 
 import LogOutIco from '../../images/log-out-01.svg';
 
