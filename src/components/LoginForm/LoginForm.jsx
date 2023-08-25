@@ -34,19 +34,18 @@ import * as yup from 'yup';
 // https://www.npmjs.com/package/yup
 const schema = yup.object().shape({
   email: yup.string()
-  .email()
-  .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'Email must contain only Latin characters')
-  .required(),
+    .email()
+    .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'Email must contain only Latin characters')
+    .required(),
   password: yup.string()
-  .required()
-  .matches()
-  .min(8),
+    .required()
+    .matches(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, 'Password requires min 8 characters long & UPPERCASE & lowercase letter')
+    .min(8),
 });
 
 //  Компонент форми
-const RegisterForm = () => {
+const LoginForm = () => {
   // початкові значення полів форми
-  const initialValues = { email: '', password: '' };
 
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
@@ -60,10 +59,11 @@ const RegisterForm = () => {
     <FormContainer>
       <FormTitle>Log In</FormTitle>
       <Formik
-        initialValues={initialValues}
+      initialValues={{ email: '', password: '' }}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
+        
         <Form autoComplete="off">
 
 
@@ -107,5 +107,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
-
+export default LoginForm;

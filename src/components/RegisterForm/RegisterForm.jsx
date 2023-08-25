@@ -22,22 +22,25 @@ import { Button } from 'components/Button/Button';
 // ПЕРЕВІРИТИ ШОБ ЗБІГАЛАСЬ З БЕКЕНДОМ
 // https://www.npmjs.com/package/yup
 const schema = yup.object().shape({
-  name: yup.string().required().min(4).max(30),
-  email: yup
-    .string()
+
+  name: yup.string()
+    .required()
+    .matches()
+    .min(4)
+    .max(16),
+  email: yup.string()
     .email()
-    .matches(
-      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
-      'Email must contain only Latin characters'
-    )
+    .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, 'Email must contain only Latin characters')
     .required(),
-  password: yup.string().required().matches().min(8),
+  password: yup.string()
+    .required()
+    .matches(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, 'Password requires min 8 characters long & UPPERCASE & lowercase letter')
+    .min(8),
 });
 
 //  Компонент форми
 const RegisterForm = () => {
   // початкові значення полів форми
-  const initialValues = { name: '', email: '', password: '' };
 
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
@@ -50,7 +53,7 @@ const RegisterForm = () => {
     <FormContainer>
       <FormTitle>Sign Up</FormTitle>
       <Formik
-        initialValues={initialValues}
+        initialValues={{ name: '', email: '', password: '' }}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
