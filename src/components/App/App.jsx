@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 // const Home = lazy(() => import('../pages/Home'));
 // const NotFound = lazy(() => import('../pages/NotFound'));
 
-import MainPage from '../../pages/MainPage';
+// import MainPage from '../../pages/MainPage';
 import RegisterPage from '../../pages/RegisterPage';
 import LoginPage from '../../pages/LoginPage';
 import NotFound from '../../pages/NotFound';
@@ -18,7 +18,7 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        {/* <Route path="/" element={<MainPage />} /> */}
         <Route path="/" element={<SharedLayout />}>
           <Route path="/account" element={<AccountPage />} />
           <Route path="/statistics" element={<StatisticsPage />} />
