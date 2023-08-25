@@ -19,13 +19,25 @@ import {
   LogoBlock,
   LogoImg,
   LogoText,
+  LeftMenuTitle,
+  LeftMenuItemIco,
+  LeftMenuItemLink,
+  LeftMenuItemText,
+  LeftMenuLogOutButton,
+  LogOutIcoEl,
 } from './SharedLayout.styled';
 
 import BurgerMenuIce from '../../images/burger-menu-01.svg';
-import ThemeIcoButton from '../../images/then-ico-button-moon.svg';
+import ThemeIcoButton from '../../images/theme-ico-button-moon.svg';
 import UserAvatar from '../../images/user-avatar.png';
 
 import LogoGoose from '../../images/logo-goose-left-menu.png';
+
+import AccountIco from '../../images/user-check-01.svg';
+import CalendarIco from '../../images/calendar-check-02.svg';
+import StatisticsIco from '../../images/chart.svg';
+
+import LogOutIco from '../../images/log-out-01.svg';
 
 const SharedLayout = () => {
   return (
@@ -37,6 +49,27 @@ const SharedLayout = () => {
             <LogoImg src={LogoGoose} alt="logo goose" />
             <LogoText>GooseTrack</LogoText>
           </LogoBlock>
+          <LeftMenuTitle>User Panel</LeftMenuTitle>
+
+          <LeftMenuItemLink to="/account">
+            <LeftMenuItemIco src={AccountIco} />
+            <LeftMenuItemText>My account</LeftMenuItemText>
+          </LeftMenuItemLink>
+
+          <LeftMenuItemLink to="/calendar">
+            <LeftMenuItemIco src={CalendarIco} />
+            <LeftMenuItemText>Calendar</LeftMenuItemText>
+          </LeftMenuItemLink>
+
+          <LeftMenuItemLink to="/statistics">
+            <LeftMenuItemIco src={StatisticsIco} />
+            <LeftMenuItemText>Statistics</LeftMenuItemText>
+          </LeftMenuItemLink>
+
+          <LeftMenuLogOutButton>
+            Log out
+            <LogOutIcoEl src={LogOutIco} alt="logout button" />
+          </LeftMenuLogOutButton>
         </LeftDesktopMenu>
         {/* RIGHT-CONTENT */}
         <MainContent>
