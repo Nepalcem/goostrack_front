@@ -12,7 +12,7 @@ import NotFound from '../../pages/NotFound';
 import AccountPage from '../../pages/AccountPage/AccountPage';
 import StatisticsPage from '../../pages/StatisticsPage';
 import SharedLayout from '../SharedLayout/SharedLayout';
-import CalendarPage from '../../pages/CalendarPage';
+import CalendarPage from '../../pages/CalendarPage/CalendarPage';
 
 export const App = () => {
   return (
