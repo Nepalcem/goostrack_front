@@ -16,7 +16,7 @@ import {
 import LogoGoose from '../../../images/logo-goose-left-menu.png';
 import AccountIco from '../../../images/svg/user.svg';
 import CalendarIco from '../../../images/svg/calendar.svg';
-import StatisticsIco from '../../../images/svg/chart.svg';
+import StatisticsIco from '../../../images/svg/chart-2.svg';
 import LogOutIco from '../../../images/svg/log-out.svg';
 import closeBurgerMenu from '../../../images/svg/log-out.svg';
 const basePath = '../../../images/sideBarImg/';
