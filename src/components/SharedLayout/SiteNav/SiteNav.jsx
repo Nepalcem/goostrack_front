@@ -14,11 +14,11 @@ import {
   ButtonBurgerClose,
 } from './SiteNav.styled';
 import LogoGoose from '../../../images/logo-goose-left-menu.png';
-import AccountIco from '../../../images/user-check-01.svg';
-import CalendarIco from '../../../images/calendar-check-02.svg';
-import StatisticsIco from '../../../images/chart-2.svg';
-import LogOutIco from '../../../images/log-out-01.svg';
-import closeBurgerMenu from '../../../images/log-out-01.svg';
+import AccountIco from '../../../images/svg/user.svg';
+import CalendarIco from '../../../images/svg/calendar.svg';
+import StatisticsIco from '../../../images/svg/chart.svg';
+import LogOutIco from '../../../images/svg/log-out.svg';
+import closeBurgerMenu from '../../../images/svg/log-out.svg';
 const basePath = '../../../images/sideBarImg/';
 
 const SiteNav = ({ onClose, isOpen }) => {

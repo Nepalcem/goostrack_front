@@ -11,21 +11,20 @@ import {
 
 
 import BurgerMenuIce from '../../images/svg/menu.svg';
-import ThemeIcoButton from '../../images/svg/moon.svg';
-import UserAvatar from '../../images/svg/photo-user.svg';
+// import ThemeIcoButton from '../../images/svg/moon.svg';
+// import UserAvatar from '../../images/svg/photo-user.svg';
 
-import LogoGoose from '../../images/logo-goose-left-menu.png';
+// import LogoGoose from '../../images/logo-goose-left-menu.png';
 
-import AccountIco from '../../images/svg/user.svg';
-import CalendarIco from '../../images/svg/calendar.svg';
-import StatisticsIco from '../../images/svg/chart.svg';
+// import AccountIco from '../../images/svg/user.svg';
+// import CalendarIco from '../../images/svg/calendar.svg';
+// import StatisticsIco from '../../images/svg/chart.svg';
 
-import LogOutIco from '../../images/svg/log-out.svg';
+// import LogOutIco from '../../images/svg/log-out.svg';
 
 import SiteNav from './SiteNav/SiteNav';
 import UserInfo from './UserInfo/UserInfo';
 import Header from './Header/Header';
-import BurgerMenuIce from '../../images/burger-menu-01.svg';
 import { BurgerMenuButton } from './Header/Header.styled';
 
 

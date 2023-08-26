@@ -6,7 +6,7 @@ import {
   AvatarThumb,
   Avatar,
 } from './UserInfo.styled';
-import ThemeIcoButton from '../../../images/theme-ico-button-moon.svg';
+import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
 const UserInfo = () => {
   return (
