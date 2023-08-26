@@ -9,9 +9,9 @@ import {
   ImageThumb,
 } from './DescriptionItem.styled';
 
-import DescriptionImage1 from '../../images/description-image-1.svg';
-import DescriptionImage2 from '../../images/description-image-2.svg';
-import DescriptionImage3 from '../../images/description-image-3.svg';
+import DescriptionImage1 from '../../images/svg/description-image-1.svg';
+import DescriptionImage2 from '../../images/svg/description-image-2.svg';
+import DescriptionImage3 from '../../images/svg/description-image-3.svg';
 
 const DescriptionItem = ({ listOfDescriptions }) => {
   console.log('listOfDescriptions', listOfDescriptions);
