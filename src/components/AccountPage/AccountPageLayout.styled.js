@@ -7,6 +7,8 @@ export const AccountPageContainer = styled.div`
   background-color: white;
   border-radius: 16px;
   align-items: center;
+  margin:20px;
+  margin-top: 95px;
   padding-bottom: 40px;
 `;
 
@@ -22,7 +24,7 @@ export const AccountPageAvatar = styled.img`
 
 export const UserAvatarPlus = styled.div`
   position: relative;
-  transform: translateY(-33%);
+  transform: translateY(-50%);
 `;
 
 export const AccountAvatarPlusIcon = styled.img`
@@ -35,7 +37,7 @@ export const AccountUserName = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(-33%);
+  transform: translateY(-50%);
 `;
 
 export const AccountUserNameTitle = styled.div`

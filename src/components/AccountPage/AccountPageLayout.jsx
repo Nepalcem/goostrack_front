@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik,  Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import defaultProfileAvatar from '../../images/accountPage/default-profile-avatar.png';
 import userAvatarPlusIcon from '../../images/accountPage/userAvatarPlus.svg';
@@ -12,6 +12,8 @@ import {
   AccountUserNameTitle,
   AccountUserNameRole
 } from './AccountPageLayout.styled';
+
+import { StyledForm,FormField } from './AccountForm.styled';
 
 const userValidationSchema = Yup.object().shape({
   userName: Yup.string().required('User Name is required'),
@@ -51,8 +53,8 @@ const AccountPageLayout = () => {
         validateOnChange={false}
       >
         {({ values, setFieldValue }) => (
-          <Form className="blocks">
-            <div className="form-field">
+          <StyledForm>
+            <FormField>
               <label htmlFor="userName">User Name</label>
               <Field type="text" name="userName" id="userName" />
               <ErrorMessage
@@ -60,9 +62,9 @@ const AccountPageLayout = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
+            </FormField>
 
-            <div className="form-field">
+            <FormField>
               <label htmlFor="birthday">Birthday</label>
               <Field type="text" name="birthday" id="birthday" />
               <ErrorMessage
@@ -70,9 +72,9 @@ const AccountPageLayout = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
+            </FormField>
 
-            <div className="form-field">
+            <FormField>
               <label htmlFor="email">Email</label>
               <Field type="text" name="email" id="email" />
               <ErrorMessage
@@ -80,9 +82,9 @@ const AccountPageLayout = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
+            </FormField>
 
-            <div className="form-field">
+            <FormField>
               <label htmlFor="phone">Phone</label>
               <Field type="text" name="phone" id="phone" />
               <ErrorMessage
@@ -90,9 +92,9 @@ const AccountPageLayout = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
+            </FormField>
 
-            <div className="form-field">
+            <FormField>
               <label htmlFor="skype">Skype</label>
               <Field type="text" name="skype" id="skype" />
               <ErrorMessage
@@ -100,7 +102,7 @@ const AccountPageLayout = () => {
                 component="div"
                 className="error-message"
               />
-            </div>
+            </FormField>
 
             <div className="submit">
               <div className="submit-wrapper">
@@ -109,7 +111,7 @@ const AccountPageLayout = () => {
                 </button>
               </div>
             </div>
-          </Form>
+          </StyledForm>
         )}
       </Formik>
     </AccountPageContainer>
