@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-import { Field } from 'formik';
+import {
+  Field as FormikField,
+  ErrorMessage as FormikErrorMessage,
+} from 'formik';
+
 import { ReactSVG } from 'react-svg';
 import {
   blackcolor,
@@ -56,6 +60,7 @@ export const FormTitle = styled.h1`
 
 export const InputContainer = styled.div`
   margin-bottom: 24px;
+  position: relative;
   @media screen and (min-width: 768px) {
     margin-bottom: 18px;
   }
@@ -77,7 +82,7 @@ export const Label = styled.label`
   }
 `;
 
-export const Input = styled(Field)`
+export const Field = styled(FormikField)`
   width: 100%;
   /* height: 46px; */
   border-radius: 8px;
@@ -101,4 +106,29 @@ export const Input = styled(Field)`
     font-size: 16px;
     line-height: 1.125;
   }
+`;
+export const TextShow = styled.span`
+  // display: flex;
+  color: #3e85f3;
+  cursor: pointer;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  position: absolute;
+  top: 43px;
+
+  right: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+export const ErrorMessage = styled(FormikErrorMessage)`
+  margin-left: 18px;
+  margin-top: 8px;
+
+  color: #FF0000;
 `;
