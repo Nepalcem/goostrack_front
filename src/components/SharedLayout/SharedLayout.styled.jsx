@@ -7,12 +7,11 @@ export const Main = styled.main`
 
 export const Container = styled.div`
   display: flex;
+  max-width: 375px;
   min-height: 100vh;
-  max-width: 100vw;
   width: 1440px;
   margin: 0 auto;
-
- 
+  padding: 0 20;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -23,9 +22,6 @@ export const Container = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     flex-direction: row;
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
   }
 `;
 
@@ -42,22 +38,30 @@ export const BurgerSide = styled.div`
   }
 `;
 export const MainContent = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+
+  padding-top: 24px;
+
   @media screen and (min-width: 1440px) {
-    padding-left: 32px;
-    padding-right: 32px;
-    width: 100%;
+    padding-top: 40px;
   }
 `;
 
 export const TopMenu = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-around;
+  height: 32px;
+  gap: 30px;
 
-  margin-bottom: 64px;
+  @media screen and (min-width: 768px) {
+    height: 42px;
+    justify-content: space-between;
+  }
 
   @media screen and (min-width: 1440px) {
-    margin-top: 46px;
-    margin-bottom: 33px;
+    height: 42px;
   }
 `;

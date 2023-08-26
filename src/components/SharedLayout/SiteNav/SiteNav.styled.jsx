@@ -7,6 +7,7 @@ export const LeftDesktopMenu = styled.div`
   width: 225px;
   min-height: 100%;
   z-index: 11;
+  position: fixed;
   margin: 0;
   flex-direction: column;
   justify-content: space-between;
