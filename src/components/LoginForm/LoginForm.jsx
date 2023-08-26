@@ -1,30 +1,20 @@
-// import RegisterForm from '../RegisterForm/RegisterForm';
-// import { MainStyled, StyledLink } from './SignUp.styled';
 
-// const SignUp = () => {
-//   return (
-//     <MainStyled>
-//       <RegisterForm />
-//       <StyledLink to="/login">Log In</StyledLink>
-//     </MainStyled>
-//   );
-// };
-
-// export default SignUp;
-
-import React from 'react';
+import React, { useState } from 'react';
+// import { useDispatch } from 'react-redux';
 // Стилізовані компоненти
 import {
+  ErrorMessage,
   FormContainer,
   FormTitle,
   InputContainer,
   Label,
-  Input,
+  Field,
   Button,
+  TextShow
 } from './LoginForm.styled';
 
 // Бібліотека формік
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form,  } from 'formik';
 
 // Бібліотека валідації форми yup
 import * as yup from 'yup';
@@ -46,6 +36,13 @@ const schema = yup.object().shape({
 //  Компонент форми
 const LoginForm = () => {
   // початкові значення полів форми
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setPasswordShown(!passwordShown);
+  };
 
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
@@ -63,24 +60,31 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
-        
+        {() => (
         <Form autoComplete="off">
-
-
           <InputContainer>
             <Label htmlFor="email">Email </Label>
-            <Input type="text" name="email" placeholder="Enter email" />
-            <ErrorMessage name="email" />
+            <Field 
+            type="text" 
+            name="email" 
+            placeholder="Enter email" />
+            <ErrorMessage 
+            name="email" 
+            component="div"/>
           </InputContainer>
 
           <InputContainer>
             <Label htmlFor="name">Password </Label>
-            <Input
-              type="password"
+            <Field
+              // type="password"
               name="password"
               placeholder="Enter password"
+              type={passwordShown ? "text" : "password"}
             />
-            <ErrorMessage name="password" />
+            <TextShow 
+            type="submit"
+            onClick={togglePassword}>Show</TextShow>
+            <ErrorMessage name="password" component="div"/>
           </InputContainer>
 
           <Button type="submit">
@@ -102,6 +106,7 @@ const LoginForm = () => {
             </svg>
           </Button>
         </Form>
+        )}
       </Formik>
     </FormContainer>
   );
