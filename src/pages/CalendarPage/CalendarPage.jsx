@@ -7,51 +7,22 @@ const CalendarPage = () => {
   const [period, setPeriod] = useState('month'); // выбор периода отображения "month" or "day"
   const [numberMonday, setNumberMonday] = useState(3);
 
-  // this.state = {
-  //   period: 'month',
-  //   numberMonday: 3,
-  // };
-
-  // const updateData = (period, numberMonday) => {
-  //   this.setState({ period: period, numberMonday: numberMonday });
-  // };
   return (
     <div>
       <CalendarToolbar />
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        {/* <Button textButton={'Month'} onClick={() => console.log('press')} />
-        <Button textButton={'Day'} onClick={() => console.log('press')} /> */}
-        {/* <button onClick={() => setPeriod('month')}>MONTH</button>
-      <button onClick={() => setPeriod('day')}>DAY</button> */}
-        <button
-          onClick={() => {
-            setPeriod('month');
-            //this.props.updateData(period);
-          }}
-        >
-          MONTH
-        </button>
-        <button
-          onClick={() => {
-            setPeriod('day');
-            //   this.props.updateData(numberMonday);
-          }}
-        >
-          DAY
-        </button>
-        {/* { this.props.updateData(this.state.name)} */}
-      </div>
-
-      <RulerDays
-        // period={this.state.period}
-        // numberMonday={this.state.numberMonday}
-        period={period}
-        numberMonday={numberMonday}
-      />
     </div>
   );
 };
 
 export default CalendarPage;
-
-// setPeriod('month');setPeriod('day')
+// "1. Компонент рендериться на маршрут /calendar.
+// 2. При першому вході на сторінку компонент виконує переадресацію на розширений маршрут /calendar/month/:currentDate для відображення календяря місяця
+// 2. Сторінка повинна відображатись відповідно до макету на 3х розширеннях(375, 768, 1440)
+// 3. На сторінці знаходиться модуль CalendarToolbar - з яким користувач може обрати тип періоду, та його інтервал
+// 4. На сторінці відображаеться один з модулів періоду дат календаря:
+//  - ChoosedMonth - дозволяє подивитись всі задачі на місяць, перейти на сторінку одного дня ChoosedDay.
+//  - ChoosedDay - дозволяє створювати задачі та розділити ці задачі  на групи по ступеню їх виконання.
+// 5. При новому відвідуванні додатку та першому вході на сторінку відображаеться модуль ChoosedMonth з розкладкою комірок з датами поточного місяця.
+// 6. На сторінці повинен здійснюватись запит за завданнями, якщо вони відсутні в глобальному стейті
+// 7. Успіх - дані записуються у відповідний стейт
+// 8. Помилка - користувачу показується відповідне пуш-повідомлення"

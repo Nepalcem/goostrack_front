@@ -1,59 +1,46 @@
 import React, { useState } from 'react';
-import {
-  addMonths,
-  add,
-  format,
-  getDate,
-  getTime,
-  getMilliseconds,
-  milliseconds,
-} from 'date-fns';
-import {
-  startOfMonth,
-  endOfMonth,
-  endOfWeek,
-  eachDayOfInterval,
-  startOfWeek,
-} from 'date-fns';
+import { addMonths, format, getTime, addDays } from 'date-fns';
+
+import PeriodPaginator from '../PeriodPaginator/PeriodPaginator';
+import PeriodTypeSelect from '../PeriodTypeSelect/PeriodTypeSelect';
+
+import { CalendarToolbarDiv } from './CalendarToolbar.styled';
 
 const CalendarToolbar = () => {
   const [date, setDate] = useState(getTime(new Date())); //за промовчанням поточна дата
+  const [period, setPeriod] = useState('month'); //за промовчанням period month
   //функція зміни місяця вперед чи назад
-  const onChangeMonth = step => {
-    const newMonth = addMonths(date, step); //змінюємо місяць у будь-який бік
-    const millisec = getTime(newMonth); //переводимо в millisec для форматування та запису в стейт
+  const onChangeMonthOrDay = (step, period) => {
+    let newDate = null;
+    if (period === 'month') {
+      newDate = addMonths(date, step); //змінюємо місяць у будь-який бік
+    }
+    if (period === 'day') {
+      newDate = addDays(date, step); //змінюємо дату у будь-який бік
+    }
+    const millisec = getTime(newDate); //переводимо в millisec для форматування та запису в стейт
     setDate(millisec); //пишем в стейт
   };
+  /////////
+  // функция выбора периода month or day
+  const onChangePeriod = newPeriod => setPeriod(newPeriod);
 
   return (
-    <div>
-      <div>{format(date, 'MMMM yyyy')}</div>
-      <button onClick={() => onChangeMonth(-1)}>back</button>
-      <button onClick={() => onChangeMonth(1)}>forvard</button>
-    </div>
-    // <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-    //   {/* <Button textButton={'Month'} onClick={() => console.log('press')} />
-    //     <Button textButton={'Day'} onClick={() => console.log('press')} /> */}
-    //   {/* <button onClick={() => setPeriod('month')}>MONTH</button>
-    //   <button onClick={() => setPeriod('day')}>DAY</button> */}
-    //   <button
-    //     onClick={() => {
-    //       setPeriod('month');
-    //       this.props.updateData(period);
-    //     }}
-    //   >
-    //     MONTH
-    //   </button>
-    //   <button
-    //     onClick={() => {
-    //       setPeriod('day');
-    //       this.props.updateData(numberMonday);
-    //     }}
-    //   >
-    //     DAY
-    //   </button>
-    //   {/* { this.props.updateData(this.state.name)} */}
-    // </div>
+    <CalendarToolbarDiv>
+      <PeriodPaginator
+        date={date}
+        period={period}
+        onClick={onChangeMonthOrDay}
+      />
+      <PeriodTypeSelect onClick={onChangePeriod} />
+    </CalendarToolbarDiv>
   );
 };
 export default CalendarToolbar;
+// "1. Компонент рендерить:
+//  - PeriodPaginator - дозволяє юзеру змінити дату періоду, задачі за який він хоче подивитись.
+//  - PeriodTypeSelect - дозволяє юзеру змінити тип періоду, задачі за який він хоче подивитись.
+// 2. Компонент отримує тип періоду, та має локальний стейт з датою.
+// При зміні дати або типу періоду відбуваеться запит на отримання задач за обраний період, якщо задач з даного періоду досі немає в глобальному стейті.
+// Успіх - дані пишуться в глобальний стейт
+// Помилка - виводиться відповідне пуш повідомлення."
