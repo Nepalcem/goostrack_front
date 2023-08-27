@@ -32,3 +32,26 @@ const Modal = ({ onClose, children }) => {
     };
 
 export default Modal;
+
+// потім там де виідкривається модалка або вище потрібно прописати:
+// const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   const openModal = () => {
+//     setIsModalOpen(true);
+//   };
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//   };
+
+// це або кнопка-батон або, наприклад, фідбек: їй потрібно ось так прописати
+   
+//   <button onClick={openModal}>Open Modal</button>
+//       {isModalOpen && (
+//         <Modal onClose={closeModal}>
+//           <h3>Modal Content</h3>
+//           <p>This is the content of the modal.</p>
+//           {/* <button onClick={openModal}>Open Modal</button> */}
+//           <button onClick={closeModal}>Close Modal</button>
+//         </Modal>
+//       )}
