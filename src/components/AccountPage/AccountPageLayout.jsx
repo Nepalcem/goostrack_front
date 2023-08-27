@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik,  Field, ErrorMessage } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import defaultProfileAvatar from '../../images/accountPage/default-profile-avatar.png';
 import userAvatarPlusIcon from '../../images/accountPage/userAvatarPlus.svg';
@@ -10,10 +10,12 @@ import {
   AccountAvatarPlusIcon,
   AccountUserName,
   AccountUserNameTitle,
-  AccountUserNameRole
+  AccountUserNameRole,
 } from './AccountPageLayout.styled';
 
-import { StyledForm,FormField } from './AccountForm.styled';
+import { StyledForm, FormField, AccountSaveButton } from './AccountForm.styled';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'; // Import the date picker styles
 
 const userValidationSchema = Yup.object().shape({
   userName: Yup.string().required('User Name is required'),
@@ -39,7 +41,7 @@ const AccountPageLayout = () => {
       <Formik
         initialValues={{
           userName: 'Nadiia Doe',
-          birthday: '25/08/1995',
+          birthday: new Date('1995-08-25'),
           email: 'nadiia@gmail.com',
           phone: '38 (097) 256 34 77',
           skype: 'Add a skype number',
@@ -66,7 +68,19 @@ const AccountPageLayout = () => {
 
             <FormField>
               <label htmlFor="birthday">Birthday</label>
-              <Field type="text" name="birthday" id="birthday" />
+              <Field name="birthday">
+                {({ field }) => (
+                  <DatePicker
+                    {...field}
+                    selected={values.birthday}
+                    onChange={date => {
+                      setFieldValue('birthday', date);
+                      console.log('Selected Date:', date); // Log the selected date
+                    }}
+                    dateFormat="dd/MM/yyyy"
+                  />
+                )}
+              </Field>
               <ErrorMessage
                 name="birthday"
                 component="div"
@@ -104,13 +118,10 @@ const AccountPageLayout = () => {
               />
             </FormField>
 
-            <div className="submit">
-              <div className="submit-wrapper">
-                <button type="submit" className="form-button">
+                <AccountSaveButton type="submit">
                   Save changes
-                </button>
-              </div>
-            </div>
+                </AccountSaveButton>
+
           </StyledForm>
         )}
       </Formik>
