@@ -5,9 +5,25 @@ export const DescriptionItemBlock = styled.div`
   flex-direction: column;
   margin-bottom: 64px;
 
+  @media screen and (min-width: 768px) {
+    &:nth-child(2n) {
+      align-items: flex-end;
+    }
+  }
+
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     column-gap: 228px;
+    /* width: 1107px; */
+
+    &:nth-child(2n) {
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    &:nth-child(2n-1) {
+      justify-content: end;
+    }
   }
 `;
 
@@ -140,4 +156,12 @@ export const ImageThumb = styled.div`
     height: 700px;
     width: 604px;
   }
+`;
+
+export const Img = styled.img`
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
 `;
