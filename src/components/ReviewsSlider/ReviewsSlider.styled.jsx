@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { primaryColor } from 'utils/variables';
 
-
+export const ReviewsContainer = styled.div``;
 export const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
   font-size: 28px;
   line-height: 1.14;
-  color: #3e85f3;
+  color: ${primaryColor};
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 40px;
@@ -33,12 +34,18 @@ export const ReviewWrapper = styled.div`
     width: 580px;
     padding: 32px;
   }
+
+  @media (min-width: 1440px) {
+  }
 `;
 
 export const UserWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 24px;
+`;
+export const StarsWrapper = styled.div`
+  display: flex;
 `;
 
 export const UserAvatar = styled.img`
@@ -91,3 +98,34 @@ export const ArrowRight = styled.div`
   padding-bottom: 30px;
   cursor: pointer;
 `;
+
+// modules={[Navigation, Autoplay, EffectCoverflow]}
+//         grabCursor={true}
+//         effect={'coverflow'}
+//         slidesPerView={1}
+//         spaceBetween={20}
+//         // autoHeight={true}
+//         centeredSlides={true}
+//         coverflowEffect={{
+//           rotate: 30,
+//           stretch: 0,
+//           depth: 50,
+//           modifier: 1,
+//           slideShadows: false,
+//         }}
+//         loop={true}
+//         autoplay={{
+//           delay: 2000,
+//           disableOnInteraction: false,
+//           waitForTransition: false,
+//         }}
+//         navigation={{
+//           prevEl: '#custom-prev-button',
+//           nextEl: '#custom-next-button',
+//         }}
+//         breakpoints={{
+//           1440: {
+//             slidesPerView: 2,
+//             spaceBetween: 24,
+//           },
+//         }}
