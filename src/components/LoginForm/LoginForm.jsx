@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
 // Стилізовані компоненти
 import {
   ErrorMessage,
@@ -37,7 +36,7 @@ const schema = yup.object().shape({
     .required()
     .matches(
       /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-      'Password requires min 8 characters long & UPPERCASE & lowercase letter'
+      'Password requires min 8 characters long, one UPPERCASE, one lowercase letter'
     )
     .min(8),
 });
@@ -45,6 +44,7 @@ const schema = yup.object().shape({
 //  Компонент форми
 const LoginForm = () => {
   // початкові значення полів форми
+
   const [passwordShown, setPasswordShown] = useState(false);
   const dispatch = useDispatch();
 
@@ -71,29 +71,54 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
-        {() => (
-          <Form autoComplete="off">
-            <InputContainer>
-              <Label htmlFor="email">Email </Label>
-              <Field type="text" name="email" placeholder="Enter email" />
-              <ErrorMessage name="email" component="div" />
-            </InputContainer>
+      {({ errors, touched }) => {
+        const isValid = field =>
+          touched[field] && errors[field]
+            ? 'is-invalid'
+            : touched[field]
+            ? 'is-valid'
+            : '';          
+    return (
+      <Form autoComplete="off">
+        <InputContainer>
+          <Label 
+            htmlFor="email"
+            className={isValid('email')}>Email 
+          </Label>
+              
+            <Field 
+              type="email" 
+              name="email" 
+              placeholder="Enter email" 
+              className={isValid('email')}/>
 
-            <InputContainer>
-              <Label htmlFor="name">Password </Label>
-              <Field
-                // type="password"
-                name="password"
-                placeholder="Enter password"
-                type={passwordShown ? 'text' : 'password'}
-              />
-              <TextShow type="submit" onClick={togglePassword}>
+            <ErrorMessage name="email" component="div" />
+        </InputContainer>
+
+        <InputContainer>
+          <Label 
+            htmlFor="name"
+            className={isValid('password')}>Password 
+          </Label>
+
+            <Field
+              // type="password"
+              name="password"
+              placeholder="Enter password"
+              type={passwordShown ? 'text' : 'password'}
+              className={isValid('password')}
+            />
+          
+            <TextShow type="submit" onClick={togglePassword}>
                 Show
-              </TextShow>
-              <ErrorMessage name="password" component="div" />
-            </InputContainer>
+            </TextShow>
+              
+            <ErrorMessage name="password" component="div" />
+        </InputContainer>
 
-            <Button type="submit">
+          <Button type="submit"
+// disabled={!isValid}
+>
               Log In
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -110,9 +135,10 @@ const LoginForm = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </Button>
-          </Form>
-        )}
+          </Button>
+        </Form>
+            )
+        }}
       </Formik>
     </FormContainer>
   );
