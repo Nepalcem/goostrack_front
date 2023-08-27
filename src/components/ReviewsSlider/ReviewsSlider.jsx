@@ -3,9 +3,6 @@ import { useEffect } from 'react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 // import userAvatar from '../../images/svg/photo-user.svg';
 import star from '../../images/svg/star.svg';
@@ -101,26 +98,26 @@ const ReviewsSlider = () => {
       >
         {reviews.map(review => {
           const starIcons = [];
-          for (let i = 0; i < review.stars; i++) {
+          for (let i = 0; i < review.rating; i++) {
             starIcons.push(<Star key={i} src={yellowStar} alt="star" />);
           }
-          for (let i = review.stars; i < 5; i++) {
+          for (let i = review.rating; i < 5; i++) {
             starIcons.push(
               <Star key={i} src={star} alt="star" className="grey-star" />
             );
           }
           return (
             <>
-              <SwiperSlide key={review.id}>
+              <SwiperSlide key={review.owner.username}>
                 <ReviewWrapper>
                   <UserWrapper>
-                    <UserAvatar src={review.userAvatar} alt="UserAvatar" />
+                    <UserAvatar src={review.owner.avatarURL} alt="UserAvatar" />
                     <div>
-                      <UserName>{review.name}</UserName>
+                      <UserName>{review.owner.username}</UserName>
                       <StarsWrapper>{starIcons}</StarsWrapper>
                     </div>
                   </UserWrapper>
-                  <UserReview>{review.review}</UserReview>
+                  <UserReview>{review.comment}</UserReview>
                 </ReviewWrapper>
               </SwiperSlide>
             </>
