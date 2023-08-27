@@ -63,6 +63,13 @@ export const Label = styled.label`
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
+
+  &.is-valid {
+    color: #3cbc81;
+  }
+  &.is-invalid {
+    color: #FF0000;
+  }
 `;
 
 export const Field = styled(FormikField)`
@@ -72,6 +79,7 @@ export const Field = styled(FormikField)`
   border: 1px solid rgba(220, 227, 229, 0.6);
   background: #ffffff;
   padding: 14px;
+  outline: none;
 
   color: #111111;
   font-family: Inter;
@@ -88,6 +96,16 @@ export const Field = styled(FormikField)`
     padding: 18px;
     font-size: 16px;
     line-height: 1.125;
+  }
+
+  &.is-valid {
+    border-radius: 8px;
+    border: 1px solid rgb(60, 188, 129);
+  }
+
+  &.is-invalid {
+    border-radius: 8px;
+    border: 1px solid rgb(231, 74, 59);
   }
 
 `;
@@ -132,6 +150,17 @@ export const Button = styled.button`
 
     font-size: 18px;
   }
+
+
+  &.is-valid {
+    border-radius: 8px;
+    border: 1px solid rgb(60, 188, 129);
+  }
+
+  &.is-invalid {
+    border-radius: 8px;
+    border: 1px solid rgb(231, 74, 59);
+  }
 `;
 
 
@@ -161,4 +190,13 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   margin-top: 8px;
 
   color: #FF0000;
+
+  // border-radius: 8px;
+  // border: 1px solid rgba(220, 227, 229, 0.6);
+  // background: #FF0000;
 `;
+
+
+
+
+

@@ -39,7 +39,7 @@ const schema = yup.object().shape({
     .required()
     .matches(
       /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-      'Password requires min 8 characters long & UPPERCASE & lowercase letter'
+      'Password requires min 8 characters long, one UPPERCASE, one lowercase letter'
     )
     .min(8),
 });
@@ -74,29 +74,58 @@ const RegisterForm = () => {
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
+      {({ errors, touched }) => {
+        const isValid = field =>
+          touched[field] && errors[field]
+            ? 'is-invalid'
+            : touched[field]
+            ? 'is-valid'
+            : '';          
+    return (
         <Form autoComplete="off">
           <InputContainer>
-            <Label htmlFor="name">Name</Label>
-            <Field type="text" name="name" placeholder="Enter your name" />
+            <Label htmlFor="name"
+              className={isValid('name')}>Name
+            </Label>
+            
+              <Field 
+                type="text" 
+                name="name" 
+                placeholder="Enter your name" 
+                className={isValid('name')}/>
+            
             <ErrorMessage name="name" component="div" />
           </InputContainer>
 
           <InputContainer>
-            <Label htmlFor="email">Email </Label>
-            <Field type="text" name="email" placeholder="Enter email" />
+            <Label htmlFor="email"
+              className={isValid('email')}>Email 
+            </Label>
+            
+              <Field 
+                type="text" 
+                name="email" placeholder="Enter email" 
+                className={isValid('email')}/>
+            
             <ErrorMessage name="email" component="div" />
           </InputContainer>
 
           <InputContainer>
-            <Label htmlFor="name">Password </Label>
-            <Field
+            <Label htmlFor="name"
+              className={isValid('password')}>Password 
+            </Label>
+              <Field
               // type="password"
-              name="password"
-              placeholder="Enter password"
-              type={passwordShown ? 'text' : 'password'}
+                name="password"
+                placeholder="Enter password"
+                type={passwordShown ? 'text' : 'password'}
+                className={isValid('password')}
             />
-            <TextShow onClick={togglePassword}>Show</TextShow>
-            <ErrorMessage name="password" component="div" />
+                <TextShow onClick={togglePassword}>
+                  Show
+                </TextShow>
+                
+              <ErrorMessage name="password" component="div" />
           </InputContainer>
 
           <Button
@@ -105,6 +134,8 @@ const RegisterForm = () => {
             svg={<SignUpIcon src={SignUpSVG} />}
           ></Button>
         </Form>
+    )
+      }}
       </Formik>
     </FormContainer>
   );
