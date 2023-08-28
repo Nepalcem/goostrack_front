@@ -74,68 +74,71 @@ const RegisterForm = () => {
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
-      {({ errors, touched }) => {
-        const isValid = field =>
-          touched[field] && errors[field]
-            ? 'is-invalid'
-            : touched[field]
-            ? 'is-valid'
-            : '';          
-    return (
-        <Form autoComplete="off">
-          <InputContainer>
-            <Label htmlFor="name"
-              className={isValid('name')}>Name
-            </Label>
-            
-              <Field 
-                type="text" 
-                name="name" 
-                placeholder="Enter your name" 
-                className={isValid('name')}/>
-            
-            <ErrorMessage name="name" component="div" />
-          </InputContainer>
+        {({ errors, touched }) => {
+          const isValid = field =>
+            touched[field] && errors[field]
+              ? 'is-invalid'
+              : touched[field]
+              ? 'is-valid'
+              : '';
+          return (
+            <Form autoComplete="off">
+              <InputContainer>
+                <Label htmlFor="name" className={isValid('name')}>
+                  Name
+                </Label>
 
-          <InputContainer>
-            <Label htmlFor="email"
-              className={isValid('email')}>Email 
-            </Label>
-            
-              <Field 
-                type="text" 
-                name="email" placeholder="Enter email" 
-                className={isValid('email')}/>
-            
-            <ErrorMessage name="email" component="div" />
-          </InputContainer>
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder="Enter your name"
+                  className={isValid('name')}
+                />
 
-          <InputContainer>
-            <Label htmlFor="name"
-              className={isValid('password')}>Password 
-            </Label>
-              <Field
-              // type="password"
-                name="password"
-                placeholder="Enter password"
-                type={passwordShown ? 'text' : 'password'}
-                className={isValid('password')}
-            />
+                <ErrorMessage name="name" component="div" />
+              </InputContainer>
+
+              <InputContainer>
+                <Label htmlFor="email" className={isValid('email')}>
+                  Email
+                </Label>
+
+                <Field
+                  type="text"
+                  name="email"
+                  placeholder="Enter email"
+                  className={isValid('email')}
+                />
+
+                <ErrorMessage name="email" component="div" />
+              </InputContainer>
+
+              <InputContainer>
+                <Label htmlFor="name" className={isValid('password')}>
+                  Password
+                </Label>
+                <Field
+                  // type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  type={passwordShown ? 'text' : 'password'}
+                  className={isValid('password')}
+                />
                 <TextShow onClick={togglePassword}>
-                  Show
+                  {passwordShown ? 'Hide' : 'Show'}
                 </TextShow>
-                
-              <ErrorMessage name="password" component="div" />
-          </InputContainer>
 
-          <Button
-            textButton="Sign Up"
-            type="submit"
-            svg={<SignUpIcon src={SignUpSVG} />}
-          ></Button>
-        </Form>
-    )
-      }}
+                <ErrorMessage name="password" component="div" />
+              </InputContainer>
+
+              <Button
+                textButton="Sign Up"
+                type="submit"
+                svg={<SignUpIcon src={SignUpSVG} />}
+              ></Button>
+            </Form>
+          );
+        }}
       </Formik>
     </FormContainer>
   );
