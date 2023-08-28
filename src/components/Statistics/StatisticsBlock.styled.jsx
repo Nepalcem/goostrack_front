@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
-export const StatisticsWrapper = styled.div`
-  position: relative;
+export const StatisticsBlockContainer = styled.div`
+  background-color: white;
+  margin: 32px;
+  height: 100%;
+  border-radius: 16px;
+
+  /* position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -17,5 +22,7 @@ export const StatisticsWrapper = styled.div`
 
   @media screen and (min-width: 1280px) {
     padding: 134px 114px 104px 114px;
-  }
+  } */
 `;
+
+export const ChartContainer = styled.div``;
