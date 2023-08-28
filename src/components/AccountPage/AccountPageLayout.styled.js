@@ -7,7 +7,7 @@ export const AccountPageContainer = styled.div`
   background-color: white;
   border-radius: 16px;
   align-items: center;
-  margin:20px;
+  margin: 20px;
   margin-top: 95px;
   padding-bottom: 40px;
 `;
@@ -29,7 +29,7 @@ export const UserAvatarPlus = styled.div`
 
 export const AccountAvatarPlusIcon = styled.img`
   position: absolute;
-  top: 75%;
+  top: 80%;
   left: 65%;
 `;
 
