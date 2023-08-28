@@ -19,7 +19,7 @@ export const FormField = styled.div`
     padding: 12px 14px;
     border-radius: 8px;
     border: 1px solid;
-    border-color: ${props => props.valid ? '#3CBC81' : props.error ? '#DA1414' : 'initial'};
+    border-color: ${props => props.valid ? '#3CBC81' : props.error ? '#DA1414' : 'rgba(17, 17, 17, 0.15);'};
     font-family: Inter;
     font-weight: 600;
     font-size: 14px;
