@@ -4,6 +4,7 @@ import { persistStore } from 'redux-persist';
 // Редюсери
 import { filterReducer } from './filter/filterSlice';
 import { persistedAuthReducer } from './auth/authSlice';
+import { reviewsReducer } from './reviews/reviewsSlice';
 
 //  для прибирання помилки з консолі
 import {
@@ -19,6 +20,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     filter: filterReducer,
+    reviews: reviewsReducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({

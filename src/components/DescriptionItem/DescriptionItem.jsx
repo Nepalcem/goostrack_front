@@ -96,17 +96,17 @@ const DescriptionItem = ({ listOfDescriptions }) => {
       <ImageThumb>
         <picture>
           <source
-            srcset={`${imageUrlDesktop}    1x,
+            srcSet={`${imageUrlDesktop}    1x,
                     ${imageUrlDesktop_2x}  2x`}
             media="(min-width: 1440px)"
           />
           <source
-            srcset={`${imageUrlMobile}    1x,
+            srcSet={`${imageUrlMobile}    1x,
                     ${imageUrlMobile_2x}  2x`}
             media="(max-width: 767px)"
           />
           <source
-            srcset={`${imageUrlTablet}    1x,
+            srcSet={`${imageUrlTablet}    1x,
                     ${imageUrlTablet_2x}  2x`}
             media="(min-width: 768px)"
           />
