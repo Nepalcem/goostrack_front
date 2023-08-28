@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import goose_1x from 'images/loginPageImg/desktop_loginPage.png';
 import goose_2x from 'images/loginPageImg/desktop_loginPage@2x.png';
 
-
 export const StyledLink = styled(Link)`
   color: #3e85f3;
   text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
@@ -31,17 +30,18 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #dcebf7;
-
 `;
 
 export const FormWrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 
-background-color: #dcebf7;
+  background-color: #dcebf7;
 `;
 
 export const ImgWrapper = styled.div`
@@ -63,4 +63,3 @@ export const ImgWrapper = styled.div`
     display: none;
   }
 `;
-
