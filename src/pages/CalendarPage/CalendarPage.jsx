@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar/CalendarToolbar';
-import RulerDays from 'components/Calendar/RulerDays/RulerDays';
-//import { Button } from 'components/Button/Button';
 
 const CalendarPage = () => {
-  const [period, setPeriod] = useState('month'); // выбор периода отображения "month" or "day"
-  const [numberMonday, setNumberMonday] = useState(3);
-
   return (
     <div>
       <CalendarToolbar />

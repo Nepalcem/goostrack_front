@@ -16,5 +16,6 @@ const RulerDays = ({ period, numberMonday }) => {
     </NameDaysComponent>
   );
 };
+//
 
 export default RulerDays;

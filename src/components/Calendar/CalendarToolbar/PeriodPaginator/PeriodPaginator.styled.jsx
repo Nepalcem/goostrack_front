@@ -59,6 +59,7 @@ export const Svg = styled.svg`
 
 export const ButtonChangeDate = styled.button`
   padding: 8px 12px 8px 12px;
+  background-color: #fff;
 
   cursor: pointer;
   border: 0;
@@ -71,12 +72,5 @@ export const ButtonChangeDate = styled.button`
     ${Svg} {
       stroke: #343434;
     }
-  }
-
-  @media screen and (min-width: 375px) {
-  }
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1440px) {
   }
 `;

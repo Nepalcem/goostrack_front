@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addMonths, format, getTime, addDays } from 'date-fns';
+import { addMonths, getTime, addDays } from 'date-fns';
 
 import PeriodPaginator from '../PeriodPaginator/PeriodPaginator';
 import PeriodTypeSelect from '../PeriodTypeSelect/PeriodTypeSelect';
