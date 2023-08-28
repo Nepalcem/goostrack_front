@@ -68,20 +68,18 @@ const ReviewsSlider = () => {
             );
           }
           return (
-            <>
-              <SwiperSlide key={review.owner.username}>
-                <ReviewWrapper>
-                  <UserWrapper>
-                    <UserAvatar src={review.owner.avatarURL} alt="UserAvatar" />
-                    <div>
-                      <UserName>{review.owner.username}</UserName>
-                      <StarsWrapper>{starIcons}</StarsWrapper>
-                    </div>
-                  </UserWrapper>
-                  <UserReview>{review.comment}</UserReview>
-                </ReviewWrapper>
-              </SwiperSlide>
-            </>
+            <SwiperSlide key={review.owner.username}>
+              <ReviewWrapper>
+                <UserWrapper>
+                  <UserAvatar src={review.owner.avatarURL} alt="UserAvatar" />
+                  <div>
+                    <UserName>{review.owner.username}</UserName>
+                    <StarsWrapper>{starIcons}</StarsWrapper>
+                  </div>
+                </UserWrapper>
+                <UserReview>{review.comment}</UserReview>
+              </ReviewWrapper>
+            </SwiperSlide>
           );
         })}
       </Swiper>
