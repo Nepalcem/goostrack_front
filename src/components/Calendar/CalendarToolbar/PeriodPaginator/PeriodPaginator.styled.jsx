@@ -10,14 +10,13 @@ export const PeriodPaginatorDiv = styled.div`
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
   }
-  @media screen and (min-width: 1440px) {
-  }
 `;
 
 export const DisplayDataDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 8px;
   padding: 6px 12px 6px 12px;
   border-radius: 8px;
   background-color: #3e85f3;
@@ -29,13 +28,10 @@ export const DisplayDataDiv = styled.div`
   letter-spacing: 0em;
   text-align: center;
   color: #ffffff;
-  @media screen and (min-width: 375px) {
-  }
+
   @media screen and (min-width: 768px) {
     padding-top: 8px;
     padding-bottom: 8px;
-  }
-  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -49,8 +45,19 @@ export const ButtonsChangePeriodDiv = styled.div`
   @media screen and (min-width: 1440px) {
   }
 `;
+export const Svg = styled.svg`
+  stroke: #dce3e5;
 
-export const ButtonChangePeriod = styled.button`
+  width: 16px;
+  height: 16px;
+
+  @media screen and (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+`;
+
+export const ButtonChangeDate = styled.button`
   padding: 8px 12px 8px 12px;
 
   cursor: pointer;
@@ -58,6 +65,13 @@ export const ButtonChangePeriod = styled.button`
 
   border-right: ${({ border }) =>
     border === 'right' ? '1px solid rgba(220, 227, 229, 0.5)' : 0};
+
+  &:focus,
+  &:hover {
+    ${Svg} {
+      stroke: #343434;
+    }
+  }
 
   @media screen and (min-width: 375px) {
   }

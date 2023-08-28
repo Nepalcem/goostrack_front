@@ -1,9 +1,19 @@
+import React from 'react';
+import {
+  PeriodTypeSelectDiv,
+  ButtonChangePeriod,
+} from './PeriodTypeSelect.styled';
+
 const PeriodTypeSelect = ({ onClick }) => {
   return (
-    <div>
-      <button onClick={() => onClick('month')}>Momth </button>
-      <button onClick={() => onClick('day')}>Day </button>
-    </div>
+    <PeriodTypeSelectDiv>
+      <ButtonChangePeriod place="left" onClick={() => onClick('month')}>
+        Momth
+      </ButtonChangePeriod>
+      <ButtonChangePeriod place="right" onClick={() => onClick('day')}>
+        Day
+      </ButtonChangePeriod>
+    </PeriodTypeSelectDiv>
   );
 };
 export default PeriodTypeSelect;

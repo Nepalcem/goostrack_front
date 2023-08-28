@@ -1,14 +1,12 @@
 import React from 'react';
 import { format } from 'date-fns';
 
-import svgLeft from '../../../../images/svg/chevronLeft.svg';
-import svgRight from '../../../../images/svg/chevronRight.svg';
-
 import {
   PeriodPaginatorDiv,
   DisplayDataDiv,
-  ButtonChangePeriod,
+  ButtonChangeDate,
   ButtonsChangePeriodDiv,
+  Svg,
 } from './PeriodPaginator.styled';
 const PeriodPaginator = ({ date, period, onClick }) => {
   return (
@@ -20,12 +18,38 @@ const PeriodPaginator = ({ date, period, onClick }) => {
       </DisplayDataDiv>
       {/* кнопки вібора периода */}
       <ButtonsChangePeriodDiv>
-        <ButtonChangePeriod border="right" onClick={() => onClick(-1, period)}>
-          <img src={svgLeft} alt="" />
-        </ButtonChangePeriod>
-        <ButtonChangePeriod onClick={() => onClick(1, period)}>
-          <img src={svgRight} alt="" />
-        </ButtonChangePeriod>
+        <ButtonChangeDate border="right" onClick={() => onClick(-1, period)}>
+          <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            // width="16"
+            // height="16"
+            fill="none"
+          >
+            <path
+              // stroke="#DCE3E5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M10 12 6 8l4-4"
+            />
+          </Svg>
+        </ButtonChangeDate>
+        <ButtonChangeDate onClick={() => onClick(1, period)}>
+          <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            // width="16"
+            // height="16"
+            fill="none"
+          >
+            <path
+              // stroke="#DCE3E5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="m6 12 4-4-4-4"
+            />
+          </Svg>
+        </ButtonChangeDate>
       </ButtonsChangePeriodDiv>
     </PeriodPaginatorDiv>
   );
