@@ -24,45 +24,6 @@ import {
 import { fetchReviews } from 'redux/reviews/reviewsOperation';
 import { selectReviews } from 'redux/reviews/reviewsSelectors';
 
-// const reviews = [
-//   {
-//     id: 'id-1',
-//     name: 'Rosie Simpson',
-//     userAvatar: userAvatar,
-//     stars: 2,
-//     review: 'GooseTrack is impressive.',
-//   },
-//   {
-//     id: 'id-2',
-//     name: 'Hermione Kline',
-//     userAvatar: userAvatar,
-//     stars: 0,
-//     review:
-//       'GooseTrack is impressive, the calendar view and filter options make it easy to stay organized and focused. Highly recommended.',
-//   },
-//   {
-//     id: 'id-3',
-//     name: 'Eden Clements',
-//     userAvatar: userAvatar,
-//     stars: 5,
-//     review:
-//       'The calendar view and filter options make it easy to stay organized and focused. Highly recommended.',
-//   },
-//   {
-//     id: 'id-4',
-//     name: 'Annie Copeland',
-//     userAvatar: userAvatar,
-//     stars: 4,
-//     review: 'Highly recommended.',
-//   },
-// ];
-
-// export const getTrendingMovies = async () => {
-//   const URL = `${BASE_URL}3/movie/popular?api_key=${API_KEY}&page=1`;
-//   const response = await fetch(URL);
-//   return await response.json();
-// };
-
 const ReviewsSlider = () => {
   const dispatch = useDispatch();
   useEffect(() => {
