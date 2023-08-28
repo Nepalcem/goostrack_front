@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'https://goostrack-backend.onrender.com';
 
 //Authorization заголовок
 const token = {
@@ -39,7 +39,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 //Log-Out
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('/auth/logout');
     token.unset();
   } catch (error) {}
 });

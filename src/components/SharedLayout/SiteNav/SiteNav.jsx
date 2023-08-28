@@ -19,9 +19,13 @@ import CalendarIco from '../../../images/svg/calendar.svg';
 import StatisticsIco from '../../../images/svg/chart-2.svg';
 import LogOutIco from '../../../images/svg/log-out.svg';
 import closeBurgerMenu from '../../../images/svg/log-out.svg';
+import { useDispatch } from 'react-redux';
+import authOperations from 'redux/auth/authOperations';
 const basePath = '../../../images/sideBarImg/';
 
 const SiteNav = ({ onClose, isOpen }) => {
+  const dispatch = useDispatch();
+
   return (
     <LeftDesktopMenu data={isOpen ? 'true' : undefined}>
       <LogoBlock>
@@ -61,7 +65,10 @@ const SiteNav = ({ onClose, isOpen }) => {
         <LeftMenuItemText>Statistics</LeftMenuItemText>
       </LeftMenuItemLink>
 
-      <LeftMenuLogOutButton>
+      <LeftMenuLogOutButton
+        type="button"
+        onClick={() => dispatch(authOperations.logOut())}
+      >
         Log out
         <LogOutIcoEl src={LogOutIco} alt="logout button" />
       </LeftMenuLogOutButton>

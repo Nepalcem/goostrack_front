@@ -20,7 +20,7 @@ export const StyledLink = styled(Link)`
     line-height: 1.33333;
   }
 `;
-  
+
 export const Container = styled.div`
   position: relative;
   min-height: 100vh;
@@ -34,13 +34,15 @@ export const Container = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 
-background-color: #dcebf7;
+  background-color: #dcebf7;
 `;
 
 export const ImgWrapper = styled.div`
