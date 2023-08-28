@@ -12,7 +12,7 @@ import NotFound from '../../pages/NotFound';
 import AccountPage from '../AccountPage/AccountPageLayout';
 import StatisticsPage from '../../pages/StatisticsPage/StatisticsPage';
 import SharedLayout from '../SharedLayout/SharedLayout';
-import CalendarPage from '../../pages/CalendarPage';
+import CalendarPage from '../../pages/CalendarPage/CalendarPage';
 
 //  приватні і рестріктед роуд
 import RestrictedRoute from '../RestrictedRoute/RestrictedRoute';
