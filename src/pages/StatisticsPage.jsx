@@ -1,4 +1,4 @@
-import StatisticsBlock from 'components/StatisticsBlock/StatisticsBlock';
+import StatisticsBlock from 'components/Statistics/StatisticsBlock';
 
 const StatisticsPage = () => {
   return <StatisticsBlock />;

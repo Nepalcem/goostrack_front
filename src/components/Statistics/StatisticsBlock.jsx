@@ -13,6 +13,8 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+import StatisticsSection from './StatisticsSection/StatisticsSection';
+// import StatisticsSection from './StatisticsSection/StatisticsSection';
 
 const data = [
   { name: 'To Do', ByDay: 50, ByMonth: 50 },
@@ -26,7 +28,7 @@ const data = [
 const StatisticsBlock = () => {
   return (
     <StatisticsBlockContainer>
-      Hello I am statistics
+      <StatisticsSection />
       <ChartContainer>
         <BarChart width={730} height={250} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
