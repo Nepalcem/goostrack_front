@@ -20,6 +20,7 @@
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
     "react-svg": "^16.1.22",
+    "recharts": "^2.8.0",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.10",
     "swiper": "^10.2.0",

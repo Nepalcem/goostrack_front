@@ -1,5 +1,7 @@
+import StatisticsBlock from 'components/StatisticsBlock/StatisticsBlock';
+
 const StatisticsPage = () => {
-  return <div>StatisticsPage</div>;
+  return <StatisticsBlock />;
 };
 
 export default StatisticsPage;
