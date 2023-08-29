@@ -1,7 +1,13 @@
 import React from 'react';
 
-export const ChooseDay = () => {
-  return <div>ChooseDay</div>;
+import { DayCalendarHead } from '../DayCalendarHead/DayCalendarHead';
+
+export const ChooseDay = ({ period }) => {
+  return (
+    <div>
+      <DayCalendarHead period={period} />
+    </div>
+  );
 };
 
 // "1. Компонент рендериться на розширеному маршруті сторінки /calendar/day/:currentDay

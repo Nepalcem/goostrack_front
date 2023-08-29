@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Div = styled.div`
+export const ChooseMonthDiv = styled.div`
   @media screen and (min-width: 375px) {
   }
   @media screen and (min-width: 768px) {

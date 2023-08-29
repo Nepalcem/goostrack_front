@@ -1,7 +1,14 @@
 import React from 'react';
+import { MonthCalendarHead } from '../MonthCalendarHead/MonthCalendarHead';
 
-export const ChooseMonths = () => {
-  return <div>ChooseMonths</div>;
+import { ChooseMonthDiv } from './ChooseMonth.styled';
+
+export const ChooseMonths = ({ period }) => {
+  return (
+    <ChooseMonthDiv>
+      <MonthCalendarHead period={period} />
+    </ChooseMonthDiv>
+  );
 };
 
 // "1. Модуль рендериться на розширеному маршруті - /calendar/month/:currentDate

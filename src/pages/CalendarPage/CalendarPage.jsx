@@ -1,10 +1,26 @@
 import React from 'react';
+import { useState } from 'react';
+
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar/CalendarToolbar';
+import { ChooseMonths } from 'components/Calendar/ChooseMonth/ChooseMonth/ChooseMonth';
+import { ChooseDay } from 'components/Calendar/ChooseDay/ChooseDay/ChooseDay';
 
 const CalendarPage = () => {
+  const [date, setDate] = useState(new Date()); // по умолчанию текущая
+  const [period, setPeriod] = useState('month'); // по умолчанию  manth
+
+  // получаем период и дату из CalendarToolbar
+
+  const callBackPeriodAndDate = (date, period) => {
+    setDate(date);
+    setPeriod(period);
+  };
+
   return (
     <div>
-      <CalendarToolbar />
+      <CalendarToolbar callBackPeriodAndDate={callBackPeriodAndDate} />
+      {period === 'month' && <ChooseMonths period="period" />}
+      {period === 'day' && <ChooseDay period={period} />}
     </div>
   );
 };
