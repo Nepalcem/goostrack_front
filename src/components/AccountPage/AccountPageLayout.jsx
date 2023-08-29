@@ -1,8 +1,8 @@
 import React from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
-import defaultProfileAvatar from '../../images/accountPage/account-avatar-ellipse.svg';
-import userAvatarPlusIcon from '../../images/accountPage/userAvatarPlus.svg';
+import defaultProfileAvatar from '../../images/accountPage/tablet-avatar-icon.png';
+import userAvatarPlusIcon from '../../images/accountPage/plus-tablet.svg';
 import {
   AccountPageContainer,
   AccountPageAvatar,
@@ -155,7 +155,7 @@ const AccountPageLayout = () => {
               />
             </FormField>
 
-            <FormField
+            <FormField 
               error={errors.skype}
               valid={touched.skype && !errors.skype}
             >
@@ -178,8 +178,9 @@ const AccountPageLayout = () => {
                 className="error-message"
               />
             </FormField>
+            <div class="spacer"></div>
+              <AccountSaveButton type="submit">Save changes</AccountSaveButton>
 
-            <AccountSaveButton type="submit">Save changes</AccountSaveButton>
           </StyledForm>
         )}
       </Formik>

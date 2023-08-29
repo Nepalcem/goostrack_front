@@ -7,13 +7,27 @@ export const AccountPageContainer = styled.div`
   background-color: white;
   border-radius: 16px;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
+
+  @media screen and (min-width: 768px) {
+    padding: 40px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin: 0px;
+    margin-top: 64px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin: 32px;
+  }
   margin-top: 95px;
   padding-bottom: 40px;
 `;
 
 export const AccountPageAvatar = styled.img`
   width: 72px;
+  @media screen and (min-width: 768px) {
+    width: 124px;
+  }
   /* display: block; */
   &:hover {
     border: 2px solid #3e85f3;
@@ -24,20 +38,28 @@ export const AccountPageAvatar = styled.img`
 
 export const UserAvatarPlus = styled.div`
   position: relative;
-  transform: translateY(-50%);
+  margin-bottom: 14px;
+  @media screen and (max-width: 767px) {
+    transform: translateY(-50%);
+  }
 `;
 
 export const AccountAvatarPlusIcon = styled.img`
   position: absolute;
   top: 80%;
   left: 65%;
+  @media screen and (max-width: 767px) {
+    width: 12px;
+  }
 `;
 
 export const AccountUserName = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: translateY(-50%);
+  @media screen and (max-width: 767px) {
+    transform: translateY(-50%);
+  }
 `;
 
 export const AccountUserNameTitle = styled.div`
