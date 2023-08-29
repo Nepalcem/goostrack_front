@@ -1,48 +1,39 @@
 import styled from 'styled-components';
 
+// ALL PAGE
 export const Main = styled.main`
   background-color: #f7f6f9;
   margin-bottom: 0;
 `;
 
+// CONTAINER
 export const Container = styled.div`
   display: flex;
+  width: 100%;
   max-width: 375px;
   min-height: 100vh;
-  width: 1440px;
   margin: 0 auto;
-  padding: 0 20;
+  padding: 24px 20px;
+  outline: 2px solid tomato;
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
-    padding: 0 32px;
-    padding-top: 24px;
+    padding: 24px 32px;
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     flex-direction: row;
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 `;
 
-export const BurgerSide = styled.div`
-  border-right: 1px solid #ffffff26;
-  background-color: #f7f6f9;
-  color: #3e85f3;
-
-  width: ${props => (props.data ? '289px' : 'none')};
-
-  @media screen and(min-width: 1440px) {
-    display: flex;
-    justify-content: end;
-  }
-`;
 export const MainContent = styled.div`
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
-
-  padding-top: 24px;
+  width: 100%;
 
   @media screen and (min-width: 1440px) {
     padding-top: 40px;
@@ -52,16 +43,30 @@ export const MainContent = styled.div`
 export const TopMenu = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  height: 32px;
-  gap: 30px;
+  justify-content: space-between;
+  flex-direction: row;
+`;
+
+export const TopMenuLeftPart = styled.div``;
+
+export const BurgerMenuButton = styled.button`
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  width: 24px;
+  height: 24px;
+
+  &:hover {
+  }
 
   @media screen and (min-width: 768px) {
-    height: 42px;
-    justify-content: space-between;
+    width: 34px;
+    height: 34px;
   }
 
   @media screen and (min-width: 1440px) {
-    height: 42px;
+    display: none;
   }
 `;

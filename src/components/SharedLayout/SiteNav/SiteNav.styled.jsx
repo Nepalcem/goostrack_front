@@ -1,25 +1,18 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
+
 export const LeftDesktopMenu = styled.div`
-  box-sizing: border-box;
-  display: ${props => (props.data ? 'flex' : 'none')};
-  width: 225px;
-  min-height: 100%;
-  z-index: 11;
-  position: fixed;
-  margin: 0;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #ffffff;
-  @media screen and (min-width: 768px) {
-    width: 289px;
-    padding: 24px 32px;
-  }
+  display: none;
+
   @media screen and (min-width: 1440px) {
-    position: relative;
     display: flex;
+    width: 290px;
     padding: 32px 24px;
+    min-height: 100%;
+    margin-right: 32px;
+    flex-direction: column;
+    background-color: #ffffff;
   }
 `;
 export const LogoBlock = styled.div`
