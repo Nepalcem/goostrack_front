@@ -19,13 +19,21 @@ import {
   AccountSaveButton,
   ErrorMessageStyled,
 } from './AccountForm.styled';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'; // Import the date picker styles
+// import DatePicker from 'react-datepicker';
+// import 'react-datepicker/dist/react-datepicker.css';
+import { StyledDatePicker } from './DatePicker.styled';
 
 const userValidationSchema = Yup.object().shape({
   userName: Yup.string().required('User Name is required'),
-  email: Yup.string().email('Invalid email').required('Email is required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Email is required')
+    .matches(
+      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+      'Email must contain only Latin characters'
+    ),
   birthday: Yup.string(),
+  //phone pattern .matches(/^[\+]?3?[\s]?8?[\s]?\(?0\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/, `Phone must contain valid characters`)
   phone: Yup.string(),
   skype: Yup.string(),
 });
@@ -89,7 +97,7 @@ const AccountPageLayout = () => {
               <label htmlFor="birthday">Birthday</label>
               <Field name="birthday">
                 {({ field }) => (
-                  <DatePicker
+                  <StyledDatePicker
                     {...field}
                     selected={values.birthday}
                     onChange={date => {
@@ -155,7 +163,7 @@ const AccountPageLayout = () => {
               />
             </FormField>
 
-            <FormField 
+            <FormField
               error={errors.skype}
               valid={touched.skype && !errors.skype}
             >
@@ -179,8 +187,7 @@ const AccountPageLayout = () => {
               />
             </FormField>
             <div class="spacer"></div>
-              <AccountSaveButton type="submit">Save changes</AccountSaveButton>
-
+            <AccountSaveButton type="submit">Save changes</AccountSaveButton>
           </StyledForm>
         )}
       </Formik>
