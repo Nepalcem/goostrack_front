@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   /*----Базовий стиль для мобілки 375 - 767 (адаптивний)----*/
-  outline: 2px solid tomato;
+  /* outline: 2px solid tomato; */
   width: 100%;
   max-width: 375px;
   padding: 0 20px;

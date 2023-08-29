@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const ProfInfoWrap = styled.div`
   display: flex;
   align-items: center;
@@ -79,11 +80,10 @@ export const AvatarThumb = styled.div`
   margin-left: 8px;
 
   height: 32px;
-  width: 33px;
+  width: 32px;
   border-radius: 50%;
   overflow: hidden;
 
-  /* border-radius: 32px; */
   border: 1.8px solid #3e85f3;
   background: lightgray 50% / cover no-repeat;
 
