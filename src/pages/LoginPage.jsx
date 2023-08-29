@@ -6,7 +6,7 @@ import {
     FormWrapper,
     ImgWrapper,
     StyledLink,
-} from './LoginPage.styled';
+} from '../components/LoginForm/LoginPage.styled';
 
 const LoginPage = () => {
   return (
