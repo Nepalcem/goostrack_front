@@ -6,7 +6,7 @@ import {
   FormWrapper,
   ImgWrapper,
   StyledLink,
-} from './RegisterPage.styled';
+} from '../components/RegisterForm/RegisterPage.styled';
 
 const RegisterPage = () => {
   return (
