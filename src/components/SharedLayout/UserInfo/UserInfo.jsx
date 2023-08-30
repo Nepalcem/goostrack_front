@@ -21,14 +21,14 @@ const UserInfo = () => {
         Feedback
       </FeedbackButton>
       <Modal active={modalActive} setActive={setModalActive}>
-        <form action="">
+        {/* <form action="">
           <input type="text" />
           <textarea type="text" />
           <input type="text" />
           <button className="close__btn" onClick={() => setModalActive(false)}>
             Закрити модалку
           </button>
-        </form>
+        </form> */}
       </Modal>
       <ThemeToggleButton type="button">
         <img src={ThemeIcoButton} alt="change theme" width="100%" />
