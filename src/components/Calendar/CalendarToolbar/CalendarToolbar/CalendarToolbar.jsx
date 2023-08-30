@@ -26,7 +26,7 @@ const CalendarToolbar = ({ callBackPeriodAndDate }) => {
   };
   /////////
   // функция выбора периода month or day
-  const onChangePeriod = async newPeriod => {
+  const onChangePeriod = newPeriod => {
     setPeriod(newPeriod);
     callBackPeriodAndDate(date, period);
   };
