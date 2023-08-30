@@ -26,6 +26,7 @@ export const AccountPageContainer = styled.div`
 
 export const AccountPageAvatar = styled.img`
   width: 72px;
+  border-radius: 50%;
   @media screen and (min-width: 768px) {
     width: 124px;
   }
@@ -67,6 +68,7 @@ export const AccountUserNameTitle = styled.div`
   font-weight: 700;
   font-size: 14px;
   line-height: calc(18 / 14);
+  text-transform: capitalize;
 `;
 export const AccountUserNameRole = styled.div`
   font-weight: 600;

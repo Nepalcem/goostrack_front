@@ -23,6 +23,8 @@ import {
 // import 'react-datepicker/dist/react-datepicker.css';
 import { StyledDatePicker } from './DatePicker.styled';
 
+import { useSelector } from 'react-redux';
+
 const userValidationSchema = Yup.object().shape({
   userName: Yup.string().required('User Name is required'),
   email: Yup.string()
@@ -37,35 +39,34 @@ const userValidationSchema = Yup.object().shape({
   phone: Yup.string(),
   skype: Yup.string(),
 });
-//Formik initial values will be taken from db User
+
 const AccountPageLayout = () => {
+  const user = useSelector(state => state.auth.user);
+
   return (
     <AccountPageContainer>
-      {/* Profile image border on hover and plus icon as a pseudo for .plus */}
       <UserAvatarPlus>
-        <AccountPageAvatar alt="Plus" src={defaultProfileAvatar} />
+        <AccountPageAvatar alt="Plus" src={user.avatar || defaultProfileAvatar} />
         <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
       </UserAvatarPlus>
       <AccountUserName>
-        <AccountUserNameTitle>Nadiia Doe</AccountUserNameTitle>
+        <AccountUserNameTitle>{user.username}</AccountUserNameTitle>
         <AccountUserNameRole>User</AccountUserNameRole>
       </AccountUserName>
 
       <Formik
         initialValues={{
-          userName: 'Nadiia Doe',
-          birthday: new Date('1995-08-25'),
-          email: 'nadiia@gmail.com',
-          phone: '38 (097) 256 34 77',
-          skype: 'Add a skype number',
+          userName: user.username,
+          birthday: user.birthday || new Date('1995-08-25'),
+          email: user.email,
+          phone: user.phone || '111-222-33',
+          skype: user.skype || 'Add a skype number',
         }}
         validationSchema={userValidationSchema}
         onSubmit={async values => {
           await new Promise(resolve => setTimeout(resolve, 500));
           alert(JSON.stringify(values, null, 2));
         }}
-        // validateOnBlur={false}
-        // validateOnChange={false}
       >
         {({ values, errors, touched, setFieldValue }) => (
           <StyledForm>
