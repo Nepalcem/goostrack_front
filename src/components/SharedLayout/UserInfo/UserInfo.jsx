@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 import {
   ProfInfoWrap,
@@ -12,23 +12,24 @@ import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
 import Modal from 'components/modal/Modal';
 
-
 const UserInfo = () => {
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const [modalActive, setModalActive] = useState(false);
 
   return (
     <ProfInfoWrap>
-      <FeedbackButton type="button" onClick={openModal}>Feedback</FeedbackButton>
-      {isModalOpen && <Modal onClose={closeModal}></Modal>}
+      <FeedbackButton type="button" onClick={() => setModalActive(true)}>
+        Feedback
+      </FeedbackButton>
+      <Modal active={modalActive} setActive={setModalActive}>
+        <form action="">
+          <input type="text" />
+          <textarea type="text" />
+          <input type="text" />
+          <button className="close__btn" onClick={() => setModalActive(false)}>
+            Закрити модалку
+          </button>
+        </form>
+      </Modal>
       <ThemeToggleButton type="button">
         <img src={ThemeIcoButton} alt="change theme" width="100%" />
       </ThemeToggleButton>
