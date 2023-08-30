@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { primaryColor } from 'utils/variables';
 
-export const ReviewsContainer = styled.div``;
+export const ReviewsContainer = styled.div`
+  margin: 0 auto;
+  max-width: 1440px;
+`;
 export const Title = styled.h2`
   text-align: center;
   text-transform: uppercase;
@@ -36,6 +39,7 @@ export const ReviewWrapper = styled.div`
   }
 
   @media (min-width: 1440px) {
+    width: 580px;
   }
 `;
 
