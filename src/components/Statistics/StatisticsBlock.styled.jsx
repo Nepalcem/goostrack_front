@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 export const StatisticsBlockContainer = styled.div`
   background-color: white;
-  margin: 32px;
+  /* margin: 32px; */
+  margin-top: 64px;
   height: 100%;
   border-radius: 16px;
+  margin-bottom: 32px;
 
   /* position: relative;
   display: flex;
@@ -19,10 +21,10 @@ export const StatisticsBlockContainer = styled.div`
   @media screen and (min-width: 768px) {
     padding: 132px 32px 224px 32px;
   }
-
-  @media screen and (min-width: 1280px) {
-    padding: 134px 114px 104px 114px;
-  } */
+*/
+  @media screen and (min-width: 1440px) {
+    margin-top: 32px;
+  }
 `;
 
 export const ChartContainer = styled.div``;
