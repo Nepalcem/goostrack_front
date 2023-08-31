@@ -44,6 +44,10 @@ const userValidationSchema = Yup.object().shape({
 
 const AccountPageLayout = () => {
   const user = useSelector(state => state.auth.user);
+
+  const parsedBirthday = new Date(user.birthday);
+  const formattedBirthday = format(parsedBirthday, 'yyyy-MM-dd');
+
   const dispatch = useDispatch();
 
   const submitHandler = (values, actions) => {
@@ -52,8 +56,8 @@ const AccountPageLayout = () => {
       birthday: format(values.birthday, 'yyyy-MM-dd'),
     };
 
-    dispatch(authOperations.patchCurrentUser(JSON.stringify(userData)));
-    // console.log(userData);
+    dispatch(authOperations.patchCurrentUser(userData));
+
   };
 
   return (
@@ -73,7 +77,7 @@ const AccountPageLayout = () => {
       <Formik
         initialValues={{
           username: user.username,
-          birthday: user.birthday || new Date('1995-08-25'),
+          birthday: new Date(formattedBirthday) || new Date('1995-08-25'),
           email: user.email,
           phone: user.phone || '111-222-33',
           skype: user.skype || 'Add a skype number',
