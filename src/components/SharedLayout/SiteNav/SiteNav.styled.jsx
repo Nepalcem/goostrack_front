@@ -13,7 +13,9 @@ export const LeftDesktopMenu = styled.div`
     min-height: 100%;
     margin-right: 32px;
     flex-direction: column;
-    background-color: #ffffff;
+    // background-color: #ffffff;
+    background-color: var(--background-color-nav);
+
   }
 `;
 
@@ -116,7 +118,9 @@ export const LogoText = styled.p`
   font-weight: 600;
   font-size: 16px;
   line-height: 1.375;
-  color: #3e85f3;
+  color: var(--color-name-logo);
+
+  // color: #3e85f3;
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
@@ -132,7 +136,8 @@ export const LogoText = styled.p`
 `;
 
 export const LeftMenuTitle = styled.p`
-  color: rgba(52, 52, 52, 0.5);
+  color: var(--color-menu-title);
+  // color: rgba(52, 52, 52, 0.5);
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -163,13 +168,17 @@ export const LeftMenuItemLink = styled(NavLink)`
 
   border-radius: 8px;
 
-  color: rgba(52, 52, 52, 0.5);
+  color: var(--color-menu-item);
+
+  // color: rgba(52, 52, 52, 0.5);
 
   text-decoration: none;
 
   &.active {
-    background-color: #e3f3ff;
-    color: #3e85f3;
+    background-color: var(--bgr-btn-active);
+    color: var(--color-bth-active);
+    // background-color: #e3f3ff;
+    // color: #3e85f3;
   }
 
   @media screen and (min-width: 768px) {
