@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import {
   ProfInfoWrap,
   FeedbackButton,
-  ThemeToggleButton,
   NameField,
   AvatarThumb,
   Avatar,
 } from './UserInfo.styled';
-import ThemeIcoButton from '../../../images/svg/moon.svg';
+import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
+// import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
 import Modal from 'components/modal/Modal';
 
@@ -30,9 +30,10 @@ const UserInfo = () => {
           </button>
         </form> */}
       </Modal>
-      <ThemeToggleButton type="button">
+      <ThemeToggler />
+      {/* <ThemeToggleButton type="button">
         <img src={ThemeIcoButton} alt="change theme" width="100%" />
-      </ThemeToggleButton>
+      </ThemeToggleButton> */}
       <NameField>Nadiia</NameField>
       <AvatarThumb>
         <Avatar src={UserAvatar} alt="user avatar" />
