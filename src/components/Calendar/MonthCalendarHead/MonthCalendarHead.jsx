@@ -6,7 +6,9 @@ export const MonthCalendarHead = ({ numberMonday }) => {
   return (
     <NameDaysComponent>
       {nameDays.map((nameDay, index) => (
-        <DayComponent index={index}>{nameDay}</DayComponent>
+        <DayComponent key={index} index={index}>
+          {nameDay}
+        </DayComponent>
       ))}
     </NameDaysComponent>
   );
