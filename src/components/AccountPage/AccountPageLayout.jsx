@@ -13,20 +13,22 @@ import {
   AccountUserNameRole,
 } from './AccountPageLayout.styled';
 
+import { format } from 'date-fns';
+
 import {
   StyledForm,
   FormField,
   AccountSaveButton,
   ErrorMessageStyled,
 } from './AccountForm.styled';
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
-import { StyledDatePicker } from './DatePicker.styled';
+import DatePicker from 'react-datepicker';
+import { CalendarGlobalStyles } from './DatePicker.styled';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import authOperations from 'redux/auth/authOperations';
 
 const userValidationSchema = Yup.object().shape({
-  userName: Yup.string().required('User Name is required'),
+  username: Yup.string().required('User Name is required'),
   email: Yup.string()
     .email('Invalid email')
     .required('Email is required')
@@ -42,11 +44,25 @@ const userValidationSchema = Yup.object().shape({
 
 const AccountPageLayout = () => {
   const user = useSelector(state => state.auth.user);
+  const dispatch = useDispatch();
+
+  const submitHandler = (values, actions) => {
+    const userData = {
+      ...values,
+      birthday: format(values.birthday, 'yyyy-MM-dd'),
+    };
+
+    dispatch(authOperations.patchCurrentUser(JSON.stringify(userData)));
+    // console.log(userData);
+  };
 
   return (
     <AccountPageContainer>
       <UserAvatarPlus>
-        <AccountPageAvatar alt="Plus" src={user.avatar || defaultProfileAvatar} />
+        <AccountPageAvatar
+          alt="Plus"
+          src={user.avatar || defaultProfileAvatar}
+        />
         <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
       </UserAvatarPlus>
       <AccountUserName>
@@ -56,39 +72,36 @@ const AccountPageLayout = () => {
 
       <Formik
         initialValues={{
-          userName: user.username,
+          username: user.username,
           birthday: user.birthday || new Date('1995-08-25'),
           email: user.email,
           phone: user.phone || '111-222-33',
           skype: user.skype || 'Add a skype number',
         }}
         validationSchema={userValidationSchema}
-        onSubmit={async values => {
-          await new Promise(resolve => setTimeout(resolve, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={submitHandler}
       >
         {({ values, errors, touched, setFieldValue }) => (
           <StyledForm>
             <FormField
-              error={errors.userName}
-              valid={touched.userName && !errors.userName}
+              error={errors.username}
+              valid={touched.username && !errors.username}
             >
-              <label htmlFor="userName">User Name</label>
+              <label htmlFor="username">User Name</label>
               <Field
                 type="text"
-                name="userName"
-                id="userName"
+                name="username"
+                id="username"
                 className={
-                  errors.userName && touched.userName
+                  errors.username && touched.username
                     ? 'error'
-                    : touched.userName && !errors.userName
+                    : touched.username && !errors.username
                     ? 'valid'
                     : ''
                 }
               />
               <ErrorMessageStyled
-                name="userName"
+                name="username"
                 component="div"
                 className="error-message"
               />
@@ -98,17 +111,25 @@ const AccountPageLayout = () => {
               <label htmlFor="birthday">Birthday</label>
               <Field name="birthday">
                 {({ field }) => (
-                  <StyledDatePicker
-                    {...field}
-                    selected={values.birthday}
-                    onChange={date => {
-                      setFieldValue('birthday', date);
-                      console.log('Selected Date:', date); // Log the selected date
-                    }}
-                    dateFormat="dd/MM/yyyy"
-                  />
+                  <>
+                    <DatePicker
+                      {...field}
+                      calendarStartDay={1}
+                      selected={values.birthday}
+                      onChange={date => {
+                        setFieldValue('birthday', date);
+                        console.log(
+                          'Selected Date:',
+                          format(date, 'yyyy-MM-dd')
+                        ); // Log the selected date
+                      }}
+                      dateFormat="yyyy-MM-dd"
+                    />
+                    <CalendarGlobalStyles />
+                  </>
                 )}
               </Field>
+
               <ErrorMessageStyled
                 name="birthday"
                 component="div"
@@ -187,7 +208,7 @@ const AccountPageLayout = () => {
                 className="error-message"
               />
             </FormField>
-            <div class="spacer"></div>
+            <div className="spacer"></div>
             <AccountSaveButton type="submit">Save changes</AccountSaveButton>
           </StyledForm>
         )}

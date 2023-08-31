@@ -69,5 +69,37 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const authOperations = { register, logIn, logOut, fetchCurrentUser };
+const patchCurrentUser = createAsyncThunk(
+  'auth/patch',
+  async (userData, thunkAPI) => {
+    // console.log('thunkApi.getState()', thunkAPI.getState());
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    // const user = state.auth.user;
+    console.log(userData);
+    if (!persistedToken) {
+      // if (persistedToken === null || persistedToken === '') {
+      // console.log('There is no persistedToken');
+      return thunkAPI.rejectWithValue('Oops');
+      // return state;
+    }
+    token.set(persistedToken);
+    try {
+      // console.log('persistedToken', persistedToken);
+      const response = await axios.patch('/users/edit', userData);
+      // console.log('data', data);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+const authOperations = {
+  register,
+  logIn,
+  logOut,
+  fetchCurrentUser,
+  patchCurrentUser,
+};
 export default authOperations;
