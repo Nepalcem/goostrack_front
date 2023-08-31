@@ -45,6 +45,10 @@ const authSlise = createSlice({
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+      })
+      // PATCH Current User
+      .addCase(authOperations.patchCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
   },
 });

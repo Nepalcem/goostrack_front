@@ -1,57 +1,61 @@
-import { useEffect } from "react";
-import { createPortal } from 'react-dom';
-import css from "./Modal.module.css";
+import React from 'react';
+import './Modal.css';
 
-const modalRoot = document.querySelector('#modal-root');
-
-const Modal = ({ onClose, children }) => {
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown)
-        }
-    });
-
-    const handleKeyDown = (e) => {
-        if (e.code === 'Escape') {
-            onClose();
-            };
-        };
-
-    const handleBackdropClick = (e) => {
-        if (e.currentTarget === e.target) {
-            onClose()
-        };
-    };
-    
-        return createPortal(
-            <div className={css.backdrop} onClick={handleBackdropClick}>
-                <div className={css.content}>{children}</div>
-            </div>,
-            modalRoot)
-    };
+const Modal = ({ active, setActive, children }) => {
+  return (
+    <div
+      className={active ? 'modal active' : 'modal'}
+      onClick={() => setActive(false)}
+    >
+      <div
+        className={active ? 'modal__content active' : 'modal__content'}
+        onClick={e => e.stopPropagation()}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
 
 export default Modal;
 
-// потім там де виідкривається модалка або вище потрібно прописати:
-// const [isModalOpen, setIsModalOpen] = useState(false);
+// const modalRoot = document.querySelector('#modal-root');
 
-//   const openModal = () => {
-//     setIsModalOpen(true);
-//   };
+// const Modal = ({ onClose, children }) => {
+//     useEffect(() => {
+//         window.addEventListener('keydown', handleKeyDown);
+//         return () => {
+//             window.removeEventListener('keydown', handleKeyDown)
+//         }
+//     });
 
-//   const closeModal = () => {
-//     setIsModalOpen(false);
-//   };
+//     const handleKeyDown = (e) => {
+//         if (e.code === 'Escape') {
+//             onClose();
+//             };
+//         };
 
-// це або кнопка-батон або, наприклад, фідбек: їй потрібно ось так прописати
-   
-//   <button onClick={openModal}>Open Modal</button>
-//       {isModalOpen && (
-//         <Modal onClose={closeModal}>
-//           <h3>Modal Content</h3>
-//           <p>This is the content of the modal.</p>
-//           {/* <button onClick={openModal}>Open Modal</button> */}
-//           <button onClick={closeModal}>Close Modal</button>
-//         </Modal>
-//       )}
+//     const handleBackdropClick = (e) => {
+//         if (e.currentTarget === e.target) {
+//             onClose()
+//         };
+//     };
+
+//         return createPortal(
+//             <div className={css.backdrop} onClick={handleBackdropClick}>
+//                 <div className={css.content}>
+//                     <>
+//                     <p>Rating</p>
+//                     <img src="../../images/svg/yellow-star.svg" alt="yelow_star"></img>
+//                     <div>
+//                         <p>Review</p>
+//                         <div>Enter text</div>
+//                     </div>
+//                     <button>Save</button>
+//                     <button>Close</button>
+//                 </></div>
+//             </div>,
+//             modalRoot)
+//     };
+
+// export default Modal;
