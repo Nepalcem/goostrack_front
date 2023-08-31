@@ -24,12 +24,12 @@ import photoRetinaDyrkach from '../../images/team/natalia-dyrkach-team-170-170@2
 
 export const teamInfo = [
   {
-    nameDev: 'Oleksandr Khomiak',
+    nameDev: 'Mark',
     position: 'Team-lead',
     photo170x1: photoKhomiak,
     photo170x2: photoRetinaKhomiak,
-    ldLink: 'https://www.linkedin.com/in/oleksandr-khomiak-682907125/',
-    ghLink: 'https://github.com/sasha-khomiak',
+    ldLink: 'https://www.linkedin.com/',
+    ghLink: 'https://github.com/Nepalcem',
   },
 
   {
@@ -48,6 +48,15 @@ export const teamInfo = [
     photo170x2: photoRetinaHrynenko,
     ldLink: 'https://www.linkedin.com/in/alex-hrynenko-8b7888272/',
     ghLink: 'https://github.com/laytlat',
+  },
+
+  {
+    nameDev: 'Oleksandr Khomiak',
+    position: 'Developer',
+    photo170x1: photoKhomiak,
+    photo170x2: photoRetinaKhomiak,
+    ldLink: 'https://www.linkedin.com/in/oleksandr-khomiak/',
+    ghLink: 'https://github.com/sasha-khomiak',
   },
 
   {
