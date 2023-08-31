@@ -7,10 +7,15 @@ export const NameDaysComponent = styled.div`
   background-color: #ffffff;
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
-  // width: '100%';
+  margin-top: 24px;
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
+
   @media screen and (min-width: 1440px) {
     padding-top: 14px;
     padding-bottom: 14px;
+    margin-top: 38px;
     /* padding-left: 60px;
     padding-right: 60px; */
   }

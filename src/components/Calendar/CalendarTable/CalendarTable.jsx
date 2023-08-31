@@ -1,6 +1,13 @@
 import React from 'react';
 import moment from 'moment';
 
+import {
+  CalendarTableDiv,
+  CalendarRow,
+  CalenderCell,
+  NumberDay,
+} from './CalendarTable.styled';
+
 //возвращает количество дней в каждой недели
 export const getDaysInMonth = monthMoment => {
   const monthCopy = monthMoment.clone();
@@ -53,7 +60,7 @@ export const CalendarTable = ({ month, year }) => {
 
   return (
     <>
-      <table>
+      <CalendarTableDiv>
         <tbody>
           {/*цикл  недели */}
           {weeks.map((week, i) => {
@@ -65,19 +72,21 @@ export const CalendarTable = ({ month, year }) => {
                 : week;
             // возвращаем дни
             return (
-              <tr key={i}>
+              <CalendarRow key={i}>
                 {displayWeek.map((dayMoment, j) =>
                   dayMoment ? (
-                    <td key={dayMoment.format('D')}>{dayMoment.format('D')}</td>
+                    <CalenderCell key={dayMoment.format('D')}>
+                      <NumberDay>{dayMoment.format('D')}</NumberDay>
+                    </CalenderCell>
                   ) : (
-                    <td key={`${i}${j}`}></td>
+                    <CalenderCell key={`${i}${j}`}></CalenderCell>
                   )
                 )}
-              </tr>
+              </CalendarRow>
             );
           })}
         </tbody>
-      </table>
+      </CalendarTableDiv>
     </>
   );
 };
