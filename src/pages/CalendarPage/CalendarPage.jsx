@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar/CalendarToolbar';
-import { ChooseMonths } from 'components/Calendar/ChooseMonth/ChooseMonth/ChooseMonth';
-import { ChooseDay } from 'components/Calendar/ChooseDay/ChooseDay/ChooseDay';
+import { ChoosedMonth } from 'components/Calendar/ChoosedMonth/ChoosedMonth/ChoosedMonth';
+import { ChoosedDay } from 'components/Calendar/ChoosedDay/ChoosedDay/ChoosedDay';
 
 const CalendarPage = () => {
   const [date, setDate] = useState(new Date()); // по умолчанию текущая
@@ -19,8 +19,8 @@ const CalendarPage = () => {
   return (
     <div>
       <CalendarToolbar callBackPeriodAndDate={callBackPeriodAndDate} />
-      {period === 'month' && <ChooseMonths period="period" />}
-      {period === 'day' && <ChooseDay period={period} />}
+      {period === 'month' && <ChoosedMonth period={period} />}
+      {period === 'day' && <ChoosedDay period={period} />}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { DayCalendarHead } from '../DayCalendarHead/DayCalendarHead';
 
-export const ChooseDay = ({ period }) => {
+export const ChoosedDay = ({ period }) => {
   return (
     <div>
       <DayCalendarHead period={period} />

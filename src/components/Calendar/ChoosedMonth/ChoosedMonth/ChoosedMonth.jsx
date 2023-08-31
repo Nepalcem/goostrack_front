@@ -1,9 +1,9 @@
 import React from 'react';
 import { MonthCalendarHead } from '../MonthCalendarHead/MonthCalendarHead';
 
-import { ChooseMonthDiv } from './ChooseMonth.styled';
+import { ChooseMonthDiv } from './ChoosedMonth.styled';
 
-export const ChooseMonths = ({ period }) => {
+export const ChoosedMonth = ({ period }) => {
   return (
     <ChooseMonthDiv>
       <MonthCalendarHead period={period} />

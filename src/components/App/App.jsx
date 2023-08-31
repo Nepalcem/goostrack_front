@@ -14,6 +14,9 @@ import StatisticsPage from '../../pages/StatisticsPage';
 import SharedLayout from '../SharedLayout/SharedLayout';
 import CalendarPage from '../../pages/CalendarPage/CalendarPage';
 
+import { ChoosedDay } from 'components/Calendar/ChoosedDay/ChoosedDay/ChoosedDay';
+import { ChoosedMonth } from 'components/Calendar/ChoosedMonth/ChoosedMonth/ChoosedMonth';
+
 //  приватні і рестріктед роуд
 import RestrictedRoute from '../RestrictedRoute/RestrictedRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
@@ -61,6 +64,9 @@ export const App = () => {
               <PrivateRoute conponent={CalendarPage} redirectTo="/login" />
             }
           >
+            <Route path="day/:currentDay" component={ChoosedDay} />
+            <Route path="month/:currentDate" component={ChoosedMonth} />
+
             {/* <Route path="Month" element={<ChoosedMonth />} /> */}
             {/* <Route path="movies/:movieId" element={<MovieDetails />}> */}
             {/* <Route path="reviews" element={<Reviews />} /> */}
