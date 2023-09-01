@@ -88,7 +88,7 @@ const patchCurrentUser = createAsyncThunk(
       // console.log('persistedToken', persistedToken);
       const response = await axios.patch('/users/edit', userData);
       // console.log('data', data);
-      return response;
+        return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -13,7 +13,7 @@ import {
   AccountUserNameRole,
 } from './AccountPageLayout.styled';
 
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 import {
   StyledForm,
@@ -45,19 +45,18 @@ const userValidationSchema = Yup.object().shape({
 const AccountPageLayout = () => {
   const user = useSelector(state => state.auth.user);
 
-  const parsedBirthday = new Date(user.birthday);
+  const parsedBirthday = parseISO(user.birthday);
   const formattedBirthday = format(parsedBirthday, 'yyyy-MM-dd');
 
   const dispatch = useDispatch();
 
   const submitHandler = (values, actions) => {
-    const userData = {
+        const userData = {
       ...values,
       birthday: format(values.birthday, 'yyyy-MM-dd'),
     };
 
     dispatch(authOperations.patchCurrentUser(userData));
-
   };
 
   return (
@@ -77,7 +76,7 @@ const AccountPageLayout = () => {
       <Formik
         initialValues={{
           username: user.username,
-          birthday: new Date(formattedBirthday) || new Date('1995-08-25'),
+          birthday: user.birthday ? formattedBirthday : new Date('1995-08-25'),
           email: user.email,
           phone: user.phone || '111-222-33',
           skype: user.skype || 'Add a skype number',
@@ -116,18 +115,22 @@ const AccountPageLayout = () => {
               <Field name="birthday">
                 {({ field }) => (
                   <>
+                  {console.log('Formatted Birthday:', formattedBirthday)}
                     <DatePicker
                       {...field}
                       calendarStartDay={1}
-                      selected={values.birthday}
+                      // selected={values.birthday}
+                      // selected={field.value}
+                      selected={new Date(values.birthday)}
                       onChange={date => {
                         setFieldValue('birthday', date);
                         console.log(
-                          'Selected Date:',
-                          format(date, 'yyyy-MM-dd')
-                        ); // Log the selected date
+                          'Selected Date:', date);
+                        //   format(date, 'yyyy-MM-dd')
+                        // ); // Log the selected date
                       }}
                       dateFormat="yyyy-MM-dd"
+                     
                     />
                     <CalendarGlobalStyles />
                   </>
