@@ -22,12 +22,18 @@ import photoRetinaSiukov from '../../images/team/oleksandr-siukov-team-170-170@2
 import photoDyrkach from '../../images/team/natalia-dyrkach-team-170-170.jpg';
 import photoRetinaDyrkach from '../../images/team/natalia-dyrkach-team-170-170@2x.jpg';
 
+import photoBusko from '../../images/team/roksolana-busko-team-170-170.jpg';
+import photoRetinaBusko from '../../images/team/roksolana-busko-team-170-170@2x.jpg';
+
+import photoMark from '../../images/team/mark-170-170.jpg';
+import photoRetinaMark from '../../images/team/mark-170-170@2x.jpg';
+
 export const teamInfo = [
   {
     nameDev: 'Mark',
     position: 'Team-lead',
-    photo170x1: photoKhomiak,
-    photo170x2: photoRetinaKhomiak,
+    photo170x1: photoMark,
+    photo170x2: photoRetinaMark,
     ldLink: 'https://www.linkedin.com/',
     ghLink: 'https://github.com/Nepalcem',
   },
@@ -37,7 +43,7 @@ export const teamInfo = [
     position: 'Scrum-master',
     photo170x1: photoMikhnievych,
     photo170x2: photoRetinaMikhnievych,
-    ldLink: 'https://www.linkedin.com/in/daniil-mikhnievych-6448a0270/',
+    ldLink: 'https://www.linkedin.com/in/daniil-mikhnievych-6448a0270',
     ghLink: 'https://github.com/Furcreator',
   },
 
@@ -46,7 +52,7 @@ export const teamInfo = [
     position: 'Developer',
     photo170x1: photoHrynenko,
     photo170x2: photoRetinaHrynenko,
-    ldLink: 'https://www.linkedin.com/in/alex-hrynenko-8b7888272/',
+    ldLink: 'https://www.linkedin.com/in/laytlat',
     ghLink: 'https://github.com/laytlat',
   },
 
@@ -55,8 +61,17 @@ export const teamInfo = [
     position: 'Developer',
     photo170x1: photoKhomiak,
     photo170x2: photoRetinaKhomiak,
-    ldLink: 'https://www.linkedin.com/in/oleksandr-khomiak/',
+    ldLink: 'https://www.linkedin.com/in/oleksandr-khomiak',
     ghLink: 'https://github.com/sasha-khomiak',
+  },
+
+  {
+    nameDev: 'Roksolana Busko',
+    position: 'Developer',
+    photo170x1: photoBusko,
+    photo170x2: photoRetinaBusko,
+    ldLink: 'https://www.linkedin.com/in/roksolana-busko',
+    ghLink: 'https://github.com/roksolana96',
   },
 
   {
@@ -67,14 +82,13 @@ export const teamInfo = [
     ldLink: 'https://www.linkedin.com/in/iryna-bigdash-153814252/',
     ghLink: 'https://github.com/Iryna-Bigdash',
   },
-
   {
-    nameDev: 'Denys Abramets',
+    nameDev: 'Nataliia Dyrkach',
     position: 'Developer',
-    photo170x1: photoAbramets,
-    photo170x2: photoRetinaAbramets,
-    ldLink: 'https://www.linkedin.com/in/denys-abramets-1a5346250',
-    ghLink: 'https://github.com/DenysAbramets',
+    photo170x1: photoDyrkach,
+    photo170x2: photoRetinaDyrkach,
+    ldLink: 'https://www.linkedin.com/in/nataliia-dyrkach-082a15272',
+    ghLink: 'https://github.com/NataliiaDyrkach',
   },
 
   {
@@ -91,18 +105,15 @@ export const teamInfo = [
     position: 'Developer',
     photo170x1: photoSiukov,
     photo170x2: photoRetinaSiukov,
-    ldLink:
-      'https://www.linkedin.com/in/%D0%B0%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80-%D1%81%D1%8E%D0%BA%D0%BE%D0%B2-6670b6272/',
+    ldLink: 'https://www.linkedin.com/in/oleksandr-siukov',
     ghLink: 'https://github.com/Goingforth',
   },
-
   {
-    nameDev: 'Nataliia Dyrkach',
+    nameDev: 'Denys Abramets',
     position: 'Developer',
-    photo170x1: photoDyrkach,
-    photo170x2: photoRetinaDyrkach,
-    ldLink:
-      'https://www.linkedin.com/in/%D0%BD%D0%B0%D1%82%D0%B0%D0%BB%D0%B8%D1%8F-%D0%B4-082a15272',
-    ghLink: 'https://github.com/NataliiaDyrkach',
+    photo170x1: photoAbramets,
+    photo170x2: photoRetinaAbramets,
+    ldLink: 'https://www.linkedin.com/in/denys-abramets-1a5346250',
+    ghLink: 'https://github.com/DenysAbramets',
   },
 ];
