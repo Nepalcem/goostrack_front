@@ -25,69 +25,25 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const CalendarButton = styled.button`
-  width: 121px;
-  height: 30px;
-  border: 0;
-  border-radius: 8px;
-  color: #fff;
-  background-color: #3e85f3;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-
-  &:hover {
-    transform: scale(1.01);
-    background-color: #2378f8;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 134px;
-    height: 34px;
-    font-size: 16px;
-    font-weight: 500;
-  }
-`;
-
-export const SwitcherContainer = styled.div`
   display: flex;
-  width: 72px;
-  height: 30px;
-  padding: 5px;
-  border: 1px solid rgb(220, 227, 229, 50%);
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  padding: 6px 12px 6px 12px;
   border-radius: 8px;
-  position: relative;
+  background-color: #3e85f3;
 
-  &:after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 1px;
-    background-color: #dce3e5;
-    top: 0;
-    left: 35px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 74px;
-    height: 34px;
-  }
-`;
-
-export const SwitcherPart = styled.div`
-  flex: 1;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
   text-align: center;
-  transition: transform 0.3s, color 0.3s;
-  color: ${props => (props.active ? 'initial' : '#DCE3E5')};
-  cursor: pointer;
-  position: relative;
-
-  &:hover {
-    transform: scale(1.7);
-  }
+  color: #ffffff;
 
   @media screen and (min-width: 768px) {
-    padding-top: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 `;
 
