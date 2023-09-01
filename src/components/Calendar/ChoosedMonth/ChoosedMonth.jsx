@@ -1,9 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { MonthCalendarHead } from '../MonthCalendarHead/MonthCalendarHead';
 import { CalendarTable } from '../CalendarTable/CalendarTable';
 
-export const ChoosedMonth = ({ month, year }) => {
-  // console.log(month, year);
+export const ChoosedMonth = () => {
+  // получаем CarrentDate из URL
+  const { currentDate } = useParams();
+  //  вырезаем год
+  const year = currentDate.slice(2);
+  //  вырезаем месяц
+  const month = currentDate.slice(0, 2);
 
   return (
     <>
