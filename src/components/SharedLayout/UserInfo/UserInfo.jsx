@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { useSelector } from 'react-redux';
+import Modal from 'components/modal/Modal';
 import {
   ProfInfoWrap,
   FeedbackButton,
@@ -10,9 +11,9 @@ import {
 import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
 // import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
-import Modal from 'components/modal/Modal';
 
 const UserInfo = () => {
+  const user = useSelector(state => state.auth.user);
   const [modalActive, setModalActive] = useState(false);
 
   return (
@@ -33,8 +34,12 @@ const UserInfo = () => {
       <ThemeToggler />
       {/* <ThemeToggleButton type="button">
         <img src={ThemeIcoButton} alt="change theme" width="100%" />
+
+      </ThemeToggleButton>
+ 
       </ThemeToggleButton> */}
-      <NameField>Nadiia</NameField>
+         <NameField>{user.username}</NameField>
+
       <AvatarThumb>
         <Avatar src={UserAvatar} alt="user avatar" />
       </AvatarThumb>
