@@ -81,20 +81,22 @@ export const Title = styled.p`
   line-height: 1.16;
   letter-spacing: 0.03em;
   text-align: center;
-  color: #3e85f3;
+  color: #fff;
+  /* color: #3e85f3; */
   margin-bottom: 20px;
+  text-shadow: 0px 5px 10px rgba(0, 6, 7, 0.933);
 
-  background: 50% 100% / 50% 50% no-repeat
+  /* background: 50% 100% / 50% 50% no-repeat
     radial-gradient(ellipse at bottom, #fff, transparent, transparent);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent; */
 
   @media screen and (min-width: 768px) {
     font-size: 38px;
   }
 
-  animation: reveal 3000ms ease-in-out forwards 200ms,
+  /* animation: reveal 3000ms ease-in-out forwards 200ms,
     glow 2500ms linear infinite 2000ms;
 
   @keyframes reveal {
@@ -111,7 +113,7 @@ export const Title = styled.p`
     40% {
       text-shadow: 0 0 8px #fff;
     }
-  }
+  } */
 `;
 
 // контейнер усіх членів команди
@@ -132,7 +134,8 @@ export const ModalTeamItem = styled.div`
   padding: 15px;
   border: 2px solid #3e85f3;
   border-radius: 15px;
-  box-shadow: 0px 5px 10px 0px rgba(167, 231, 248, 0.7);
+  /* box-shadow: 0px 5px 10px 0px rgba(167, 231, 248, 0.7); */
+  box-shadow: 0px 5px 10px 0px rgba(0, 12, 15, 0.7);
 
   display: flex;
   flex-direction: column;
@@ -217,6 +220,7 @@ export const SocialMediaIco = styled(ReactSVG)`
   fill: currentColor;
   width: 20px;
   height: 20px;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 24px;

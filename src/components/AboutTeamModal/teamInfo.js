@@ -25,16 +25,19 @@ import photoRetinaDyrkach from '../../images/team/natalia-dyrkach-team-170-170@2
 import photoBusko from '../../images/team/roksolana-busko-team-170-170.jpg';
 import photoRetinaBusko from '../../images/team/roksolana-busko-team-170-170@2x.jpg';
 
-import photoMark from '../../images/team/mark-170-170.jpg';
-import photoRetinaMark from '../../images/team/mark-170-170@2x.jpg';
+import photoMark from '../../images/team/michael-lykhovyd-team-170-170.jpg';
+import photoRetinaMark from '../../images/team/michael-lykhovyd-team-170-170@2x.jpg';
+
+import photoZorkin from '../../images/team/ruslan-zoriyn-team-170-170.jpg';
+import photoRetinaZorkin from '../../images/team/ruslan-zoriyn-team-170-170@2x.jpg';
 
 export const teamInfo = [
   {
-    nameDev: 'Mark',
+    nameDev: 'Michael Lykhovyd',
     position: 'Team-lead',
     photo170x1: photoMark,
     photo170x2: photoRetinaMark,
-    ldLink: 'https://www.linkedin.com/',
+    ldLink: 'https://www.linkedin.com/in/michael-lykhovyd',
     ghLink: 'https://github.com/Nepalcem',
   },
 
@@ -115,5 +118,13 @@ export const teamInfo = [
     photo170x2: photoRetinaAbramets,
     ldLink: 'https://www.linkedin.com/in/denys-abramets-1a5346250',
     ghLink: 'https://github.com/DenysAbramets',
+  },
+  {
+    nameDev: 'Ruslan Zorkin ',
+    position: 'Developer',
+    photo170x1: photoZorkin,
+    photo170x2: photoRetinaZorkin,
+    ldLink: 'https://www.linkedin.com/in/ruslan-zorkin',
+    ghLink: 'https://github.com/RZorkin',
   },
 ];
