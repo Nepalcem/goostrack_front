@@ -8,10 +8,19 @@ import {
   Title,
   ModalTeamContainer,
   ModalTeamItem,
+  ImgThumb,
+  Img,
+  Name,
+  Position,
+  SocialList,
+  SocialMediaLink,
+  SocialMediaIco,
 } from './AboutTeamModal.styled';
 
 // іконки
 import CloseIco from '../../images/svg/x-close.svg';
+import ghIco from '../../images/svg/github.svg';
+import ldIco from '../../images/svg/linkedin.svg';
 
 // обʼєкт про команду
 import { teamInfo } from './teamInfo';
@@ -36,11 +45,39 @@ const AboutTeamModal = ({ handleToggle }) => {
         <CloseButton onClick={handleToggle}>
           <img src={CloseIco} alt="close menu" width="100%" />
         </CloseButton>
-        <Title>Hello</Title>
+        <Title>Developers Team</Title>
         <ModalTeamContainer>
-          {teamInfo.map(teamInfo => {
-            return <ModalTeamItem></ModalTeamItem>;
-          })}
+          {teamInfo.map(
+            ({ nameDev, position, photo170x1, photo170x2, ldLink, ghLink }) => {
+              return (
+                <ModalTeamItem>
+                  <ImgThumb>
+                    <Img src={photo170x1} alt={nameDev} />
+                  </ImgThumb>
+                  <Name>{nameDev}</Name>
+                  <Position>{position}</Position>
+                  <SocialList>
+                    <SocialMediaLink
+                      href={ldLink}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label="Linkedin"
+                    >
+                      <SocialMediaIco src={ldIco} />
+                    </SocialMediaLink>
+                    <SocialMediaLink
+                      href={ghLink}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label="ghLink"
+                    >
+                      <SocialMediaIco src={ghIco} />
+                    </SocialMediaLink>
+                  </SocialList>
+                </ModalTeamItem>
+              );
+            }
+          )}
         </ModalTeamContainer>
       </ModalContainer>
     </Backdrop>,
