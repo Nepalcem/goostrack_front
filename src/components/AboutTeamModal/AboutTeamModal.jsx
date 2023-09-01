@@ -52,7 +52,13 @@ const AboutTeamModal = ({ handleToggle }) => {
               return (
                 <ModalTeamItem>
                   <ImgThumb>
-                    <Img src={photo170x1} alt={nameDev} />
+                    <picture>
+                      <source
+                        srcSet={`${photo170x1}    1x,
+                    ${photo170x2}  2x`}
+                      />
+                      <Img src={photo170x1} alt={nameDev} />
+                    </picture>
                   </ImgThumb>
                   <Name>{nameDev}</Name>
                   <Position>{position}</Position>
@@ -69,7 +75,7 @@ const AboutTeamModal = ({ handleToggle }) => {
                       href={ghLink}
                       target="_blank"
                       rel="noreferrer noopener"
-                      aria-label="ghLink"
+                      aria-label="GitHub"
                     >
                       <SocialMediaIco src={ghIco} />
                     </SocialMediaLink>
