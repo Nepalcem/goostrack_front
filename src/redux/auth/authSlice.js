@@ -23,12 +23,7 @@ const authSlise = createSlice({
   extraReducers: builder => {
     builder
       // новий синтаксис через builder
-      // registration
-      .addCase(authOperations.register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
+
       //Log-In
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
