@@ -1,19 +1,13 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar/CalendarToolbar';
-import { ChoosedMonth } from 'components/Calendar/ChoosedMonth/ChoosedMonth';
 
 const CalendarPage = () => {
   return (
     <div>
       <CalendarToolbar />
 
-      <ChoosedMonth
-        //date={new Date()}
-        // month={currentMonthMoment.format('MM')}
-        // year={currentMonthMoment.format('YYYY')}
-        month={'08'}
-        year={'2023'}
-      />
+      <Outlet />
     </div>
   );
 };
