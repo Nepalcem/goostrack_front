@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const NameDaysComponent = styled.div`
   display: flex;
-  background-color: #ffffff;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  // background-color: #ffffff;
+  background-color: var(--color-btn-change-day);
+  // border: 1px solid rgba(220, 227, 229, 0.8);
+  border: var(--color-calendar-border);
   border-radius: 8px;
   margin-top: 24px;
   @media screen and (min-width: 768px) {
@@ -33,7 +35,7 @@ export const DayComponent = styled.div`
   text-align: left;
   font-size: 16px;
 
-  color: ${({ index }) => (index === 5 || index === 6 ? '#3E85F3' : '#343434')};
+  color: ${({ index }) => (index === 5 || index === 6 ? '#3E85F3' : 'var(--color-name-user)')};
 
   /* @media screen and (min-width: 1440px) {
     padding-left: 60px;
