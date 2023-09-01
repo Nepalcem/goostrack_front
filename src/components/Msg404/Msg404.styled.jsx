@@ -12,6 +12,7 @@ export const MessageBlock = styled.div`
 export const ErrImgContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const Text4FromImg = styled.span`
@@ -23,6 +24,13 @@ export const Text4FromImg = styled.span`
   font-style: normal;
   font-weight: 700;
   line-height: 1.5;
+
+  @media screen and (min-width: 768px) {
+    font-size: 200px;
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
 export const InformationMessage = styled.h1`
