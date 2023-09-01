@@ -60,7 +60,8 @@ export const ThemeToggleButton = styled.button`
 export const NameField = styled.p`
   margin-left: 8px;
 
-  color: #343434;
+  // color: #343434;
+  color: var(--color-name-user);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
