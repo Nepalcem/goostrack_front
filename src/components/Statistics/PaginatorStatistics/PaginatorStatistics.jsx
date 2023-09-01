@@ -1,11 +1,18 @@
 import { addDays, format, getTime } from 'date-fns';
 import {
   ButtonsContainer,
+  CalendarButton,
   List,
   ListItem,
   PeriodPaginatorContainer,
 } from './PaginatorStatistics.styled';
 import { useState } from 'react';
+import { ButtonChangePeriod } from 'components/Calendar/CalendarToolbar/PeriodTypeSelect/PeriodTypeSelect.styled';
+import {
+  ButtonChangeDate,
+  ButtonsChangePeriodDiv,
+  Svg,
+} from 'components/Calendar/CalendarToolbar/PeriodPaginator/PeriodPaginator.styled';
 
 const PeriodPaginatorStatistics = () => {
   const [date, setDate] = useState(getTime(new Date()));
@@ -22,29 +29,32 @@ const PeriodPaginatorStatistics = () => {
   return (
     <PeriodPaginatorContainer>
       <ButtonsContainer>
-        <div>{format(date, 'dd MMM yyyy')}</div>
-        <div>
-          <button border="right" onClick={() => onClickBtn(-1, 'day')}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none">
+        <CalendarButton>{format(date, 'dd MMM yyyy')}</CalendarButton>
+        <ButtonsChangePeriodDiv>
+          <ButtonChangeDate
+            border="right"
+            onClick={() => onClickBtn(-1, 'day')}
+          >
+            <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
                 d="M10 12 6 8l4-4"
               />
-            </svg>
-          </button>
-          <button onClick={() => onClickBtn(1, 'day')}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none">
+            </Svg>
+          </ButtonChangeDate>
+          <ButtonChangeDate onClick={() => onClickBtn(1, 'day')}>
+            <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="1.5"
                 d="m6 12 4-4-4-4"
               />
-            </svg>
-          </button>
-        </div>
+            </Svg>
+          </ButtonChangeDate>
+        </ButtonsChangePeriodDiv>
       </ButtonsContainer>
       <List>
         <ListItem>By Day</ListItem>
