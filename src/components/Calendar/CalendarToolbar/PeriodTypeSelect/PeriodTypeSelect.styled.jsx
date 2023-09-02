@@ -5,7 +5,9 @@ export const PeriodTypeSelectDiv = styled.div`
 `;
 
 export const ButtonChangePeriod = styled.button`
-  background-color: #e3f3ff;
+  // background-color: #e3f3ff;
+  background-color: var(--color-btn-change-day);
+
   border: 0;
   border-radius: ${({ place }) =>
     place === 'left' ? '8px 0px 0px 8px' : '0px 8px 8px 0px'};
@@ -27,7 +29,9 @@ export const ButtonChangePeriod = styled.button`
 
   &:focus,
   &:hover {
-    background-color: rgba(62, 133, 243, 0.2);
+    background-color:var(--color-calendar-petiod);
+    color:var(--color-bth-active)
+    // background-color: rgba(62, 133, 243, 0.2);
   }
 
   cursor: pointer;

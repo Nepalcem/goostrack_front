@@ -16,7 +16,7 @@ export const AccountPageContainer = styled.div`
   }
   @media screen and (min-width: 768px) {
     margin: 0px;
-    margin-top: 64px;
+    margin-top: 32px;
   }
 
   @media screen and (min-width: 1440px) {

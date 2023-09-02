@@ -1,32 +1,43 @@
 html[data-theme='dark'] {
-    --main-background-color: #21222C;
+  --main-background-color: #171820;
 
-    --button-background-color: #181921;
-    --color-name-user:#FFFFFF;
-    --color-name-pages:#FFFFFF;
-    --background-color-nav:#13151A;
-    --color-name-logo:#E3F3FF;
-    --color-menu-title:rgba(250, 250, 250, 0.3);
-    --color-menu-item:rgba(255, 255, 255, 1);
-    --bgr-btn-active:#3E85F3;
-    --color-bth-active:#FFFFFF;
-
+  --color-name-user: #ffffff;
+  --color-name-pages: #ffffff;
+  --background-color-nav: #13151a;
+  --color-name-logo: #e3f3ff;
+  --color-menu-title: rgba(250, 250, 250, 0.3);
+  --color-menu-item: rgba(255, 255, 255, 1);
+  --bgr-btn-active: #3e85f3;
+  --color-bth-active: #ffffff;
+  --color-calendar-border: 1px solid rgba(255, 255, 255, 0.15);
+  --color-calendar-day: #ffffff;
+  --color-btn-change-day: #21222c;
+  --color-btn-stroke: rgba(255, 255, 255, 0.15);
+  --color-btn-stroke-active: #ffffff;
+  --color-calendar-petiod: #3e85f3;
+  --color-calendar-day-task-bg: #171820;
+  --color-calendar-day-addtaskbtn-bg: #3e85f3;
 }
 
 html[data-theme='light'] {
-    --main-background-color: #f7f6f9;
+  --main-background-color: #f7f6f9;
 
-    --button-background-color: #181921;
-    --color-name-user:#343434;
-    --color-name-pages:#111111;
-    --background-color-nav:#ffffff;
-    --color-name-logo:#3e85f3;
-    --color-menu-title:rgba(52, 52, 52, 0.5);
-    --color-menu-item:rgba(52, 52, 52, 0.5);
-    --bgr-btn-active:#e3f3ff;
-    --color-bth-active:#3e85f3;
-
-    
+  --color-name-user: #343434;
+  --color-name-pages: #111111;
+  --background-color-nav: #ffffff;
+  --color-name-logo: #3e85f3;
+  --color-menu-title: rgba(52, 52, 52, 0.5);
+  --color-menu-item: rgba(52, 52, 52, 0.5);
+  --bgr-btn-active: #e3f3ff;
+  --color-bth-active: #3e85f3;
+  --color-calendar-border: 1px solid rgba(220, 227, 229, 0.5);
+  --color-calendar-day: #343434;
+  --color-btn-change-day: #fff;
+  --color-btn-stroke-active: #343434;
+  --color-btn-stroke: #dce3e5;
+  --color-calendar-petiod: rgba(62, 133, 243, 0.2);
+  --color-calendar-day-task-bg: #f7f6f9;
+  --color-calendar-day-addtaskbtn-bg: #e3f3ff;
 }
 
 /* var(--color-name-user) */

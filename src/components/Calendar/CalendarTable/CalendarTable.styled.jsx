@@ -25,7 +25,9 @@ export const CalendarCellWrap = styled.div`
 `;
 
 export const CalenderCell = styled.td`
-  border: 1px solid rgba(220, 227, 229, 0.5);
+  background-color: var(--color-btn-change-day);
+  border: var(--color-calendar-border);
+  // border: 1px solid rgba(220, 227, 229, 0.5);
   position: relative;
 
   // height: 100%;
@@ -57,7 +59,9 @@ export const NumberDay = styled.div`
   letter-spacing: 0em;
   text-align: left;
 
-  color: #343434;
+  // color: #343434;
+  color:var( --color-calendar-day);
+  
   @media screen and (min-width: 375px) {
     top: 12px;
     right: 10px;

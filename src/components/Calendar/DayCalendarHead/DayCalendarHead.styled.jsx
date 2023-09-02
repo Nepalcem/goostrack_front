@@ -6,6 +6,8 @@ export const NameDaysComponent = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
   margin-top: 24px;
+  width: 335px;
+
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1440px) {

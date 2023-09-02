@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import defaultProfileAvatar from '../../images/accountPage/tablet-avatar-icon.png';
@@ -44,14 +44,22 @@ const userValidationSchema = Yup.object().shape({
 
 const AccountPageLayout = () => {
   const user = useSelector(state => state.auth.user);
-
-  const parsedBirthday = parseISO(user.birthday);
-  const formattedBirthday = format(parsedBirthday, 'yyyy-MM-dd');
-
   const dispatch = useDispatch();
+  const [formattedBirthday, setFormattedBirthday] = useState('');
+
+
+  useEffect(() => {
+    // Check if user.birthday is available and format it
+    if (user.birthday) {
+      const formatted = format(parseISO(user.birthday), 'yyyy-MM-dd');
+      setFormattedBirthday(formatted);
+    }
+  }, [user.birthday]);
+
 
   const submitHandler = (values, actions) => {
-        const userData = {
+
+    const userData = {
       ...values,
       birthday: format(values.birthday, 'yyyy-MM-dd'),
     };
@@ -76,10 +84,10 @@ const AccountPageLayout = () => {
       <Formik
         initialValues={{
           username: user.username,
-          birthday: user.birthday ? formattedBirthday : new Date('1995-08-25'),
+          birthday: formattedBirthday || new Date(),
           email: user.email,
-          phone: user.phone || '111-222-33',
-          skype: user.skype || 'Add a skype number',
+          phone: user.phone || '+380931112233',
+          skype: user.skype || 'SkypeNumber',
         }}
         validationSchema={userValidationSchema}
         onSubmit={submitHandler}
@@ -115,7 +123,6 @@ const AccountPageLayout = () => {
               <Field name="birthday">
                 {({ field }) => (
                   <>
-                  {console.log('Formatted Birthday:', formattedBirthday)}
                     <DatePicker
                       {...field}
                       calendarStartDay={1}
@@ -124,13 +131,12 @@ const AccountPageLayout = () => {
                       selected={new Date(values.birthday)}
                       onChange={date => {
                         setFieldValue('birthday', date);
-                        console.log(
-                          'Selected Date:', date);
+                        console.log('Selected Date:', date);
+                        // console.log(typeof(date));
                         //   format(date, 'yyyy-MM-dd')
                         // ); // Log the selected date
                       }}
                       dateFormat="yyyy-MM-dd"
-                     
                     />
                     <CalendarGlobalStyles />
                   </>

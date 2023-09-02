@@ -58,6 +58,7 @@ const ReviewsSlider = () => {
         }}
       >
         {reviews.map(review => {
+          console.log(review);
           const starIcons = [];
           for (let i = 0; i < review.rating; i++) {
             starIcons.push(<Star key={i} src={yellowStar} alt="star" />);
@@ -74,7 +75,7 @@ const ReviewsSlider = () => {
                 <UserWrapper>
                   <UserAvatar src={review.owner.avatarURL} alt="UserAvatar" />
                   <div>
-                    <UserName>{review.owner.username}</UserName>
+                    <UserName>{review.owner.name}</UserName>
                     <StarsWrapper>{starIcons}</StarsWrapper>
                   </div>
                 </UserWrapper>
