@@ -15,7 +15,6 @@ export const LeftDesktopMenu = styled.div`
     flex-direction: column;
     // background-color: #ffffff;
     background-color: var(--background-color-nav);
-
   }
 `;
 
@@ -53,7 +52,8 @@ export const LeftMobileMenu = styled.div`
   padding: 24px 20px;
   height: 100vh;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: var(--background-color-nav);
+  /* background-color: #ffffff; */
   position: relative;
   pointer-events: all;
 
@@ -74,9 +74,19 @@ export const CloseButton = styled.button`
   top: 29px;
   right: 20px;
 
+  cursor: pointer;
+
   @media screen and (min-width: 768px) {
     top: 36px;
     right: 32px;
+  }
+`;
+
+export const CloseButtonIco = styled(ReactSVG)`
+  stroke: var(--color-name-pages);
+
+  :hover {
+    stroke: #3e85f3;
   }
 `;
 
@@ -245,7 +255,7 @@ export const LeftMenuLogOutButton = styled.button`
   color: #ffffff;
   font-family: Inter;
   font-size: 14px;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     font-size: 18px;
   }
   font-style: normal;
@@ -256,14 +266,14 @@ export const LeftMenuLogOutButton = styled.button`
   display: flex;
   align-items: center;
   width: 131px;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     width: 141px;
   }
   & img {
-    width:18px;
-    @media screen and (min-width: 768px){
-    width: 20px;
-  }
+    width: 18px;
+    @media screen and (min-width: 768px) {
+      width: 20px;
+    }
   }
   margin-bottom: 0;
   margin-top: auto;
