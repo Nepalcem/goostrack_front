@@ -23,6 +23,10 @@ export const OptionsBlock = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 28px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
 `;
 
 export const InfoBlock = styled.div`
@@ -80,4 +84,9 @@ export const ButtonController = styled.button`
   background-color: transparent;
 
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: 16px;
+    height: 16px;
+  }
 `;
