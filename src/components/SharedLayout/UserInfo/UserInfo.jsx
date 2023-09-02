@@ -11,6 +11,9 @@ import {
 import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
 // import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
+import Modal from 'components/modal/Modal';
+import Popup1 from 'components/modal/Popup1/popup1';
+
 
 const UserInfo = () => {
   const user = useSelector(state => state.auth.user);
@@ -22,6 +25,7 @@ const UserInfo = () => {
         Feedback
       </FeedbackButton>
       <Modal active={modalActive} setActive={setModalActive}>
+        <Popup1/>
         {/* <form action="">
           <input type="text" />
           <textarea type="text" />
