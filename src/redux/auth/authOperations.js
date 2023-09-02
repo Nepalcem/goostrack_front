@@ -83,7 +83,6 @@ const patchCurrentUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     // const user = state.auth.user;
-    console.log(userData);
     if (!persistedToken) {
       // if (persistedToken === null || persistedToken === '') {
       // console.log('There is no persistedToken');
