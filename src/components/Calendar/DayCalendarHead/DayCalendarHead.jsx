@@ -1,4 +1,7 @@
 import React from 'react';
+import { useResize } from 'hooks/useResize';
+
+import { SCREEN_TABLET, nameDaysMobile, nameDaysTablet } from 'utils/variables';
 
 import {
   DayComponent,
@@ -6,9 +9,10 @@ import {
   DayNumber,
 } from './DayCalendarHead.styled';
 
-const DayCalendarHead = ({ period, numberMonday }) => {
-  const nameDays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-  let numberDay = numberMonday;
+const DayCalendarHead = () => {
+  const nameDays =
+    useResize().width < SCREEN_TABLET ? nameDaysMobile : nameDaysTablet;
+
   return (
     <NameDaysComponent>
       {nameDays.map((nameDay, index) => (
