@@ -11,7 +11,6 @@ import {
 import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
 // import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
-import Modal from 'components/modal/Modal';
 import Popup1 from 'components/modal/Popup1/popup1';
 
 
