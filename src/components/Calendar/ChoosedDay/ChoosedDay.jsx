@@ -5,10 +5,6 @@ import TasksColumnsList from '../TasksColumnsList/TasksColumnsList';
 export const ChoosedDay = () => {
   //const { currentDay } = useParams();
 
-
-export const ChoosedDay = () => {
-  // const { currentDay } = useParams();
-
   const tasksPerDay = [
     {
       _id: {
