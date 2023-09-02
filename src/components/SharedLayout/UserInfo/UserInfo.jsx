@@ -11,6 +11,7 @@ import {
 import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
 import Modal from 'components/modal/Modal';
+import Popup1 from 'components/modal/Popup1/popup1';
 
 const UserInfo = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -21,6 +22,7 @@ const UserInfo = () => {
         Feedback
       </FeedbackButton>
       <Modal active={modalActive} setActive={setModalActive}>
+        <Popup1/>
         {/* <form action="">
           <input type="text" />
           <textarea type="text" />
