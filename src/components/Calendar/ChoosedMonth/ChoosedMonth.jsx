@@ -6,6 +6,7 @@ import { CalendarTable } from '../CalendarTable/CalendarTable';
 export const ChoosedMonth = () => {
   // получаем CarrentDate из URL
   const { currentDate } = useParams();
+  // console.log(currentDate);
   //  вырезаем год
   const year = currentDate.slice(2);
   //  вырезаем месяц
