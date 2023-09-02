@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
-import DayCalendarHead from '../DayCalendarHead/DayCalendarHead';
+// import { useParams } from 'react-router-dom';
+// import DayCalendarHead from '../DayCalendarHead/DayCalendarHead';
 import DayCalendarBody from '../DayCalendarBody/DayCalendarBody';
 
 export const ChoosedDay = () => {
-  const { currentDay } = useParams();
+  // const { currentDay } = useParams();
 
   const tasksPerDay = [
     {
