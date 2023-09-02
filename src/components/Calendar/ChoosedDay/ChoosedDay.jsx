@@ -1,8 +1,8 @@
 import DayCalendarHead from '../DayCalendarHead/DayCalendarHead';
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 
 export const ChoosedDay = () => {
-  const { currentDay } = useParams();
+  //const { currentDay } = useParams();
   return (
     <div>
       <DayCalendarHead />

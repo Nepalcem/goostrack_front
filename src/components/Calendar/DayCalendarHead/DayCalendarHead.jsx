@@ -8,6 +8,7 @@ import {
   DayComponent,
   NameDaysComponent,
   DayNumber,
+  CurrentDayNumber,
 } from './DayCalendarHead.styled';
 
 const DayCalendarHead = () => {
@@ -21,17 +22,16 @@ const DayCalendarHead = () => {
   const todayUSA = new Date(`${year}, ${month}, ${day}`);
   const todayEuro = addDays(todayUSA, -1);
   const today = !isSunday(todayUSA) ? todayUSA : todayEuro;
-  // // ✅ Get the first day of the current week (Sunday)
+  // // ✅ Get the first day of the current week (Sunday + 1 = Monday)
   const firstDay = new Date(
     today.setDate(today.getDate() - today.getDay() + 1)
   );
-  // // ✅ Get the last day of the current week (Saturday)
+  // // ✅ Get the last day of the current week (Saturday => Sunday)
   const lastDay = new Date(today.setDate(today.getDate() - today.getDay() + 7));
   const daysOfWeek = eachDayOfInterval({
     start: firstDay,
     end: lastDay,
   });
-  // const dayNumber = daysOfWeek.map(dayOfWeek => format(dayOfWeek, 'dd'));
 
   //
   return (
@@ -39,9 +39,15 @@ const DayCalendarHead = () => {
       {nameDays.map((nameDay, index) => (
         <DayComponent key={index} nameDay={nameDay}>
           {nameDay}
-          {/* <DayNumber key={daysOfWeek[index]}>{dayNumber[index]}</DayNumber> */}
-          <DayNumber key={daysOfWeek[index]}>
-            {format(daysOfWeek[index], 'dd')}
+
+          <DayNumber
+            key={daysOfWeek[index]}
+            currentDay={day}
+            day={format(daysOfWeek[index], 'dd')}
+          >
+            <CurrentDayNumber>
+              {format(daysOfWeek[index], 'dd')}
+            </CurrentDayNumber>
           </DayNumber>
         </DayComponent>
       ))}
