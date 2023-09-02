@@ -7,6 +7,29 @@ export const TaskContainer = styled.div`
   padding: 16px 15px;
 `;
 
+export const Description = styled.p`
+  /* overflow: hidden; */
+  color: #111;
+  /* text-overflow: ellipsis; */
+  /* whitespace: nowrap; */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.28571;
+`;
+
+export const OptionsBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+`;
+
+export const InfoBlock = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
+
 export const AvaThumb = styled.div`
   height: 32px;
   width: 32px;
@@ -15,6 +38,8 @@ export const AvaThumb = styled.div`
   border-radius: 32px;
   border: 1.8px solid #3e85f3;
   background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+
+  margin-right: 8px;
 `;
 
 export const Ava = styled.img`
@@ -31,4 +56,28 @@ export const Priority = styled.div`
   background-color: ${props => props.type === 'high' && '#EA3D65'};
   padding: 4px 12px;
   border-radius: 4px;
+
+  color: #f7f6f9;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+`;
+
+export const ButtonsBlock = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+`;
+
+export const ButtonController = styled.button`
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
 `;
