@@ -5,13 +5,13 @@ import { primaryColor, whiteColor } from '../../utils/variables';
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1440px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     //centering submit button on desktop
     .spacer {
-      min-width:354px; 
+      min-width: 354px;
     }
     &:last-child {
       margin-top: 88px;
@@ -78,7 +78,7 @@ export const AccountSaveButton = styled.button`
   font-weight: 600;
   line-height: calc(18 / 14);
   margin-top: 22px;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1440px) {
     margin-top: 88px;
   }
   /* align-self: center; */

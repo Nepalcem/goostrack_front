@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import defaultProfileAvatar from '../../images/accountPage/tablet-avatar-icon.png';
@@ -13,18 +13,22 @@ import {
   AccountUserNameRole,
 } from './AccountPageLayout.styled';
 
+import { format, parseISO } from 'date-fns';
+
 import {
   StyledForm,
   FormField,
   AccountSaveButton,
   ErrorMessageStyled,
 } from './AccountForm.styled';
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
-import { StyledDatePicker } from './DatePicker.styled';
+import DatePicker from 'react-datepicker';
+import { CalendarGlobalStyles } from './DatePicker.styled';
+
+import { useDispatch, useSelector } from 'react-redux';
+import authOperations from 'redux/auth/authOperations';
 
 const userValidationSchema = Yup.object().shape({
-  userName: Yup.string().required('User Name is required'),
+  username: Yup.string().required('User Name is required'),
   email: Yup.string()
     .email('Invalid email')
     .required('Email is required')
@@ -37,57 +41,78 @@ const userValidationSchema = Yup.object().shape({
   phone: Yup.string(),
   skype: Yup.string(),
 });
-//Formik initial values will be taken from db User
+
 const AccountPageLayout = () => {
+  const user = useSelector(state => state.auth.user);
+  const dispatch = useDispatch();
+  const [formattedBirthday, setFormattedBirthday] = useState('');
+
+
+  useEffect(() => {
+    // Check if user.birthday is available and format it
+    if (user.birthday) {
+      const formatted = format(parseISO(user.birthday), 'yyyy-MM-dd');
+      setFormattedBirthday(formatted);
+    }
+  }, [user.birthday]);
+
+
+  const submitHandler = (values, actions) => {
+
+    const userData = {
+      ...values,
+      birthday: format(values.birthday, 'yyyy-MM-dd'),
+    };
+
+    dispatch(authOperations.patchCurrentUser(userData));
+  };
+
   return (
     <AccountPageContainer>
-      {/* Profile image border on hover and plus icon as a pseudo for .plus */}
       <UserAvatarPlus>
-        <AccountPageAvatar alt="Plus" src={defaultProfileAvatar} />
+        <AccountPageAvatar
+          alt="Plus"
+          src={user.avatar || defaultProfileAvatar}
+        />
         <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
       </UserAvatarPlus>
       <AccountUserName>
-        <AccountUserNameTitle>Nadiia Doe</AccountUserNameTitle>
+        <AccountUserNameTitle>{user.username}</AccountUserNameTitle>
         <AccountUserNameRole>User</AccountUserNameRole>
       </AccountUserName>
 
       <Formik
         initialValues={{
-          userName: 'Nadiia Doe',
-          birthday: new Date('1995-08-25'),
-          email: 'nadiia@gmail.com',
-          phone: '38 (097) 256 34 77',
-          skype: 'Add a skype number',
+          username: user.username,
+          birthday: formattedBirthday || new Date(),
+          email: user.email,
+          phone: user.phone || '+380931112233',
+          skype: user.skype || 'SkypeNumber',
         }}
         validationSchema={userValidationSchema}
-        onSubmit={async values => {
-          await new Promise(resolve => setTimeout(resolve, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
-        // validateOnBlur={false}
-        // validateOnChange={false}
+        onSubmit={submitHandler}
       >
         {({ values, errors, touched, setFieldValue }) => (
           <StyledForm>
             <FormField
-              error={errors.userName}
-              valid={touched.userName && !errors.userName}
+              error={errors.username}
+              valid={touched.username && !errors.username}
             >
-              <label htmlFor="userName">User Name</label>
+              <label htmlFor="username">User Name</label>
               <Field
                 type="text"
-                name="userName"
-                id="userName"
+                name="username"
+                id="username"
                 className={
-                  errors.userName && touched.userName
+                  errors.username && touched.username
                     ? 'error'
-                    : touched.userName && !errors.userName
+                    : touched.username && !errors.username
                     ? 'valid'
                     : ''
                 }
               />
               <ErrorMessageStyled
-                name="userName"
+                name="username"
                 component="div"
                 className="error-message"
               />
@@ -97,17 +122,27 @@ const AccountPageLayout = () => {
               <label htmlFor="birthday">Birthday</label>
               <Field name="birthday">
                 {({ field }) => (
-                  <StyledDatePicker
-                    {...field}
-                    selected={values.birthday}
-                    onChange={date => {
-                      setFieldValue('birthday', date);
-                      console.log('Selected Date:', date); // Log the selected date
-                    }}
-                    dateFormat="dd/MM/yyyy"
-                  />
+                  <>
+                    <DatePicker
+                      {...field}
+                      calendarStartDay={1}
+                      // selected={values.birthday}
+                      // selected={field.value}
+                      selected={new Date(values.birthday)}
+                      onChange={date => {
+                        setFieldValue('birthday', date);
+                        console.log('Selected Date:', date);
+                        // console.log(typeof(date));
+                        //   format(date, 'yyyy-MM-dd')
+                        // ); // Log the selected date
+                      }}
+                      dateFormat="yyyy-MM-dd"
+                    />
+                    <CalendarGlobalStyles />
+                  </>
                 )}
               </Field>
+
               <ErrorMessageStyled
                 name="birthday"
                 component="div"
@@ -186,7 +221,7 @@ const AccountPageLayout = () => {
                 className="error-message"
               />
             </FormField>
-            <div class="spacer"></div>
+            <div className="spacer"></div>
             <AccountSaveButton type="submit">Save changes</AccountSaveButton>
           </StyledForm>
         )}

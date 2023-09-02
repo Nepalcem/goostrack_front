@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 
 axios.defaults.baseURL = 'https://goostrack-backend.onrender.com';
 
@@ -20,8 +22,10 @@ const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/register', credentials);
       token.set(data.token);
+      Notify.success(`Welcome!`);
       return data;
     } catch (error) {
+      Notify.failure(`Registration failed. Try again`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -32,8 +36,11 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
     token.set(data.token);
+    Notify.success(`Welcome!`);
     return data;
-  } catch (error) {}
+  } catch (error) {
+    Notify.failure(`Login failed. Try again`);
+  }
 });
 
 //Log-Out
@@ -69,5 +76,36 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const authOperations = { register, logIn, logOut, fetchCurrentUser };
+const patchCurrentUser = createAsyncThunk(
+  'auth/patch',
+  async (userData, thunkAPI) => {
+    // console.log('thunkApi.getState()', thunkAPI.getState());
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    // const user = state.auth.user;
+    if (!persistedToken) {
+      // if (persistedToken === null || persistedToken === '') {
+      // console.log('There is no persistedToken');
+      return thunkAPI.rejectWithValue('Oops');
+      // return state;
+    }
+    token.set(persistedToken);
+    try {
+      // console.log('persistedToken', persistedToken);
+      const response = await axios.patch('/users/edit', userData);
+      // console.log('data', data);
+        return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+const authOperations = {
+  register,
+  logIn,
+  logOut,
+  fetchCurrentUser,
+  patchCurrentUser,
+};
 export default authOperations;

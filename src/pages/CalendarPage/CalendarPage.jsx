@@ -1,10 +1,13 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar/CalendarToolbar';
 
 const CalendarPage = () => {
   return (
     <div>
       <CalendarToolbar />
+
+      <Outlet />
     </div>
   );
 };

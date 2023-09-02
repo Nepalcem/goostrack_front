@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 // ALL PAGE
 export const Main = styled.main`
-  background-color: #f7f6f9;
+  background-color:var(--main-background-color);
+  // background-color: #f7f6f9;
   margin-bottom: 0;
 `;
 

@@ -8,7 +8,7 @@ const PeriodTypeSelect = ({ onClick }) => {
   return (
     <PeriodTypeSelectDiv>
       <ButtonChangePeriod place="left" onClick={() => onClick('month')}>
-        Momth
+        Month
       </ButtonChangePeriod>
       <ButtonChangePeriod place="right" onClick={() => onClick('day')}>
         Day

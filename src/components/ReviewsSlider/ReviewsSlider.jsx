@@ -20,6 +20,7 @@ import {
   ArrowRight,
   ArrowWrapper,
   StarsWrapper,
+  ReviewsContainer,
 } from './ReviewsSlider.styled.jsx';
 import { fetchReviews } from 'redux/reviews/reviewsOperation';
 import { selectReviews } from 'redux/reviews/reviewsSelectors';
@@ -30,9 +31,8 @@ const ReviewsSlider = () => {
     dispatch(fetchReviews());
   }, [dispatch]);
   const reviews = useSelector(selectReviews);
-  console.log('reviews', reviews);
   return (
-    <>
+    <ReviewsContainer>
       <Title>Reviews</Title>
       <Swiper
         modules={[Navigation, Autoplay]}
@@ -58,6 +58,7 @@ const ReviewsSlider = () => {
         }}
       >
         {reviews.map(review => {
+          console.log(review);
           const starIcons = [];
           for (let i = 0; i < review.rating; i++) {
             starIcons.push(<Star key={i} src={yellowStar} alt="star" />);
@@ -67,13 +68,14 @@ const ReviewsSlider = () => {
               <Star key={i} src={star} alt="star" className="grey-star" />
             );
           }
+
           return (
-            <SwiperSlide key={review.owner.username}>
+            <SwiperSlide key={review._id}>
               <ReviewWrapper>
                 <UserWrapper>
                   <UserAvatar src={review.owner.avatarURL} alt="UserAvatar" />
                   <div>
-                    <UserName>{review.owner.username}</UserName>
+                    <UserName>{review.owner.name}</UserName>
                     <StarsWrapper>{starIcons}</StarsWrapper>
                   </div>
                 </UserWrapper>
@@ -91,7 +93,7 @@ const ReviewsSlider = () => {
           <img src={arrowRight} alt="arrowRight" />
         </ArrowRight>
       </ArrowWrapper>
-    </>
+    </ReviewsContainer>
   );
 };
 

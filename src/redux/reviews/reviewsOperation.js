@@ -7,7 +7,7 @@ export const fetchReviews = createAsyncThunk(
   'reviews/all',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('/api/reviews');
+      const response = await axios.get('/reviews');
       console.log('response data', response.data.reviews);
       return response.data.reviews;
     } catch (error) {

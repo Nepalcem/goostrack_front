@@ -1,21 +1,24 @@
 import React from 'react';
 
 // import Modal from 'components/modal/Modal';
-
-import { FooterStyled, TeamName  } from './Footer.styled';
+import AboutTeamModal from 'components/AboutTeamModal/AboutTeamModal';
+import { useState } from 'react';
+import { FooterStyled, TeamName } from './Footer.styled';
 
 const Footer = () => {
+  const [isOpenedModal, setIsOpenedModal] = useState(false);
 
+  const handleToggle = () => {
+    setIsOpenedModal(prevState => !prevState);
+  };
   return (
     <>
       <FooterStyled>
         <p>© 2023 | All Rights Reserved |</p>
         &nbsp;Developed by
-        <TeamName >"Name Team"</TeamName>
+        <TeamName onClick={handleToggle}>"Name Team"</TeamName>
       </FooterStyled>
-
-        {/* <Modal onClose={}></Modal> */}
-
+      {isOpenedModal && <AboutTeamModal handleToggle={handleToggle} />}
     </>
   );
 };

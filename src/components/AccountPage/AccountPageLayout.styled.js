@@ -7,24 +7,26 @@ export const AccountPageContainer = styled.div`
   background-color: white;
   border-radius: 16px;
   align-items: center;
-  margin: 10px;
+  /* margin: 10px; */
+  margin-top: 95px;
+  padding-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     padding: 40px;
   }
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 768px) {
     margin: 0px;
     margin-top: 64px;
   }
-  @media screen and (min-width: 1024px) {
-    margin: 32px;
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 32px;
   }
-  margin-top: 95px;
-  padding-bottom: 40px;
 `;
 
 export const AccountPageAvatar = styled.img`
   width: 72px;
+  border-radius: 50%;
   @media screen and (min-width: 768px) {
     width: 124px;
   }
@@ -66,6 +68,7 @@ export const AccountUserNameTitle = styled.div`
   font-weight: 700;
   font-size: 14px;
   line-height: calc(18 / 14);
+  text-transform: capitalize;
 `;
 export const AccountUserNameRole = styled.div`
   font-weight: 600;
