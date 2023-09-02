@@ -9,12 +9,13 @@ import {
   InfoBlock,
   ButtonsBlock,
   ButtonController,
+  ButtonIco,
 } from './DayTask.styled';
 
 import IcoChangeStatus from '../../../images/svg/arrow-circle.svg';
 import IcoEditTast from '../../../images/svg/pencil.svg';
 import IcoDeleteTast from '../../../images/svg/trash.svg';
-import { ReactSVG } from 'react-svg';
+
 import ProfileAva from '../../../images/user-avatar.png';
 
 const DayTask = ({ currentTask }) => {
@@ -33,15 +34,15 @@ const DayTask = ({ currentTask }) => {
         </InfoBlock>
         <ButtonsBlock>
           <ButtonController type="button">
-            <ReactSVG src={IcoChangeStatus} />
+            <ButtonIco src={IcoChangeStatus} />
           </ButtonController>
 
           <ButtonController type="button">
-            <ReactSVG src={IcoEditTast} />
+            <ButtonIco src={IcoEditTast} />
           </ButtonController>
 
           <ButtonController type="button">
-            <ReactSVG src={IcoDeleteTast} />
+            <ButtonIco src={IcoDeleteTast} />
           </ButtonController>
         </ButtonsBlock>
       </OptionsBlock>

@@ -1,17 +1,20 @@
 import styled from 'styled-components';
+import { ReactSVG } from 'react-svg';
 
 export const TaskContainer = styled.div`
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
-  background-color: #f7f6f9;
+  /* background-color: #f7f6f9; */
+  background-color: var(--color-calendar-day-task-bg);
   padding: 16px 15px;
 `;
 
 export const Description = styled.p`
   /* overflow: hidden; */
-  color: #111;
+  /* color: #111; */
   /* text-overflow: ellipsis; */
   /* whitespace: nowrap; */
+  color: var(--color-name-pages);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -88,5 +91,13 @@ export const ButtonController = styled.button`
   @media screen and (min-width: 768px) {
     width: 16px;
     height: 16px;
+  }
+`;
+
+export const ButtonIco = styled(ReactSVG)`
+  stroke: var(--color-name-pages);
+
+  :hover {
+    stroke: #3e85f3;
   }
 `;

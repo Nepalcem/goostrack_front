@@ -1,5 +1,4 @@
 import React from 'react';
-import { ReactSVG } from 'react-svg';
 
 // стилізовані компоненти
 import {
@@ -52,7 +51,7 @@ const TasksColumnsList = ({ tasksPerDay }) => {
         <TaskBlockTitle>
           <Title>In progress</Title>
           <AddTaskButton>
-            <ReactSVG src={IcoAddTask} />
+            <IcoAdd src={IcoAddTask} />
           </AddTaskButton>
         </TaskBlockTitle>
         <TasksWrap>
@@ -74,7 +73,7 @@ const TasksColumnsList = ({ tasksPerDay }) => {
         <TaskBlockTitle>
           <Title>Done</Title>
           <AddTaskButton>
-            <ReactSVG src={IcoAddTask} />
+            <IcoAdd src={IcoAddTask} />
           </AddTaskButton>
         </TaskBlockTitle>
         <TasksWrap>
