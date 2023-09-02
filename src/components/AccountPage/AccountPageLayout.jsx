@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import defaultProfileAvatar from '../../images/accountPage/tablet-avatar-icon.png';
@@ -45,21 +45,25 @@ const userValidationSchema = Yup.object().shape({
 const AccountPageLayout = () => {
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
+  const [formattedBirthday, setFormattedBirthday] = useState('');
 
-  const formattedBirthday = user.birthday
-    ? format(parseISO(user.birthday), 'yyyy-MM-dd')
-    : new Date();
 
-    console.log('formattedBirthDay:', formattedBirthday);
+  useEffect(() => {
+    // Check if user.birthday is available and format it
+    if (user.birthday) {
+      const formatted = format(parseISO(user.birthday), 'yyyy-MM-dd');
+      setFormattedBirthday(formatted);
+    }
+  }, [user.birthday]);
+
 
   const submitHandler = (values, actions) => {
-    console.log('Selected Values:',values);
+
     const userData = {
       ...values,
       birthday: format(values.birthday, 'yyyy-MM-dd'),
     };
 
-    console.log('userData BirthDay:',userData.birthday);
     dispatch(authOperations.patchCurrentUser(userData));
   };
 
@@ -80,7 +84,7 @@ const AccountPageLayout = () => {
       <Formik
         initialValues={{
           username: user.username,
-          birthday: formattedBirthday,
+          birthday: formattedBirthday || new Date(),
           email: user.email,
           phone: user.phone || '+380931112233',
           skype: user.skype || 'SkypeNumber',
@@ -128,6 +132,7 @@ const AccountPageLayout = () => {
                       onChange={date => {
                         setFieldValue('birthday', date);
                         console.log('Selected Date:', date);
+                        // console.log(typeof(date));
                         //   format(date, 'yyyy-MM-dd')
                         // ); // Log the selected date
                       }}
