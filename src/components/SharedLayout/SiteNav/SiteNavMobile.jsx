@@ -3,6 +3,7 @@ import {
   LeftMobileMenuContainer,
   LeftMobileMenu,
   CloseButton,
+  CloseButtonIco,
   LogoBlock,
   LogoImg,
   LogoText,
@@ -31,8 +32,8 @@ const SiteNavMobile = ({ handleToggle }) => {
   const dispatch = useDispatch();
 
   const backdropClick = e => {
-    console.log('e.currentTarget', e.currentTarget);
-    console.log('e.target', e.target);
+    // console.log('e.currentTarget', e.currentTarget);
+    // console.log('e.target', e.target);
     if (e.currentTarget === e.target) {
       handleToggle();
     }
@@ -43,7 +44,11 @@ const SiteNavMobile = ({ handleToggle }) => {
       <LeftMobileMenuContainer>
         <LeftMobileMenu>
           <CloseButton onClick={handleToggle}>
-            <img src={BurgerMenuClose} alt="close menu" width="100%" />
+            <CloseButtonIco
+              src={BurgerMenuClose}
+              alt="close menu"
+              width="100%"
+            />
           </CloseButton>
 
           <LogoBlock>

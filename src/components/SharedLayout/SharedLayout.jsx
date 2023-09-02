@@ -8,6 +8,7 @@ import {
   TopMenu,
   TopMenuLeftPart,
   BurgerMenuButton,
+  BurgerMenuButtonIco,
 } from './SharedLayout.styled';
 
 import BurgerMenuIce from '../../images/svg/menu.svg';
@@ -38,7 +39,11 @@ const SharedLayout = () => {
           <TopMenu>
             <TopMenuLeftPart>
               <BurgerMenuButton type="button" onClick={handleToggle}>
-                <img src={BurgerMenuIce} alt="open menu" width="100%" />
+                <BurgerMenuButtonIco
+                  src={BurgerMenuIce}
+                  alt="open menu"
+                  width="100%"
+                />
               </BurgerMenuButton>
               <ChangeHeadingName />
             </TopMenuLeftPart>

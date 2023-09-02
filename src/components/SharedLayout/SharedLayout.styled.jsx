@@ -1,8 +1,9 @@
+import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
 
 // ALL PAGE
 export const Main = styled.main`
-  background-color:var(--main-background-color);
+  background-color: var(--main-background-color);
   // background-color: #f7f6f9;
   margin-bottom: 0;
 `;
@@ -69,5 +70,13 @@ export const BurgerMenuButton = styled.button`
 
   @media screen and (min-width: 1440px) {
     display: none;
+  }
+`;
+
+export const BurgerMenuButtonIco = styled(ReactSVG)`
+  stroke: var(--color-name-pages);
+
+  :hover {
+    stroke: #3e85f3;
   }
 `;
