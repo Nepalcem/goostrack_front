@@ -1,4 +1,3 @@
-import DayCalendarHead from '../DayCalendarHead/DayCalendarHead';
 //import { useParams } from 'react-router-dom';
 import TasksColumnsList from '../TasksColumnsList/TasksColumnsList';
 
@@ -116,7 +115,7 @@ export const ChoosedDay = () => {
       },
     },
   ];
-  
+
   return (
     <div>
       {/* <DayCalendarHead /> */}
