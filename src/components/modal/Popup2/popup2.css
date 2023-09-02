@@ -106,6 +106,7 @@ textarea {
     gap: 10px;
     border-radius: 8px;
     background: #E5EDFA;
+    cursor: pointer;
 }
 
 .save {
@@ -127,6 +128,7 @@ textarea {
     font-weight: 600;
     line-height: 18px;
     /* 128.571% */
+    cursor: pointer;
 }
 
 .stars {
