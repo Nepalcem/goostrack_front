@@ -244,13 +244,27 @@ export const LeftMenuItemText = styled.p`
 export const LeftMenuLogOutButton = styled.button`
   color: #ffffff;
   font-family: Inter;
-  font-size: 18px;
+  font-size: 14px;
+  @media screen and (min-width: 768px){
+    font-size: 18px;
+  }
   font-style: normal;
   font-weight: 600;
   line-height: 1.33333;
   letter-spacing: -0.36px;
 
   display: flex;
+  align-items: center;
+  width: 131px;
+  @media screen and (min-width: 768px){
+    width: 141px;
+  }
+  & img {
+    width:18px;
+    @media screen and (min-width: 768px){
+    width: 20px;
+  }
+  }
   margin-bottom: 0;
   margin-top: auto;
   padding: 16px 23px;
