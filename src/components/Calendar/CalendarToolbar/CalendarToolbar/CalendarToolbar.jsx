@@ -22,7 +22,7 @@ const CalendarToolbar = () => {
     } else {
       navigate(`/calendar/day/${CurrentDay}`);
     }
-  }, [navigate, CurrentDate, date, period]);
+  }, [navigate, CurrentDate, date, period, CurrentDay]);
 
   //функція зміни місяця вперед чи назад
   const onChangeMonthOrDay = (step, period) => {

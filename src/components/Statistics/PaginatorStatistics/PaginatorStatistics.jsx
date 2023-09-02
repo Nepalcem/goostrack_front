@@ -7,7 +7,6 @@ import {
   PeriodPaginatorContainer,
 } from './PaginatorStatistics.styled';
 import { useState } from 'react';
-import { ButtonChangePeriod } from 'components/Calendar/CalendarToolbar/PeriodTypeSelect/PeriodTypeSelect.styled';
 import {
   ButtonChangeDate,
   ButtonsChangePeriodDiv,
