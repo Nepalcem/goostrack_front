@@ -20,7 +20,8 @@ export const MainTasksContainer = styled.div`
 `;
 
 export const TaskBlock = styled.div`
-  background-color: #fff;
+  background-color: var(--background-color-nav);
+  /* background-color: #fff; */
   min-width: 335px;
   height: 432px;
   /* height: 100%; */
@@ -50,7 +51,8 @@ export const TaskBlockTitle = styled.div`
 `;
 
 export const Title = styled.h3`
-  color: #111;
+  color: var(--color-name-pages);
+  /* color: #111; */
   text-align: left;
   font-family: Inter;
   font-size: 18px;
@@ -81,6 +83,10 @@ export const AddTaskButton = styled.button`
 export const IcoAdd = styled(ReactSVG)`
   width: 100%;
   height: 100%;
+  stroke: var(--color-name-pages);
+  :hover {
+    stroke: #3e85f3;
+  }
 `;
 
 export const TasksWrap = styled.div`
@@ -108,9 +114,11 @@ export const AddTaskButtonBig = styled.button`
 
   border-radius: 8px;
   border: 1px dashed #3e85f3;
-  background: #e3f3ff;
+  /* background: #e3f3ff; */
+  background-color: var(--color-calendar-day-addtaskbtn-bg);
 
-  color: #111;
+  /* color: #111; */
+  color: var(--color-name-pages);
   text-align: center;
   font-family: Inter;
   font-size: 14px;
@@ -122,4 +130,5 @@ export const AddTaskButtonBig = styled.button`
 export const IcoAdd2 = styled(ReactSVG)`
   width: 24px;
   height: 24px;
+  stroke: var(--color-name-pages);
 `;
