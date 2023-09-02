@@ -22,6 +22,11 @@ export const AccountPageContainer = styled.div`
   @media screen and (min-width: 1440px) {
     margin-bottom: 32px;
   }
+
+  & .centered-element {
+  align-self: center;
+
+}
 `;
 
 export const AccountPageAvatar = styled.img`

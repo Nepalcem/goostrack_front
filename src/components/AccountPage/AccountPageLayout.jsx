@@ -47,7 +47,6 @@ const AccountPageLayout = () => {
   const dispatch = useDispatch();
   const [formattedBirthday, setFormattedBirthday] = useState('');
 
-
   useEffect(() => {
     // Check if user.birthday is available and format it
     if (user.birthday) {
@@ -56,26 +55,31 @@ const AccountPageLayout = () => {
     }
   }, [user.birthday]);
 
-
   const submitHandler = (values, actions) => {
-
     const userData = {
       ...values,
+      avatarURL: values.file
+        ? URL.createObjectURL(values.file)
+        : user.avatarURL || defaultProfileAvatar,
       birthday: format(values.birthday, 'yyyy-MM-dd'),
     };
 
+    if ('file' in userData) {
+      delete userData.file;
+    }
+    console.log(userData);
     dispatch(authOperations.patchCurrentUser(userData));
   };
 
   return (
     <AccountPageContainer>
-      <UserAvatarPlus>
+      {/* <UserAvatarPlus>
         <AccountPageAvatar
           alt="Plus"
           src={user.avatar || defaultProfileAvatar}
         />
         <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
-      </UserAvatarPlus>
+      </UserAvatarPlus> */}
       <AccountUserName>
         <AccountUserNameTitle>{user.username}</AccountUserNameTitle>
         <AccountUserNameRole>User</AccountUserNameRole>
@@ -83,6 +87,7 @@ const AccountPageLayout = () => {
 
       <Formik
         initialValues={{
+          file: null,
           username: user.username,
           birthday: formattedBirthday || new Date(),
           email: user.email,
@@ -94,62 +99,90 @@ const AccountPageLayout = () => {
       >
         {({ values, errors, touched, setFieldValue }) => (
           <StyledForm>
-            <FormField
-              error={errors.username}
-              valid={touched.username && !errors.username}
-            >
-              <label htmlFor="username">User Name</label>
-              <Field
-                type="text"
-                name="username"
-                id="username"
-                className={
-                  errors.username && touched.username
-                    ? 'error'
-                    : touched.username && !errors.username
-                    ? 'valid'
-                    : ''
-                }
-              />
-              <ErrorMessageStyled
-                name="username"
-                component="div"
-                className="error-message"
-              />
-            </FormField>
+            <div className="centered-element">
+              {/* Hidden file input */}
+              <UserAvatarPlus>
+                <input
+                  id="fileInput"
+                  type="file"
+                  style={{ display: 'none' }}
+                  onChange={event => {
+                    setFieldValue('file', event.currentTarget.files[0]);
+                  }}
+                />
+                <label htmlFor="fileInput">
+                  <AccountPageAvatar
+                    alt="Avatar"
+                    src={
+                      values.file
+                        ? URL.createObjectURL(values.file)
+                        : user.avatarURL || defaultProfileAvatar
+                    }
+                  />
+                  <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
+                </label>
+              </UserAvatarPlus>
+            </div>
 
-            <FormField>
-              <label htmlFor="birthday">Birthday</label>
-              <Field name="birthday">
-                {({ field }) => (
-                  <>
-                    <DatePicker
-                      {...field}
-                      calendarStartDay={1}
-                      // selected={values.birthday}
-                      // selected={field.value}
-                      selected={new Date(values.birthday)}
-                      onChange={date => {
-                        setFieldValue('birthday', date);
-                        console.log('Selected Date:', date);
-                        // console.log(typeof(date));
-                        //   format(date, 'yyyy-MM-dd')
-                        // ); // Log the selected date
-                      }}
-                      dateFormat="yyyy-MM-dd"
-                    />
-                    <CalendarGlobalStyles />
-                  </>
-                )}
-              </Field>
+            <div className="second-row">
+              <FormField
+                error={errors.username}
+                valid={touched.username && !errors.username}
+              >
+                <label htmlFor="username">User Name</label>
+                <Field
+                  type="text"
+                  name="username"
+                  id="username"
+                  className={
+                    errors.username && touched.username
+                      ? 'error'
+                      : touched.username && !errors.username
+                      ? 'valid'
+                      : ''
+                  }
+                />
+                <ErrorMessageStyled
+                  name="username"
+                  component="div"
+                  className="error-message"
+                />
+              </FormField>
 
-              <ErrorMessageStyled
-                name="birthday"
-                component="div"
-                className="error-message"
-              />
-            </FormField>
+              <FormField>
+                <label htmlFor="birthday">Birthday</label>
+                <Field name="birthday">
+                  {({ field }) => (
+                    <>
+                      <DatePicker
+                        {...field}
+                        calendarStartDay={1}
+                        // selected={values.birthday}
+                        // selected={field.value}
+                        selected={new Date(values.birthday)}
+                        onChange={date => {
+                          setFieldValue('birthday', date);
+                          console.log('Selected Date:', date);
+                          // console.log(typeof(date));
+                          //   format(date, 'yyyy-MM-dd')
+                          // ); // Log the selected date
+                        }}
+                        dateFormat="yyyy-MM-dd"
+                      />
+                      <CalendarGlobalStyles />
+                    </>
+                  )}
+                </Field>
 
+                <ErrorMessageStyled
+                  name="birthday"
+                  component="div"
+                  className="error-message"
+                />
+              </FormField>
+            </div>
+
+            <div className="third-row">
             <FormField
               error={errors.email}
               valid={touched.email && !errors.email}
@@ -197,7 +230,9 @@ const AccountPageLayout = () => {
                 className="error-message"
               />
             </FormField>
+            </div>
 
+            <div className="forth-row">
             <FormField
               error={errors.skype}
               valid={touched.skype && !errors.skype}
@@ -222,6 +257,7 @@ const AccountPageLayout = () => {
               />
             </FormField>
             <div className="spacer"></div>
+            </div>
             <AccountSaveButton type="submit">Save changes</AccountSaveButton>
           </StyledForm>
         )}
