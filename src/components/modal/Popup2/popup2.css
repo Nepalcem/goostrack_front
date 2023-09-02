@@ -1,0 +1,136 @@
+form {
+    display: flex;
+    flex-direction: column;
+    height: 299px;
+
+}
+
+input {
+    margin-top: 10px;
+}
+
+.xclose {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    border: none;
+    padding: 0;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+textarea {
+    height: 127px;
+    border-radius: 8px;
+    background: #F6F6F6;
+    padding: 14px 18px;
+
+    color: #343434;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    /* 128.571% */
+}
+
+.rating {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+}
+
+.review {
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.pencil {
+    width: 30px;
+    height: 30px;
+    background-color: #3E85F3;
+    border-radius: 50%;
+    padding: 7px;
+    margin-left: auto;
+    margin-right: 8px;
+}
+
+.trash {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background: rgba(234, 61, 101, 0.20);
+
+
+}
+
+.btns {
+    display: flex;
+    margin-top: 18px;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.btn {
+    display: inline-flex;
+    padding: 15px 75px;
+
+    border-radius: 8px;
+    border: none;
+}
+
+.cansel {
+    color: #343434;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    /* 128.571% */
+
+    display: inline-flex;
+    padding: 15px 75px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #E5EDFA;
+}
+
+.save {
+    display: flex;
+    width: 198px;
+    padding: 15px 85px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #3E85F3;
+
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    /* 128.571% */
+}
+
+.stars {
+    display: flex;
+    gap: 2px;
+    margin-top: 8px;
+}

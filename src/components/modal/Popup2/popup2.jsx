@@ -1,12 +1,11 @@
 import React from 'react';
 
-import './popup1.css';
+import './popup2.css';
 
-
-const Popup1 = (setActive) => {
+const Popup2 = setActive => {
   return (
     <form action="">
-      <button className='xclose' onClick={() => setActive(false)}>
+      <button className="xclose" onClick={() => setActive(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -32,7 +31,7 @@ const Popup1 = (setActive) => {
       </button>
       <div className="rating">
         <p>Rating</p>
-        <div className='stars' >
+        <div className="stars">
           <svg
             width="14"
             height="14"
@@ -98,21 +97,68 @@ const Popup1 = (setActive) => {
         </div>
       </div>
       <div className="review">
-        <p>Review</p>        
+        <p>Review</p>
+        <div className="pencil">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M1.66699 14.3334L5.36651 12.9105C5.60313 12.8195 5.72145 12.774 5.83214 12.7146C5.93046 12.6618 6.02419 12.6009 6.11235 12.5324C6.21161 12.4554 6.30124 12.3658 6.48051 12.1865L14.0003 4.66671C14.7367 3.93033 14.7367 2.73642 14.0003 2.00004C13.264 1.26366 12.0701 1.26366 11.3337 2.00004L3.81385 9.51985C3.63458 9.69912 3.54494 9.78876 3.46792 9.88801C3.39951 9.97617 3.33859 10.0699 3.28582 10.1682C3.2264 10.2789 3.18089 10.3972 3.08988 10.6339L1.66699 14.3334ZM1.66699 14.3334L3.03907 10.766C3.13726 10.5107 3.18635 10.3831 3.27055 10.3246C3.34414 10.2735 3.43519 10.2542 3.52319 10.271C3.62388 10.2902 3.72058 10.3869 3.91398 10.5803L5.42004 12.0864C5.61344 12.2798 5.71014 12.3765 5.72937 12.4772C5.74617 12.5652 5.72685 12.6562 5.67576 12.7298C5.61729 12.814 5.48965 12.8631 5.23437 12.9613L1.66699 14.3334Z"
+              stroke="#fff"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <div className="trash">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M2 4H3.33333H14"
+              stroke="#EA3D65"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12.6663 4.00004V13.3334C12.6663 13.687 12.5259 14.0261 12.2758 14.2762C12.0258 14.5262 11.6866 14.6667 11.333 14.6667H4.66634C4.31272 14.6667 3.97358 14.5262 3.72353 14.2762C3.47348 14.0261 3.33301 13.687 3.33301 13.3334V4.00004M5.33301 4.00004V2.66671C5.33301 2.31309 5.47348 1.97395 5.72353 1.7239C5.97358 1.47385 6.31272 1.33337 6.66634 1.33337H9.33301C9.68663 1.33337 10.0258 1.47385 10.2758 1.7239C10.5259 1.97395 10.6663 2.31309 10.6663 2.66671V4.00004"
+              stroke="#EA3D65"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.66699 7.33337V11.3334"
+              stroke="#EA3D65"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9.33301 7.33337V11.3334"
+              stroke="#EA3D65"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
       </div>
 
-      <textarea type="text" placeholder='Enter text' />
-
-      <div className="btns">
-        <button type="button" className="save btn">
-          Save
-        </button>
-        <button type="button" className="cansel btn">
-          Cansel
-        </button>
-      </div>
+      <textarea type="text" placeholder="Enter text" />
     </form>
   );
 };
 
-export default Popup1;
+export default Popup2;

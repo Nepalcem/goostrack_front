@@ -1,4 +1,5 @@
 .modal {
+ 
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.4);
@@ -11,6 +12,7 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.5s;
+  z-index: 999;
 }
 
 .modal.active {
@@ -19,6 +21,7 @@
 }
 
 .modal__content {
+  
   padding: 20px;
   border-radius: 12px;
   background-color: white;
@@ -26,8 +29,10 @@
   transition: 0.4s all;
   width: 468px;
   height: 349px;
+  
 }
 
 .modal__content.active {
+  position: relative;
   transform: scale(1);
 }

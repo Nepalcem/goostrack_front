@@ -12,6 +12,8 @@ import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
 // import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
 import Popup1 from 'components/modal/Popup1/popup1';
+// import Popup2 from 'components/modal/Popup2/popup2';
+// import Popup3 from 'components/modal/Popup3/popup3';
 
 
 const UserInfo = () => {
@@ -24,15 +26,9 @@ const UserInfo = () => {
         Feedback
       </FeedbackButton>
       <Modal active={modalActive} setActive={setModalActive}>
-        <Popup1/>
-        {/* <form action="">
-          <input type="text" />
-          <textarea type="text" />
-          <input type="text" />
-          <button className="close__btn" onClick={() => setModalActive(false)}>
-            Закрити модалку
-          </button>
-        </form> */}
+        <Popup1 setActive={setModalActive} />
+        {/* <Popup2 setActive={setModalActive} /> */}
+        {/* <Popup3 setActive={setModalActive} /> */}
       </Modal>
       <ThemeToggler />
       {/* <ThemeToggleButton type="button">
