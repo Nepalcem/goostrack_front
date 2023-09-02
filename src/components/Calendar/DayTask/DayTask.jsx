@@ -18,7 +18,7 @@ import { ReactSVG } from 'react-svg';
 import ProfileAva from '../../../images/user-avatar.png';
 
 const DayTask = ({ currentTask }) => {
-  console.log('currentTask', currentTask);
+  // console.log('currentTask', currentTask);
   return (
     <TaskContainer>
       <Description>{currentTask.description}</Description>

@@ -1,6 +1,6 @@
 // import { useParams } from 'react-router-dom';
 // import DayCalendarHead from '../DayCalendarHead/DayCalendarHead';
-import DayCalendarBody from '../DayCalendarBody/DayCalendarBody';
+import TasksColumnsList from '../TasksColumnsList/TasksColumnsList';
 
 export const ChoosedDay = () => {
   // const { currentDay } = useParams();
@@ -19,7 +19,7 @@ export const ChoosedDay = () => {
       owner: {
         $oid: '64edbfb375c6af6258e298e6',
       },
-      description: 'chack the price of car',
+      description: 'Task to-do 1',
       createdAt: {
         $date: '2023-08-29T11:07:34.000Z',
       },
@@ -37,11 +37,11 @@ export const ChoosedDay = () => {
       end: '11:00',
       date: '2023-08-29',
       priority: 'medium',
-      category: 'done',
+      category: 'to-do',
       owner: {
         $oid: '64edbfb375c6af6258e298e6',
       },
-      description: 'descript',
+      description: 'Task to-do 2',
       createdAt: {
         $date: '2023-08-29T14:40:33.513Z',
       },
@@ -59,11 +59,55 @@ export const ChoosedDay = () => {
       end: '22:00',
       date: '2023-08-17',
       priority: 'high',
+      category: 'to-do',
+      owner: {
+        $oid: '64edbfb375c6af6258e298e6',
+      },
+      description: 'Task to-do 3',
+      createdAt: {
+        $date: '2023-08-29T14:42:46.043Z',
+      },
+      updatedAt: {
+        $date: '2023-08-29T14:42:46.043Z',
+      },
+    },
+
+    {
+      _id: {
+        $oid: '64ee036108c0d2588ee85f63',
+      },
+      title: 'IRYNKA',
+      start: '10:00',
+      end: '11:00',
+      date: '2023-08-29',
+      priority: 'medium',
       category: 'in-progress',
       owner: {
         $oid: '64edbfb375c6af6258e298e6',
       },
-      description: 'descript',
+      description: 'Task in-progress 1',
+      createdAt: {
+        $date: '2023-08-29T14:40:33.513Z',
+      },
+      updatedAt: {
+        $date: '2023-08-29T14:40:33.513Z',
+      },
+    },
+
+    {
+      _id: {
+        $oid: '64ee03e60619825ba8a8560c',
+      },
+      title: 'SVETLANA',
+      start: '18:00',
+      end: '22:00',
+      date: '2023-08-17',
+      priority: 'high',
+      category: 'done',
+      owner: {
+        $oid: '64edbfb375c6af6258e298e6',
+      },
+      description: 'Task done 1',
       createdAt: {
         $date: '2023-08-29T14:42:46.043Z',
       },
@@ -76,7 +120,7 @@ export const ChoosedDay = () => {
   return (
     <div>
       {/* <DayCalendarHead /> */}
-      <DayCalendarBody tasksPerDay={tasksPerDay} />
+      <TasksColumnsList tasksPerDay={tasksPerDay} />
     </div>
   );
 };
