@@ -1,6 +1,9 @@
 import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
 
+// Бібліотека формік
+import { Formik, Form, Field } from 'formik';
+
 // Бекдроп
 export const Backdrop = styled.div`
   width: 100vw;
@@ -85,4 +88,19 @@ export const CloseButtonIco = styled(ReactSVG)`
   height: 100%;
 
   stroke: black;
+`;
+
+export const StyledFormikInput = styled(Field)`
+  border-radius: 8px;
+  background: #f6f6f6;
+
+  padding: 14px 18px;
+
+  border: none;
+`;
+
+export const TimeBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
 `;

@@ -8,6 +8,8 @@ import {
   ModalContainer,
   CloseButton,
   CloseButtonIco,
+  StyledFormikInput,
+  TimeBlock,
 } from './TaskModal.style';
 
 import CloseIco from '../../../images/svg/x-close.svg';
@@ -46,12 +48,21 @@ const TaskModal = ({ handleToggle }) => {
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form autoComplete="off">
             <label htmlFor="title">Title</label>
-            <Field type="text" name="title" placeholder="Enter text" />
-            <label htmlFor="start">Start</label>
-            <Field type="time" name="start" />
-
-            <label htmlFor="end">End</label>
-            <Field type="time" name="end" />
+            <StyledFormikInput
+              type="text"
+              name="title"
+              placeholder="Enter text"
+            />
+            <TimeBlock>
+              <div>
+                <label htmlFor="start">Start</label>
+                <StyledFormikInput type="time" name="start" />
+              </div>
+              <div>
+                <label htmlFor="end">End</label>
+                <StyledFormikInput type="time" name="end" />
+              </div>
+            </TimeBlock>
 
             <div>
               <label>
