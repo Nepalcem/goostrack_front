@@ -1,61 +1,48 @@
-import React from 'react';
-import './Modal.css';
+import ReactDOM from 'react-dom';
+import { BackdropStyle, ModalStyle, StyledIcon } from './Modal.styled';
+import { useEffect } from 'react';
+import CloseIco from '../../images/svg/x-close.svg';
 
-const Modal = ({ active, setActive, children }) => {
-  return (
-    <div
-      className={active ? 'modal active' : 'modal'}
-      onClick={() => setActive(false)}
+const Modal = ({ onClose, children, isOpen }) => {
+  useEffect(() => {
+    const handleEscape = e => {
+      if (e.code === `Escape`) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [onClose]);
+  const handleMouseDown = e => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+  const handleMouseUp = e => {
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+  };
+
+  if (!isOpen) {
+    return null;
+  }
+
+  return ReactDOM.createPortal(
+    <BackdropStyle
+      className="backdrop"
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >
-      <div
-        className={active ? 'modal__content active' : 'modal__content'}
-        onClick={e => e.stopPropagation()}
-      >
+      <ModalStyle>
         {children}
-      </div>
-    </div>
+        <StyledIcon src={CloseIco} width='100%' alt="close button" onClick={onClose} />
+      </ModalStyle>
+    </BackdropStyle>,
+    document.getElementById('modal-root')
   );
 };
 
 export default Modal;
-
-// const modalRoot = document.querySelector('#modal-root');
-
-// const Modal = ({ onClose, children }) => {
-//     useEffect(() => {
-//         window.addEventListener('keydown', handleKeyDown);
-//         return () => {
-//             window.removeEventListener('keydown', handleKeyDown)
-//         }
-//     });
-
-//     const handleKeyDown = (e) => {
-//         if (e.code === 'Escape') {
-//             onClose();
-//             };
-//         };
-
-//     const handleBackdropClick = (e) => {
-//         if (e.currentTarget === e.target) {
-//             onClose()
-//         };
-//     };
-
-//         return createPortal(
-//             <div className={css.backdrop} onClick={handleBackdropClick}>
-//                 <div className={css.content}>
-//                     <>
-//                     <p>Rating</p>
-//                     <img src="../../images/svg/yellow-star.svg" alt="yelow_star"></img>
-//                     <div>
-//                         <p>Review</p>
-//                         <div>Enter text</div>
-//                     </div>
-//                     <button>Save</button>
-//                     <button>Close</button>
-//                 </></div>
-//             </div>,
-//             modalRoot)
-//     };
-
-// export default Modal;
