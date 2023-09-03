@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import { whiteColor } from 'utils/variables';
 
 export const StatisticsSectionContainer = styled.div`
-  background-color: ${whiteColor};
+  // background-color: ${whiteColor};
+
+  background-color: var(--color-btn-change-day);
   margin-top: 64px;
   width: 335px;
 

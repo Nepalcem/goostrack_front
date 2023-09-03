@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const MessageBlock = styled.div`
+background-color: var(--main-background-color);
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +15,7 @@ export const ErrImgContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
 `;
 
 export const Text4FromImg = styled.span`
@@ -45,7 +48,9 @@ export const InformationMessage = styled.h1`
   line-height: 1.28571;
 
   text-align: center;
-  color: rgba(17, 17, 17, 0.7);
+
+  color: var(--color-error-title);
+  // color: rgba(17, 17, 17, 0.7);
 
   @media screen and (min-width: 768px) {
     width: 390px;

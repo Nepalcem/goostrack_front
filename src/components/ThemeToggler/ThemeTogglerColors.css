@@ -17,6 +17,16 @@ html[data-theme='dark'] {
   --color-calendar-petiod: #3e85f3;
   --color-calendar-day-task-bg: #171820;
   --color-calendar-day-addtaskbtn-bg: #3e85f3;
+
+  --color-title-profil: rgba(250, 250, 250, 0.3);
+  --color-border-profil: rgba(255, 255, 255, 0.15);
+
+
+  --color-border-stat: 0.8px solid rgba(227, 243, 255, 0.15);
+  --color-border-stat-line:  rgba(227, 243, 255, 0.15);
+
+  --color-error-title: #FFFFFF;
+
 }
 
 html[data-theme='light'] {
@@ -38,6 +48,18 @@ html[data-theme='light'] {
   --color-calendar-petiod: rgba(62, 133, 243, 0.2);
   --color-calendar-day-task-bg: #f7f6f9;
   --color-calendar-day-addtaskbtn-bg: #e3f3ff;
+
+  --color-title-profil: #343434;
+  --color-border-profil: rgba(17, 17, 17, 0.15);
+
+  --color-border-stat: 1px solid rgba(227, 243, 255, 1);
+  --color-border-stat-line:  rgba(227, 243, 255, 1);
+
+  --color-error-title: rgba(17, 17, 17, 0.7);
+
 }
 
 /* var(--color-name-user) */
+
+
+/* Tasks,procent,toDo,inProcess,Done color:var(--color-calendar-day); */

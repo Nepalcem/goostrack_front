@@ -14,7 +14,9 @@ const customBarLabel = ({ x, y, width, value }) => {
     <text
       x={x + width / 2}
       y={y}
-      fill="#343434"
+
+      // fill="#343434"
+      fill="var(--color-calendar-day)"
       fontWeight="400"
       textAnchor="middle"
       dy={-5}
@@ -66,7 +68,8 @@ export const StatisticsChart = () => {
         margin={{ top: 45, right: 0, bottom: 5, left: -15 }}
         barGap="7%"
       >
-        <CartesianGrid stroke="rgba(227, 243, 255, 1)" vertical={false} />
+        <CartesianGrid stroke="var(--color-border-stat-line)" vertical={false} />
+        {/* <CartesianGrid stroke="rgba(227, 243, 255, 1)" vertical={false} /> */}
         <Bar
           dataKey="ByDay"
           fill="url(#pinkGradientFill)"
@@ -111,6 +114,7 @@ export const StatisticsChart = () => {
           tick={{
             fontSize: window.innerWidth >= 768 ? 14 : 12,
             fontWeight: '500',
+            fill: 'var(--color-calendar-day)',
           }}
         />
         <YAxis
@@ -122,7 +126,9 @@ export const StatisticsChart = () => {
             style: {
               fontSize: '14px',
               fontWeight: '700',
-              fill: '#343434',
+              fill: 'var(--color-calendar-day)',
+              // fill: '#343434',
+
             },
           }}
           domain={[0, 100]}
@@ -133,6 +139,8 @@ export const StatisticsChart = () => {
           tick={{
             fontSize: 14,
             fontWeight: '500',
+            fill: 'var(--color-calendar-day)',
+
           }}
         />
       </BarChart>

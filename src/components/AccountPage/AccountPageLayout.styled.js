@@ -4,7 +4,9 @@ export const AccountPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: white;
+  background-color: var(--color-btn-change-day);
+  
+  //  background-color: white;
   border-radius: 16px;
   align-items: center;
   /* margin: 10px; */
@@ -61,6 +63,7 @@ export const AccountAvatarPlusIcon = styled.img`
 `;
 
 export const AccountUserName = styled.div`
+  color: var(--color-title-profil);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,12 +73,14 @@ export const AccountUserName = styled.div`
 `;
 
 export const AccountUserNameTitle = styled.div`
+  color: var(--color-name-user);
   font-weight: 700;
   font-size: 14px;
   line-height: calc(18 / 14);
   text-transform: capitalize;
 `;
 export const AccountUserNameRole = styled.div`
+
   font-weight: 600;
   font-size: 12px;
   line-height: calc(14 / 12);
