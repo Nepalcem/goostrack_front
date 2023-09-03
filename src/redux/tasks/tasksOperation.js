@@ -50,3 +50,11 @@ export const deleteTask = createAsyncThunk(
     }
   }
 );
+
+const tasksOperations = {
+  fetchAllTasks,
+  addTask,
+  updateTask,
+  deleteTask,
+};
+export default tasksOperations;

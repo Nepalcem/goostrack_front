@@ -20,10 +20,12 @@ import DayTask from '../DayTask/DayTask';
 import IcoAddTask from '../../../images/svg/plus.svg';
 import IcoAddTask2 from '../../../images/svg/plus2.svg';
 import TaskModal from '../TaskModal/TaskModal';
+import { useParams } from 'react-router-dom';
 
 const TasksColumnsList = ({ tasksPerDay }) => {
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [category, setCategory] = useState('');
+  const { currentDay } = useParams();
 
   const handleToggle = () => {
     setModalAddTaskIsOpened(prevState => !prevState);
@@ -32,7 +34,11 @@ const TasksColumnsList = ({ tasksPerDay }) => {
   return (
     <>
       {modalAddTaskIsOpened && (
-        <TaskModal category={category} handleToggle={handleToggle} />
+        <TaskModal
+          category={category}
+          handleToggle={handleToggle}
+          currentDay={currentDay}
+        />
       )}
       <MainTasksContainer>
         <TaskBlock>
