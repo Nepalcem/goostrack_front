@@ -27,20 +27,20 @@ import { CalendarGlobalStyles } from './DatePicker.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
 
-const FileSize = 1024 * 1024; // 1MB
+// const FileSize = 1024 * 1024; // 1MB
 
 const userValidationSchema = Yup.object().shape({
-  file: Yup.mixed()
-    .test(
-      'fileSize',
-      'File size is too large. Maximum size is 1MB.',
-      value => !value || (value && value.size <= FileSize)
-    )
-    .test(
-      'fileFormat',
-      'Only jpeg and png formats are supported.',
-      value => value && ['image/jpeg', 'image/png'].includes(value.type)
-    ),
+  // file: Yup.mixed()
+  //   .test(
+  //     'fileSize',
+  //     'File size is too large. Maximum size is 1MB.',
+  //     value => !value || (value && value.size <= FileSize)
+  //   )
+  //   .test(
+  //     'fileFormat',
+  //     'Only jpeg and png formats are supported.',
+  //     value => value && ['image/jpeg', 'image/png'].includes(value.type)
+  //   ),
   username: Yup.string().required('User Name is required'),
   email: Yup.string()
     .email('Invalid email')
@@ -70,8 +70,15 @@ const AccountPageLayout = () => {
 
   const submitHandler = (values, actions) => {
     console.log(values);
+
     const formData = new FormData();
-    formData.append('avatarURL', values.file ?? defaultProfileAvatar);
+
+    if (values.file) {
+      formData.append('avatarURL', values.file);
+    } else if (!user.avatarURL) {
+      const defaultAvatarBlob = new Blob([defaultProfileAvatar], { type: 'image/png' });
+      formData.append('avatarURL', defaultAvatarBlob);
+    }
     formData.append('username', values.username);
     formData.append('email', values.email);
     formData.append('birthday', format(values.birthday, 'yyyy-MM-dd'));
