@@ -2,9 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
 
 // Редюсери
-import { filterReducer } from './filter/filterSlice';
 import { persistedAuthReducer } from './auth/authSlice';
 import { reviewsReducer } from './reviews/reviewsSlice';
+import { filterReducer } from './filter/filterSlice';
 
 //  для прибирання помилки з консолі
 import {
@@ -15,12 +15,14 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { tasksReducer } from './tasks/tasksSlice';
 
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     filter: filterReducer,
     reviews: reviewsReducer,
+    tasks: tasksReducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({

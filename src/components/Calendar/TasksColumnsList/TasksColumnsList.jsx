@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // стилізовані компоненти
 import {
@@ -19,78 +19,96 @@ import DayTask from '../DayTask/DayTask';
 // іконки
 import IcoAddTask from '../../../images/svg/plus.svg';
 import IcoAddTask2 from '../../../images/svg/plus2.svg';
+import TaskModal from '../TaskModal/TaskModal';
 
 const TasksColumnsList = ({ tasksPerDay }) => {
-  // console.log('tasksPerDay', tasksPerDay);
+  const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
+
+  const handleToggle = () => {
+    setModalAddTaskIsOpened(prevState => !prevState);
+  };
 
   return (
-    <MainTasksContainer>
-      <TaskBlock>
-        <TaskBlockTitle>
-          <Title>To do</Title>
-          <AddTaskButton>
-            <IcoAdd src={IcoAddTask} />
-          </AddTaskButton>
-        </TaskBlockTitle>
-        <TasksWrap>
-          {tasksPerDay.map(cuurentTast => {
-            return (
-              cuurentTast.category === 'to-do' && (
-                <DayTask key={cuurentTast._id.$oid} currentTask={cuurentTast} />
-              )
-            );
-          })}
-        </TasksWrap>
-        <AddTaskButtonBig>
-          <IcoAdd2 src={IcoAddTask2} />
-          Add task
-        </AddTaskButtonBig>
-      </TaskBlock>
+    <>
+      {modalAddTaskIsOpened && <TaskModal handleToggle={handleToggle} />}
+      <MainTasksContainer>
+        <TaskBlock>
+          <TaskBlockTitle>
+            <Title>To do</Title>
+            <AddTaskButton onClick={handleToggle}>
+              <IcoAdd src={IcoAddTask} />
+            </AddTaskButton>
+          </TaskBlockTitle>
+          <TasksWrap>
+            {tasksPerDay.map(cuurentTast => {
+              return (
+                cuurentTast.category === 'to-do' && (
+                  <DayTask key={cuurentTast._id} currentTask={cuurentTast} />
+                )
+              );
+            })}
+          </TasksWrap>
+          <AddTaskButtonBig
+            onClick={() => setModalAddTaskIsOpened(prevState => !prevState)}
+          >
+            <IcoAdd2 src={IcoAddTask2} />
+            Add task
+          </AddTaskButtonBig>
+        </TaskBlock>
 
-      <TaskBlock>
-        <TaskBlockTitle>
-          <Title>In progress</Title>
-          <AddTaskButton>
-            <IcoAdd src={IcoAddTask} />
-          </AddTaskButton>
-        </TaskBlockTitle>
-        <TasksWrap>
-          {tasksPerDay.map(cuurentTast => {
-            return (
-              cuurentTast.category === 'in-progress' && (
-                <DayTask key={cuurentTast._id.$oid} currentTask={cuurentTast} />
-              )
-            );
-          })}
-        </TasksWrap>
-        <AddTaskButtonBig>
-          <IcoAdd2 src={IcoAddTask2} />
-          Add task
-        </AddTaskButtonBig>
-      </TaskBlock>
+        <TaskBlock>
+          <TaskBlockTitle>
+            <Title>In progress</Title>
+            <AddTaskButton
+              onClick={() => setModalAddTaskIsOpened(prevState => !prevState)}
+            >
+              <IcoAdd src={IcoAddTask} />
+            </AddTaskButton>
+          </TaskBlockTitle>
+          <TasksWrap>
+            {tasksPerDay.map(cuurentTast => {
+              return (
+                cuurentTast.category === 'in-progress' && (
+                  <DayTask key={cuurentTast._id} currentTask={cuurentTast} />
+                )
+              );
+            })}
+          </TasksWrap>
+          <AddTaskButtonBig
+            onClick={() => setModalAddTaskIsOpened(prevState => !prevState)}
+          >
+            <IcoAdd2 src={IcoAddTask2} />
+            Add task
+          </AddTaskButtonBig>
+        </TaskBlock>
 
-      <TaskBlock>
-        <TaskBlockTitle>
-          <Title>Done</Title>
-          <AddTaskButton>
-            <IcoAdd src={IcoAddTask} />
-          </AddTaskButton>
-        </TaskBlockTitle>
-        <TasksWrap>
-          {tasksPerDay.map(cuurentTast => {
-            return (
-              cuurentTast.category === 'done' && (
-                <DayTask key={cuurentTast._id.$oid} currentTask={cuurentTast} />
-              )
-            );
-          })}
-        </TasksWrap>
-        <AddTaskButtonBig>
-          <IcoAdd2 src={IcoAddTask2} />
-          Add task
-        </AddTaskButtonBig>
-      </TaskBlock>
-    </MainTasksContainer>
+        <TaskBlock>
+          <TaskBlockTitle>
+            <Title>Done</Title>
+            <AddTaskButton
+              onClick={() => setModalAddTaskIsOpened(prevState => !prevState)}
+            >
+              <IcoAdd src={IcoAddTask} />
+            </AddTaskButton>
+          </TaskBlockTitle>
+          <TasksWrap>
+            {tasksPerDay.map(cuurentTast => {
+              return (
+                cuurentTast.category === 'done' && (
+                  <DayTask key={cuurentTast._id} currentTask={cuurentTast} />
+                )
+              );
+            })}
+          </TasksWrap>
+          <AddTaskButtonBig
+            onClick={() => setModalAddTaskIsOpened(prevState => !prevState)}
+          >
+            <IcoAdd2 src={IcoAddTask2} />
+            Add task
+          </AddTaskButtonBig>
+        </TaskBlock>
+      </MainTasksContainer>
+    </>
   );
 };
 
