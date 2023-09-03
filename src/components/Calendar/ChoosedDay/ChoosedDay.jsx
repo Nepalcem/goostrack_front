@@ -31,7 +31,7 @@ export const ChoosedDay = () => {
   useEffect(() => {
     let tempTasks = allTasks.filter(item => item.date === currentDay);
     setCurrentDayTasks(tempTasks);
-  }, [currentDay]);
+  }, [currentDay, allTasks]);
 
   return (
     <div>
