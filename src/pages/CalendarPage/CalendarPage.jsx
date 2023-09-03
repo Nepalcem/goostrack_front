@@ -13,7 +13,7 @@ const CalendarPage = () => {
 
   useEffect(() => {
     // Dispatch the loadTasks for Current Month action when the component mounts for one first time 
-    dispatch(fetchAllTasks());
+    dispatch(fetchAllTasks({}));
   }, [dispatch]);
 
   return (

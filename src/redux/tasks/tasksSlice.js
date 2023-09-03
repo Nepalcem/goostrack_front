@@ -2,7 +2,6 @@ import {
   addTask,
   deleteTask,
   fetchAllTasks,
-  fetchTasksByDate,
   updateTask,
 } from './tasksOperation';
 
@@ -17,18 +16,11 @@ const tasksSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchAllTasks.fulfilled, (state, { payload }) => {
-        state.items = payload;
+        state.items = payload.tasks;
+        state.tasksByDay = payload.tasksByDay;
         state.error = null;
       })
       .addCase(fetchAllTasks.rejected, (state, { payload }) => {
-        state.items = [];
-        state.error = payload;
-      })
-      .addCase(fetchTasksByDate.fulfilled, (state, { payload }) => {
-        state.items = payload;
-        state.error = null;
-      })
-      .addCase(fetchTasksByDate.rejected, (state, { payload }) => {
         state.items = [];
         state.error = payload;
       })
