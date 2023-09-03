@@ -5,7 +5,6 @@ import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar
 const CalendarPage = () => {
   // стейт для передачи дня по клику в таблице месяца CalendarTable
   const [onClickDay, setOnClickDay] = useState(null);
-  console.log('CalendarPage :', onClickDay);
 
   return (
     <div>
