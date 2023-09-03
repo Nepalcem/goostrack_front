@@ -22,7 +22,7 @@ const DayTask = ({ currentTask }) => {
   // console.log('currentTask', currentTask);
   return (
     <TaskContainer>
-      <Description>{currentTask.description}</Description>
+      <Description>{currentTask.title}</Description>
       <OptionsBlock>
         <InfoBlock>
           <AvaThumb>

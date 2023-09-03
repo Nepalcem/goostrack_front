@@ -13,8 +13,8 @@ const CalendarToolbar = () => {
   const [date, setDate] = useState(getTime(new Date())); //за промовчанням поточна дата
   const [period, setPeriod] = useState('month'); //за промовчанням period month
   // форматируем текущую дату из стейта для URL
-  const CurrentDate = format(date, 'MM yyyy').split(' ').join('');
-  const CurrentDay = format(date, 'dd MM yyyy').split(' ').join('');
+  const CurrentDate = format(date, 'yyyy-MM').split(' ').join('');
+  const CurrentDay = format(date, 'yyyy-MM-dd').split(' ').join('');
   // меняем URL взависимости от периода и даті
   useEffect(() => {
     if (period === 'month') {

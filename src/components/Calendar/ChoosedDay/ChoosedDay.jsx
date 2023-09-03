@@ -1,125 +1,42 @@
-//import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import TasksColumnsList from '../TasksColumnsList/TasksColumnsList';
+import { selectTasks } from 'redux/tasks/tasksSelectors';
+import { useEffect, useState } from 'react';
+import { fetchAllTasks } from 'redux/tasks/tasksOperation';
 
 export const ChoosedDay = () => {
-  //const { currentDay } = useParams();
+  const dispatch = useDispatch();
+  //витягаємо поточний день із адресного рядка
+  const { currentDay } = useParams();
+  // створюємо стейт в якому будемо зберігати таски поточного дня
+  const [currentDayTasks, setCurrentDayTasks] = useState([]);
 
-  const tasksPerDay = [
-    {
-      _id: {
-        $oid: '64edd176925ecde7e5d77703',
-      },
-      title: 'NATALIA',
-      start: '14:00',
-      end: '15:00',
-      date: '2023-08-27',
-      priority: 'low',
-      category: 'to-do',
-      owner: {
-        $oid: '64edbfb375c6af6258e298e6',
-      },
-      description: 'Task to-do 1',
-      createdAt: {
-        $date: '2023-08-29T11:07:34.000Z',
-      },
-      updatedAt: {
-        $date: '2023-08-29T15:13:58.617Z',
-      },
-    },
+  // юзефект при оновленні тасків із бази даних
+  useEffect(() => {
+    dispatch(fetchAllTasks());
+  }, [dispatch]);
 
-    {
-      _id: {
-        $oid: '64ee036108c0d2588ee85f63',
-      },
-      title: 'IRYNKA',
-      start: '10:00',
-      end: '11:00',
-      date: '2023-08-29',
-      priority: 'medium',
-      category: 'to-do',
-      owner: {
-        $oid: '64edbfb375c6af6258e298e6',
-      },
-      description: 'Task to-do 2',
-      createdAt: {
-        $date: '2023-08-29T14:40:33.513Z',
-      },
-      updatedAt: {
-        $date: '2023-08-29T14:40:33.513Z',
-      },
-    },
+  // витягаємо в змінну allTasks всі таски
 
-    {
-      _id: {
-        $oid: '64ee03e60619825ba8a8560c',
-      },
-      title: 'SVETLANA',
-      start: '18:00',
-      end: '22:00',
-      date: '2023-08-17',
-      priority: 'high',
-      category: 'to-do',
-      owner: {
-        $oid: '64edbfb375c6af6258e298e6',
-      },
-      description: 'Task to-do 3',
-      createdAt: {
-        $date: '2023-08-29T14:42:46.043Z',
-      },
-      updatedAt: {
-        $date: '2023-08-29T14:42:46.043Z',
-      },
-    },
+  // !!!!!!!!!!!!
+  // !!!!!!!!!!!!
+  // !!!!!!!!!!!!
+  // !!!!!!!!!!!!
+  // ЧОМУСЬ ТІЛЬКИ ПІСЛЯ ПЕРЕКЛЮЧЕННЯ ДНЯ  ТУДТ НАЗАД ЗʼЯВЛЯЮТЬСЯ ТАСКИ!!!!!
 
-    {
-      _id: {
-        $oid: '64ee036108c0d2588ee85f63',
-      },
-      title: 'IRYNKA',
-      start: '10:00',
-      end: '11:00',
-      date: '2023-08-29',
-      priority: 'medium',
-      category: 'in-progress',
-      owner: {
-        $oid: '64edbfb375c6af6258e298e6',
-      },
-      description: 'Task in-progress 1',
-      createdAt: {
-        $date: '2023-08-29T14:40:33.513Z',
-      },
-      updatedAt: {
-        $date: '2023-08-29T14:40:33.513Z',
-      },
-    },
+  const allTasks = useSelector(selectTasks) ?? [];
 
-    {
-      _id: {
-        $oid: '64ee03e60619825ba8a8560c',
-      },
-      title: 'SVETLANA',
-      start: '18:00',
-      end: '22:00',
-      date: '2023-08-17',
-      priority: 'high',
-      category: 'done',
-      owner: {
-        $oid: '64edbfb375c6af6258e298e6',
-      },
-      description: 'Task done 1',
-      createdAt: {
-        $date: '2023-08-29T14:42:46.043Z',
-      },
-      updatedAt: {
-        $date: '2023-08-29T14:42:46.043Z',
-      },
-    },
-  ];
+  // юзефект який витягає в currentDayTasks таски поточного дня
+  useEffect(() => {
+    let tempTasks = allTasks.filter(item => item.date === currentDay);
+    setCurrentDayTasks(tempTasks);
+  }, [currentDay]);
 
   return (
     <div>
       {/* <DayCalendarHead /> */}
-      <TasksColumnsList tasksPerDay={tasksPerDay} />
+      <TasksColumnsList tasksPerDay={currentDayTasks} />
     </div>
   );
 };
