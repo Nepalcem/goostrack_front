@@ -5,6 +5,9 @@ import { selectTasks } from 'redux/tasks/tasksSelectors';
 import { useEffect, useState } from 'react';
 import { fetchAllTasks } from 'redux/tasks/tasksOperation';
 
+// gкои шо виводжу таски звідси
+import { tasksExample } from './tasksExample';
+
 export const ChoosedDay = () => {
   const dispatch = useDispatch();
   //витягаємо поточний день із адресного рядка
@@ -29,9 +32,9 @@ export const ChoosedDay = () => {
 
   // юзефект який витягає в currentDayTasks таски поточного дня
   useEffect(() => {
-    let tempTasks = allTasks.filter(item => item.date === currentDay);
+    let tempTasks = tasksExample.filter(item => item.date === currentDay);
     setCurrentDayTasks(tempTasks);
-  }, [currentDay, allTasks]);
+  }, [currentDay]);
 
   return (
     <div>
@@ -41,6 +44,21 @@ export const ChoosedDay = () => {
   );
 };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // "1. Компонент рендериться на розширеному маршруті сторінки /calendar/day/:currentDay
 // 2. Компонент підписаний на колекцію завдань з глобального стейту
 // 3. Компонент визначає завдання для обраного дня, фільтрує за ступенем віиконання To do | In progress | Done та показує і відповідних колонках.
