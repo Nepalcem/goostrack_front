@@ -31,10 +31,10 @@ export const ChoosedDay = () => {
   const allTasks = useSelector(selectTasks) ?? [];
 
   // юзефект який витягає в currentDayTasks таски поточного дня
-  useEffect(() => {
-    let tempTasks = tasksExample.filter(item => item.date === currentDay);
-    setCurrentDayTasks(tempTasks);
-  }, [currentDay]);
+  // useEffect(() => {
+  //   let tempTasks = tasksExample.filter(item => item.date === currentDay);
+  //   setCurrentDayTasks(tempTasks);
+  // }, [currentDay]);
 
   return (
     <div>
