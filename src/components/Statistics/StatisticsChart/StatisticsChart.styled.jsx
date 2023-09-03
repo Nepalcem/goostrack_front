@@ -6,7 +6,10 @@ export const ChartContainer = styled.div`
   align-items: center;
   margin-top: 40px;
   padding: 45px 15px;
-  border: 1px solid #e3f3ff;
+
+  // border: 1px solid #e3f3ff;
+  border: var(--color-border-stat);
+
   border-radius: 20px;
 
   @media screen and (min-width: 768px) {
@@ -17,3 +20,7 @@ export const ChartContainer = styled.div`
     padding: 45px 40px;
   }
 `;
+
+
+
+

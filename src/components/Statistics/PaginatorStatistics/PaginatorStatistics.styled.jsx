@@ -63,6 +63,7 @@ export const ListItem = styled.li`
   position: relative;
   padding-left: 10px;
   font-size: 14px;
+  color:var(--color-calendar-day);
 
   ::before {
     content: '•';

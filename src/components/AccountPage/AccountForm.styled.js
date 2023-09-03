@@ -33,14 +33,16 @@ export const FormField = styled.div`
       min-width: 354px;
     }
     padding: 12px 14px;
-    border-radius: 8px;
-    border: 1px solid;
+    border-radius: 8px ;
+    background-color: var(--color-btn-change-day);
+    color: var(--color-name-user);
+    border: 1px solid ;
     border-color: ${props =>
       props.valid
         ? '#3CBC81'
         : props.error
         ? '#DA1414'
-        : 'rgba(17, 17, 17, 0.15);'};
+        : 'var(--color-border-profil);'};
     font-family: Inter;
     font-weight: 600;
     font-size: 14px;
@@ -59,7 +61,7 @@ export const FormField = styled.div`
     line-height: calc(14 / 12);
     font-family: Inter;
     color: ${props =>
-      props.valid ? '#3CBC81' : props.error ? '#DA1414' : 'initial'};
+      props.valid ? '#3CBC81' : props.error ? '#DA1414' : 'var(--color-title-profil)'};
   }
 `;
 
