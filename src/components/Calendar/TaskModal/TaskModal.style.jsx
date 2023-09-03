@@ -8,7 +8,8 @@ export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  /* background-color: rgba(0, 0, 0, 0.3); */
   z-index: 2000;
 
   display: flex;
@@ -53,11 +54,11 @@ export const ModalContainer = styled.div`
   /* align-items: center; */
 
   @media screen and (min-width: 768px) {
-    /* min-width: 570px; */
+    width: 396px;
+    padding: 40px 28px;
   }
 
   @media screen and (min-width: 1440px) {
-    /* min-width: 990px; */
   }
 `;
 
