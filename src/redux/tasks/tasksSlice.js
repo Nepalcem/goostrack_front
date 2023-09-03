@@ -2,6 +2,7 @@ import {
   addTask,
   deleteTask,
   fetchAllTasks,
+  fetchTasksByDate,
   updateTask,
 } from './tasksOperation';
 
@@ -20,6 +21,14 @@ const tasksSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchAllTasks.rejected, (state, { payload }) => {
+        state.items = [];
+        state.error = payload;
+      })
+      .addCase(fetchTasksByDate.fulfilled, (state, { payload }) => {
+        state.items = payload;
+        state.error = null;
+      })
+      .addCase(fetchTasksByDate.rejected, (state, { payload }) => {
         state.items = [];
         state.error = payload;
       })

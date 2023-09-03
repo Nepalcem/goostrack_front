@@ -5,6 +5,7 @@ import { persistStore } from 'redux-persist';
 import { persistedAuthReducer } from './auth/authSlice';
 import { reviewsReducer } from './reviews/reviewsSlice';
 import { filterReducer } from './filter/filterSlice';
+import { tasksReducer } from './tasks/tasksSlice';
 
 //  для прибирання помилки з консолі
 import {
@@ -15,7 +16,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { tasksReducer } from './tasks/tasksSlice';
+
 
 export const store = configureStore({
   reducer: {
