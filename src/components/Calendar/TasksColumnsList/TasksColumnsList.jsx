@@ -23,6 +23,7 @@ import TaskModal from '../TaskModal/TaskModal';
 
 const TasksColumnsList = ({ tasksPerDay }) => {
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
+  const [category, setCategory] = useState('');
 
   const handleToggle = () => {
     setModalAddTaskIsOpened(prevState => !prevState);
@@ -30,12 +31,19 @@ const TasksColumnsList = ({ tasksPerDay }) => {
 
   return (
     <>
-      {modalAddTaskIsOpened && <TaskModal handleToggle={handleToggle} />}
+      {modalAddTaskIsOpened && (
+        <TaskModal category={category} handleToggle={handleToggle} />
+      )}
       <MainTasksContainer>
         <TaskBlock>
           <TaskBlockTitle>
             <Title>To do</Title>
-            <AddTaskButton onClick={handleToggle}>
+            <AddTaskButton
+              onClick={() => {
+                setCategory('to-do');
+                handleToggle();
+              }}
+            >
               <IcoAdd src={IcoAddTask} />
             </AddTaskButton>
           </TaskBlockTitle>
@@ -48,7 +56,12 @@ const TasksColumnsList = ({ tasksPerDay }) => {
               );
             })}
           </TasksWrap>
-          <AddTaskButtonBig onClick={handleToggle}>
+          <AddTaskButtonBig
+            onClick={() => {
+              setCategory('to-do');
+              handleToggle();
+            }}
+          >
             <IcoAdd2 src={IcoAddTask2} />
             Add task
           </AddTaskButtonBig>
@@ -57,7 +70,12 @@ const TasksColumnsList = ({ tasksPerDay }) => {
         <TaskBlock>
           <TaskBlockTitle>
             <Title>In progress</Title>
-            <AddTaskButton onClick={handleToggle}>
+            <AddTaskButton
+              onClick={() => {
+                setCategory('in-progress');
+                handleToggle();
+              }}
+            >
               <IcoAdd src={IcoAddTask} />
             </AddTaskButton>
           </TaskBlockTitle>
@@ -70,7 +88,12 @@ const TasksColumnsList = ({ tasksPerDay }) => {
               );
             })}
           </TasksWrap>
-          <AddTaskButtonBig onClick={handleToggle}>
+          <AddTaskButtonBig
+            onClick={() => {
+              setCategory('in-progress');
+              handleToggle();
+            }}
+          >
             <IcoAdd2 src={IcoAddTask2} />
             Add task
           </AddTaskButtonBig>
@@ -79,7 +102,12 @@ const TasksColumnsList = ({ tasksPerDay }) => {
         <TaskBlock>
           <TaskBlockTitle>
             <Title>Done</Title>
-            <AddTaskButton onClick={handleToggle}>
+            <AddTaskButton
+              onClick={() => {
+                setCategory('done');
+                handleToggle();
+              }}
+            >
               <IcoAdd src={IcoAddTask} />
             </AddTaskButton>
           </TaskBlockTitle>
@@ -92,7 +120,12 @@ const TasksColumnsList = ({ tasksPerDay }) => {
               );
             })}
           </TasksWrap>
-          <AddTaskButtonBig onClick={handleToggle}>
+          <AddTaskButtonBig
+            onClick={() => {
+              setCategory('done');
+              handleToggle();
+            }}
+          >
             <IcoAdd2 src={IcoAddTask2} />
             Add task
           </AddTaskButtonBig>

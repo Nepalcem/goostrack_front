@@ -18,7 +18,8 @@ import CloseIco from '../../../images/svg/x-close.svg';
 import { createPortal } from 'react-dom';
 const modalRoot = document.querySelector('#modal-root');
 
-const TaskModal = ({ handleToggle }) => {
+const TaskModal = ({ handleToggle, category }) => {
+  console.log('category', category);
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
     // у обʼєкт values повертаються дані з форми
