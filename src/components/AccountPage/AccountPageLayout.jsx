@@ -139,6 +139,11 @@ const AccountPageLayout = () => {
                   <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
                 </label>
               </UserAvatarPlus>
+              <ErrorMessageStyled
+                  name="fileInput"
+                  component="div"
+                  className="error-message"
+                />
             </div>
 
             <div className="second-row">
