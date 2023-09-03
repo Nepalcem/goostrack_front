@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Бібліотека формік
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, } from 'formik';
 
 import {
   Backdrop,
@@ -10,10 +10,20 @@ import {
   CloseButtonIco,
   StyledFormikInput,
   TimeBlock,
+  Label,
+  BlockButton,
+  EditButton,
+  AddTasks,
+  CancelButton,
+  RadioBlock,
+  RadioLabel,
+  RadioInputBlue,
+  RadioInputYellow,
+  RadioInputRed,
 } from './TaskModal.style';
 
 import CloseIco from '../../../images/svg/x-close.svg';
-
+import PlusButton from '../../../images/svg/log-out.svg'; //змінити на +
 // портал
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
@@ -64,41 +74,58 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
 
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form autoComplete="off">
-            <label htmlFor="title">Title</label>
+            <Label htmlFor="title">
+              Title
             <StyledFormikInput
               type="text"
               name="title"
               placeholder="Enter text"
             />
+            </Label>
             <TimeBlock>
-              <div>
-                <label htmlFor="start">Start</label>
+                <Label htmlFor="start">
+                  Start
                 <StyledFormikInput type="time" name="start" />
-              </div>
-              <div>
-                <label htmlFor="end">End</label>
+                </Label>
+              
+                <Label htmlFor="end">
+                  End
                 <StyledFormikInput type="time" name="end" />
-              </div>
+                </Label>
             </TimeBlock>
 
-            <div>
-              <label>
-                <Field type="radio" name="priority" value="low" checked />
+            <RadioBlock>
+              <RadioLabel>
+                <RadioInputBlue type="radio" name="priority" value="low" checked />
                 Low
-              </label>
-              <label>
-                <Field type="radio" name="priority" value="medium" />
+              </RadioLabel>
+              <RadioLabel>
+                <RadioInputYellow type="radio" name="priority" value="medium" />
                 Medium
-              </label>
-              <label>
-                <Field type="radio" name="priority" value="high" />
+              </RadioLabel>
+              <RadioLabel>
+                <RadioInputRed type="radio" name="priority" value="high" />
                 High
-              </label>
-            </div>
-            <button type="submit">Add</button>
+              </RadioLabel>
+            </RadioBlock>
+
+            {/* <button type="submit">Add</button>
             <button type="button" onClick={handleToggle}>
               Cancel
-            </button>
+            </button> */}
+
+            <BlockButton>
+            <EditButton type="submit">
+            <AddTasks src={PlusButton} alt="add button" />
+              Add
+            </EditButton>
+
+            <CancelButton type="button" onClick={handleToggle}>
+              Cancel
+            </CancelButton>
+          </BlockButton>
+
+
           </Form>
         </Formik>
       </ModalContainer>
