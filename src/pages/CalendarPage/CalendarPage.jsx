@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar/CalendarToolbar';
 
 const CalendarPage = () => {
+  // стейт для передачи дня по клику в таблице месяца CalendarTable
+  const [onClickDay, setOnClickDay] = useState(null);
+  console.log('CalendarPage :', onClickDay);
+
   return (
     <div>
-      <CalendarToolbar />
+      <CalendarToolbar onClickDay={onClickDay} />
 
-      <Outlet />
+      <Outlet context={[onClickDay, setOnClickDay]} />
     </div>
   );
 };

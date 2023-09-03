@@ -52,6 +52,9 @@ export const CalenderCell = styled.td`
 export const NumberDay = styled.div`
   position: absolute;
 
+  padding: 4px 8px 4px 8px;
+  border-radius: 8px;
+
   font-family: Inter;
   font-size: 12px;
   font-weight: 700;
@@ -60,8 +63,12 @@ export const NumberDay = styled.div`
   text-align: left;
 
   // color: #343434;
-  color:var( --color-calendar-day);
-  
+  // color: var(--color-calendar-day);
+  color: ${({ currentDayNumber, dayMoment }) =>
+    currentDayNumber !== dayMoment ? `var(--color - calendar - day)` : `#FFFF`};
+  background-color: ${({ currentDayNumber, dayMoment }) =>
+    currentDayNumber !== dayMoment ? `#fff` : '#3E85F3'}; //primaryColor
+
   @media screen and (min-width: 375px) {
     top: 12px;
     right: 10px;

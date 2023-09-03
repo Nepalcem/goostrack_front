@@ -1,9 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useOutletContext } from 'react-router-dom';
 import { MonthCalendarHead } from '../MonthCalendarHead/MonthCalendarHead';
 import { CalendarTable } from '../CalendarTable/CalendarTable';
 
 export const ChoosedMonth = () => {
+  // получаем в CalendarPage день для перехода в ChoosedDay
+  const [onClickDate, setOnClickDate] = useOutletContext();
   // получаем CarrentDate из URL
   const { currentDate } = useParams();
 
@@ -13,6 +15,8 @@ export const ChoosedMonth = () => {
   //  вырезаем месяц
   const month = currentDate.slice(5, 7);
 
+  const onClick = dayMoment => setOnClickDate(dayMoment);
+
   return (
     <>
       {/* заголовок */}
@@ -20,7 +24,7 @@ export const ChoosedMonth = () => {
       <MonthCalendarHead />
 
       {/* отображение месяца */}
-      <CalendarTable month={month} year={year} />
+      <CalendarTable month={month} year={year} onClick={onClick} />
     </>
   );
 };
