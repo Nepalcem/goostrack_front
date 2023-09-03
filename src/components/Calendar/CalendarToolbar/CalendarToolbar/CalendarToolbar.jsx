@@ -8,7 +8,7 @@ import PeriodTypeSelect from '../PeriodTypeSelect/PeriodTypeSelect';
 
 import { CalendarToolbarDiv } from './CalendarToolbar.styled';
 
-const CalendarToolbar = () => {
+const CalendarToolbar = ({ onClickDay }) => {
   const navigate = useNavigate();
   const [date, setDate] = useState(getTime(new Date())); //за промовчанням поточна дата
   const [period, setPeriod] = useState('month'); //за промовчанням period month
@@ -23,6 +23,15 @@ const CalendarToolbar = () => {
       navigate(`/calendar/day/${CurrentDay}`);
     }
   }, [navigate, CurrentDate, date, period, CurrentDay]);
+
+  // если есть выбор дня в CalendarTable - меняем стейт для перехода
+  useEffect(() => {
+    if (onClickDay !== null) {
+      setDate(getTime(new Date(`${onClickDay}`)));
+      setPeriod('day');
+    }
+  }, [onClickDay]);
+  /////////////////////////////
 
   //функція зміни місяця вперед чи назад
   const onChangeMonthOrDay = (step, period) => {
@@ -48,7 +57,7 @@ const CalendarToolbar = () => {
         period={period}
         onClick={onChangeMonthOrDay}
       />
-      <PeriodTypeSelect onClick={onChangePeriod} />
+      <PeriodTypeSelect period={period} onClick={onChangePeriod} />
     </CalendarToolbarDiv>
   );
 };

@@ -51,12 +51,13 @@ const padWeekBack = (week, padWith = null) => {
   return [...week, ...Array(7 - week.length).fill(padWith)];
 };
 
-export const CalendarTable = ({ month, year }) => {
-  // console.log(month, year);
+export const CalendarTable = ({ month, year, onClick }) => {
   //currentMonthMoment  текущий или переданный месяц года
   const currentMonthMoment = moment(`${month}${year}}`, 'MMYYYY');
   //  weeks - массив количества недель и сколько дней в каждой неделе
   const weeks = segmentIntoWeeks(getDaysInMonth(currentMonthMoment));
+  // номер текущего дня
+  const currentDayNumber = moment().format('D');
 
   return (
     <>
@@ -75,8 +76,16 @@ export const CalendarTable = ({ month, year }) => {
               <CalendarRow key={i}>
                 {displayWeek.map((dayMoment, j) =>
                   dayMoment ? (
-                    <CalenderCell key={dayMoment.format('D')}>
-                      <NumberDay>{dayMoment.format('D')}</NumberDay>
+                    <CalenderCell
+                      key={dayMoment.format('D')}
+                      onClick={() => onClick(dayMoment.format('MM.DD.YYYY'))}
+                    >
+                      <NumberDay
+                        currentDayNumber={currentDayNumber}
+                        dayMoment={dayMoment.format('D')}
+                      >
+                        {dayMoment.format('D')}
+                      </NumberDay>
                     </CalenderCell>
                   ) : (
                     <CalenderCell key={`${i}${j}`}></CalenderCell>
@@ -90,3 +99,4 @@ export const CalendarTable = ({ month, year }) => {
     </>
   );
 };
+//
