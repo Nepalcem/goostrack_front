@@ -27,7 +27,20 @@ import { CalendarGlobalStyles } from './DatePicker.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
 
+const FileSize = 1024 * 1024; // 1MB
+
 const userValidationSchema = Yup.object().shape({
+  file: Yup.mixed()
+    .test(
+      'fileSize',
+      'File size is too large. Maximum size is 1MB.',
+      value => !value || (value && value.size <= FileSize)
+    )
+    .test(
+      'fileFormat',
+      'Only jpeg and png formats are supported.',
+      value => value && ['image/jpeg', 'image/png'].includes(value.type)
+    ),
   username: Yup.string().required('User Name is required'),
   email: Yup.string()
     .email('Invalid email')
@@ -56,19 +69,16 @@ const AccountPageLayout = () => {
   }, [user.birthday]);
 
   const submitHandler = (values, actions) => {
-    const userData = {
-      ...values,
-      avatarURL: values.file
-        ? URL.createObjectURL(values.file)
-        : user.avatarURL || defaultProfileAvatar,
-      birthday: format(values.birthday, 'yyyy-MM-dd'),
-    };
+    console.log(values);
+    const formData = new FormData();
+    formData.append('avatarURL', values.file ?? defaultProfileAvatar);
+    formData.append('username', values.username);
+    formData.append('email', values.email);
+    formData.append('birthday', format(values.birthday, 'yyyy-MM-dd'));
+    formData.append('phone', values.phone);
+    formData.append('skype', values.skype);
 
-    if ('file' in userData) {
-      delete userData.file;
-    }
-    console.log(userData);
-    dispatch(authOperations.patchCurrentUser(userData));
+    dispatch(authOperations.patchCurrentUser(formData));
   };
 
   return (
@@ -183,80 +193,80 @@ const AccountPageLayout = () => {
             </div>
 
             <div className="third-row">
-            <FormField
-              error={errors.email}
-              valid={touched.email && !errors.email}
-            >
-              <label htmlFor="email">Email</label>
-              <Field
-                type="text"
-                name="email"
-                id="email"
-                className={
-                  errors.email && touched.email
-                    ? 'error'
-                    : touched.email && !errors.email
-                    ? 'valid'
-                    : ''
-                }
-              />
-              <ErrorMessageStyled
-                name="email"
-                component="div"
-                className="error-message"
-              />
-            </FormField>
+              <FormField
+                error={errors.email}
+                valid={touched.email && !errors.email}
+              >
+                <label htmlFor="email">Email</label>
+                <Field
+                  type="text"
+                  name="email"
+                  id="email"
+                  className={
+                    errors.email && touched.email
+                      ? 'error'
+                      : touched.email && !errors.email
+                      ? 'valid'
+                      : ''
+                  }
+                />
+                <ErrorMessageStyled
+                  name="email"
+                  component="div"
+                  className="error-message"
+                />
+              </FormField>
 
-            <FormField
-              error={errors.phone}
-              valid={touched.phone && !errors.phone}
-            >
-              <label htmlFor="phone">Phone</label>
-              <Field
-                type="text"
-                name="phone"
-                id="phone"
-                className={
-                  errors.phone && touched.phone
-                    ? 'error'
-                    : touched.phone && !errors.phone
-                    ? 'valid'
-                    : ''
-                }
-              />
-              <ErrorMessageStyled
-                name="phone"
-                component="div"
-                className="error-message"
-              />
-            </FormField>
+              <FormField
+                error={errors.phone}
+                valid={touched.phone && !errors.phone}
+              >
+                <label htmlFor="phone">Phone</label>
+                <Field
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  className={
+                    errors.phone && touched.phone
+                      ? 'error'
+                      : touched.phone && !errors.phone
+                      ? 'valid'
+                      : ''
+                  }
+                />
+                <ErrorMessageStyled
+                  name="phone"
+                  component="div"
+                  className="error-message"
+                />
+              </FormField>
             </div>
 
             <div className="forth-row">
-            <FormField
-              error={errors.skype}
-              valid={touched.skype && !errors.skype}
-            >
-              <label htmlFor="skype">Skype</label>
-              <Field
-                type="text"
-                name="skype"
-                id="skype"
-                className={
-                  errors.skype && touched.skype
-                    ? 'error'
-                    : touched.skype && !errors.skype
-                    ? 'valid'
-                    : ''
-                }
-              />
-              <ErrorMessageStyled
-                name="skype"
-                component="div"
-                className="error-message"
-              />
-            </FormField>
-            <div className="spacer"></div>
+              <FormField
+                error={errors.skype}
+                valid={touched.skype && !errors.skype}
+              >
+                <label htmlFor="skype">Skype</label>
+                <Field
+                  type="text"
+                  name="skype"
+                  id="skype"
+                  className={
+                    errors.skype && touched.skype
+                      ? 'error'
+                      : touched.skype && !errors.skype
+                      ? 'valid'
+                      : ''
+                  }
+                />
+                <ErrorMessageStyled
+                  name="skype"
+                  component="div"
+                  className="error-message"
+                />
+              </FormField>
+              <div className="spacer"></div>
             </div>
             <AccountSaveButton type="submit">Save changes</AccountSaveButton>
           </StyledForm>
