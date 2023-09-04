@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import moment from 'moment';
-
+import { useOutletContext } from 'react-router-dom';
 import {
   CalendarTableDiv,
   CalendarRow,
@@ -54,7 +54,7 @@ const padWeekBack = (week, padWith = null) => {
   return [...week, ...Array(7 - week.length).fill(padWith)];
 };
 
-export const CalendarTable = ({ month, year, onClick }) => {
+export const CalendarTable = ({ month, year }) => {
   //currentMonthMoment  текущий или переданный месяц года
   const currentMonthMoment = moment(`${month}${year}}`, 'MMYYYY');
   //  weeks - массив количества недель и сколько дней в каждой неделе
@@ -70,7 +70,12 @@ export const CalendarTable = ({ month, year, onClick }) => {
 
   // витягаємо нові таски для нового рендерингу
   const tasks = useSelector(state => state.tasks.items);
-  console.log('tasks', tasks);
+  // console.log('tasks', tasks);
+
+  // получаем в CalendarPage день для перехода в ChoosedDay
+  const [onClickDate, setOnClickDate] = useOutletContext();
+  console.log('onClickDate', onClickDate);
+  const onClick = dayMoment => setOnClickDate(dayMoment);
 
   return (
     <>

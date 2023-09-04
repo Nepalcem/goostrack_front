@@ -28,6 +28,7 @@ export const CalenderCell = styled.td`
   background-color: var(--color-btn-change-day);
   transition: background-color 1s linear;
   padding: 40px 2px 2px 2px;
+  overflow: scroll;
 
   border: var(--color-calendar-border);
   // border: 1px solid rgba(220, 227, 229, 0.5);
