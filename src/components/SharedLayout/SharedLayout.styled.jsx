@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const Main = styled.main`
   background-color: var(--main-background-color);
   // background-color: #f7f6f9;
+  height: 100%;
   margin-bottom: 0;
 `;
 
@@ -16,7 +17,7 @@ export const Container = styled.div`
   min-height: 100vh;
   margin: 0 auto;
   padding: 24px 20px;
-  outline: 2px solid tomato;
+  /* outline: 2px solid tomato; */
 
   @media screen and (min-width: 768px) {
     max-width: 768px;
@@ -28,7 +29,7 @@ export const Container = styled.div`
     flex-direction: row;
     padding-left: 0;
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom: 24px;
   }
 `;
 
