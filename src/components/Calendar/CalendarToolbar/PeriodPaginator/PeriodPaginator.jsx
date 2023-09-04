@@ -1,5 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { useState } from 'react';
 
 import {
   PeriodPaginatorDiv,
@@ -9,6 +10,8 @@ import {
   Svg,
 } from './PeriodPaginator.styled';
 const PeriodPaginator = ({ date, period, onClick }) => {
+  const [direction, setDirection] = useState('forvard'); // направление выбора даты back or forvard
+  console.log(direction);
   return (
     <PeriodPaginatorDiv>
       {/* отображение даты в нужном формате */}
@@ -18,7 +21,15 @@ const PeriodPaginator = ({ date, period, onClick }) => {
       </DisplayDataDiv>
       {/* кнопки вібора периода */}
       <ButtonsChangePeriodDiv>
-        <ButtonChangeDate border="right" onClick={() => onClick(-1, period)}>
+        <ButtonChangeDate
+          direction={direction}
+          place={'left'}
+          border="right"
+          onClick={() => {
+            setDirection('back');
+            onClick(-1, period);
+          }}
+        >
           <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
             <path
               strokeLinecap="round"
@@ -28,7 +39,14 @@ const PeriodPaginator = ({ date, period, onClick }) => {
             />
           </Svg>
         </ButtonChangeDate>
-        <ButtonChangeDate onClick={() => onClick(1, period)}>
+        <ButtonChangeDate
+          direction={direction}
+          place={'right'}
+          onClick={() => {
+            setDirection('forvard');
+            onClick(1, period);
+          }}
+        >
           <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
             <path
               strokeLinecap="round"
