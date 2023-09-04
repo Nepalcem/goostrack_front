@@ -105,7 +105,7 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
                   type="time"
                   name="start"
                   value={inforTask.start}
-                />{' '}
+                />
                 приклад valid
               </Label>
 
@@ -115,19 +115,14 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
                   type="time"
                   name="end"
                   value={inforTask.end}
-                />{' '}
+                />
                 приклад valid
               </Label>
             </TimeBlock>
 
             <RadioBlock>
               <RadioLabel>
-                <RadioInputBlue
-                  type="radio"
-                  name="priority"
-                  value="low"
-                  defaultChecked
-                />
+                <RadioInputBlue type="radio" name="priority" value="low" />
                 Low
               </RadioLabel>
               <RadioLabel>
@@ -139,11 +134,6 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
                 High
               </RadioLabel>
             </RadioBlock>
-
-            {/* <button type="submit">Add</button>
-            <button type="button" onClick={handleToggle}>
-              Cancel
-            </button> */}
 
             <BlockButton>
               <EditButton type="submit">
