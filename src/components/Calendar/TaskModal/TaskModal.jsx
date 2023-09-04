@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { useState } from 'react';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/tasksOperation';
 
@@ -46,14 +46,14 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
     priority: 'low',
   };
 
-  const [inforTask, setInfoTask] = useState({ initialValues }); //приклад valid
+  // const [inforTask, setInfoTask] = useState({ initialValues }); //приклад valid
 
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
-    if (inforTask.start > inforTask.end) {
-      Notify.failure('Start time cannot be later than end time');
-      return; //приклад valid
-    }
+    // if (inforTask.start > inforTask.end) {
+    //   Notify.failure('Start time cannot be later than end time');
+    //   return; //приклад valid
+    // }
 
     // у обʼєкт values повертаються дані з форми
     console.log('values', values);
@@ -104,7 +104,7 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
                 <StyledFormikInput
                   type="time"
                   name="start"
-                  value={inforTask.start}
+                  value={initialValues.start}
                 />
                 приклад valid
               </Label>
@@ -114,7 +114,7 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
                 <StyledFormikInput
                   type="time"
                   name="end"
-                  value={inforTask.end}
+                  value={initialValues.end}
                 />
                 приклад valid
               </Label>
