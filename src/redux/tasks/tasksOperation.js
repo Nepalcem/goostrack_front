@@ -23,12 +23,11 @@ export const fetchAllTasks = createAsyncThunk(
     }
     token.set(persistedToken);
 
+    const serverTime = new Date();
     if (year === undefined || !year) {
-      const serverTime = new Date();
       year = serverTime.getFullYear();
     }
     if (month === undefined || !month) {
-      const serverTime = new Date();
       month = serverTime.getMonth() + 1; // Note: Months are zero-based
     }
 
