@@ -1,24 +1,29 @@
-import { useState } from 'react';
-import Modal from 'components/modal/Modal';
+import { fetchReviewByOwner } from 'redux/reviews/reviewsOperation';
 import { FeedbackButtonStyle, FeedbackWrapper } from './FeedbackButton.styled';
-import ModalRating from './ModalRating/ModalRating';
-import ModalReview from './ModalReview/ModalReviews';
-import ModalButton from './ModalButton/ModalButton';
+import { useDispatch } from 'react-redux';
+import ModalFeedback from './FormFeedback/ModalFeedback';
+import { useState } from 'react';
 
 const FeedbackButton = () => {
-  const handleToggle = () => setIsOpenModal(pS => !pS);
-  const [isModalOpen, setIsOpenModal] = useState(false);
+  const dispatch = useDispatch();
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleButtonClick = async () => {
+    await dispatch(fetchReviewByOwner());
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
   return (
     <>
-      <FeedbackButtonStyle type="button" onClick={handleToggle}>
+      <FeedbackButtonStyle type="button" onClick={handleButtonClick}>
         Feedback
       </FeedbackButtonStyle>
       <FeedbackWrapper>
-        <Modal onClose={handleToggle} isOpen={isModalOpen}>
-          <ModalRating />
-          <ModalReview />
-          <ModalButton />
-        </Modal>
+        {isModalOpen && (
+          <ModalFeedback onClose={handleCloseModal}></ModalFeedback>
+        )}
       </FeedbackWrapper>
     </>
   );

@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+
 import React, { useState } from 'react';
 
 import {
@@ -23,6 +24,7 @@ const SharedLayout = () => {
   const handleToggle = () => {
     setIsMenuOpen(pS => !pS);
   };
+
   return (
     //  MAIN BLOCK FOR BG COLOR AND CONTAINER FOR WIDTH AND CENTERED
     <Main>
@@ -47,7 +49,7 @@ const SharedLayout = () => {
               </BurgerMenuButton>
               <ChangeHeadingName />
             </TopMenuLeftPart>
-            <UserInfo />
+            <UserInfo  />
           </TopMenu>
 
           {/* MAIN CONTENT OUTLET */}
