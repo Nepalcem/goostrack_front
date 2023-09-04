@@ -28,23 +28,44 @@ import {
 
 import CloseIco from '../../../images/svg/x-close.svg';
 import PlusButton from '../../../images/svg/log-out.svg'; //змінити на +
+import EditButtonIco from '../../../images/svg/pencil.svg'; //змінити на олівець
 
 // портал
 import { createPortal } from 'react-dom';
 const modalRoot = document.querySelector('#modal-root');
 
-const TaskModal = ({ handleToggle, category, currentDay }) => {
+const TaskModal = ({
+  handleToggle,
+  category,
+  currentDay,
+  operation,
+  idForEdit,
+  currentTask,
+}) => {
   const dispatch = useDispatch();
 
   // початкові значення полів форми
-  const initialValues = {
-    title: '',
-    start: '00:00', //приклад valid
-    end: '00:00', //приклад valid
-    // start: '',
-    // end: '',
-    priority: 'low',
-  };
+  let initialValues;
+  if (operation === 'create') {
+    initialValues = {
+      title: '',
+      start: '00:00', //приклад valid
+      end: '00:00', //приклад valid
+      // start: '',
+      // end: '',
+      priority: 'low',
+    };
+  }
+  if (operation === 'edit') {
+    initialValues = {
+      title: currentTask.title,
+      start: currentTask.start, //приклад valid
+      end: currentTask.end, //приклад valid
+      // start: '',
+      // end: '',
+      priority: currentTask.priority,
+    };
+  }
 
   // const [inforTask, setInfoTask] = useState({ initialValues }); //приклад valid
 
@@ -56,19 +77,36 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
     // }
 
     // у обʼєкт values повертаються дані з форми
-    console.log('values', values);
+    // console.log('values', values);
     // тут буде проходити реєстрація  dispatch(authOperations.logIn(values));
-    const newTask = {
-      title: values.title,
-      start: values.start,
-      end: values.end,
-      date: currentDay,
-      priority: values.priority,
-      category: category,
-    };
-    console.log('newTask', newTask);
 
-    dispatch(tasksOperations.addTask(newTask));
+    if (operation === 'create') {
+      const newTask = {
+        title: values.title,
+        start: values.start,
+        end: values.end,
+        date: currentDay,
+        priority: values.priority,
+        category: category,
+      };
+      console.log('newTask', newTask);
+      dispatch(tasksOperations.addTask(newTask));
+    }
+
+    if (operation === 'edit') {
+      const updatedTask = {
+        title: values.title,
+        start: values.start,
+        end: values.end,
+        date: currentTask.date,
+        priority: values.priority,
+        category: currentTask.category,
+      };
+      console.log('updatedTask', updatedTask);
+      dispatch(
+        tasksOperations.updateTask({ id: currentTask._id, updatedTask })
+      );
+    }
 
     actions.resetForm();
     handleToggle();
@@ -104,7 +142,7 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
                 <StyledFormikInput
                   type="time"
                   name="start"
-                  value={initialValues.start}
+                  // value={initialValues.start}
                 />
                 приклад valid
               </Label>
@@ -114,7 +152,7 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
                 <StyledFormikInput
                   type="time"
                   name="end"
-                  value={initialValues.end}
+                  // value={initialValues.end}
                 />
                 приклад valid
               </Label>
@@ -137,8 +175,14 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
 
             <BlockButton>
               <EditButton type="submit">
-                <AddTasks src={PlusButton} alt="add button" />
-                Add
+                {operation === 'create' && (
+                  <AddTasks src={PlusButton} alt="add button" />
+                )}
+                {operation === 'edit' && (
+                  <AddTasks src={EditButtonIco} alt="edit button" />
+                )}
+                {operation === 'create' && 'Add'}
+                {operation === 'edit' && 'Edit'}
               </EditButton>
 
               <CancelButton type="button" onClick={handleToggle}>
