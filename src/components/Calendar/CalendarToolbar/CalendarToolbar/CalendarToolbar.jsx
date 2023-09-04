@@ -10,8 +10,17 @@ import { CalendarToolbarDiv } from './CalendarToolbar.styled';
 
 const CalendarToolbar = ({ onClickDay }) => {
   const navigate = useNavigate();
-  const [date, setDate] = useState(getTime(new Date())); //за промовчанням поточна дата
-  const [period, setPeriod] = useState('month'); //за промовчанням period month
+
+  const [date, setDate] = useState(
+    parseInt(localStorage.getItem('date')) || getTime(new Date())
+  ); //за промовчанням поточна дата
+  const [period, setPeriod] = useState(
+    localStorage.getItem('period') || 'month'
+  ); //за промовчанням period month
+  //сохраняем дату и период в localStorage
+  localStorage.date = date;
+  localStorage.period = period;
+
   // форматируем текущую дату из стейта для URL
   const CurrentDate = format(date, 'yyyy-MM').split(' ').join('');
   const CurrentDay = format(date, 'yyyy-MM-dd').split(' ').join('');
@@ -62,10 +71,3 @@ const CalendarToolbar = ({ onClickDay }) => {
   );
 };
 export default CalendarToolbar;
-// "1. Компонент рендерить:
-//  - PeriodPaginator - дозволяє юзеру змінити дату періоду, задачі за який він хоче подивитись.
-//  - PeriodTypeSelect - дозволяє юзеру змінити тип періоду, задачі за який він хоче подивитись.
-// 2. Компонент отримує тип періоду, та має локальний стейт з датою.
-// При зміні дати або типу періоду відбуваеться запит на отримання задач за обраний період, якщо задач з даного періоду досі немає в глобальному стейті.
-// Успіх - дані пишуться в глобальний стейт
-// Помилка - виводиться відповідне пуш повідомлення."
