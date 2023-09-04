@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const NameDaysComponent = styled.div`
   display: flex;
-  background-color: #ffffff;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  // background-color: #ffffff;
+  background-color: var(--color-btn-change-day);
+  border: var(--color-calendar-border);
+
   border-radius: 8px;
   margin-top: 24px;
   padding-top: 14px;
@@ -15,8 +17,8 @@ export const NameDaysComponent = styled.div`
   }
   @media screen and (min-width: 1440px) {
     margin-top: 32px;
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 `;
 
@@ -33,7 +35,8 @@ export const DayComponent = styled.div`
   line-height: 18px;
   letter-spacing: 0em;
   text-align: left;
-  color: #343434;
+  // color: #343434;
+  color: var(--color-menu-title);
 
   @media screen and (min-width: 375px) {
   }
@@ -51,6 +54,7 @@ export const DayNumber = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: var(--color-menu-item);
 
   margin-top: 6px;
 
@@ -59,6 +63,8 @@ export const DayNumber = styled.div`
   }
   @media screen and (min-width: 1440px) {
     padding-top: 8px;
+    margin-top: 0px;
+
   }
 `;
 
@@ -76,7 +82,7 @@ export const CurrentDayNumber = styled.div`
   color: ${({ currentDay, day }) =>
     currentDay !== day ? `var(--color - calendar - day)` : `#FFFF`};
   background-color: ${({ currentDay, day }) =>
-    currentDay !== day ? `#fff` : '#3E85F3'}; //primaryColor
+    currentDay !== day ? `transparent` : '#3E85F3'}; //primaryColor
 
   @media screen and (min-width: 768px) {
     margin-top: 4px;
@@ -85,6 +91,7 @@ export const CurrentDayNumber = styled.div`
     line-height: 18px;
   }
   @media screen and (min-width: 1440px) {
-    padding-top: 8px;
+    padding-top: 4px;
+    margin-top: 0px;
   }
 `;

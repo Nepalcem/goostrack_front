@@ -1,7 +1,7 @@
-import { addDays, format, getTime } from 'date-fns';
+import { addDays, getTime } from 'date-fns';
 import {
   ButtonsContainer,
-  CalendarButton,
+  // CalendarButton,
   List,
   ListItem,
   PeriodPaginatorContainer,
@@ -12,7 +12,8 @@ import {
   ButtonsChangePeriodDiv,
   Svg,
 } from 'components/Calendar/CalendarToolbar/PeriodPaginator/PeriodPaginator.styled';
-
+import DatePicker from 'react-datepicker';
+import { StatisticsDatePickerGlobalStyles } from './StatisticsDatepicker.styled';
 const PeriodPaginatorStatistics = () => {
   const [date, setDate] = useState(getTime(new Date()));
 
@@ -28,7 +29,17 @@ const PeriodPaginatorStatistics = () => {
   return (
     <PeriodPaginatorContainer>
       <ButtonsContainer>
-        <CalendarButton>{format(date, 'dd MMM yyyy')}</CalendarButton>
+        <DatePicker
+          calendarStartDay={1}
+          selected={date}
+          onChange={date => {
+            console.log('Selected Date:', date);
+            setDate(date);
+            // console.log(typeof(date));
+          }}
+          dateFormat="dd MMMM yyyy"
+        />
+        <StatisticsDatePickerGlobalStyles />
         <ButtonsChangePeriodDiv>
           <ButtonChangeDate
             border="right"

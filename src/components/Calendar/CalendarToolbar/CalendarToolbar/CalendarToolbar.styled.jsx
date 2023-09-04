@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const CalendarToolbarDiv = styled.div`
   display: flex;
+  
   @media screen and (min-width: 375px) {
     flex-direction: column;
     margin-top: 64px;
