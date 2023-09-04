@@ -17,7 +17,6 @@ const tasksSlice = createSlice({
     builder
       .addCase(fetchAllTasks.fulfilled, (state, { payload }) => {
         state.items = payload.tasks;
-        state.tasksByDay = payload.tasksByDay;
         state.error = null;
       })
       .addCase(fetchAllTasks.rejected, (state, { payload }) => {
@@ -33,10 +32,10 @@ const tasksSlice = createSlice({
       })
       .addCase(updateTask.fulfilled, (state, { payload }) => {
         const updatedTaskIndex = state.items.findIndex(
-          task => task.id === payload.id
+          task => task._id === payload.result._id
         );
         if (updatedTaskIndex !== -1) {
-          state.items[updatedTaskIndex] = payload;
+          state.items[updatedTaskIndex] = payload.result;
         }
         state.error = null;
       })
@@ -44,7 +43,7 @@ const tasksSlice = createSlice({
         state.error = payload;
       })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
-        state.items = state.items.filter(task => task.id !== payload);
+        state.items = state.items.filter(task => task._id !== payload);
         state.error = null;
       })
       .addCase(deleteTask.rejected, (state, { payload }) => {

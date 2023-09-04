@@ -22,7 +22,7 @@ import IcoAddTask2 from '../../../images/svg/plus2.svg';
 import TaskModal from '../TaskModal/TaskModal';
 import { useParams } from 'react-router-dom';
 
-const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
+const TasksColumnsList = ({ tasksPerDay }) => {
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [category, setCategory] = useState('');
 
@@ -57,14 +57,10 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
             </AddTaskButton>
           </TaskBlockTitle>
           <TasksWrap>
-            {tasksPerDay.map(cuurentTast => {
+            {tasksPerDay.map(currentTasks => {
               return (
-                cuurentTast.category === 'to-do' && (
-                  <DayTask
-                    key={cuurentTast._id}
-                    currentTask={cuurentTast}
-                    handleDelete={handleDelete}
-                  />
+                currentTasks.category === 'to-do' && (
+                  <DayTask key={currentTasks._id} currentTask={currentTasks} />
                 )
               );
             })}
@@ -94,14 +90,10 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
             </AddTaskButton>
           </TaskBlockTitle>
           <TasksWrap>
-            {tasksPerDay.map(cuurentTast => {
+            {tasksPerDay.map(currentTasks => {
               return (
-                cuurentTast.category === 'in-progress' && (
-                  <DayTask
-                    key={cuurentTast._id}
-                    currentTask={cuurentTast}
-                    handleDelete={handleDelete}
-                  />
+                currentTasks.category === 'in-progress' && (
+                  <DayTask key={currentTasks._id} currentTask={currentTasks} />
                 )
               );
             })}
@@ -132,14 +124,10 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
             </AddTaskButton>
           </TaskBlockTitle>
           <TasksWrap>
-            {tasksPerDay.map(cuurentTast => {
+            {tasksPerDay.map(currentTasks => {
               return (
-                cuurentTast.category === 'done' && (
-                  <DayTask
-                    key={cuurentTast._id}
-                    currentTask={cuurentTast}
-                    handleDelete={handleDelete}
-                  />
+                currentTasks.category === 'done' && (
+                  <DayTask key={currentTasks._id} currentTask={currentTasks} />
                 )
               );
             })}

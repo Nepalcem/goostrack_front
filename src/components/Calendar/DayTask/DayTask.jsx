@@ -19,26 +19,18 @@ import IcoDeleteTast from '../../../images/svg/trash.svg';
 import ProfileAva from '../../../images/user-avatar.png';
 import { useDispatch } from 'react-redux';
 
-import tasksOperations from 'redux/tasks/tasksOperation';
+import { deleteTask } from 'redux/tasks/tasksOperation';
 
 import TaskModal from '../TaskModal/TaskModal';
 
 const DayTask = ({ currentTask }) => {
   const dispatch = useDispatch();
-
-  function handleDelete(id) {
-    dispatch(tasksOperations.deleteTask(id));
-  }
-
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [idForEdit, setIdForEdit] = useState('');
 
   const handleToggle = () => {
     setModalAddTaskIsOpened(prevState => !prevState);
   };
-
-  // console.log('currentTask', currentTask);
-  // console.log('handleDelete', handleDelete);
   return (
     <TaskContainer>
       {modalAddTaskIsOpened && (
@@ -79,7 +71,7 @@ const DayTask = ({ currentTask }) => {
 
           <ButtonController
             type="button"
-            onClick={() => handleDelete(currentTask._id)}
+            onClick={() => dispatch(deleteTask(currentTask._id))}
           >
             <ButtonIco src={IcoDeleteTast} />
           </ButtonController>

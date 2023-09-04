@@ -9,7 +9,7 @@ import {
   OneTaskInTable,
 } from './CalendarTable.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import tasksOperations from 'redux/tasks/tasksOperation';
+import { fetchAllTasks } from 'redux/tasks/tasksOperation';
 
 //возвращает количество дней в каждой недели
 export const getDaysInMonth = monthMoment => {
@@ -65,7 +65,7 @@ export const CalendarTable = ({ month, year }) => {
   // оновлюємо список тасків щоразу коли міняється місяць
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(tasksOperations.fetchAllTasks({ month, year }));
+    dispatch(fetchAllTasks({ month, year }));
   }, [dispatch, month, year]);
 
   // витягаємо нові таски для нового рендерингу

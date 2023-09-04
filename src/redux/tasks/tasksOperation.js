@@ -14,8 +14,7 @@ const token = {
 
 export const fetchAllTasks = createAsyncThunk(
   'tasks/fetchAll',
-  async ({ year, month , day }, thunkAPI) => {
-
+  async ({ year, month, day }, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     if (!persistedToken) {
@@ -32,11 +31,13 @@ export const fetchAllTasks = createAsyncThunk(
     }
 
     try {
-      const response = await axios.get(`/tasks?year=${year}&month=${month}&day=${day}`);
+      const response = await axios.get(
+        `/tasks?year=${year}&month=${month}&day=${day}`
+      );
       return {
         tasks: response.data.tasks,
         tasksByDay: response.data.tasksByDay,
-      }
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -78,11 +79,3 @@ export const deleteTask = createAsyncThunk(
     }
   }
 );
-
-const tasksOperations = {
-  fetchAllTasks,
-  addTask,
-  updateTask,
-  deleteTask,
-};
-export default tasksOperations;
