@@ -13,6 +13,8 @@ import {
   AccountUserNameRole,
 } from './AccountPageLayout.styled';
 
+import { editTitle } from 'redux/title/titleSlice';
+
 import { format, parseISO } from 'date-fns';
 
 import {
@@ -60,6 +62,11 @@ const AccountPageLayout = () => {
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
   const [formattedBirthday, setFormattedBirthday] = useState('');
+
+  // Текст заголовку цієї сторінки
+  useEffect(() => {
+    dispatch(editTitle('User Profile'));
+  });
 
   useEffect(() => {
     // Check if user.birthday is available and format it
@@ -207,7 +214,6 @@ const AccountPageLayout = () => {
                 />
               </FormField>
 
-
               <FormField
                 error={errors.email}
                 valid={touched.email && !errors.email}
@@ -256,7 +262,6 @@ const AccountPageLayout = () => {
                 />
               </FormField>
 
-
               <FormField
                 error={errors.skype}
                 valid={touched.skype && !errors.skype}
@@ -282,7 +287,7 @@ const AccountPageLayout = () => {
               </FormField>
               <div className="spacer"></div>
 
-            <AccountSaveButton type="submit">Save changes</AccountSaveButton>
+              <AccountSaveButton type="submit">Save changes</AccountSaveButton>
             </FormTextInputs>
           </StyledForm>
         )}
