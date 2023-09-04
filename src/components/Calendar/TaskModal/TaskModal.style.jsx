@@ -137,9 +137,10 @@ export const CancelButton = styled(EditButton)`
   height: 48px;
 `;
 
-export const AddTasks = styled.img`
+export const AddTasks = styled(ReactSVG)`
   width: 20px;
   height: 20px;
+  stroke: white;
 `;
 
 export const RadioBlock = styled.div`
