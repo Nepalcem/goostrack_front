@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar/CalendarToolbar';
 import { fetchAllTasks } from 'redux/tasks/tasksOperation';
-
+import { editTitle } from 'redux/title/titleSlice';
 
 const CalendarPage = () => {
   // стейт для передачи дня по клику в таблице месяца CalendarTable
@@ -12,7 +12,11 @@ const CalendarPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Dispatch the loadTasks for Current Month action when the component mounts for one first time 
+    dispatch(editTitle('Calendar'));
+  });
+
+  useEffect(() => {
+    // Dispatch the loadTasks for Current Month action when the component mounts for one first time
     dispatch(fetchAllTasks({}));
   }, [dispatch]);
 
