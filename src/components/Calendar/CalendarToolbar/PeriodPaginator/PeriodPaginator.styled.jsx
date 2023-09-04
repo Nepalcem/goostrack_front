@@ -60,7 +60,12 @@ export const Svg = styled.svg`
 `;
 
 export const ButtonChangeDate = styled.button`
-  padding: 8px 12px 8px 12px;
+  padding: 7px 10px;
+  @media screen and (min-width: 768px) {
+    padding: 8px 12px 8px 12px;
+  }
+  
+
   // background-color: #fff;
   background-color: var(--color-btn-change-day);
 
