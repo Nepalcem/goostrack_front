@@ -26,7 +26,7 @@ export const CalendarCellWrap = styled.div`
 
 export const CalenderCell = styled.td`
   background-color: var(--color-btn-change-day);
-  transition: 1s linear;
+  transition: background-color 1s linear;
 
   border: var(--color-calendar-border);
   // border: 1px solid rgba(220, 227, 229, 0.5);
