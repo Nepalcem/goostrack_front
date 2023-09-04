@@ -82,3 +82,15 @@ export const NumberDay = styled.div`
   @media screen and (min-width: 1440px) {
   }
 `;
+
+export const OneTaskInTable = styled.div`
+  background-color: ${props => props.type === 'low' && '#CEEEFD'};
+  background-color: ${props => props.type === 'medium' && '#fcf0d4'};
+  background-color: ${props => props.type === 'high' && '#FFD2DD'};
+
+  color: ${props => props.type === 'low' && '#3E85F3'};
+  color: ${props => props.type === 'medium' && '#F3B249'};
+  color: ${props => props.type === 'high' && '#EA3D65'};
+
+  border-radius: 8px;
+`;
