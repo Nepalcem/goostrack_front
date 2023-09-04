@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 // Бібліотека формік
 import { Formik, Form, } from 'formik';
@@ -32,10 +34,21 @@ const modalRoot = document.querySelector('#modal-root');
 
 const TaskModal = ({ handleToggle, category, currentDay }) => {
   const dispatch = useDispatch();
+  const [inforTask, setInfoTask] = useState(initialValues); //приклад valid
+
 
   console.log('category', category);
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
+
+
+
+    if (inforTask.start > inforTask.end) {
+      Notify.failure('Start time cannot be later than end time');
+      return; //приклад valid
+    }
+
+
     // у обʼєкт values повертаються дані з форми
     console.log('values', values);
     // тут буде проходити реєстрація  dispatch(authOperations.logIn(values));
@@ -63,7 +76,13 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
   };
 
   // початкові значення полів форми
-  const initialValues = { title: '', start: '', end: '', priority: 'low' };
+  const initialValues = { 
+  title: '', 
+  start: '00:00', //приклад valid
+  end: '00:00', //приклад valid
+  // start: '', 
+  // end: '', 
+  priority: 'low' };
 
   return createPortal(
     <Backdrop onClick={backdropClick}>
@@ -85,12 +104,14 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
             <TimeBlock>
                 <Label htmlFor="start">
                   Start
-                <StyledFormikInput type="time" name="start" />
+                <StyledFormikInput type="time" name="start" 
+                value={inforTask.start} /> приклад valid
                 </Label>
               
                 <Label htmlFor="end">
                   End
-                <StyledFormikInput type="time" name="end" />
+                <StyledFormikInput type="time" name="end" 
+                value={inforTask.end} /> приклад valid
                 </Label>
             </TimeBlock>
 
