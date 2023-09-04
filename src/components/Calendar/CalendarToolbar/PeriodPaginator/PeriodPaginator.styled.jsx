@@ -38,6 +38,7 @@ export const DisplayDataDiv = styled.div`
 export const ButtonsChangePeriodDiv = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
+  overflow: hidden;
   @media screen and (min-width: 375px) {
   }
   @media screen and (min-width: 768px) {
