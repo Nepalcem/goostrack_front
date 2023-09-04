@@ -3,10 +3,11 @@ import { ReactSVG } from 'react-svg';
 
 export const TaskContainer = styled.div`
   border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
   /* background-color: #f7f6f9; */
+  border: var(--color-calendar-border);
   background-color: var(--color-calendar-day-task-bg);
   padding: 16px 15px;
+  
 `;
 
 export const Description = styled.p`

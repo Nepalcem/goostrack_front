@@ -22,13 +22,19 @@ export const ButtonChangePeriod = styled.button`
   letter-spacing: 0em;
   text-align: center;
 
-  color: #3e85f3;
+  // color: #3e85f3;
+  color: ${({ place, period }) =>
+    (place === 'left' && period === 'month') ||
+    (place === 'right' && period === 'day')
+      ? 'var(--color-button-day-title)'
+      : 'var(--color-button-month-title)'};
+
 
   background-color: ${({ place, period }) =>
     (place === 'left' && period === 'month') ||
     (place === 'right' && period === 'day')
-      ? 'rgba(62, 133, 243, 0.2)'
-      : '#E3F3FF'};
+      ? 'var(--color-brg-button-day)'
+      : 'var(--color-brg-button-month)'};
 
   cursor: pointer;
 

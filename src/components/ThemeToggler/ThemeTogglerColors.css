@@ -34,6 +34,17 @@ html[data-theme='dark'] {
   --color-close-popup: #FFFFFF;
   --color-bgr-input: transparent;
 
+  --color-border-day-cal-head: 1px solid rgba(255, 255, 255, 0.15);
+
+  --color-button-month-title: #3e85f3;
+  --color-button-day-title: #FFFFFF;
+  --color-brg-button-month: #21222C;
+  --color-brg-button-day: #3E85F3;
+
+  --scrollbar-thumb:#171820;
+  --scrollbar-track:#2D3037;
+
+
 }
 
 html[data-theme='light'] {
@@ -71,12 +82,18 @@ html[data-theme='light'] {
   --color-close-popup: #111111;
   --color-bgr-input: #F6F6F6;
 
+  --color-border-day-cal-head: 1px solid rgba(220, 227, 229, 0.8);
+  --color-brg-button-day: rgba(62, 133, 243, 0.2);
+  --color-brg-button-month: #E3F3FF;
+  --color-button-month-title: #3e85f3;
+  --color-button-day-title: #3e85f3;
 
+  --scrollbar-thumb:#E7E5E5;
+  --scrollbar-track:#F2F2F2;
 }
 
 /* var(--color-name-user) */
 
 
 /* Tasks,procent,toDo,inProcess,Done color:var(--color-calendar-day); */
---color-bgr-input: #F6F6F6;
 
