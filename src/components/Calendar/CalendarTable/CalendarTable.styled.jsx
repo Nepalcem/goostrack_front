@@ -29,7 +29,31 @@ export const CalenderCell = styled.td`
   background-color: var(--color-btn-change-day);
   transition: background-color 1s linear;
   padding: 40px 2px 2px 2px;
-  overflow: scroll;
+  // overflow: scroll;
+  // overflow-y: auto;
+
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  // background:transparent
+    background: var(--scrollbar-track);
+    border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    height: 112px;
+    border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7c7c7c;
+}
+  
 
   border: var(--color-calendar-border);
   // border: 1px solid rgba(220, 227, 229, 0.5);
