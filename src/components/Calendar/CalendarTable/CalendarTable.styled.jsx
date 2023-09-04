@@ -27,6 +27,7 @@ export const CalendarCellWrap = styled.div`
 export const CalenderCell = styled.td`
   background-color: var(--color-btn-change-day);
   transition: background-color 1s linear;
+  padding: 40px 2px 2px 2px;
 
   border: var(--color-calendar-border);
   // border: 1px solid rgba(220, 227, 229, 0.5);
@@ -94,4 +95,14 @@ export const OneTaskInTable = styled.div`
   color: ${props => props.type === 'high' && '#EA3D65'};
 
   border-radius: 8px;
+  padding: 5px;
+  height: 26px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.28571;
 `;
