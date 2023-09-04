@@ -6,7 +6,9 @@ import {
   CalendarRow,
   CalenderCell,
   NumberDay,
+  OneTaskInTable,
 } from './CalendarTable.styled';
+import { useSelector } from 'react-redux';
 
 //возвращает количество дней в каждой недели
 export const getDaysInMonth = monthMoment => {
@@ -59,6 +61,9 @@ export const CalendarTable = ({ month, year, onClick }) => {
   // номер текущего дня
   const currentDayNumber = moment().format('D');
 
+  const tasks = useSelector(state => state.tasks.items);
+  console.log('tasks', tasks);
+
   return (
     <>
       <CalendarTableDiv>
@@ -86,6 +91,19 @@ export const CalendarTable = ({ month, year, onClick }) => {
                       >
                         {dayMoment.format('D')}
                       </NumberDay>
+                      {/* ОТУТ ПОЧАТОК ВЕРСТКИ ТАСОК В КАЛЕНДАР */}
+                      {tasks.map(currentTask => {
+                        if (
+                          currentTask.date === dayMoment.format('YYYY-MM-DD')
+                        ) {
+                          return (
+                            <OneTaskInTable type={currentTask.priority}>
+                              {currentTask.title}
+                            </OneTaskInTable>
+                          );
+                        }
+                      })}
+                      {/* ОТУТ КІНЕЦЬ ВЕРСТКИ ТАСОК В КАЛЕНДАР */}
                     </CalenderCell>
                   ) : (
                     <CalenderCell key={`${i}${j}`}></CalenderCell>
