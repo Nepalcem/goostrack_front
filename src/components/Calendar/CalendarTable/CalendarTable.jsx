@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
 
 import {
@@ -8,7 +8,8 @@ import {
   NumberDay,
   OneTaskInTable,
 } from './CalendarTable.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import tasksOperations from 'redux/tasks/tasksOperation';
 
 //возвращает количество дней в каждой недели
 export const getDaysInMonth = monthMoment => {
@@ -61,6 +62,13 @@ export const CalendarTable = ({ month, year, onClick }) => {
   // номер текущего дня
   const currentDayNumber = moment().format('D');
 
+  // оновлюємо список тасків щоразу коли міняється місяць
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(tasksOperations.fetchAllTasks({ month, year }));
+  }, [dispatch, month, year]);
+
+  // витягаємо нові таски для нового рендерингу
   const tasks = useSelector(state => state.tasks.items);
   console.log('tasks', tasks);
 
@@ -92,17 +100,19 @@ export const CalendarTable = ({ month, year, onClick }) => {
                         {dayMoment.format('D')}
                       </NumberDay>
                       {/* ОТУТ ПОЧАТОК ВЕРСТКИ ТАСОК В КАЛЕНДАР */}
-                      {tasks.map(currentTask => {
-                        if (
-                          currentTask.date === dayMoment.format('YYYY-MM-DD')
-                        ) {
-                          return (
-                            <OneTaskInTable type={currentTask.priority}>
+
+                      {tasks.map(
+                        currentTask =>
+                          currentTask.date ===
+                            dayMoment.format('YYYY-MM-DD') && (
+                            <OneTaskInTable
+                              type={currentTask.priority}
+                              key={currentTask._id}
+                            >
                               {currentTask.title}
                             </OneTaskInTable>
-                          );
-                        }
-                      })}
+                          )
+                      )}
                       {/* ОТУТ КІНЕЦЬ ВЕРСТКИ ТАСОК В КАЛЕНДАР */}
                     </CalenderCell>
                   ) : (
