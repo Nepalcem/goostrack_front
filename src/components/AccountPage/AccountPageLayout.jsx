@@ -20,6 +20,7 @@ import {
   FormField,
   AccountSaveButton,
   ErrorMessageStyled,
+  FormTextInputs,
 } from './AccountForm.styled';
 import DatePicker from 'react-datepicker';
 import { CalendarGlobalStyles } from './DatePicker.styled';
@@ -76,7 +77,9 @@ const AccountPageLayout = () => {
     if (values.file) {
       formData.append('avatarURL', values.file);
     } else if (!user.avatarURL) {
-      const defaultAvatarBlob = new Blob([defaultProfileAvatar], { type: 'image/png' });
+      const defaultAvatarBlob = new Blob([defaultProfileAvatar], {
+        type: 'image/png',
+      });
       formData.append('avatarURL', defaultAvatarBlob);
     }
     formData.append('username', values.username);
@@ -97,10 +100,6 @@ const AccountPageLayout = () => {
         />
         <AccountAvatarPlusIcon src={userAvatarPlusIcon} />
       </UserAvatarPlus> */}
-      <AccountUserName>
-        <AccountUserNameTitle>{user.username}</AccountUserNameTitle>
-        <AccountUserNameRole>User</AccountUserNameRole>
-      </AccountUserName>
 
       <Formik
         initialValues={{
@@ -140,13 +139,18 @@ const AccountPageLayout = () => {
                 </label>
               </UserAvatarPlus>
               <ErrorMessageStyled
-                  name="fileInput"
-                  component="div"
-                  className="error-message"
-                />
+                name="fileInput"
+                component="div"
+                className="error-message"
+              />
+
+              <AccountUserName>
+                <AccountUserNameTitle>{user.username}</AccountUserNameTitle>
+                <AccountUserNameRole>User</AccountUserNameRole>
+              </AccountUserName>
             </div>
 
-            <div className="second-row">
+            <FormTextInputs>
               <FormField
                 error={errors.username}
                 valid={touched.username && !errors.username}
@@ -202,9 +206,8 @@ const AccountPageLayout = () => {
                   className="error-message"
                 />
               </FormField>
-            </div>
 
-            <div className="third-row">
+
               <FormField
                 error={errors.email}
                 valid={touched.email && !errors.email}
@@ -252,9 +255,8 @@ const AccountPageLayout = () => {
                   className="error-message"
                 />
               </FormField>
-            </div>
 
-            <div className="forth-row">
+
               <FormField
                 error={errors.skype}
                 valid={touched.skype && !errors.skype}
@@ -279,8 +281,9 @@ const AccountPageLayout = () => {
                 />
               </FormField>
               <div className="spacer"></div>
-            </div>
+
             <AccountSaveButton type="submit">Save changes</AccountSaveButton>
+            </FormTextInputs>
           </StyledForm>
         )}
       </Formik>

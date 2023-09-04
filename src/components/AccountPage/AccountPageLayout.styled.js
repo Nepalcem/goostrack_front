@@ -47,7 +47,6 @@ export const AccountPageAvatar = styled.img`
 
 export const UserAvatarPlus = styled.div`
   position: relative;
-  margin-bottom: 14px;
   @media screen and (max-width: 767px) {
     transform: translateY(-50%);
   }
@@ -55,7 +54,7 @@ export const UserAvatarPlus = styled.div`
 
 export const AccountAvatarPlusIcon = styled.img`
   position: absolute;
-  top: 80%;
+  top: 85%;
   left: 65%;
   @media screen and (max-width: 767px) {
     width: 12px;
@@ -69,6 +68,9 @@ export const AccountUserName = styled.div`
   align-items: center;
   @media screen and (max-width: 767px) {
     transform: translateY(-50%);
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 14px;
   }
 `;
 
