@@ -27,7 +27,7 @@ import {
 } from './TaskModal.style';
 
 import CloseIco from '../../../images/svg/x-close.svg';
-import PlusButton from '../../../images/svg/log-out.svg'; //змінити на +
+import PlusButton from '../../../images/svg/plus2.svg'; //змінити на +
 import EditButtonIco from '../../../images/svg/pencil.svg'; //змінити на олівець
 
 // портал
