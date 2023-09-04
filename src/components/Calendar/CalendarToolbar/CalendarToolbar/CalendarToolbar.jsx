@@ -13,20 +13,15 @@ const CalendarToolbar = ({ onClickDay }) => {
   // const [date, setDate] = useState(getTime(new Date())); //за промовчанням поточна дата
   // const [period, setPeriod] = useState('month'); //за промовчанням period month
 
-  const [date, setDate] = useState(parseInt(localStorage.getItem('date'))); //за промовчанням поточна дата
-  const [period, setPeriod] = useState(localStorage.getItem('period')); //за промовчанням period month
+  const [date, setDate] = useState(
+    parseInt(localStorage.getItem('date')) || getTime(new Date())
+  ); //за промовчанням поточна дата
+  const [period, setPeriod] = useState(
+    localStorage.getItem('period') || 'month'
+  ); //за промовчанням period month
 
   localStorage.date = date;
   localStorage.period = period;
-
-  console.log(
-    'localStorage:date',
-    typeof parseInt(localStorage.getItem('date'))
-  );
-  console.log('localStorage:period: ', typeof localStorage.getItem('period'));
-
-  console.log('date :', typeof date);
-  console.log('period :', typeof period);
 
   // форматируем текущую дату из стейта для URL
   const CurrentDate = format(date, 'yyyy-MM').split(' ').join('');
