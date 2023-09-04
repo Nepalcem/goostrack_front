@@ -1,8 +1,6 @@
 import React from 'react';
-// import { useState } from 'react';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch } from 'react-redux';
-import tasksOperations from 'redux/tasks/tasksOperation';
+import { addTask, updateTask } from 'redux/tasks/tasksOperation';
 
 // Бібліотека формік
 import { Formik, Form } from 'formik';
@@ -39,7 +37,6 @@ const TaskModal = ({
   category,
   currentDay,
   operation,
-  idForEdit,
   currentTask,
 }) => {
   const dispatch = useDispatch();
@@ -51,8 +48,6 @@ const TaskModal = ({
       title: '',
       start: '00:00', //приклад valid
       end: '00:00', //приклад valid
-      // start: '',
-      // end: '',
       priority: 'low',
     };
   }
@@ -61,25 +56,12 @@ const TaskModal = ({
       title: currentTask.title,
       start: currentTask.start, //приклад valid
       end: currentTask.end, //приклад valid
-      // start: '',
-      // end: '',
       priority: currentTask.priority,
     };
   }
 
-  // const [inforTask, setInfoTask] = useState({ initialValues }); //приклад valid
-
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
-    // if (inforTask.start > inforTask.end) {
-    //   Notify.failure('Start time cannot be later than end time');
-    //   return; //приклад valid
-    // }
-
-    // у обʼєкт values повертаються дані з форми
-    // console.log('values', values);
-    // тут буде проходити реєстрація  dispatch(authOperations.logIn(values));
-
     if (operation === 'create') {
       const newTask = {
         title: values.title,
@@ -89,8 +71,7 @@ const TaskModal = ({
         priority: values.priority,
         category: category,
       };
-      console.log('newTask', newTask);
-      dispatch(tasksOperations.addTask(newTask));
+      dispatch(addTask(newTask));
     }
 
     if (operation === 'edit') {
@@ -102,10 +83,7 @@ const TaskModal = ({
         priority: values.priority,
         category: currentTask.category,
       };
-      console.log('updatedTask', updatedTask);
-      dispatch(
-        tasksOperations.updateTask({ id: currentTask._id, updatedTask })
-      );
+      dispatch(updateTask({ id: currentTask._id, updatedTask }));
     }
 
     actions.resetForm();
@@ -139,21 +117,13 @@ const TaskModal = ({
             <TimeBlock>
               <Label htmlFor="start">
                 Start
-                <StyledFormikInput
-                  type="time"
-                  name="start"
-                  // value={initialValues.start}
-                />
+                <StyledFormikInput type="time" name="start" />
                 приклад valid
               </Label>
 
               <Label htmlFor="end">
                 End
-                <StyledFormikInput
-                  type="time"
-                  name="end"
-                  // value={initialValues.end}
-                />
+                <StyledFormikInput type="time" name="end" />
                 приклад valid
               </Label>
             </TimeBlock>

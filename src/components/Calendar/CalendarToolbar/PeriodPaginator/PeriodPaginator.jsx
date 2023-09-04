@@ -11,7 +11,7 @@ import {
 } from './PeriodPaginator.styled';
 const PeriodPaginator = ({ date, period, onClick }) => {
   const [direction, setDirection] = useState('forvard'); // направление выбора даты back or forvard
-  console.log(direction);
+  // console.log(direction);
   return (
     <PeriodPaginatorDiv>
       {/* отображение даты в нужном формате */}
