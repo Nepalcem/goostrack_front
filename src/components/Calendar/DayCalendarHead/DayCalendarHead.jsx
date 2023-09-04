@@ -25,11 +25,11 @@ const DayCalendarHead = () => {
   const todayEuro = addDays(todayUSA, -1);
 
   const today = !isSunday(todayUSA) ? todayUSA : todayEuro;
-  // ✅ Get the first day of the current week (Sunday + 1 = Monday)
+  // ✅ Get the first day of the current week (USA standart Sunday + 1 = Euro standart Monday)
   const firstDay = new Date(
     today.setDate(today.getDate() - today.getDay() + 1)
   );
-  // ✅ Get the last day of the current week (Saturday => Sunday)
+  // ✅ Get the last day of the current week (USA standart Saturday => Euro standart Sunday)
   const lastDay = new Date(today.setDate(today.getDate() - today.getDay() + 7));
   const daysOfWeek = eachDayOfInterval({
     start: firstDay,
@@ -43,11 +43,7 @@ const DayCalendarHead = () => {
         <DayComponent key={index} nameDay={nameDay}>
           {nameDay}
 
-          <DayNumber
-            key={daysOfWeek[index]}
-            //currentDay={day}
-            // day={format(daysOfWeek[index], 'dd')}
-          >
+          <DayNumber key={daysOfWeek[index]}>
             <CurrentDayNumber
               currentDay={day}
               day={format(daysOfWeek[index], 'dd')}

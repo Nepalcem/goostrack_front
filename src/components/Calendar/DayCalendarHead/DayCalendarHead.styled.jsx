@@ -28,31 +28,22 @@ export const DayComponent = styled.div`
   width: 48px;
 
   font-family: Inter;
+  font-size: 16px;
   font-weight: 600;
   line-height: 18px;
   letter-spacing: 0em;
   text-align: left;
+  color: #343434;
 
-  font-size: ${({ period }) => (period === 'month' ? '16px' : '14px')};
-
-  color: ${({ period, nameDay }) =>
-    (period === 'month' && nameDay === 'SAT') ||
-    (period === 'month' && nameDay === 'SUN')
-      ? '#3E85F3'
-      : '#343434'};
   @media screen and (min-width: 375px) {
   }
   @media screen and (min-width: 768px) {
     width: 100px;
+    font-size: 14px;
   }
   @media screen and (min-width: 1440px) {
     width: 155px;
   }
-
-  /* @media screen and (min-width: 1440px) {
-    padding-left: 60px;
-    padding-right: 60px;
-  } */
 `;
 
 export const DayNumber = styled.div`
@@ -63,8 +54,6 @@ export const DayNumber = styled.div`
 
   margin-top: 6px;
 
-  @media screen and (min-width: 375px) {
-  }
   @media screen and (min-width: 768px) {
     margin-top: 4px;
   }
@@ -89,8 +78,6 @@ export const CurrentDayNumber = styled.div`
   background-color: ${({ currentDay, day }) =>
     currentDay !== day ? `#fff` : '#3E85F3'}; //primaryColor
 
-  @media screen and (min-width: 375px) {
-  }
   @media screen and (min-width: 768px) {
     margin-top: 4px;
     padding: 4px 8px 4px 8px;
@@ -101,5 +88,3 @@ export const CurrentDayNumber = styled.div`
     padding-top: 8px;
   }
 `;
-
-// #FFFFFF
