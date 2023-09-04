@@ -14,7 +14,6 @@ import {
 const DayCalendarHead = () => {
   const nameDays =
     useResize().width < SCREEN_TABLET ? nameDaysMobile : nameDaysTablet;
-  //
 
   const { currentDay } = useParams();
   const year = currentDay.slice(0, 4);
@@ -46,10 +45,13 @@ const DayCalendarHead = () => {
 
           <DayNumber
             key={daysOfWeek[index]}
-            currentDay={day}
-            day={format(daysOfWeek[index], 'dd')}
+            //currentDay={day}
+            // day={format(daysOfWeek[index], 'dd')}
           >
-            <CurrentDayNumber>
+            <CurrentDayNumber
+              currentDay={day}
+              day={format(daysOfWeek[index], 'dd')}
+            >
               {format(daysOfWeek[index], 'dd')}
             </CurrentDayNumber>
           </DayNumber>

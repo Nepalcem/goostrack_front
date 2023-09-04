@@ -8,6 +8,8 @@ export const NameDaysComponent = styled.div`
   border: var(--color-calendar-border);
   border-radius: 8px;
   margin-top: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   @media screen and (min-width: 768px) {
     margin-top: 32px;
   }
@@ -25,8 +27,6 @@ export const DayComponent = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 48px;
-  /* padding-top: 14px;
-  padding-bottom: 14px; */
 
   font-family: Inter;
   font-weight: 600;
