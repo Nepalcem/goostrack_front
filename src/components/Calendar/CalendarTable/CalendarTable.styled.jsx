@@ -26,13 +26,14 @@ export const CalendarCellWrap = styled.div`
 
 export const CalenderCell = styled.td`
   background-color: var(--color-btn-change-day);
+  transition: 1s linear;
+
   border: var(--color-calendar-border);
   // border: 1px solid rgba(220, 227, 229, 0.5);
   position: relative;
 
-  // height: 100%;
   :hover {
-    background-color: #7c6969;
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   @media screen and (min-width: 375px) {
