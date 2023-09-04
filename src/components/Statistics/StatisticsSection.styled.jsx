@@ -10,6 +10,7 @@ export const StatisticsSectionContainer = styled.div`
 
   padding: 28px 14px;
   border-radius: 16px;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -18,8 +19,9 @@ export const StatisticsSectionContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1087px;
+    /* width: 1087px; */
+    width: 100%;
     margin-top: 32px;
-    padding: 134px 113px;
+    padding: 134px 113px 14px 113px;
   }
 `;

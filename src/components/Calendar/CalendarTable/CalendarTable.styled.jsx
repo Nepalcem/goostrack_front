@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CalendarTableDiv = styled.table`
-  height: 85%;
+  /* height: 85%; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -17,6 +17,7 @@ export const CalendarTableDiv = styled.table`
 export const CalendarRow = styled.tr`
   display: flex;
   flex: 1;
+  justify-content: space-between;
 `;
 
 export const CalendarCellWrap = styled.div`
