@@ -2,7 +2,7 @@ import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
 
 // Бібліотека формік
-import { Formik, Form, Field } from 'formik';
+import { Field } from 'formik';
 
 // Бекдроп
 export const Backdrop = styled.div`
@@ -22,47 +22,31 @@ export const Backdrop = styled.div`
 
 // Модальне вікно Створення таски
 export const ModalContainer = styled.div`
-  width: 303px;
 
+  max-width: 303px;
+  padding: 10px;
   border-radius: 8px;
+
+  padding: 48px 18px;
+  background-color: var(--color-bgr-popup);
+  color: var(--color-title-popup);
   border: 1px solid rgba(220, 227, 229, 0.8);
-  background: #fff;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
-
-  padding: 48px 18px 40px 18px;
-
-  /* background-color: white; */
-
   position: absolute;
-  /* top: 50%; */
-  /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
 
-  /* width: 100%; */
-  /* max-width: 335px; */
 
-  /* min-height: 225px; */
-  /* max-height: 80%; */
-
-  /* padding: 30px 20px 20px 20px; */
-
-  /* border-radius: 8px; */
-  /* border: 1px solid rgba(220, 227, 229, 0.8); */
-  /* box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05); */
-  /* overflow: scroll; */
-  /* background: radial-gradient(#ffffff, #3e85f3); */
-
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-
-  @media screen and (min-width: 768px) {
-    width: 396px;
-    padding: 40px 28px;
-  }
-
-  @media screen and (min-width: 1440px) {
-  }
+@media screen and (min-width: 768px) {
+  padding: 40px 28px;
+  max-width: 396px;
+  width: 396px;
+} 
+`;
+export const Label = styled.label`
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 18px;
+  color: var(--color-title-popup);
 `;
 
 export const CloseButton = styled.button`
@@ -87,20 +71,130 @@ export const CloseButtonIco = styled(ReactSVG)`
   width: 100%;
   height: 100%;
 
-  stroke: black;
+  stroke: var(--color-close-popup);
 `;
 
 export const StyledFormikInput = styled(Field)`
-  border-radius: 8px;
-  background: #f6f6f6;
+margin-top: 8px;
+height: 46px;
+left: 0px;
+top: 0px;
+background-color: var(--color-bgr-input);
+// background-color: transparent;
+border-radius: 8px;
+border: var(--color-user-input-border);
+padding-left: 18px;
+color: var(--color-text-input);
 
-  padding: 14px 18px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
 
-  border: none;
+// &::-webkit-calendar-picker-indicator {
+//   display: none;
+// }
+
 `;
 
 export const TimeBlock = styled.div`
+display: flex;
+justify-content: space-between;
+gap: 14px;
+margin: 0;
+
+`;
+
+export const BlockButton = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 14px;
+  gap: 8px;
+`;
+
+export const EditButton = styled.button`
+  display: flex;
+  gap: 8px;
+  // flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // padding: 10px 20px 10px 20px;
+  // width: 100%;
+  width: 178px;
+  height: 48px;
+
+  background: #3e85f3;
+  border-radius: 8px;
+  border: none;
+
+  color: white;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+`;
+export const CancelButton = styled(EditButton)`
+  background: #efefef;
+  color: #111111;
+  width: 144px;
+  height: 48px;
+`;
+
+
+
+export const AddTasks = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+
+
+export const RadioBlock = styled.div`
+  margin-top: 10px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 16px;
+`;
+
+export const RadioLabel = styled.label`
+  display: flex;
+  align-items: center;
+`;
+
+export const RadioInputBlue = styled.input`
+  margin-right: 6px;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  outline: none;
+  position: relative;
+  border-radius: 50%;
+  background-color: #72C2F8;
+
+
+`;
+
+export const RadioInputYellow = styled.input`
+  margin-right: 6px;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  outline: none;
+  position: relative;
+  border-radius: 50%;
+  background-color: #F3B249;
+
+`;
+
+export const RadioInputRed = styled.input`
+  margin-right: 6px;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  outline: none;
+  position: relative;
+  border-radius: 50%;
+  background-color: #EA3D65;
+
 `;
