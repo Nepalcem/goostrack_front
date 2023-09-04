@@ -1,40 +1,38 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import TasksColumnsList from '../TasksColumnsList/TasksColumnsList';
-import { selectTasks } from 'redux/tasks/tasksSelectors';
+// import { selectTasks } from 'redux/tasks/tasksSelectors';
 import { useEffect, useState } from 'react';
-import { fetchAllTasks } from 'redux/tasks/tasksOperation';
+import tasksOperations from 'redux/tasks/tasksOperation';
 
 // gкои шо виводжу таски звідси
-import { tasksExample } from './tasksExample';
 
 export const ChoosedDay = () => {
   const dispatch = useDispatch();
-  //витягаємо поточний день із адресного рядка
+
+  //витягаємо поточний день із адресного рядка  і виносимо їх в змінні
   const { currentDay } = useParams();
+  const day = currentDay.slice(8, 10);
+  const month = currentDay.slice(5, 7);
+  const year = currentDay.slice(0, 4);
+
+  // юзефект оновлення тасків в базі даних при зміні дати
+  useEffect(() => {
+    dispatch(tasksOperations.fetchAllTasks({ day, month, year }));
+  }, [dispatch, currentDay, day, month, year]);
+
   // створюємо стейт в якому будемо зберігати таски поточного дня
   const [currentDayTasks, setCurrentDayTasks] = useState([]);
 
-  // юзефект при оновленні тасків із бази даних
-  useEffect(() => {
-    dispatch(fetchAllTasks());
-  }, [dispatch]);
-
-  // витягаємо в змінну allTasks всі таски
-
-  // !!!!!!!!!!!!
-  // !!!!!!!!!!!!
-  // !!!!!!!!!!!!
-  // !!!!!!!!!!!!
-  // ЧОМУСЬ ТІЛЬКИ ПІСЛЯ ПЕРЕКЛЮЧЕННЯ ДНЯ  ТУДТ НАЗАД ЗʼЯВЛЯЮТЬСЯ ТАСКИ!!!!!
-
-  const allTasks = useSelector(selectTasks) ?? [];
+  // витягаємо таски із стейту
+  let tasks = useSelector(state => state.tasks.items);
+  // console.log('tasks', tasks);
 
   // юзефект який витягає в currentDayTasks таски поточного дня
-  // useEffect(() => {
-  //   let tempTasks = tasksExample.filter(item => item.date === currentDay);
-  //   setCurrentDayTasks(tempTasks);
-  // }, [currentDay]);
+  useEffect(() => {
+    let tempTasks = tasks.filter(item => item.date === currentDay);
+    setCurrentDayTasks(tempTasks);
+  }, [currentDay, tasks]);
 
   return (
     <div>

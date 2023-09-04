@@ -17,9 +17,19 @@ import IcoEditTast from '../../../images/svg/pencil.svg';
 import IcoDeleteTast from '../../../images/svg/trash.svg';
 
 import ProfileAva from '../../../images/user-avatar.png';
+import { useDispatch } from 'react-redux';
+
+import tasksOperations from 'redux/tasks/tasksOperation';
 
 const DayTask = ({ currentTask }) => {
+  const dispatch = useDispatch();
+
+  function handleDelete(id) {
+    dispatch(tasksOperations.deleteTask(id));
+  }
+
   // console.log('currentTask', currentTask);
+  // console.log('handleDelete', handleDelete);
   return (
     <TaskContainer>
       <Description>{currentTask.title}</Description>
@@ -41,7 +51,10 @@ const DayTask = ({ currentTask }) => {
             <ButtonIco src={IcoEditTast} />
           </ButtonController>
 
-          <ButtonController type="button">
+          <ButtonController
+            type="button"
+            onClick={() => handleDelete(currentTask._id)}
+          >
             <ButtonIco src={IcoDeleteTast} />
           </ButtonController>
         </ButtonsBlock>

@@ -22,7 +22,7 @@ import IcoAddTask2 from '../../../images/svg/plus2.svg';
 import TaskModal from '../TaskModal/TaskModal';
 import { useParams } from 'react-router-dom';
 
-const TasksColumnsList = ({ tasksPerDay }) => {
+const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [category, setCategory] = useState('');
   const { currentDay } = useParams();
@@ -57,7 +57,11 @@ const TasksColumnsList = ({ tasksPerDay }) => {
             {tasksPerDay.map(cuurentTast => {
               return (
                 cuurentTast.category === 'to-do' && (
-                  <DayTask key={cuurentTast._id} currentTask={cuurentTast} />
+                  <DayTask
+                    key={cuurentTast._id}
+                    currentTask={cuurentTast}
+                    handleDelete={handleDelete}
+                  />
                 )
               );
             })}
@@ -89,7 +93,11 @@ const TasksColumnsList = ({ tasksPerDay }) => {
             {tasksPerDay.map(cuurentTast => {
               return (
                 cuurentTast.category === 'in-progress' && (
-                  <DayTask key={cuurentTast._id} currentTask={cuurentTast} />
+                  <DayTask
+                    key={cuurentTast._id}
+                    currentTask={cuurentTast}
+                    handleDelete={handleDelete}
+                  />
                 )
               );
             })}
@@ -121,7 +129,11 @@ const TasksColumnsList = ({ tasksPerDay }) => {
             {tasksPerDay.map(cuurentTast => {
               return (
                 cuurentTast.category === 'done' && (
-                  <DayTask key={cuurentTast._id} currentTask={cuurentTast} />
+                  <DayTask
+                    key={cuurentTast._id}
+                    currentTask={cuurentTast}
+                    handleDelete={handleDelete}
+                  />
                 )
               );
             })}
