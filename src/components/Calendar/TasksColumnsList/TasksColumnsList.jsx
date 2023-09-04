@@ -25,6 +25,7 @@ import { useParams } from 'react-router-dom';
 const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [category, setCategory] = useState('');
+
   const { currentDay } = useParams();
 
   const handleToggle = () => {
@@ -38,6 +39,7 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
           category={category}
           handleToggle={handleToggle}
           currentDay={currentDay}
+          operation="create"
         />
       )}
       <MainTasksContainer>
@@ -47,6 +49,7 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
             <AddTaskButton
               onClick={() => {
                 setCategory('to-do');
+
                 handleToggle();
               }}
             >
@@ -69,6 +72,7 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
           <AddTaskButtonBig
             onClick={() => {
               setCategory('to-do');
+
               handleToggle();
             }}
           >
@@ -105,6 +109,7 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
           <AddTaskButtonBig
             onClick={() => {
               setCategory('in-progress');
+
               handleToggle();
             }}
           >
@@ -119,6 +124,7 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
             <AddTaskButton
               onClick={() => {
                 setCategory('done');
+
                 handleToggle();
               }}
             >
@@ -141,6 +147,7 @@ const TasksColumnsList = ({ tasksPerDay, handleDelete }) => {
           <AddTaskButtonBig
             onClick={() => {
               setCategory('done');
+
               handleToggle();
             }}
           >

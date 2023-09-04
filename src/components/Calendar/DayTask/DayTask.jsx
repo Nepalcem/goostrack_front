@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TaskContainer,
   Description,
@@ -21,6 +21,8 @@ import { useDispatch } from 'react-redux';
 
 import tasksOperations from 'redux/tasks/tasksOperation';
 
+import TaskModal from '../TaskModal/TaskModal';
+
 const DayTask = ({ currentTask }) => {
   const dispatch = useDispatch();
 
@@ -28,10 +30,28 @@ const DayTask = ({ currentTask }) => {
     dispatch(tasksOperations.deleteTask(id));
   }
 
+  const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
+  const [idForEdit, setIdForEdit] = useState('');
+
+  const handleToggle = () => {
+    setModalAddTaskIsOpened(prevState => !prevState);
+  };
+
   // console.log('currentTask', currentTask);
   // console.log('handleDelete', handleDelete);
   return (
     <TaskContainer>
+      {modalAddTaskIsOpened && (
+        <TaskModal
+          category={currentTask.category}
+          handleToggle={handleToggle}
+          currentDay={currentTask.date}
+          operation="edit"
+          idForEdit={idForEdit}
+          currentTask={currentTask}
+        />
+      )}
+
       <Description>{currentTask.title}</Description>
       <OptionsBlock>
         <InfoBlock>
@@ -47,7 +67,13 @@ const DayTask = ({ currentTask }) => {
             <ButtonIco src={IcoChangeStatus} />
           </ButtonController>
 
-          <ButtonController type="button">
+          <ButtonController
+            type="button"
+            onClick={() => {
+              setIdForEdit(currentTask.id);
+              handleToggle();
+            }}
+          >
             <ButtonIco src={IcoEditTast} />
           </ButtonController>
 
