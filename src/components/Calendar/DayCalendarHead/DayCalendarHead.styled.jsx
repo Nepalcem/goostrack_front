@@ -6,7 +6,6 @@ export const NameDaysComponent = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
   margin-top: 24px;
-  width: 335px;
 
   @media screen and (min-width: 768px) {
   }
@@ -22,7 +21,7 @@ export const DayComponent = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 155px;
+  width: 48px;
   /* padding-top: 14px;
   padding-bottom: 14px; */
 
@@ -39,6 +38,14 @@ export const DayComponent = styled.div`
     (period === 'month' && nameDay === 'SUN')
       ? '#3E85F3'
       : '#343434'};
+  @media screen and (min-width: 375px) {
+  }
+  @media screen and (min-width: 768px) {
+    width: 100px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 155px;
+  }
 
   /* @media screen and (min-width: 1440px) {
     padding-left: 60px;
@@ -51,7 +58,7 @@ export const DayNumber = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 155px;
+  //width: 155px;
 
   font-family: Inter;
   font-size: 16px;
@@ -64,7 +71,7 @@ export const DayNumber = styled.div`
 
   @media screen and (min-width: 375px) {
   }
-  @media screen and (min-width: 678px) {
+  @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1440px) {
     padding-top: 8px;

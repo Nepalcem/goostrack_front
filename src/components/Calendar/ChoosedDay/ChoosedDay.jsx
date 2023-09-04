@@ -4,6 +4,7 @@ import TasksColumnsList from '../TasksColumnsList/TasksColumnsList';
 import { selectTasks } from 'redux/tasks/tasksSelectors';
 import { useEffect, useState } from 'react';
 import { fetchAllTasks } from 'redux/tasks/tasksOperation';
+import DayCalendarHead from '../DayCalendarHead/DayCalendarHead';
 
 // gкои шо виводжу таски звідси
 import { tasksExample } from './tasksExample';
@@ -38,7 +39,7 @@ export const ChoosedDay = () => {
 
   return (
     <div>
-      {/* <DayCalendarHead /> */}
+      <DayCalendarHead />
       <TasksColumnsList tasksPerDay={currentDayTasks} />
     </div>
   );

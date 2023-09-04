@@ -24,7 +24,7 @@ export const DayComponent = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 155px;
+  width: 48px;
   /* padding-top: 14px;
   padding-bottom: 14px; */
 
@@ -35,14 +35,21 @@ export const DayComponent = styled.div`
   text-align: left;
   font-size: 16px;
 
-  color: ${({ index }) => (index === 5 || index === 6 ? '#3E85F3' : 'var(--color-name-user)')};
-
-  /* @media screen and (min-width: 1440px) {
+  color: ${({ index }) =>
+    index === 5 || index === 6 ? '#3E85F3' : 'var(--color-name-user)'};
+  @media screen and (min-width: 375x) {
+  }
+  @media screen and (min-width: 768px) {
+    width: 100px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 155px;
+  }
+`;
+/* @media screen and (min-width: 1440px) {
     padding-left: 60px;
     padding-right: 60px;
   } */
-`;
-
 // export const DayNumber = styled.div`
 //   display: flex;
 //   align-items: center;
