@@ -38,6 +38,7 @@ export const DisplayDataDiv = styled.div`
 export const ButtonsChangePeriodDiv = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
+  overflow: hidden;
   @media screen and (min-width: 375px) {
   }
   @media screen and (min-width: 768px) {
@@ -47,7 +48,7 @@ export const ButtonsChangePeriodDiv = styled.div`
 `;
 export const Svg = styled.svg`
   // stroke: #dce3e5;
-  stroke:var(--color-btn-stroke);
+  // stroke: var(--color-btn-stroke);
 
   width: 16px;
   height: 16px;
@@ -69,10 +70,15 @@ export const ButtonChangeDate = styled.button`
   border-right: ${({ border }) =>
     border === 'right' ? '1px solid rgba(220, 227, 229, 0.5)' : 0};
 
-  &:focus,
   &:hover {
     ${Svg} {
       stroke: var(--color-btn-stroke-active);
     }
   }
+
+  stroke: ${({ direction, place }) =>
+    (place === 'left' && direction === 'back') ||
+    (place === 'right' && direction === 'forvard')
+      ? '#343434'
+      : '#DCE3E5'};
 `;

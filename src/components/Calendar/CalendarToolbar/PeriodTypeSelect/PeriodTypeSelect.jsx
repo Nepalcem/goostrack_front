@@ -1,16 +1,34 @@
 import React from 'react';
+//import { useState } from 'react';
 import {
   PeriodTypeSelectDiv,
   ButtonChangePeriod,
 } from './PeriodTypeSelect.styled';
 
-const PeriodTypeSelect = ({ onClick }) => {
+const PeriodTypeSelect = ({ onClick, period }) => {
+  // const [activeButton, setActiveButton] = useState("month");
+  // console.log(activeButton);
   return (
     <PeriodTypeSelectDiv>
-      <ButtonChangePeriod place="left" onClick={() => onClick('month')}>
+      <ButtonChangePeriod
+        place="left"
+        period={period}
+        onClick={() => {
+          // console.log('Click month');
+          // setActiveButton("l")
+          onClick('month');
+        }}
+      >
         Month
       </ButtonChangePeriod>
-      <ButtonChangePeriod place="right" onClick={() => onClick('day')}>
+      <ButtonChangePeriod
+        place="right"
+        period={period}
+        onClick={() => {
+          // console.log('Click day');
+          onClick('day');
+        }}
+      >
         Day
       </ButtonChangePeriod>
     </PeriodTypeSelectDiv>
