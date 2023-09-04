@@ -1,7 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useDispatch } from 'react-redux';
+import tasksOperations from 'redux/tasks/tasksOperation';
 
 // Бібліотека формік
-import { Formik, Form, } from 'formik';
+import { Formik, Form } from 'formik';
 
 import {
   Backdrop,
@@ -24,18 +28,33 @@ import {
 
 import CloseIco from '../../../images/svg/x-close.svg';
 import PlusButton from '../../../images/svg/log-out.svg'; //змінити на +
+
 // портал
 import { createPortal } from 'react-dom';
-import { useDispatch } from 'react-redux';
-import tasksOperations from 'redux/tasks/tasksOperation';
 const modalRoot = document.querySelector('#modal-root');
 
 const TaskModal = ({ handleToggle, category, currentDay }) => {
   const dispatch = useDispatch();
 
-  console.log('category', category);
+  // початкові значення полів форми
+  const initialValues = {
+    title: '',
+    start: '00:00', //приклад valid
+    end: '00:00', //приклад valid
+    // start: '',
+    // end: '',
+    priority: 'low',
+  };
+
+  const [inforTask, setInfoTask] = useState({ initialValues }); //приклад valid
+
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
+    if (inforTask.start > inforTask.end) {
+      Notify.failure('Start time cannot be later than end time');
+      return; //приклад valid
+    }
+
     // у обʼєкт values повертаються дані з форми
     console.log('values', values);
     // тут буде проходити реєстрація  dispatch(authOperations.logIn(values));
@@ -62,9 +81,6 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
     }
   };
 
-  // початкові значення полів форми
-  const initialValues = { title: '', start: '', end: '', priority: 'low' };
-
   return createPortal(
     <Backdrop onClick={backdropClick}>
       <ModalContainer>
@@ -76,27 +92,37 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
           <Form autoComplete="off">
             <Label htmlFor="title">
               Title
-            <StyledFormikInput
-              type="text"
-              name="title"
-              placeholder="Enter text"
-            />
+              <StyledFormikInput
+                type="text"
+                name="title"
+                placeholder="Enter text"
+              />
             </Label>
             <TimeBlock>
-                <Label htmlFor="start">
-                  Start
-                <StyledFormikInput type="time" name="start" />
-                </Label>
-              
-                <Label htmlFor="end">
-                  End
-                <StyledFormikInput type="time" name="end" />
-                </Label>
+              <Label htmlFor="start">
+                Start
+                <StyledFormikInput
+                  type="time"
+                  name="start"
+                  value={inforTask.start}
+                />
+                приклад valid
+              </Label>
+
+              <Label htmlFor="end">
+                End
+                <StyledFormikInput
+                  type="time"
+                  name="end"
+                  value={inforTask.end}
+                />
+                приклад valid
+              </Label>
             </TimeBlock>
 
             <RadioBlock>
               <RadioLabel>
-                <RadioInputBlue type="radio" name="priority" value="low" checked />
+                <RadioInputBlue type="radio" name="priority" value="low" />
                 Low
               </RadioLabel>
               <RadioLabel>
@@ -109,23 +135,16 @@ const TaskModal = ({ handleToggle, category, currentDay }) => {
               </RadioLabel>
             </RadioBlock>
 
-            {/* <button type="submit">Add</button>
-            <button type="button" onClick={handleToggle}>
-              Cancel
-            </button> */}
-
             <BlockButton>
-            <EditButton type="submit">
-            <AddTasks src={PlusButton} alt="add button" />
-              Add
-            </EditButton>
+              <EditButton type="submit">
+                <AddTasks src={PlusButton} alt="add button" />
+                Add
+              </EditButton>
 
-            <CancelButton type="button" onClick={handleToggle}>
-              Cancel
-            </CancelButton>
-          </BlockButton>
-
-
+              <CancelButton type="button" onClick={handleToggle}>
+                Cancel
+              </CancelButton>
+            </BlockButton>
           </Form>
         </Formik>
       </ModalContainer>

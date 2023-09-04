@@ -22,7 +22,6 @@ export const Backdrop = styled.div`
 
 // Модальне вікно Створення таски
 export const ModalContainer = styled.div`
-
   max-width: 303px;
   padding: 10px;
   border-radius: 8px;
@@ -34,12 +33,11 @@ export const ModalContainer = styled.div`
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   position: absolute;
 
-
-@media screen and (min-width: 768px) {
-  padding: 40px 28px;
-  max-width: 396px;
-  width: 396px;
-} 
+  @media screen and (min-width: 768px) {
+    padding: 40px 28px;
+    max-width: 396px;
+    width: 396px;
+  }
 `;
 export const Label = styled.label`
   display: inline-flex;
@@ -75,35 +73,33 @@ export const CloseButtonIco = styled(ReactSVG)`
 `;
 
 export const StyledFormikInput = styled(Field)`
-margin-top: 8px;
-height: 46px;
-left: 0px;
-top: 0px;
-background-color: var(--color-bgr-input);
-// background-color: transparent;
-border-radius: 8px;
-border: var(--color-user-input-border);
-padding-left: 18px;
-color: var(--color-text-input);
+  margin-top: 8px;
+  height: 46px;
+  left: 0px;
+  top: 0px;
+  background-color: var(--color-bgr-input);
+  // background-color: transparent;
+  border-radius: 8px;
+  border: var(--color-user-input-border);
+  padding-left: 18px;
+  color: var(--color-text-input);
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 18px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
 
-// &::-webkit-calendar-picker-indicator {
-//   display: none;
-// }
-
+  // &::-webkit-calendar-picker-indicator {
+  //   display: none;
+  // }
 `;
 
 export const TimeBlock = styled.div`
-display: flex;
-justify-content: space-between;
-gap: 14px;
-margin: 0;
-
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0;
 `;
 
 export const BlockButton = styled.div`
@@ -141,14 +137,10 @@ export const CancelButton = styled(EditButton)`
   height: 48px;
 `;
 
-
-
 export const AddTasks = styled.img`
   width: 20px;
   height: 20px;
 `;
-
-
 
 export const RadioBlock = styled.div`
   margin-top: 10px;
@@ -162,7 +154,7 @@ export const RadioLabel = styled.label`
   align-items: center;
 `;
 
-export const RadioInputBlue = styled.input`
+export const RadioInputBlue = styled(Field)`
   margin-right: 6px;
   appearance: none;
   width: 10px;
@@ -170,12 +162,14 @@ export const RadioInputBlue = styled.input`
   outline: none;
   position: relative;
   border-radius: 50%;
-  background-color: #72C2F8;
+  background-color: #72c2f8;
 
-
+  :checked {
+    outline: 3px solid rgba(114, 194, 248, 0.5);
+  }
 `;
 
-export const RadioInputYellow = styled.input`
+export const RadioInputYellow = styled(Field)`
   margin-right: 6px;
   appearance: none;
   width: 10px;
@@ -183,11 +177,13 @@ export const RadioInputYellow = styled.input`
   outline: none;
   position: relative;
   border-radius: 50%;
-  background-color: #F3B249;
-
+  background-color: #f3b249;
+  :checked {
+    outline: 3px solid rgba(243, 178, 73, 0.5);
+  }
 `;
 
-export const RadioInputRed = styled.input`
+export const RadioInputRed = styled(Field)`
   margin-right: 6px;
   appearance: none;
   width: 10px;
@@ -195,6 +191,9 @@ export const RadioInputRed = styled.input`
   outline: none;
   position: relative;
   border-radius: 50%;
-  background-color: #EA3D65;
+  background-color: #ea3d65;
 
+  :checked {
+    outline: 3px solid rgba(234, 61, 101, 0.5);
+  }
 `;
