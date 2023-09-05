@@ -20,7 +20,7 @@ const UserInfo = () => {
       <NameField>{user.username}</NameField>
 
       <AvatarThumb>
-        <Avatar src={user.avatarURL || UserAvatar} alt="user avatar" />
+        <Avatar src={user.avatar || UserAvatar} alt="user avatar" />
       </AvatarThumb>
     </ProfInfoWrap>
   );
