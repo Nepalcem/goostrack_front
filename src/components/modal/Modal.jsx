@@ -3,7 +3,7 @@ import { BackdropStyle, ModalStyle, StyledIcon } from './Modal.styled';
 import { useEffect } from 'react';
 import CloseIco from '../../images/svg/x-close.svg';
 
-const Modal = ({ onClose, children, isOpen }) => {
+const Modal = ({ onClose, children }) => {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code === `Escape`) {
@@ -26,9 +26,7 @@ const Modal = ({ onClose, children, isOpen }) => {
     }
   };
 
-  if (!isOpen) {
-    return null;
-  }
+
 
   return ReactDOM.createPortal(
     <BackdropStyle
@@ -38,7 +36,12 @@ const Modal = ({ onClose, children, isOpen }) => {
     >
       <ModalStyle>
         {children}
-        <StyledIcon src={CloseIco} width='100%' alt="close button" onClick={onClose} />
+        <StyledIcon
+          src={CloseIco}
+          width="100%"
+          alt="close button"
+          onClick={onClose}
+        />
       </ModalStyle>
     </BackdropStyle>,
     document.getElementById('modal-root')

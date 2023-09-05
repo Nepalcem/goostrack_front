@@ -34,6 +34,7 @@ const reviewsSlice = createSlice({
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.items.push(action.payload);
+        state.ownerReviews = action.payload;
         state.error = null;
       })
       .addCase(addReview.rejected, (state, action) => {

@@ -1,5 +1,3 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
 import {
   ProfInfoWrap,
   NameField,
@@ -7,9 +5,9 @@ import {
   Avatar,
 } from './UserInfo.styled';
 import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
-// import ThemeIcoButton from '../../../images/svg/moon.svg';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
 import FeedbackButton from '../FeedbackButton/FeedbackButton';
+import { useSelector } from 'react-redux';
 
 const UserInfo = () => {
   const user = useSelector(state => state.auth.user);
@@ -17,13 +15,8 @@ const UserInfo = () => {
   return (
     <ProfInfoWrap>
       <FeedbackButton />
-      <ThemeToggler />
-      {/* <ThemeToggleButton type="button">
-        <img src={ThemeIcoButton} alt="change theme" width="100%" />
 
-      </ThemeToggleButton>
- 
-      </ThemeToggleButton> */}
+      <ThemeToggler />
       <NameField>{user.username}</NameField>
 
       <AvatarThumb>
