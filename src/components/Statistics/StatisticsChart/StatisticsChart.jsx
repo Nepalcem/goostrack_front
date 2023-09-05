@@ -8,15 +8,19 @@ import { ChartContainer } from './StatisticsChart.styled';
 
 const customBarLabel = ({ x, y, width, value }) => {
   return (
-    <text
-      x={x + width / 2}
-      y={y}
-      fill="var(--color-calendar-day)"
-      fontWeight="400"
-      textAnchor="middle"
-      dy={-5}
-      style={{ fontSize: window.innerWidth >= 768 ? 14 : 10 }}
-    >{`${value}%`}</text>
+    <>
+      {value !== 0 && (
+        <text
+          x={x + width / 2}
+          y={y}
+          fill="var(--color-calendar-day)"
+          fontWeight="400"
+          textAnchor="middle"
+          dy={-5}
+          style={{ fontSize: window.innerWidth >= 768 ? 14 : 10 }}
+        >{`${value}%`}</text>
+      )}
+    </>
   );
 };
 

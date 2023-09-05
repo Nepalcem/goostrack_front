@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatisticsSectionContainer } from './StatisticsSection.styled';
 import PeriodPaginatorStatistics from './PaginatorStatistics/PaginatorStatistics';
 import { StatisticsChart } from './StatisticsChart/StatisticsChart';
@@ -7,32 +7,31 @@ import { editTitle } from 'redux/title/titleSlice';
 import { fetchAllTasks } from 'redux/tasks/tasksOperation';
 import { selectTasks } from 'redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
+import { format } from 'date-fns';
 
 const StatisticsSection = () => {
   // Текст заголовку цієї сторінки
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(editTitle('Statistics'));
   });
 
-  // const data = [
-  //   { name: 'To Do', ByDay: 50, ByMonth: 50 },
-  //   { name: 'In Progress', ByDay: 100, ByMonth: 24 },
-  //   { name: 'Done', ByDay: 35, ByMonth: 24 },
-  // ];
-
-  const year = '2023';
-  const month = '09';
-  const day = '04';
+  const [date, setDate] = useState(new Date());
+  const currentDate = format(date, 'yyyy-MM-dd');
+  console.log(currentDate);
+  const day = currentDate.slice(8, 10);
+  const month = currentDate.slice(5, 7);
+  const year = currentDate.slice(0, 4);
 
   useEffect(() => {
     dispatch(fetchAllTasks({ year, month, day }));
   }, [dispatch, year, month, day]);
   let tasksByMonth = useSelector(selectTasks);
 
-  const date = '2023-09-04'; // умовна дата
-  const tasksByDay = tasksByMonth.filter(item => item.date === date);
+  // const date = '2023-09-04'; // умовна дата
+  const tasksByDay = tasksByMonth.filter(item => item.date === currentDate);
 
   ///////////////////////////////////////////
 
@@ -60,9 +59,9 @@ const StatisticsSection = () => {
   let allCountByM = tasksByMonth.length;
 
   // рахуємо відсоток тасок в місяці і округлюємо до сотих
-  let percTodoM = ((mToDo / allCountByM) * 100).toFixed(0);
-  let percInprM = ((mInP / allCountByM) * 100).toFixed(0);
-  let percDoneM = ((mDone / allCountByM) * 100).toFixed(0);
+  let percTodoM = mToDo === 0 ? 0 : ((mToDo / allCountByM) * 100).toFixed(0);
+  let percInprM = mInP === 0 ? 0 : ((mInP / allCountByM) * 100).toFixed(0);
+  let percDoneM = mDone === 0 ? 0 : ((mDone / allCountByM) * 100).toFixed(0);
 
   //------ОБРОБКА ДАНИХ ДНЯ------//
   // початкові стани змінних в яких зберігаємо кількості тасків дня
@@ -88,9 +87,9 @@ const StatisticsSection = () => {
   let allCountByD = tasksByDay.length;
 
   // рахуємо відсоток тасок в місяці і округлюємо до сотих
-  let percTodoD = ((dToDo / allCountByD) * 100).toFixed(0);
-  let percInprD = ((dInP / allCountByD) * 100).toFixed(0);
-  let percDoneD = ((dDone / allCountByD) * 100).toFixed(0);
+  let percTodoD = dToDo === 0 ? 0 : ((dToDo / allCountByD) * 100).toFixed(0);
+  let percInprD = dInP === 0 ? 0 : ((dInP / allCountByD) * 100).toFixed(0);
+  let percDoneD = dDone === 0 ? 0 : ((dDone / allCountByD) * 100).toFixed(0);
 
   //------ФОРМУЄМО ДАНІ ДЛЯ ГІСТОГРАМИ------//
   let data = [
@@ -114,7 +113,7 @@ const StatisticsSection = () => {
 
   return (
     <StatisticsSectionContainer>
-      <PeriodPaginatorStatistics />
+      <PeriodPaginatorStatistics setDate={setDate} date={date} />
       <StatisticsChart data={data} />
     </StatisticsSectionContainer>
   );

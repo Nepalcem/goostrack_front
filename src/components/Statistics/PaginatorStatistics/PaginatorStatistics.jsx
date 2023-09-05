@@ -6,7 +6,7 @@ import {
   ListItem,
   PeriodPaginatorContainer,
 } from './PaginatorStatistics.styled';
-import { useState } from 'react';
+
 import {
   ButtonChangeDate,
   ButtonsChangePeriodDiv,
@@ -14,16 +14,14 @@ import {
 } from 'components/Calendar/CalendarToolbar/PeriodPaginator/PeriodPaginator.styled';
 import DatePicker from 'react-datepicker';
 import { StatisticsDatePickerGlobalStyles } from './StatisticsDatepicker.styled';
-const PeriodPaginatorStatistics = () => {
-  const [date, setDate] = useState(getTime(new Date()));
-  console.log('date', date);
+const PeriodPaginatorStatistics = ({ date, setDate }) => {
   const onClickBtn = (step, period) => {
     let newDate = null;
     if (period === 'day') {
-      newDate = addDays(date, step); //змінюємо дату у будь-який бік
+      newDate = addDays(date, step);
     }
-    const millisec = getTime(newDate); //переводимо в millisec для форматування та запису в стейт
-    setDate(millisec); //пишем в стейт
+    const millisec = getTime(newDate);
+    setDate(millisec);
   };
 
   return (
