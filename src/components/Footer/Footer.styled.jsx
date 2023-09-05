@@ -4,6 +4,7 @@ export const FooterStyled = styled.footer`
   height: auto;
   padding-bottom: 15px;
   margin-top: 20px
+  
 
   font-family: 'Inter';
   font-weight: 400;

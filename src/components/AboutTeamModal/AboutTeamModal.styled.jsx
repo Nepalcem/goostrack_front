@@ -37,12 +37,34 @@ export const ModalContainer = styled.div`
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05);
-  overflow: scroll;
+  // overflow: scroll;
   background: radial-gradient(#ffffff, #3e85f3);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    // background:transparent
+    background: #3e85f3;
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #E7E5E5;
+    height: 112px;
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7c7c7c;
+  }
 
   @media screen and (min-width: 768px) {
     min-width: 570px;
