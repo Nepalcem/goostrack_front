@@ -26,6 +26,8 @@ import { deleteTask, updateTask } from 'redux/tasks/tasksOperation';
 
 import TaskModal from '../TaskModal/TaskModal';
 
+const body = document.querySelector('body');
+
 const DayTask = ({ currentTask }) => {
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
@@ -51,6 +53,12 @@ const DayTask = ({ currentTask }) => {
 
   const handleToggle = () => {
     setModalAddTaskIsOpened(prevState => !prevState);
+    if (modalAddTaskIsOpened === true) {
+      body.style.overflow = 'scroll';
+    }
+    if (modalAddTaskIsOpened === false) {
+      body.style.overflow = 'hidden';
+    }
   };
   return (
     <TaskContainer>
