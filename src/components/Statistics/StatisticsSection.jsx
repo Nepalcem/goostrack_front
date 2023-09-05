@@ -95,21 +95,21 @@ const StatisticsSection = () => {
   let data = [
     {
       name: 'To Do',
-      ByDay: percTodoD,
-      ByMonth: percTodoM,
+      ByDay: Number(percTodoD),
+      ByMonth: Number(percTodoM),
     },
     {
       name: 'In Progress',
-      ByDay: percInprD,
-      ByMonth: percInprM,
+      ByDay: Number(percInprD),
+      ByMonth: Number(percInprM),
     },
     {
       name: 'Done',
-      ByDay: percDoneD,
-      ByMonth: percDoneM,
+      ByDay: Number(percDoneD),
+      ByMonth: Number(percDoneM),
     },
   ];
-  console.log(data);
+  console.log('data', data);
 
   return (
     <StatisticsSectionContainer>
