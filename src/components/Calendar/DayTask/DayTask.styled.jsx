@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
+import Popover from '@mui/material/Popover';
 
+export const PopoverStyled = styled(Popover)``;
+export const WrapperPopover = styled.div``;
 export const TaskContainer = styled.div`
   border-radius: 8px;
   /* background-color: #f7f6f9; */
   border: var(--color-calendar-border);
   background-color: var(--color-calendar-day-task-bg);
   padding: 16px 15px;
-  
 `;
 
 export const Description = styled.p`

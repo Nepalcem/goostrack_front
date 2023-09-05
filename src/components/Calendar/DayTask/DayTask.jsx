@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import {
   TaskContainer,
   Description,
@@ -10,6 +11,8 @@ import {
   ButtonsBlock,
   ButtonController,
   ButtonIco,
+  PopoverStyled,
+  WrapperPopover,
 } from './DayTask.styled';
 
 import IcoChangeStatus from '../../../images/svg/arrow-circle.svg';
@@ -19,7 +22,7 @@ import IcoDeleteTast from '../../../images/svg/trash.svg';
 import ProfileAva from '../../../images/user-avatar.png';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deleteTask } from 'redux/tasks/tasksOperation';
+import { deleteTask, updateTask } from 'redux/tasks/tasksOperation';
 
 import TaskModal from '../TaskModal/TaskModal';
 
@@ -28,6 +31,23 @@ const DayTask = ({ currentTask }) => {
   const dispatch = useDispatch();
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [idForEdit, setIdForEdit] = useState('');
+  const [anchor, setAnchor] = useState(null);
+  const handleClick = e => {
+    setAnchor(e.currentTarget);
+  };
+
+  const clickToRelocate = category => {
+    const updatedTask = {
+      title: currentTask.title,
+      start: currentTask.start,
+      end: currentTask.end,
+      date: currentTask.date,
+      priority: currentTask.priority,
+      category: category,
+    };
+    dispatch(updateTask({ id: currentTask._id, updatedTask }));
+    console.log('upd');
+  };
 
   const handleToggle = () => {
     setModalAddTaskIsOpened(prevState => !prevState);
@@ -59,9 +79,46 @@ const DayTask = ({ currentTask }) => {
           </Priority>
         </InfoBlock>
         <ButtonsBlock>
-          <ButtonController type="button">
+          <ButtonController type="button" onClick={handleClick}>
             <ButtonIco src={IcoChangeStatus} />
           </ButtonController>
+          <PopoverStyled
+            open={Boolean(anchor)}
+            anchorEl={anchor}
+            onClose={() => setAnchor(null)}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <WrapperPopover>
+              {currentTask.category !== 'to-do' && (
+                <button onClick={() => clickToRelocate('to-do')}>
+                  <div>
+                    <p>To do</p> <ButtonIco src={IcoChangeStatus} />
+                  </div>
+                </button>
+              )}
+              {currentTask.category !== 'in-progress' && (
+                <button onClick={() => clickToRelocate('in-progress')}>
+                  <div>
+                    <p>In Progress</p> <ButtonIco src={IcoChangeStatus} />
+                  </div>
+                </button>
+              )}
+              {currentTask.category !== 'done' && (
+                <button onClick={() => clickToRelocate('done')}>
+                  <div>
+                    <p>Done</p> <ButtonIco src={IcoChangeStatus} />
+                  </div>
+                </button>
+              )}
+            </WrapperPopover>
+          </PopoverStyled>
 
           <ButtonController
             type="button"
