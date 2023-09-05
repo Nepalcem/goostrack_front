@@ -4,12 +4,15 @@ import { Suspense, lazy } from 'react';
 import SharedLayout from '../SharedLayout/SharedLayout';
 import { ChoosedMonth } from 'components/Calendar/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from 'components/Calendar/ChoosedDay/ChoosedDay';
+import { Loader } from 'components/Loader/Loader';
 //  приватні і рестріктед роуд
 import RestrictedRoute from '../RestrictedRoute/RestrictedRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import authOperations from 'redux/auth/authOperations';
+
+import {useAuth} from 'hooks/useAuth' //loading
 
 const MainPage = lazy(() => import('../../pages/MainPage'));
 const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
@@ -32,13 +35,15 @@ const CalendarPage = lazy(() => import('../../pages/CalendarPage/CalendarPage'))
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth(); //loading
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<div>Loading page...</div>}>
+    <>
+    <Suspense fallback={<Loader />}>
       <Routes>
         {/* <Route path="/" element={<MainPage />} /> */}
         <Route
@@ -98,5 +103,7 @@ export const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
+    {isRefreshing && <Loader />}
+    </>
   );
 };
