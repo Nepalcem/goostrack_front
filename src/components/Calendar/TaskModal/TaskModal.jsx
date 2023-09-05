@@ -118,13 +118,11 @@ const TaskModal = ({
               <Label htmlFor="start">
                 Start
                 <StyledFormikInput type="time" name="start" />
-                приклад valid
               </Label>
 
               <Label htmlFor="end">
                 End
                 <StyledFormikInput type="time" name="end" />
-                приклад valid
               </Label>
             </TimeBlock>
 
