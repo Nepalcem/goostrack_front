@@ -22,7 +22,7 @@ const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/register', credentials);
       token.set(data.token);
-      Notify.success(`Welcome!`);
+      Notify.success(`Registration is successful!Welcome to GooseTrack!`);
       return data;
     } catch (error) {
       Notify.failure(`Registration failed. Try again`);
@@ -36,7 +36,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/auth/login', credentials);
     token.set(data.token);
-    Notify.success(`Welcome!`);
+    Notify.success(`Successful!Welcome to GooseTrack!`);
     return data;
   } catch (error) {
     Notify.failure(`Login failed. Try again`);

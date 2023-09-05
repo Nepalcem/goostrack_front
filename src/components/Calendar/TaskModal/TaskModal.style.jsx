@@ -30,7 +30,7 @@ export const ModalContainer = styled.div`
   padding: 48px 18px;
   background-color: var(--color-bgr-popup);
   color: var(--color-title-popup);
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: var(--color-border-popup-modal);
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   position: absolute;
 
