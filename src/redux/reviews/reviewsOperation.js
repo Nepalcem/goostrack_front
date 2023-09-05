@@ -2,8 +2,14 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://goostrack-backend.onrender.com';
-const setToken = accessToken => {
-  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
 };
 
 export const fetchReviews = createAsyncThunk(
@@ -21,18 +27,20 @@ export const fetchReviews = createAsyncThunk(
 
 export const fetchReviewByOwner = createAsyncThunk(
   'reviews/fetchByOwner',
-  async (_, { rejectWithValue, getState }) => {
-    const { auth } = getState();
-    const accessToken = auth.accessToken;
-    if (accessToken === null) {
-      return rejectWithValue('We dont have a token');
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue('Oops');
     }
+
+    token.set(persistedToken);
+
     try {
-      setToken(accessToken);
       const { data } = await axios.get('/reviews/own');
-      return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
+      return data.reviews[0];
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
