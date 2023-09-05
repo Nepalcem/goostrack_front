@@ -2,8 +2,8 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-
-axios.defaults.baseURL = 'https://goostrack-backend.onrender.com';
+// axios.defaults.baseURL = 'https://goostrack-backend.onrender.com';
+axios.defaults.baseURL = 'http://localhost:8000';
 
 //Authorization заголовок
 const token = {
@@ -94,7 +94,7 @@ const patchCurrentUser = createAsyncThunk(
       // console.log('persistedToken', persistedToken);
       const response = await axios.patch('/users/edit', userData);
       // console.log('data', data);
-        return response.data;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
