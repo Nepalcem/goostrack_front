@@ -21,6 +21,10 @@ export const ButtonChangePeriod = styled.button`
   line-height: 18px;
   letter-spacing: 0em;
   text-align: center;
+  
+  &:hover {
+    opacity: 0.8;;
+  }
 
   // color: #3e85f3;
   color: ${({ place, period }) =>

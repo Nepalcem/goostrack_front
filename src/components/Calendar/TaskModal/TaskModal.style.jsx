@@ -12,6 +12,7 @@ export const Backdrop = styled.div`
   top: 0;
   left: 0;
   background-color: transparent;
+
   /* background-color: rgba(0, 0, 0, 0.3); */
   z-index: 2000;
 
@@ -59,6 +60,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
 
   &:hover {
+    opacity: 0.8;
   }
 
   @media screen and (min-width: 768px) {
@@ -90,6 +92,13 @@ export const StyledFormikInput = styled(Field)`
   font-size: 14px;
   line-height: 18px;
 
+  &::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+
+  &:hover {
+  opacity: 0.8;
+}
+  }
   // &::-webkit-calendar-picker-indicator {
   //   display: none;
   // }
@@ -129,12 +138,20 @@ export const EditButton = styled.button`
   font-size: 14px;
   line-height: 18px;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 export const CancelButton = styled(EditButton)`
   background: #efefef;
   color: #111111;
   width: 144px;
   height: 48px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const AddTasks = styled(ReactSVG)`

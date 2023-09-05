@@ -28,6 +28,8 @@ export const DayComponent = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 48px;
+  
+  cursor: pointer;
 
   font-family: Inter;
   font-size: 16px;
@@ -78,6 +80,10 @@ export const CurrentDayNumber = styled.div`
   line-height: 14px;
   letter-spacing: 0em;
   text-align: left;
+
+  &:hover {
+    background-color: #2b78ef;
+  }
 
   color: ${({ currentDay, day }) =>
     currentDay !== day ? `var(--color - calendar - day)` : `#FFFF`};
