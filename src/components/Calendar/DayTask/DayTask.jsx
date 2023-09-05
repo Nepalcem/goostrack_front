@@ -17,13 +17,14 @@ import IcoEditTast from '../../../images/svg/pencil.svg';
 import IcoDeleteTast from '../../../images/svg/trash.svg';
 
 import ProfileAva from '../../../images/user-avatar.png';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteTask } from 'redux/tasks/tasksOperation';
 
 import TaskModal from '../TaskModal/TaskModal';
 
 const DayTask = ({ currentTask }) => {
+  const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [idForEdit, setIdForEdit] = useState('');
@@ -48,7 +49,7 @@ const DayTask = ({ currentTask }) => {
       <OptionsBlock>
         <InfoBlock>
           <AvaThumb>
-            <Ava src={ProfileAva} alt="profile ava" />
+            <Ava src={user.avatar || ProfileAva} alt="profile ava" />
           </AvaThumb>
           <Priority type={currentTask.priority}>
             {currentTask.priority}
