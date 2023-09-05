@@ -5,6 +5,7 @@ import {
   Backdrop,
   ModalContainer,
   CloseButton,
+  CloseButtonIco,
   Title,
   ModalTeamContainer,
   ModalTeamItem,
@@ -43,7 +44,7 @@ const AboutTeamModal = ({ handleToggle }) => {
     <Backdrop onClick={backdropClick}>
       <ModalContainer>
         <CloseButton onClick={handleToggle}>
-          <img src={CloseIco} alt="close menu" width="100%" />
+          <CloseButtonIco src={CloseIco} alt="close menu" width="100%" />
         </CloseButton>
         <Title>Developers Team</Title>
         <ModalTeamContainer>

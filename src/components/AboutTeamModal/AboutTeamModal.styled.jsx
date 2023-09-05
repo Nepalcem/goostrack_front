@@ -96,6 +96,15 @@ export const CloseButton = styled.button`
   }
 `;
 
+// Іконка закриття
+export const CloseButtonIco = styled(ReactSVG)`
+  stroke: black;
+
+  :hover {
+    stroke: white;
+  }
+`;
+
 // Заголовок модального вікна
 export const Title = styled.p`
   font-weight: 700;
