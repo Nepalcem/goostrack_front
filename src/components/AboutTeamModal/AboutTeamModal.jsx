@@ -33,8 +33,6 @@ const modalRoot = document.querySelector('#modal-root');
 const AboutTeamModal = ({ handleToggle }) => {
   // при натисканні кнопки закриття
   const backdropClick = e => {
-    console.log('e.currentTarget', e.currentTarget);
-    console.log('e.target', e.target);
     if (e.currentTarget === e.target) {
       handleToggle();
     }

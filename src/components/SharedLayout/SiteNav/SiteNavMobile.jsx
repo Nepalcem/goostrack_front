@@ -32,8 +32,7 @@ const SiteNavMobile = ({ handleToggle }) => {
   const dispatch = useDispatch();
 
   const backdropClick = e => {
-    // console.log('e.currentTarget', e.currentTarget);
-    // console.log('e.target', e.target);
+  
     if (e.currentTarget === e.target) {
       handleToggle();
     }

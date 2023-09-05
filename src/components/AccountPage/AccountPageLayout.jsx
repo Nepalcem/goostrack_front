@@ -77,7 +77,6 @@ const AccountPageLayout = () => {
   }, [user.birthday]);
 
   const submitHandler = (values, actions) => {
-    console.log(values);
 
     const formData = new FormData();
 
@@ -196,8 +195,6 @@ const AccountPageLayout = () => {
                           selected={new Date(values.birthday)}
                           onChange={date => {
                             setFieldValue('birthday', date);
-                            console.log('Selected Date:', date);
-                            // console.log(typeof(date));
                             //   format(date, 'yyyy-MM-dd')
                             // ); // Log the selected date
                           }}

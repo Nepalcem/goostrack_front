@@ -8,7 +8,7 @@ import { selectOwnerReviews } from '../../../../redux/reviews/reviewsSelectors';
 const ModalFeedback = ({ onClose }) => {
   const [review, setReview] = useState('');
   const reviewOwn = useSelector(selectOwnerReviews);
-  console.log(reviewOwn);
+  
   useEffect(() => {
     setReview(reviewOwn);
   }, [reviewOwn]);
