@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 
 export const MainTasksContainer = styled.div`
-  overflow-x: scroll;
+  // overflow-x: scroll;
   display: flex;
   gap: 20px;
   /* overflow: hidden; */

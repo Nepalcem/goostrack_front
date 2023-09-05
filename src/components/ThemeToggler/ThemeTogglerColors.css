@@ -32,6 +32,9 @@ html[data-theme='dark'] {
   --color-user-input-border: 1px solid rgba(255, 255, 255, 0.15);
   --color-text-input: #FFFFFF;
   --color-close-popup: #FFFFFF;
+
+  --color-border-popup-modal: transparent;
+
   --color-bgr-input: transparent;
 
   --color-border-day-cal-head: 1px solid rgba(255, 255, 255, 0.15);
@@ -80,6 +83,9 @@ html[data-theme='light'] {
   --color-user-input-border: 1px solid rgba(17, 17, 17, 0.1);
   --color-text-input: #343434;
   --color-close-popup: #111111;
+
+  --color-border-popup-modal: 1px solid rgba(220, 227, 229, 0.8);
+
   --color-bgr-input: #F6F6F6;
 
   --color-border-day-cal-head: 1px solid rgba(220, 227, 229, 0.8);
