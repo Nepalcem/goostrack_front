@@ -36,6 +36,9 @@ export const DisplayDataDiv = styled.div`
 `;
 
 export const ButtonsChangePeriodDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
   overflow: hidden;
@@ -47,9 +50,6 @@ export const ButtonsChangePeriodDiv = styled.div`
   }
 `;
 export const Svg = styled.svg`
-  // stroke: #dce3e5;
-  // stroke: var(--color-btn-stroke);
-
   width: 16px;
   height: 16px;
 
@@ -60,13 +60,16 @@ export const Svg = styled.svg`
 `;
 
 export const ButtonChangeDate = styled.button`
-  padding: 7px 10px;
-  @media screen and (min-width: 768px) {
-    padding: 8px 12px 8px 12px;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
-  // background-color: #fff;
+  padding: 11px 16px;
+  @media screen and (min-width: 768px) {
+    padding: 12px 16px;
+  }
+
   background-color: var(--color-btn-change-day);
 
   cursor: pointer;
@@ -75,11 +78,11 @@ export const ButtonChangeDate = styled.button`
   border-right: ${({ border }) =>
     border === 'right' ? '1px solid rgba(220, 227, 229, 0.5)' : 0};
 
-  &:hover {
+  /* &:hover {
     ${Svg} {
       stroke: var(--color-btn-stroke-active);
     }
-  }
+  } */
 
   stroke: ${({ direction, place }) =>
     (place === 'left' && direction === 'back') ||
