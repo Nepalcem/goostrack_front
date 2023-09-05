@@ -98,6 +98,7 @@ export const CalendarTable = ({ month, year }) => {
                       onClick={() => onClick(dayMoment.format('MM.DD.YYYY'))}
                     >
                       <NumberDay
+                        onClickDate={onClickDate}
                         currentDayNumber={currentDayNumber}
                         dayMoment={dayMoment.format('D')}
                       >
