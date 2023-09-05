@@ -26,7 +26,7 @@ background-color: var(--color-btn-change-day);
 border: var(--color-calendar-border);
   /* background-color: #fff; */
   min-width: 335px;
-  height: 432px;
+  max-height: 432px;
   /* height: 100%; */
   display: flex;
   flex-direction: column;

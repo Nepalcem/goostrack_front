@@ -49,7 +49,10 @@ const DayTask = ({ currentTask }) => {
       <OptionsBlock>
         <InfoBlock>
           <AvaThumb>
-            <Ava src={user.avatar || ProfileAva} alt="profile ava" />
+            <Ava
+              src={user.avatar || user.avatarURL || ProfileAva}
+              alt="profile ava"
+            />
           </AvaThumb>
           <Priority type={currentTask.priority}>
             {currentTask.priority}
