@@ -2,13 +2,28 @@ import styled from 'styled-components';
 import { primaryColor } from 'utils/variables';
 
 export const ReviewsContainer = styled.div`
-  margin: 0 auto;
-  max-width: 375px;
+// position: relative;
+
+  max-width: 335px;
+  min-height: 324px;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 64px;
+
+  
   @media (min-width: 768px) {
-    max-width: 768px;
+    width: 704px;
+    max-width: 704px;
+    min-height: 360px;
   }
   @media (min-width: 1440px) {
-    max-width: 1440px;
+    // max-width: 1440px;
+    width: 1184px;
+    max-width: 1184px;
+    min-height: 374px;
+
+    padding-bottom: 118px;
   }
 `;
 export const Title = styled.h2`
@@ -29,7 +44,8 @@ export const Title = styled.h2`
 
 export const ReviewWrapper = styled.div`
   margin: 0 auto;
-  padding: 24px;
+  // padding: 24px;
+  padding: 24px 20px;
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.1);
@@ -102,6 +118,10 @@ export const ArrowLeft = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   cursor: pointer;
+
+  &:hover{
+  opacity: 0.8;
+  }
 `;
 
 export const ArrowRight = styled.div`
@@ -109,4 +129,8 @@ export const ArrowRight = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   cursor: pointer;
+
+  &:hover{
+    opacity: 0.8;
+    }
 `;
