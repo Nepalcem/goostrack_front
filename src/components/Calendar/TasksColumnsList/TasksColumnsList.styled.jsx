@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 
 export const MainTasksContainer = styled.div`
-  // overflow-y: scroll;
+  overflow-x: scroll;
   display: flex;
   gap: 20px;
-  // overflow: hidden;
+  /* overflow: hidden; */
 
   padding-bottom: 34px;
   margin-top: 14px;
-
 
   @media screen and (min-width: 768px) {
     gap: 16px;
@@ -22,42 +21,39 @@ export const MainTasksContainer = styled.div`
 `;
 
 export const TaskBlock = styled.div`
-background-color: var(--color-btn-change-day);
-border: var(--color-calendar-border);
+  background-color: var(--color-btn-change-day);
+  border: var(--color-calendar-border);
   /* background-color: #fff; */
   min-width: 335px;
   max-height: 432px;
-  /* height: 100%; */
+  height: 100%;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
 
   padding: 18px 18px 10px 14px;
- 
-
 
   // overflow-y: auto;
 
   //   ::-webkit-scrollbar {
   //     width: 8px;
   // }
-  
+
   // ::-webkit-scrollbar-track {
   //   // background:transparent
   //     background: var(--scrollbar-track);
   //     border-radius: 12px;
   // }
-  
+
   // ::-webkit-scrollbar-thumb {
   //     background: var(--scrollbar-thumb);
   //     height: 112px;
   //     border-radius: 12px;
   // }
-  
+
   // ::-webkit-scrollbar-thumb:hover {
   //     background: #7c7c7c;
   // }
-
 
   @media screen and (min-width: 768px) {
     min-width: 344px;
@@ -73,9 +69,6 @@ export const TaskBlockTitle = styled.div`
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
-
-  
-  
 `;
 
 export const Title = styled.h3`
@@ -126,23 +119,23 @@ export const TasksWrap = styled.div`
 
   ::-webkit-scrollbar {
     width: 8px;
-}
+  }
 
-::-webkit-scrollbar-track {
-  // background:transparent
+  ::-webkit-scrollbar-track {
+    // background:transparent
     background: var(--scrollbar-track);
     border-radius: 12px;
-}
+  }
 
-::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
     height: 112px;
     border-radius: 12px;
-}
+  }
 
-::-webkit-scrollbar-thumb:hover {
+  ::-webkit-scrollbar-thumb:hover {
     background: #7c7c7c;
-}
+  }
 
   @media screen and (min-width: 768px) {
     gap: 18px;
