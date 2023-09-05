@@ -16,7 +16,7 @@ import DatePicker from 'react-datepicker';
 import { StatisticsDatePickerGlobalStyles } from './StatisticsDatepicker.styled';
 const PeriodPaginatorStatistics = () => {
   const [date, setDate] = useState(getTime(new Date()));
-
+  console.log('date', date);
   const onClickBtn = (step, period) => {
     let newDate = null;
     if (period === 'day') {
