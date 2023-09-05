@@ -13,6 +13,10 @@ import {
   ButtonIco,
   PopoverStyled,
   WrapperPopover,
+  PopBtn,
+  PopBtnWraper,
+  PopText,
+  PopIco,
 } from './DayTask.styled';
 
 import IcoChangeStatus from '../../../images/svg/arrow-circle.svg';
@@ -102,28 +106,31 @@ const DayTask = ({ currentTask }) => {
               vertical: 'top',
               horizontal: 'center',
             }}
+            anchorReference="anchorPosition"
+            anchorPosition={{ top: 462, left: 420 }}
           >
             <WrapperPopover>
               {currentTask.category !== 'to-do' && (
-                <button onClick={() => clickToRelocate('to-do')}>
-                  <div>
-                    <p>To do</p> <ButtonIco src={IcoChangeStatus} />
-                  </div>
-                </button>
+                <PopBtn onClick={() => clickToRelocate('to-do')}>
+                  <PopBtnWraper>
+                    <PopText>To do</PopText> <PopIco src={IcoChangeStatus} />
+                  </PopBtnWraper>
+                </PopBtn>
               )}
               {currentTask.category !== 'in-progress' && (
-                <button onClick={() => clickToRelocate('in-progress')}>
-                  <div>
-                    <p>In Progress</p> <ButtonIco src={IcoChangeStatus} />
-                  </div>
-                </button>
+                <PopBtn onClick={() => clickToRelocate('in-progress')}>
+                  <PopBtnWraper>
+                    <PopText>In Progress</PopText>{' '}
+                    <PopIco src={IcoChangeStatus} />
+                  </PopBtnWraper>
+                </PopBtn>
               )}
               {currentTask.category !== 'done' && (
-                <button onClick={() => clickToRelocate('done')}>
-                  <div>
-                    <p>Done</p> <ButtonIco src={IcoChangeStatus} />
-                  </div>
-                </button>
+                <PopBtn onClick={() => clickToRelocate('done')}>
+                  <PopBtnWraper>
+                    <PopText>Done</PopText> <PopIco src={IcoChangeStatus} />
+                  </PopBtnWraper>
+                </PopBtn>
               )}
             </WrapperPopover>
           </PopoverStyled>
