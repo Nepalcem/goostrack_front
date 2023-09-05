@@ -1,18 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 
-// import { lazy } from 'react';
-
-// const Home = lazy(() => import('../pages/Home'));
-// const NotFound = lazy(() => import('../pages/NotFound'));
-
-import MainPage from '../../pages/MainPage';
-import RegisterPage from '../../pages/RegisterPage';
-import LoginPage from '../../pages/LoginPage';
-import NotFound from '../../pages/NotFound';
-import AccountPage from '../AccountPage/AccountPageLayout';
-import StatisticsPage from '../../pages/StatisticsPage';
 import SharedLayout from '../SharedLayout/SharedLayout';
-import CalendarPage from '../../pages/CalendarPage/CalendarPage';
 import { ChoosedMonth } from 'components/Calendar/ChoosedMonth/ChoosedMonth';
 import { ChoosedDay } from 'components/Calendar/ChoosedDay/ChoosedDay';
 //  приватні і рестріктед роуд
@@ -22,6 +11,25 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import authOperations from 'redux/auth/authOperations';
 
+const MainPage = lazy(() => import('../../pages/MainPage'));
+const RegisterPage = lazy(() => import('../../pages/RegisterPage'));
+const LoginPage = lazy(() => import('../../pages/LoginPage'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
+const AccountPage = lazy(() => import('../../pages/AccountPage'));
+const StatisticsPage = lazy(() => import('../../pages/StatisticsPage'));
+const CalendarPage = lazy(() => import('../../pages/CalendarPage/CalendarPage'));
+
+// import MainPage from '../../pages/MainPage';
+// import RegisterPage from '../../pages/RegisterPage';
+// import LoginPage from '../../pages/LoginPage';
+// import NotFound from '../../pages/NotFound';
+// import AccountPage from '../AccountPage/AccountPageLayout';
+// import StatisticsPage from '../../pages/StatisticsPage';
+
+// import CalendarPage from '../../pages/CalendarPage/CalendarPage';
+
+
+
 export const App = () => {
   const dispatch = useDispatch();
 
@@ -30,7 +38,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <Suspense fallback={<div>Loading page...</div>}>
       <Routes>
         {/* <Route path="/" element={<MainPage />} /> */}
         <Route
@@ -89,6 +97,6 @@ export const App = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };
