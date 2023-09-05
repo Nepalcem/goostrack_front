@@ -74,7 +74,6 @@ export const CalendarTable = ({ month, year }) => {
 
   // получаем в CalendarPage день для перехода в ChoosedDay
   const [onClickDate, setOnClickDate] = useOutletContext();
-  console.log('onClickDate', onClickDate);
   const onClick = dayMoment => setOnClickDate(dayMoment);
 
   return (
