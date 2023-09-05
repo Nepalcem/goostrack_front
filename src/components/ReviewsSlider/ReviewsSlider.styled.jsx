@@ -3,7 +3,13 @@ import { primaryColor } from 'utils/variables';
 
 export const ReviewsContainer = styled.div`
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 375px;
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media (min-width: 1440px) {
+    max-width: 1440px;
+  }
 `;
 export const Title = styled.h2`
   text-align: center;
@@ -28,13 +34,15 @@ export const ReviewWrapper = styled.div`
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  width: 100%;
+  /* width: 100%; */
+  height: 200px;
   @media (min-width: 375px) {
     width: 335px;
   }
 
   @media (min-width: 768px) {
     width: 580px;
+    height: 180px;
     padding: 32px;
   }
 
