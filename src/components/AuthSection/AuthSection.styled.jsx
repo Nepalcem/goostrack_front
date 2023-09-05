@@ -94,8 +94,7 @@ export const LoginLink = styled(Link)`
   background-color: ${whiteColor};
   cursor: pointer;
 
-  &:hover,
-  &:focus {
+  &:hover{
     opacity: 0.8;
     // background-color: #d7e3f1;
   }
@@ -109,8 +108,7 @@ export const SignUpLink = styled(Link)`
   font-family: Inter;
   font-size: 12px;
 
-  &:hover,
-  &:focus {
+  &:hover{
     opacity: 0.8;
     // color: #3f5069;
   }
