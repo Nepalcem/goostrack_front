@@ -2,20 +2,22 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { ChartContainer } from './StatisticsChart.styled';
+import { fetchAllTasks } from 'redux/tasks/tasksOperation';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTasks } from 'redux/tasks/tasksSelectors';
 
-const data = [
-  { name: 'To Do', ByDay: 50, ByMonth: 50 },
-  { name: 'In Progress', ByDay: 100, ByMonth: 24 },
-  { name: 'Done', ByDay: 35, ByMonth: 24 },
-];
+// const data = [
+//   { name: 'To Do', ByDay: 50, ByMonth: 50 },
+//   { name: 'In Progress', ByDay: 100, ByMonth: 24 },
+//   { name: 'Done', ByDay: 35, ByMonth: 24 },
+// ];
+let data = [];
 
 const customBarLabel = ({ x, y, width, value }) => {
   return (
     <text
       x={x + width / 2}
       y={y}
-
-      // fill="#343434"
       fill="var(--color-calendar-day)"
       fontWeight="400"
       textAnchor="middle"
@@ -29,6 +31,85 @@ export const StatisticsChart = () => {
   const [chartWidth, setChartWidth] = useState(0);
   const [chartHeight, setChartHeight] = useState(0);
   const [chartBarSize, setChartBarSize] = useState(0);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllTasks({ year: '2023', month: '09', day: '04' }));
+  }, [dispatch]);
+  const tasksByMonth = useSelector(selectTasks);
+  console.log('bymnt', tasksByMonth);
+  ////////////////////////////////////////////////
+  let mToDo = 0;
+  let mInP = 0;
+  let mDone = 0;
+  for (let item of tasksByMonth) {
+    if (item.category === 'to-do') {
+      mToDo += 1;
+    }
+    if (item.category === 'in-progress') {
+      mInP += 1;
+    }
+    if (item.category === 'done') {
+      mDone += 1;
+    }
+  }
+  let allCountByM = tasksByMonth.length;
+
+  console.log(mDone);
+  console.log(mInP);
+  console.log(mToDo);
+
+  data = [
+    {
+      name: 'To Do',
+      ByDay: 50,
+      ByMonth: 30,
+    },
+    {
+      name: 'In Progress',
+      ByDay: 100,
+      ByMonth: 20,
+    },
+    { name: 'Done', ByDay: 35, ByMonth: 11 },
+  ];
+  console.log(data);
+
+  ///////////////////////////////////////////
+  const date = '2023-09-04'; // умовна дата
+  const tasksByDay = tasksByMonth.filter(item => item.date === date);
+  console.log('byday', tasksByDay);
+
+  const calculatePercentage = (data, category, type) => {
+    const filteredData = data.filter(item => item.category === category);
+    const totalTasks = filteredData.length;
+    // console.log(totalTasks);
+    const sumValue = filteredData.reduce((total, item) => {
+      return total + parseFloat(item[type]);
+    }, 0);
+    const percentage =
+      totalTasks === 0 ? 0 : (sumValue / (totalTasks * 100)) * 100;
+    // console.log(percentage);
+    return percentage;
+  };
+
+  // if (tasksByMonth || tasksByDay) {
+  //   data.push({
+  //     name: 'To Do',
+  //     ByDay: calculatePercentage(tasksByDay, 'to-do', 'ByDay'),
+  //     ByMonth: calculatePercentage(tasksByMonth, 'to-do', 'ByMonth'),
+  //   });
+  //   data.push({
+  //     name: 'In Progress',
+  //     ByDay: calculatePercentage(tasksByDay, 'in-progress', 'ByDay'),
+  //     ByMonth: calculatePercentage(tasksByMonth, 'in-progress', 'ByMonth'),
+  //   });
+  //   data.push({
+  //     name: 'Done',
+  //     ByDay: calculatePercentage(tasksByDay, 'done', 'ByDay'),
+  //     ByMonth: calculatePercentage(tasksByMonth, 'done', 'ByMonth'),
+  //   });
+  //   console.log(data);
+  // }
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,7 +149,10 @@ export const StatisticsChart = () => {
         margin={{ top: 45, right: 0, bottom: 5, left: -15 }}
         barGap="7%"
       >
-        <CartesianGrid stroke="var(--color-border-stat-line)" vertical={false} />
+        <CartesianGrid
+          stroke="var(--color-border-stat-line)"
+          vertical={false}
+        />
         {/* <CartesianGrid stroke="rgba(227, 243, 255, 1)" vertical={false} /> */}
         <Bar
           dataKey="ByDay"
@@ -128,7 +212,6 @@ export const StatisticsChart = () => {
               fontWeight: '700',
               fill: 'var(--color-calendar-day)',
               // fill: '#343434',
-
             },
           }}
           domain={[0, 100]}
@@ -140,7 +223,6 @@ export const StatisticsChart = () => {
             fontSize: 14,
             fontWeight: '500',
             fill: 'var(--color-calendar-day)',
-
           }}
         />
       </BarChart>

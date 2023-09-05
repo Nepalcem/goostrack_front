@@ -33,9 +33,7 @@ const PeriodPaginatorStatistics = () => {
           calendarStartDay={1}
           selected={date}
           onChange={date => {
-            console.log('Selected Date:', date);
             setDate(date);
-            // console.log(typeof(date));
           }}
           dateFormat="dd MMMM yyyy"
         />
