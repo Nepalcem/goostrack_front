@@ -187,22 +187,23 @@ const AccountPageLayout = () => {
                 <Field name="birthday">
                   {({ field }) => (
                     <>
-                      <DatePicker
-                        {...field}
-                        calendarStartDay={1}
-                        // selected={values.birthday}
-                        // selected={field.value}
-                        selected={new Date(values.birthday)}
-                        onChange={date => {
-                          setFieldValue('birthday', date);
-                          console.log('Selected Date:', date);
-                          // console.log(typeof(date));
-                          //   format(date, 'yyyy-MM-dd')
-                          // ); // Log the selected date
-                        }}
-                        dateFormat="yyyy-MM-dd"
-                      />
-                      <CalendarGlobalStyles />
+                      <CalendarGlobalStyles>
+                        <DatePicker
+                          {...field}
+                          calendarStartDay={1}
+                          // selected={values.birthday}
+                          // selected={field.value}
+                          selected={new Date(values.birthday)}
+                          onChange={date => {
+                            setFieldValue('birthday', date);
+                            console.log('Selected Date:', date);
+                            // console.log(typeof(date));
+                            //   format(date, 'yyyy-MM-dd')
+                            // ); // Log the selected date
+                          }}
+                          dateFormat="yyyy-MM-dd"
+                        />
+                      </CalendarGlobalStyles>
                     </>
                   )}
                 </Field>

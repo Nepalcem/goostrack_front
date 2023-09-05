@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
+import styled from 'styled-components';
 import { primaryColor, whiteColor } from 'utils/variables';
 
-export const StatisticsDatePickerGlobalStyles = createGlobalStyle`
+export const StyledStatisticsDatepicker = styled.div`
   .react-datepicker__wrapper {
     position: relative;
 

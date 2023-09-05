@@ -13,7 +13,8 @@ import {
   Svg,
 } from 'components/Calendar/CalendarToolbar/PeriodPaginator/PeriodPaginator.styled';
 import DatePicker from 'react-datepicker';
-import { StatisticsDatePickerGlobalStyles } from './StatisticsDatepicker.styled';
+import { StyledStatisticsDatepicker } from './StatisticsDatepicker.styled';
+
 const PeriodPaginatorStatistics = ({ date, setDate }) => {
   const onClickBtn = (step, period) => {
     let newDate = null;
@@ -27,6 +28,7 @@ const PeriodPaginatorStatistics = ({ date, setDate }) => {
   return (
     <PeriodPaginatorContainer>
       <ButtonsContainer>
+      <StyledStatisticsDatepicker>
         <DatePicker
           calendarStartDay={1}
           selected={date}
@@ -35,7 +37,7 @@ const PeriodPaginatorStatistics = ({ date, setDate }) => {
           }}
           dateFormat="dd MMMM yyyy"
         />
-        <StatisticsDatePickerGlobalStyles />
+        </StyledStatisticsDatepicker>
         <ButtonsChangePeriodDiv>
           <ButtonChangeDate
             border="right"
