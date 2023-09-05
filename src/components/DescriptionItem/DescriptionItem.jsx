@@ -42,9 +42,7 @@ import DescriptionImageDesktop3_2x from '../../images/mainPageImg/desktop/deskto
 //КІНЕЦЬ ІМПОРТУ КАРТИНОК (відрефакторити в майбутньому отримання з бекенду)
 
 const DescriptionItem = ({ listOfDescriptions }) => {
-  // console.log('listOfDescriptions', listOfDescriptions);
 
-  //ВИЗНАЧЕННЯ ЛІНКІВ КАРТИНОК
   //(відрефакторити в майбутньому отримання з бекенду)
   let imageUrlMobile,
     imageUrlMobile_2x,

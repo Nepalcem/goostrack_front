@@ -52,7 +52,6 @@ const DayTask = ({ currentTask }) => {
       category: category,
     };
     dispatch(updateTask({ id: currentTask._id, updatedTask }));
-    console.log('upd');
   };
 
   const handleToggle = () => {

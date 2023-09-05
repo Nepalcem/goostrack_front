@@ -20,7 +20,7 @@ const StatisticsSection = () => {
 
   const [date, setDate] = useState(new Date());
   const currentDate = format(date, 'yyyy-MM-dd');
-  console.log(currentDate);
+  
   const day = currentDate.slice(8, 10);
   const month = currentDate.slice(5, 7);
   const year = currentDate.slice(0, 4);
@@ -109,7 +109,7 @@ const StatisticsSection = () => {
       ByMonth: Number(percDoneM),
     },
   ];
-  console.log('data', data);
+  
 
   return (
     <StatisticsSectionContainer>

@@ -55,20 +55,19 @@ const logOut = createAsyncThunk('auth/logout', async () => {
 const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    // console.log('thunkApi.getState()', thunkAPI.getState());
+
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     if (!persistedToken) {
-      // if (persistedToken === null || persistedToken === '') {
-      // console.log('There is no persistedToken');
+    
       return thunkAPI.rejectWithValue('Oops');
       // return state;
     }
     token.set(persistedToken);
     try {
-      // console.log('persistedToken', persistedToken);
+      
       const { data } = await axios.get('/users/current');
-      // console.log('data', data);
+    
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -79,21 +78,20 @@ const fetchCurrentUser = createAsyncThunk(
 const patchCurrentUser = createAsyncThunk(
   'auth/patch',
   async (userData, thunkAPI) => {
-    // console.log('thunkApi.getState()', thunkAPI.getState());
+
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    // const user = state.auth.user;
+
     if (!persistedToken) {
-      // if (persistedToken === null || persistedToken === '') {
-      // console.log('There is no persistedToken');
+     
       return thunkAPI.rejectWithValue('Oops');
-      // return state;
+    
     }
     token.set(persistedToken);
     try {
-      // console.log('persistedToken', persistedToken);
+     
       const response = await axios.patch('/users/edit', userData);
-      // console.log('data', data);
+      
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
