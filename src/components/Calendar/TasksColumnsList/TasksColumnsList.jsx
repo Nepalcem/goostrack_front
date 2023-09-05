@@ -22,6 +22,8 @@ import IcoAddTask2 from '../../../images/svg/plus2.svg';
 import TaskModal from '../TaskModal/TaskModal';
 import { useParams } from 'react-router-dom';
 
+const body = document.querySelector('body');
+
 const TasksColumnsList = ({ tasksPerDay }) => {
   const [modalAddTaskIsOpened, setModalAddTaskIsOpened] = useState(false);
   const [category, setCategory] = useState('');
@@ -30,6 +32,12 @@ const TasksColumnsList = ({ tasksPerDay }) => {
 
   const handleToggle = () => {
     setModalAddTaskIsOpened(prevState => !prevState);
+    if (modalAddTaskIsOpened === true) {
+      body.style.overflow = 'scroll';
+    }
+    if (modalAddTaskIsOpened === false) {
+      body.style.overflow = 'hidden';
+    }
   };
 
   return (
