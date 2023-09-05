@@ -97,3 +97,13 @@ html[data-theme='light'] {
 
 /* Tasks,procent,toDo,inProcess,Done color:var(--color-calendar-day); */
 
+/* &:hover {
+  background-color: #2b78ef;
+}
+
+&:hover,
+&:focus {
+  opacity: 0.8;
+} */
+
+/* cursor:  pointer; */

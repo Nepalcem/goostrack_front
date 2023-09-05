@@ -178,6 +178,11 @@ export const TextShow = styled.span`
 
   right: 20px;
 
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }

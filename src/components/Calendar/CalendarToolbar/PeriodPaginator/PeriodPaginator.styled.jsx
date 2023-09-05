@@ -74,6 +74,10 @@ export const ButtonChangeDate = styled.button`
 
   cursor: pointer;
   border: 0;
+  
+  &:hover {
+    opacity: 0.8;;
+  }
 
   border-right: ${({ border }) =>
     border === 'right' ? '1px solid rgba(220, 227, 229, 0.5)' : 0};

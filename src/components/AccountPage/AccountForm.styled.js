@@ -105,6 +105,8 @@ export const AccountSaveButton = styled.button`
   cursor: pointer;
   width: 195px;
   padding: 14px 50px;
+
+
   @media screen and (min-width: 768px) {
     padding: 15px 83px;
     width: 262px;
@@ -119,6 +121,11 @@ export const AccountSaveButton = styled.button`
   font-weight: 600;
   line-height: calc(18 / 14);
   margin-top: 22px;
+
+  &:hover {
+    background-color: #2b78ef;
+  }
+  
   @media screen and (min-width: 1024px) {
     margin-top: 88px;
   }

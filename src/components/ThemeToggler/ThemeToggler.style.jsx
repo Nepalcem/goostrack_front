@@ -11,6 +11,7 @@ export const ThemeToggleButton = styled.button`
   height: 24px;
 
   &:hover {
+    opacity: 0.8;
   }
 
   @media screen and (min-width: 768px) {

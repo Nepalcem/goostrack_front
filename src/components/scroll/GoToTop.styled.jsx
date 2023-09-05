@@ -23,6 +23,12 @@ export const Wrapper = styled.section`
     align-items: center;
     cursor: pointer;
 
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+
+  }
+
     &--icon {
       animation: gototop 1.2s linear infinite alternate-reverse;
     }

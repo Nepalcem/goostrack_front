@@ -47,6 +47,7 @@ export const AccountPageAvatar = styled.img`
 
 export const UserAvatarPlus = styled.div`
   position: relative;
+  
   @media screen and (max-width: 767px) {
     transform: translateY(-50%);
   }
@@ -56,6 +57,11 @@ export const AccountAvatarPlusIcon = styled.img`
   position: absolute;
   top: 85%;
   left: 65%;
+  &:hover {
+    border: 1px solid #3e85f3;
+    cursor: pointer;
+    border-radius: 50%;
+  }
   @media screen and (max-width: 767px) {
     width: 12px;
   }

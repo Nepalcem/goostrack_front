@@ -39,4 +39,9 @@ export const TeamName = styled.span`
 
   text-decoration-line: none;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
 `;

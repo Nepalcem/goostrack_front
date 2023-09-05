@@ -95,6 +95,8 @@ export const AddTaskButton = styled.button`
 
   cursor: pointer;
 
+
+
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
@@ -168,6 +170,10 @@ export const AddTaskButtonBig = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: 1.28571;
+
+  &:hover {
+    background-color: #2b78ef;
+  }
 `;
 
 export const IcoAdd2 = styled(ReactSVG)`

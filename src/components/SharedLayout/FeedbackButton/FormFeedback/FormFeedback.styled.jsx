@@ -3,9 +3,14 @@ import {  Form, Field } from 'formik';
 import { BiPencil as Pencil, BiTrash as Trash } from 'react-icons/bi';
 import { AiFillStar as Star } from 'react-icons/ai';
 
+
+
 export const FeedbackForm=styled(Form)`
 max-width: 404px;
-height: 285px;`;
+height: 285px;
+`;
+
+
 export const FeedbackFormLabel=styled.label`
 display: block;
   font-family: 'Inter';
@@ -13,7 +18,7 @@ display: block;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: rgba(52, 52, 52, 0.8);`;
+  color: rgba(52, 52, 52, 0.8);`; //rating
 
 
 export const FeedbackFormStarInput =styled(Field)`display: none;`;
@@ -167,8 +172,6 @@ fill: #ea3d65;
 
 
 `
-
-
 
 
 
