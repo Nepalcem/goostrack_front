@@ -77,4 +77,4 @@ Are you looking to take control of your tasks and boost your productivity? Task 
 
 
 
-  ##### Created with ❤️ by the Task Planner team. We believe this application will be a valuable asset in helping you regain control of your tasks and become more organized and productive!
+  ##### Created with ❤️ by the GooseTrack team. We believe this application will be a valuable asset in helping you regain control of your tasks and become more organized and productive!
