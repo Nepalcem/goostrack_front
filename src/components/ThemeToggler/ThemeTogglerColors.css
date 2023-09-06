@@ -97,19 +97,3 @@ html[data-theme='light'] {
   --scrollbar-thumb:#E7E5E5;
   --scrollbar-track:#F2F2F2;
 }
-
-/* var(--color-name-user) */
-
-
-/* Tasks,procent,toDo,inProcess,Done color:var(--color-calendar-day); */
-
-/* &:hover {
-  background-color: #2b78ef;
-}
-
-&:hover,
-&:focus {
-  opacity: 0.8;
-} */
-
-/* cursor:  pointer; */
