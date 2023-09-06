@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { FaStar } from 'react-icons/fa';
 import { BiPencil } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
-import { toast } from 'react-toastify';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -65,7 +65,7 @@ const FeedbackForm = ({ toggleModal }) => {
 
   const handleCloseYes = actions => {
     dispatch(deleteReview({ _id: data[0]._id }));
-    toast.info('Review deleted');
+    Notify.info('Review deleted');
     setOpen(false);
     toggleModal();
   };
@@ -79,15 +79,15 @@ const FeedbackForm = ({ toggleModal }) => {
         if (isEditing && data.length > 0) {
           await dispatch(updateReview({ ...values, _id: data[0]._id }));
 
-          toast.success('Review updated successfully');
+          Notify.success('Review updated successfully');
         } else {
           console.log('added review');
           await dispatch(addReview(values));
-          toast.success('Review created successfully');
+          Notify.success('Review created successfully');
         }
         toggleModal();
       } catch (error) {
-        toast.error('Oops, something went wrong...');
+        Notify.error('Oops, something went wrong...');
       }
     },
   });
