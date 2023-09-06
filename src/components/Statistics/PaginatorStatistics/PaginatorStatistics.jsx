@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { addDays, getTime } from 'date-fns';
 import {
   ButtonsContainer,
@@ -16,6 +17,8 @@ import DatePicker from 'react-datepicker';
 import { StyledStatisticsDatepicker } from './StatisticsDatepicker.styled';
 
 const PeriodPaginatorStatistics = ({ date, setDate }) => {
+  const [direction, setDirection] = useState('forvard'); // направление выбора даты back or forvard
+
   const onClickBtn = (step, period) => {
     let newDate = null;
     if (period === 'day') {
@@ -28,20 +31,25 @@ const PeriodPaginatorStatistics = ({ date, setDate }) => {
   return (
     <PeriodPaginatorContainer>
       <ButtonsContainer>
-      <StyledStatisticsDatepicker>
-        <DatePicker
-          calendarStartDay={1}
-          selected={date}
-          onChange={date => {
-            setDate(date);
-          }}
-          dateFormat="dd MMMM yyyy"
-        />
+        <StyledStatisticsDatepicker>
+          <DatePicker
+            calendarStartDay={1}
+            selected={date}
+            onChange={date => {
+              setDate(date);
+            }}
+            dateFormat="dd MMMM yyyy"
+          />
         </StyledStatisticsDatepicker>
         <ButtonsChangePeriodDiv>
           <ButtonChangeDate
+            direction={direction}
+            place={'left'}
             border="right"
-            onClick={() => onClickBtn(-1, 'day')}
+            onClick={() => {
+              setDirection('back');
+              onClickBtn(-1, 'day');
+            }}
           >
             <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
               <path
@@ -52,7 +60,14 @@ const PeriodPaginatorStatistics = ({ date, setDate }) => {
               />
             </Svg>
           </ButtonChangeDate>
-          <ButtonChangeDate onClick={() => onClickBtn(1, 'day')}>
+          <ButtonChangeDate
+            direction={direction}
+            place={'right'}
+            onClick={() => {
+              setDirection('forvard');
+              onClickBtn(1, 'day');
+            }}
+          >
             <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
               <path
                 strokeLinecap="round"

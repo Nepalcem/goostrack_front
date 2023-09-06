@@ -42,12 +42,6 @@ export const ButtonsChangePeriodDiv = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
   overflow: hidden;
-  @media screen and (min-width: 375px) {
-  }
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1440px) {
-  }
 `;
 export const Svg = styled.svg`
   width: 16px;
@@ -74,23 +68,23 @@ export const ButtonChangeDate = styled.button`
 
   cursor: pointer;
   border: 0;
-  
+
   &:hover {
-    opacity: 0.8;;
+    opacity: 0.8;
   }
 
   border-right: ${({ border }) =>
     border === 'right' ? '1px solid rgba(220, 227, 229, 0.5)' : 0};
 
-  /* &:hover {
+  &:hover {
     ${Svg} {
       stroke: var(--color-btn-stroke-active);
     }
-  } */
+  }
 
   stroke: ${({ direction, place }) =>
     (place === 'left' && direction === 'back') ||
     (place === 'right' && direction === 'forvard')
-      ? '#343434'
-      : '#DCE3E5'};
+      ? 'var(--color-btn-stroke-active)'
+      : 'var(--color-btn-stroke)'};
 `;
