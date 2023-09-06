@@ -95,9 +95,9 @@ export const StyledFormikInput = styled(Field)`
   &::-webkit-calendar-picker-indicator {
     cursor: pointer;
 
-  &:hover {
-  opacity: 0.8;
-}
+    &:hover {
+      opacity: 0.8;
+    }
   }
   // &::-webkit-calendar-picker-indicator {
   //   display: none;

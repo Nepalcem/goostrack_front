@@ -70,7 +70,6 @@ export const CalendarTable = ({ month, year }) => {
 
   // витягаємо нові таски для нового рендерингу
   const tasks = useSelector(state => state.tasks.items);
-  
 
   // получаем в CalendarPage день для перехода в ChoosedDay
   const [onClickDate, setOnClickDate] = useOutletContext();
@@ -98,7 +97,6 @@ export const CalendarTable = ({ month, year }) => {
                       onClick={() => onClick(dayMoment.format('MM.DD.YYYY'))}
                     >
                       <NumberDay
-                        onClickDate={onClickDate}
                         currentDayNumber={currentDayNumber}
                         dayMoment={dayMoment.format('D')}
                       >
