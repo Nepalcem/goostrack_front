@@ -16,6 +16,8 @@ Are you looking to take control of your tasks and boost your productivity? Task 
 
 📅 Reminders: Set reminders to receive notifications about upcoming tasks.
 
+📊 Statistics Section: Monitor your task statistics in a visually appealing format. Gain insights into your task completion patterns and productivity over time.
+
 🔄 User-Friendly: A simple and intuitive interface makes task planning a pleasant and efficient process.
 
 👤 Profile Customization: Personalize your profile by adding an avatar, date of birth, phone number, and changing your email address.
@@ -26,14 +28,51 @@ Are you looking to take control of your tasks and boost your productivity? Task 
 #### Frontend:
     React
     React Redux
+    React Router
+    axios
+    formik
+    yup
     
 #### Backend:
     Node.js
     Express.js
+    swagger
+    joi
+    cloudinary
+    bcrypt
+    multer
     
 #### Database:
     MongoDB
     Mongoose
+
+
+## Getting started 
+
+#### 1. Installing the LTS version of Node.js. Go to https://nodejs.org/en/ and install the latest stable version of Node.js (LTS). If you want to install via the console manually
+![image](https://github.com/Nepalcem/goostrack_front/assets/113768684/844521a3-9671-417e-840c-7dd13ca6b02f)
+
+* to run Powershell as an administrator, type in the terminal
+  npm install --global --production windows-build-tools
+  
+* to check if Node.js is installed, enter commands in the console
+  npm node –v    and    npm -v
+  The command will display the installed version of Node and npm
+  
+  ![image](https://github.com/Nepalcem/goostrack_front/assets/113768684/b453408f-bf07-4c3a-b978-a9a968696a59)
+
+  #### 2. Clone the repository: https://github.com/goitacademy/react-homework-template (bloc React/React+Node.js)
+  ![image](https://github.com/Nepalcem/goostrack_front/assets/113768684/8cfa47c2-2356-44e8-8aca-f49ff6fadfef)
+
+#### Install dependencies: `npm install`
+#### Starting the project: `npm start`
+#### Open your browser and go to `http://localhost:3000`
+
+
+
+
+
+
 
 
 
