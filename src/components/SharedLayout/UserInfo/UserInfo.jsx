@@ -6,29 +6,23 @@ import {
 } from './UserInfo.styled';
 import ThemeToggler from 'components/ThemeToggler/ThemeToggler';
 import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
-import FeedbackButton from '../FeedbackButton/FeedbackButton';
 import { useSelector } from 'react-redux';
-
-import { Link } from 'react-router-dom';
+import ButtonFeedback from '../ButtonFeedback/ButtonFeedback';
 
 const UserInfo = () => {
   const user = useSelector(state => state.auth.user);
 
   return (
     <ProfInfoWrap>
-      <FeedbackButton />
-
+      <ButtonFeedback />
       <ThemeToggler />
       <NameField>{user.username}</NameField>
 
       <AvatarThumb>
-        <Link to="/account">
-          {' '}
-          <Avatar
-            src={user.avatar || user.avatarURL || UserAvatar}
-            alt="user avatar"
-          />
-        </Link>
+        <Avatar
+          src={user.avatar || user.avatarURL || UserAvatar}
+          alt="user avatar"
+        />
       </AvatarThumb>
     </ProfInfoWrap>
   );

@@ -38,6 +38,7 @@ export const fetchReviewByOwner = createAsyncThunk(
 
     try {
       const { data } = await axios.get('/reviews/own');
+      console.log(data);
       return data.reviews[0];
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -47,12 +48,19 @@ export const fetchReviewByOwner = createAsyncThunk(
 
 export const addReview = createAsyncThunk(
   'reviews/add',
-  async (review, { rejectWithValue }) => {
+  async ({ rating, text }, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue('Oops');
+    }
+
+    token.set(persistedToken);
     try {
-      const response = await axios.post('/reviews/own', review);
-      return response.data;
+      const { data } = await axios.post('/reviews/own', { rating, text });
+      return data.reviews[0];
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
