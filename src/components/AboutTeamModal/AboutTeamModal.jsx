@@ -5,6 +5,7 @@ import {
   Backdrop,
   ModalContainer,
   CloseButton,
+  CloseButtonIco,
   Title,
   ModalTeamContainer,
   ModalTeamItem,
@@ -32,8 +33,6 @@ const modalRoot = document.querySelector('#modal-root');
 const AboutTeamModal = ({ handleToggle }) => {
   // при натисканні кнопки закриття
   const backdropClick = e => {
-    console.log('e.currentTarget', e.currentTarget);
-    console.log('e.target', e.target);
     if (e.currentTarget === e.target) {
       handleToggle();
     }
@@ -43,7 +42,7 @@ const AboutTeamModal = ({ handleToggle }) => {
     <Backdrop onClick={backdropClick}>
       <ModalContainer>
         <CloseButton onClick={handleToggle}>
-          <img src={CloseIco} alt="close menu" width="100%" />
+          <CloseButtonIco src={CloseIco} alt="close menu" width="100%" />
         </CloseButton>
         <Title>Developers Team</Title>
         <ModalTeamContainer>

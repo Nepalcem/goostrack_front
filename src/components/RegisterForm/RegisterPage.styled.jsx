@@ -14,7 +14,11 @@ export const StyledLink = styled(Link)`
   font-weight: 600;
   line-height: 1.16667;
   text-decoration-line: underline;
-
+  
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33333;

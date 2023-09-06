@@ -2,21 +2,23 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { ChartContainer } from './StatisticsChart.styled';
-// import { fetchAllTasks } from 'redux/tasks/tasksOperation';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { selectTasks } from 'redux/tasks/tasksSelectors';
 
 const customBarLabel = ({ x, y, width, value }) => {
   return (
-    <text
-      x={x + width / 2}
-      y={y}
-      fill="var(--color-calendar-day)"
-      fontWeight="400"
-      textAnchor="middle"
-      dy={-5}
-      style={{ fontSize: window.innerWidth >= 768 ? 14 : 10 }}
-    >{`${value}%`}</text>
+    <>
+      {value !== 0 && (
+        <text
+          x={x + width / 2}
+          y={y}
+          fill="var(--color-calendar-day)"
+          // fill="#343434"
+          fontWeight="500"
+          textAnchor="middle"
+          dy={-5}
+          style={{ fontSize: window.innerWidth >= 768 ? 14 : 10 }}
+        >{`${value}%`}</text>
+      )}
+    </>
   );
 };
 
@@ -24,43 +26,6 @@ export const StatisticsChart = ({ data }) => {
   const [chartWidth, setChartWidth] = useState(0);
   const [chartHeight, setChartHeight] = useState(0);
   const [chartBarSize, setChartBarSize] = useState(0);
-
-  ///////////////////////////////////////////
-  // const date = '2023-09-04'; // умовна дата
-  // const tasksByDay = tasksByMonth.filter(item => item.date === date);
-  // console.log('byday', tasksByDay);
-  //
-  // const calculatePercentage = (data, category, type) => {
-  //   const filteredData = data.filter(item => item.category === category);
-  //   const totalTasks = filteredData.length;
-  //   // console.log(totalTasks);
-  //   const sumValue = filteredData.reduce((total, item) => {
-  //     return total + parseFloat(item[type]);
-  //   }, 0);
-  //   const percentage =
-  //     totalTasks === 0 ? 0 : (sumValue / (totalTasks * 100)) * 100;
-  //   // console.log(percentage);
-  //   return percentage;
-  // };
-
-  // if (tasksByMonth || tasksByDay) {
-  //   data.push({
-  //     name: 'To Do',
-  //     ByDay: calculatePercentage(tasksByDay, 'to-do', 'ByDay'),
-  //     ByMonth: calculatePercentage(tasksByMonth, 'to-do', 'ByMonth'),
-  //   });
-  //   data.push({
-  //     name: 'In Progress',
-  //     ByDay: calculatePercentage(tasksByDay, 'in-progress', 'ByDay'),
-  //     ByMonth: calculatePercentage(tasksByMonth, 'in-progress', 'ByMonth'),
-  //   });
-  //   data.push({
-  //     name: 'Done',
-  //     ByDay: calculatePercentage(tasksByDay, 'done', 'ByDay'),
-  //     ByMonth: calculatePercentage(tasksByMonth, 'done', 'ByMonth'),
-  //   });
-  //   console.log(data);
-  // }
 
   useEffect(() => {
     const handleResize = () => {
@@ -104,7 +69,6 @@ export const StatisticsChart = ({ data }) => {
           stroke="var(--color-border-stat-line)"
           vertical={false}
         />
-        {/* <CartesianGrid stroke="rgba(227, 243, 255, 1)" vertical={false} /> */}
         <Bar
           dataKey="ByDay"
           fill="url(#pinkGradientFill)"

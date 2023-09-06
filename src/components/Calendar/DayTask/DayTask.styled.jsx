@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 import Popover from '@mui/material/Popover';
+import { whiteColor } from 'utils/variables';
 
-export const PopoverStyled = styled(Popover)``;
-export const WrapperPopover = styled.div``;
 export const TaskContainer = styled.div`
   border-radius: 8px;
   /* background-color: #f7f6f9; */
@@ -12,11 +11,56 @@ export const TaskContainer = styled.div`
   padding: 16px 15px;
 `;
 
+export const PopoverStyled = styled(Popover)``;
+export const WrapperPopover = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  width: 124px;
+  padding: 14px;
+  @media screen and (min-width: 768px) {
+    padding: 20px 24px;
+    width: 156px;
+  }
+`;
+export const PopBtn = styled.button`
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background-color: ${whiteColor};
+`;
+export const PopBtnWraper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const PopText = styled.p`
+  color: var(--color-name-pages);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.1;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+export const PopIco = styled(ReactSVG)`
+  stroke: var(--color-name-pages);
+  width: 14px;
+  height: 14px;
+  :hover {
+    stroke: #3e85f3;
+    @media screen and (min-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+`;
+
 export const Description = styled.p`
-  /* overflow: hidden; */
-  /* color: #111; */
-  /* text-overflow: ellipsis; */
-  /* whitespace: nowrap; */
   color: var(--color-name-pages);
   font-family: Inter;
   font-size: 14px;

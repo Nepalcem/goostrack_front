@@ -190,6 +190,9 @@ export const LeftMenuItemLink = styled(NavLink)`
     // background-color: #e3f3ff;
     // color: #3e85f3;
   }
+  &:hover {
+    opacity: 0.8;
+  }
 
   @media screen and (min-width: 768px) {
     padding-left: 20px;
@@ -245,6 +248,7 @@ export const LeftMenuItemText = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

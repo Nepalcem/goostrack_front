@@ -6,16 +6,15 @@ import {
 } from './PeriodTypeSelect.styled';
 
 const PeriodTypeSelect = ({ onClick, period }) => {
-  // const [activeButton, setActiveButton] = useState("month");
-  // console.log(activeButton);
+
   return (
     <PeriodTypeSelectDiv>
       <ButtonChangePeriod
         place="left"
         period={period}
         onClick={() => {
-          // console.log('Click month');
-          // setActiveButton("l")
+       
+        
           onClick('month');
         }}
       >
@@ -25,7 +24,7 @@ const PeriodTypeSelect = ({ onClick, period }) => {
         place="right"
         period={period}
         onClick={() => {
-          // console.log('Click day');
+        
           onClick('day');
         }}
       >

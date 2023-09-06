@@ -58,7 +58,6 @@ const LoginForm = () => {
   const handleSubmit = (values, actions) => {
     dispatch(authOperations.logIn(values));
     // у обʼєкт values повертаються дані з форми
-    console.log('values', values);
     // тут буде проходити реєстрація
     // actions.resetForm();
   };

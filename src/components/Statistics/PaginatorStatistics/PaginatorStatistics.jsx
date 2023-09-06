@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { addDays, getTime } from 'date-fns';
 import {
   ButtonsContainer,
@@ -6,42 +7,49 @@ import {
   ListItem,
   PeriodPaginatorContainer,
 } from './PaginatorStatistics.styled';
-import { useState } from 'react';
+
 import {
   ButtonChangeDate,
   ButtonsChangePeriodDiv,
   Svg,
 } from 'components/Calendar/CalendarToolbar/PeriodPaginator/PeriodPaginator.styled';
 import DatePicker from 'react-datepicker';
-import { StatisticsDatePickerGlobalStyles } from './StatisticsDatepicker.styled';
-const PeriodPaginatorStatistics = () => {
-  const [date, setDate] = useState(getTime(new Date()));
-  console.log('date', date);
+import { StyledStatisticsDatepicker } from './StatisticsDatepicker.styled';
+
+const PeriodPaginatorStatistics = ({ date, setDate }) => {
+  const [direction, setDirection] = useState('forvard'); // направление выбора даты back or forvard
+
   const onClickBtn = (step, period) => {
     let newDate = null;
     if (period === 'day') {
-      newDate = addDays(date, step); //змінюємо дату у будь-який бік
+      newDate = addDays(date, step);
     }
-    const millisec = getTime(newDate); //переводимо в millisec для форматування та запису в стейт
-    setDate(millisec); //пишем в стейт
+    const millisec = getTime(newDate);
+    setDate(millisec);
   };
 
   return (
     <PeriodPaginatorContainer>
       <ButtonsContainer>
-        <DatePicker
-          calendarStartDay={1}
-          selected={date}
-          onChange={date => {
-            setDate(date);
-          }}
-          dateFormat="dd MMMM yyyy"
-        />
-        <StatisticsDatePickerGlobalStyles />
+        <StyledStatisticsDatepicker>
+          <DatePicker
+            calendarStartDay={1}
+            selected={date}
+            onChange={date => {
+              setDate(date);
+            }}
+            dateFormat="dd MMMM yyyy"
+          />
+        </StyledStatisticsDatepicker>
         <ButtonsChangePeriodDiv>
           <ButtonChangeDate
+            direction={direction}
+            place={'left'}
             border="right"
-            onClick={() => onClickBtn(-1, 'day')}
+            onClick={() => {
+              setDirection('back');
+              onClickBtn(-1, 'day');
+            }}
           >
             <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
               <path
@@ -52,7 +60,14 @@ const PeriodPaginatorStatistics = () => {
               />
             </Svg>
           </ButtonChangeDate>
-          <ButtonChangeDate onClick={() => onClickBtn(1, 'day')}>
+          <ButtonChangeDate
+            direction={direction}
+            place={'right'}
+            onClick={() => {
+              setDirection('forvard');
+              onClickBtn(1, 'day');
+            }}
+          >
             <Svg xmlns="http://www.w3.org/2000/svg" fill="none">
               <path
                 strokeLinecap="round"

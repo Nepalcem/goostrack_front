@@ -13,6 +13,10 @@ import {
   ButtonIco,
   PopoverStyled,
   WrapperPopover,
+  PopBtn,
+  PopBtnWraper,
+  PopText,
+  PopIco,
 } from './DayTask.styled';
 
 import IcoChangeStatus from '../../../images/svg/arrow-circle.svg';
@@ -25,6 +29,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask, updateTask } from 'redux/tasks/tasksOperation';
 
 import TaskModal from '../TaskModal/TaskModal';
+
+const body = document.querySelector('body');
 
 const DayTask = ({ currentTask }) => {
   const user = useSelector(state => state.auth.user);
@@ -46,11 +52,16 @@ const DayTask = ({ currentTask }) => {
       category: category,
     };
     dispatch(updateTask({ id: currentTask._id, updatedTask }));
-    console.log('upd');
   };
 
   const handleToggle = () => {
     setModalAddTaskIsOpened(prevState => !prevState);
+    if (modalAddTaskIsOpened === true) {
+      body.style.overflow = 'scroll';
+    }
+    if (modalAddTaskIsOpened === false) {
+      body.style.overflow = 'hidden';
+    }
   };
   return (
     <TaskContainer>
@@ -94,28 +105,31 @@ const DayTask = ({ currentTask }) => {
               vertical: 'top',
               horizontal: 'center',
             }}
+            anchorReference="anchorPosition"
+            anchorPosition={{ top: 462, left: 420 }}
           >
             <WrapperPopover>
               {currentTask.category !== 'to-do' && (
-                <button onClick={() => clickToRelocate('to-do')}>
-                  <div>
-                    <p>To do</p> <ButtonIco src={IcoChangeStatus} />
-                  </div>
-                </button>
+                <PopBtn onClick={() => clickToRelocate('to-do')}>
+                  <PopBtnWraper>
+                    <PopText>To do</PopText> <PopIco src={IcoChangeStatus} />
+                  </PopBtnWraper>
+                </PopBtn>
               )}
               {currentTask.category !== 'in-progress' && (
-                <button onClick={() => clickToRelocate('in-progress')}>
-                  <div>
-                    <p>In Progress</p> <ButtonIco src={IcoChangeStatus} />
-                  </div>
-                </button>
+                <PopBtn onClick={() => clickToRelocate('in-progress')}>
+                  <PopBtnWraper>
+                    <PopText>In Progress</PopText>{' '}
+                    <PopIco src={IcoChangeStatus} />
+                  </PopBtnWraper>
+                </PopBtn>
               )}
               {currentTask.category !== 'done' && (
-                <button onClick={() => clickToRelocate('done')}>
-                  <div>
-                    <p>Done</p> <ButtonIco src={IcoChangeStatus} />
-                  </div>
-                </button>
+                <PopBtn onClick={() => clickToRelocate('done')}>
+                  <PopBtnWraper>
+                    <PopText>Done</PopText> <PopIco src={IcoChangeStatus} />
+                  </PopBtnWraper>
+                </PopBtn>
               )}
             </WrapperPopover>
           </PopoverStyled>

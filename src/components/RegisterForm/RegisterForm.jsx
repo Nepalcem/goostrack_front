@@ -58,7 +58,7 @@ const RegisterForm = () => {
   };
   // Обробник сабміту
   const handleSubmit = (values, actions) => {
-    console.log('values', values);
+    
     const { name, email, password } = values;
     dispatch(authOperations.register({ username: name, email, password }));
     // у обʼєкт values повертаються дані з форми

@@ -6,6 +6,8 @@ export const CalendarTableDiv = styled.table`
   flex-direction: column;
   width: 100%;
   margin-top: 14px;
+  
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     margin-top: 18px;
   }

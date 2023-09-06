@@ -58,7 +58,7 @@ const ReviewsSlider = () => {
         }}
       >
         {reviews.map(review => {
-          console.log(review);
+          
           const starIcons = [];
           for (let i = 0; i < review.rating; i++) {
             starIcons.push(<Star key={i} src={yellowStar} alt="star" />);

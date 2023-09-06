@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const FooterStyled = styled.footer`
   height: auto;
   padding-bottom: 15px;
-  margin-top: 20px
+
+  margin-top: 20px;
+
 
   font-family: 'Inter';
   font-weight: 400;
@@ -39,4 +41,9 @@ export const TeamName = styled.span`
 
   text-decoration-line: none;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
 `;

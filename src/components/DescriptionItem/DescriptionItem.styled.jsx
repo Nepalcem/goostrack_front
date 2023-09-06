@@ -4,6 +4,7 @@ export const DescriptionItemBlock = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 64px;
+  justify-content: space-between;
 
   @media screen and (min-width: 768px) {
     &:nth-child(2n) {
@@ -21,9 +22,9 @@ export const DescriptionItemBlock = styled.div`
       align-items: center;
     }
 
-    &:nth-child(2n-1) {
+    /* &:nth-child(2n-1) {
       justify-content: end;
-    }
+    } */
   }
 `;
 

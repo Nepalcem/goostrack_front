@@ -93,6 +93,11 @@ export const LoginLink = styled(Link)`
   color: ${primaryColor};
   background-color: ${whiteColor};
   cursor: pointer;
+
+  &:hover{
+    opacity: 0.8;
+    // background-color: #d7e3f1;
+  }
 `;
 
 export const SignUpLink = styled(Link)`
@@ -102,6 +107,11 @@ export const SignUpLink = styled(Link)`
   line-height: 14px;
   font-family: Inter;
   font-size: 12px;
+
+  &:hover{
+    opacity: 0.8;
+    // color: #3f5069;
+  }
   @media screen and (min-width: 768px) {
     line-height: 18px;
     font-size: 14px;
