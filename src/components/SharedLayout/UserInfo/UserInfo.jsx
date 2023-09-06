@@ -9,6 +9,8 @@ import UserAvatar from '../../../images/accountPage/default-profile-avatar.png';
 import FeedbackButton from '../FeedbackButton/FeedbackButton';
 import { useSelector } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 const UserInfo = () => {
   const user = useSelector(state => state.auth.user);
 
@@ -20,7 +22,13 @@ const UserInfo = () => {
       <NameField>{user.username}</NameField>
 
       <AvatarThumb>
-        <Avatar src={user.avatar || user.avatarURL || UserAvatar} alt="user avatar" />
+        <Link to="/account">
+          {' '}
+          <Avatar
+            src={user.avatar || user.avatarURL || UserAvatar}
+            alt="user avatar"
+          />
+        </Link>
       </AvatarThumb>
     </ProfInfoWrap>
   );
