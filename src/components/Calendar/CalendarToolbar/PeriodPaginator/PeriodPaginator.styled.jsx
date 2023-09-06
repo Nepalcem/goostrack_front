@@ -76,15 +76,15 @@ export const ButtonChangeDate = styled.button`
   border-right: ${({ border }) =>
     border === 'right' ? '1px solid rgba(220, 227, 229, 0.5)' : 0};
 
-  /* &:hover {
+  &:hover {
     ${Svg} {
       stroke: var(--color-btn-stroke-active);
     }
-  } */
+  }
 
   stroke: ${({ direction, place }) =>
     (place === 'left' && direction === 'back') ||
     (place === 'right' && direction === 'forvard')
-      ? '#343434'
-      : '#DCE3E5'};
+      ? 'var(--color-btn-stroke-active)'
+      : 'var(--color-btn-stroke)'};
 `;
