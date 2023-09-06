@@ -34,7 +34,6 @@ import {
 
 const FeedbackForm = ({ toggleModal }) => {
   const data = useSelector(selectOwnerReviews);
-  
 
   const dispatch = useDispatch();
 
@@ -52,7 +51,7 @@ const FeedbackForm = ({ toggleModal }) => {
   });
 
   const initialValues = {
-    rating: data.length > 0 ? data[0].rating : 5,
+    rating: data.length > 0 ? data[0].rating : 4,
     comment: data.length > 0 ? data[0].comment : '',
   };
 
