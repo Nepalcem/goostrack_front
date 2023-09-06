@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import moment from 'moment';
-import { useOutletContext } from 'react-router-dom';
 import {
   CalendarTableDiv,
   CalendarRow,
@@ -70,11 +69,6 @@ export const CalendarTable = ({ month, year }) => {
 
   // витягаємо нові таски для нового рендерингу
   const tasks = useSelector(state => state.tasks.items);
-  
-
-  // получаем в CalendarPage день для перехода в ChoosedDay
-  const [onClickDate, setOnClickDate] = useOutletContext();
-  const onClick = dayMoment => setOnClickDate(dayMoment);
 
   return (
     <>
@@ -93,12 +87,8 @@ export const CalendarTable = ({ month, year }) => {
               <CalendarRow key={i}>
                 {displayWeek.map((dayMoment, j) =>
                   dayMoment ? (
-                    <CalenderCell
-                      key={dayMoment.format('D')}
-                      onClick={() => onClick(dayMoment.format('MM.DD.YYYY'))}
-                    >
+                    <CalenderCell key={dayMoment.format('D')}>
                       <NumberDay
-                        onClickDate={onClickDate}
                         currentDayNumber={currentDayNumber}
                         dayMoment={dayMoment.format('D')}
                       >
