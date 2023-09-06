@@ -105,8 +105,8 @@ const DayTask = ({ currentTask }) => {
               vertical: 'top',
               horizontal: 'center',
             }}
-            anchorReference="anchorPosition"
-            anchorPosition={{ top: 462, left: 420 }}
+            // anchorReference="anchorPosition"
+            // anchorPosition={{ top: 462, left: 420 }}
           >
             <WrapperPopover>
               {currentTask.category !== 'to-do' && (
