@@ -1,3 +1,4 @@
+import { GrClose } from 'react-icons/gr';
 import styled from 'styled-components';
 
 export const CloseModalButton = styled.button`
@@ -6,4 +7,11 @@ export const CloseModalButton = styled.button`
   top: 15px;
   border: none;
   background-color: transparent;
+`;
+
+export const IconClose = styled(GrClose)`
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white-close-btn);
+  cursor: pointer;
 `;
