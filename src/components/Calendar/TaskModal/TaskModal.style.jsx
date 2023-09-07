@@ -215,3 +215,8 @@ export const RadioInputRed = styled(Field)`
     outline: 3px solid rgba(234, 61, 101, 0.5);
   }
 `;
+
+export const ValidationError = styled.div`
+  font-size: 12px;
+  color: red;
+`;

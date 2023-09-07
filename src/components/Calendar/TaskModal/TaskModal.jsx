@@ -23,6 +23,7 @@ import {
   RadioInputBlue,
   RadioInputYellow,
   RadioInputRed,
+  ValidationError,
 } from './TaskModal.style';
 
 import CloseIco from '../../../images/svg/x-close.svg';
@@ -104,7 +105,7 @@ const TaskModal = ({
   const validateTitle = value => {
     let error;
     if (value === '') {
-      error = 'Required';
+      error = 'Title required';
     }
     return error;
   };
@@ -116,7 +117,6 @@ const TaskModal = ({
     const start = parseInt(hour) * 60 + parseInt(minute);
 
     setStartTime(start);
-    console.log('start:', startTime, 'end:', endTime);
     let error;
     if (endTime - startTime <= 0) {
       error = 'Start time is greater than end time';
@@ -130,7 +130,6 @@ const TaskModal = ({
     const end = parseInt(hour) * 60 + parseInt(minute);
 
     setEndTime(end);
-    console.log('start:', startTime, 'end:', endTime);
 
     let error;
     if (endTime - startTime <= 0) {
@@ -158,7 +157,7 @@ const TaskModal = ({
                   validate={validateTitle}
                 />
                 {errors.title && touched.title ? (
-                  <div>{errors.title}</div>
+                  <ValidationError>{errors.title}</ValidationError>
                 ) : null}
               </Label>
               <TimeBlock>
@@ -170,7 +169,7 @@ const TaskModal = ({
                     validate={validateStartTime}
                   />
                   {errors.start && touched.start ? (
-                    <div>{errors.start}</div>
+                    <ValidationError>{errors.start}</ValidationError>
                   ) : null}
                 </Label>
 
@@ -181,7 +180,9 @@ const TaskModal = ({
                     name="end"
                     validate={validateEndTime}
                   />
-                  {errors.end && touched.end ? <div>{errors.end}</div> : null}
+                  {errors.end && touched.end ? (
+                    <ValidationError>{errors.end}</ValidationError>
+                  ) : null}
                 </Label>
               </TimeBlock>
 
