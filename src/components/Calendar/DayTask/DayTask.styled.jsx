@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 import Popover from '@mui/material/Popover';
-import { whiteColor } from 'utils/variables';
 
 export const TaskContainer = styled.div`
   border-radius: 8px;
