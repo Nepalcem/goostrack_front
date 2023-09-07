@@ -1,15 +1,15 @@
 import { GrClose } from 'react-icons/gr';
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import Overlay from 'components/FeedbackModal/Overlay/Overlay';
+import { Overlay } from './Overlay.styled';
 import WindowModal from 'components/FeedbackModal/WindowModal/WindowModal';
 import { CloseModalButton } from './AddFeedbackModal.styled';
 import FeedbackForm from './FeedbackForm';
 const feedbackModalRoot = document.querySelector('#modal-root');
 
 const AddFeedbackModal = ({ toggleModal }) => {
-  
-  useEffect(() => {
+
+ useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
         toggleModal();
@@ -28,8 +28,6 @@ const AddFeedbackModal = ({ toggleModal }) => {
   };
 
   return createPortal(
-    <>
-      <div></div>
       <Overlay onClick={handleOverlay}>
         <WindowModal>
           <CloseModalButton type="button" onClick={toggleModal}>
@@ -37,8 +35,7 @@ const AddFeedbackModal = ({ toggleModal }) => {
           </CloseModalButton>
           <FeedbackForm toggleModal={toggleModal} />
         </WindowModal>
-      </Overlay>
-    </>,
+      </Overlay>,
 
     feedbackModalRoot
   );
