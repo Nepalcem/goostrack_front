@@ -5,21 +5,29 @@ import Popover from '@mui/material/Popover';
 
 export const TaskContainer = styled.div`
   border-radius: 8px;
-  /* background-color: #f7f6f9; */
+  // background-color: #f7f6f9; 
+  
   border: var(--color-calendar-border);
   background-color: var(--color-calendar-day-task-bg);
   padding: 16px 15px;
 `;
 
-export const PopoverStyled = styled(Popover)``;
+export const PopoverStyled = styled(Popover)`
+
+`;
 export const WrapperPopover = styled.div`
+  border: 1px solid #dce3e5;
   display: flex;
+  // border-radius: 8px;
+  border: var(--color-calendar-border);
+
+  background-color: var(--color-btn-wrapper);
+
   flex-direction: column;
   justify-content: center;
   gap: 14px;
   width: 124px;
   padding: 14px;
-  background-color: var(--color-btn-wrapper);
   @media screen and (min-width: 768px) {
     padding: 20px 24px;
     width: 156px;

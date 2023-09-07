@@ -108,7 +108,7 @@ const DayTask = ({ currentTask }) => {
             // anchorReference="anchorPosition"
             // anchorPosition={{ top: 462, left: 420 }}
           >
-            <WrapperPopover>
+            <WrapperPopover >
               {currentTask.category !== 'to-do' && (
                 <PopBtn onClick={() => clickToRelocate('to-do')}>
                   <PopBtnWraper>
