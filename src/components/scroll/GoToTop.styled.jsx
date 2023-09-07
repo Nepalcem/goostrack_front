@@ -26,7 +26,6 @@ export const Wrapper = styled.section`
   &:hover,
   &:focus {
     opacity: 0.8;
-
   }
 
     &--icon {

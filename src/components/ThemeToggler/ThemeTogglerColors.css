@@ -105,3 +105,6 @@ html[data-theme='light'] {
   --scrollbar-thumb: #e7e5e5;
   --scrollbar-track: #f2f2f2;
 }
+
+/* cursor: pointer;
+border-radius: 8px; */

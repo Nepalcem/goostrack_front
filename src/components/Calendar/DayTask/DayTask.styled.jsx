@@ -3,6 +3,7 @@ import { ReactSVG } from 'react-svg';
 import Popover from '@mui/material/Popover';
 
 
+
 export const TaskContainer = styled.div`
   border-radius: 8px;
   // background-color: #f7f6f9; 
@@ -13,7 +14,6 @@ export const TaskContainer = styled.div`
 `;
 
 export const PopoverStyled = styled(Popover)`
-
 `;
 export const WrapperPopover = styled.div`
   border: 1px solid #dce3e5;

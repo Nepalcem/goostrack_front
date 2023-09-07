@@ -112,6 +112,7 @@ const FeedbackForm = ({ toggleModal }) => {
                 onChange={formik.handleChange}
               />
               <FaStar
+                cursor={"pointer"}
                 size={24}
                 color={
                   ratingValue <= formik.values.rating ? '#FFAC33' : '#CEC9C1'
@@ -132,12 +133,12 @@ const FeedbackForm = ({ toggleModal }) => {
             <IconWrapper>
               <IconButton type="button" onClick={() => setIsEditing(prevIsEditing => !prevIsEditing)}>
                 <CircleIcon backgroundColor="#E3F3FF">
-                  <BiPencil size={20} color={'#3E85F3'} />
+                  <BiPencil size={20} color={'#3E85F3'} cursor= {'pointer'}/>
                 </CircleIcon>
               </IconButton>
               <IconButton type="button" onClick={handleCloseYes}>
                 <CircleIcon backgroundColor="rgba(234, 61, 101, 0.2)">
-                  <RiDeleteBinLine size={20} color={'#EA3D65'} />
+                  <RiDeleteBinLine size={20} color={'#EA3D65'} cursor= {'pointer'}/>
                 </CircleIcon>
               </IconButton>
             </IconWrapper>

@@ -117,7 +117,6 @@ export const ArrowLeft = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   cursor: pointer;
-
   &:hover{
   opacity: 0.8;
   }

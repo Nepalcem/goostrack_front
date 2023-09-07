@@ -7,6 +7,7 @@ export const ModalWindow = styled.div`
   padding: 20px;
   background-color: var(--color-white-modal-feed);
   position: relative;
+  border-radius: 8px;
 
   @media (min-width: 768px) {
     width: 468px;
