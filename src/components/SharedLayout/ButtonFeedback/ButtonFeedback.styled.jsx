@@ -13,6 +13,9 @@ export const Button = styled.button`
   font-weight: 600;
   color: #ffffff;
   background-color: #3e85f3;
+  &:hover {
+    cursor: pointer;
+  }
   @media (min-width: 768px) {
     padding-top: 12px;
     padding-bottom: 12px;
