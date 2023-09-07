@@ -19,6 +19,7 @@ export const WrapperPopover = styled.div`
   gap: 14px;
   width: 124px;
   padding: 14px;
+  background-color: var(--color-btn-wrapper);
   @media screen and (min-width: 768px) {
     padding: 20px 24px;
     width: 156px;
@@ -28,7 +29,7 @@ export const PopBtn = styled.button`
   width: 100%;
   cursor: pointer;
   border: none;
-  background-color: ${whiteColor};
+  background-color: var(--color-btn-wrapper);
 `;
 export const PopBtnWraper = styled.div`
   display: flex;
@@ -48,7 +49,7 @@ export const PopText = styled.p`
 `;
 
 export const PopIco = styled(ReactSVG)`
-  stroke: var(--color-name-pages);
+  stroke: var(--color-text-pop);
   width: 14px;
   height: 14px;
   :hover {

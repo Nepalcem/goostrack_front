@@ -24,15 +24,6 @@ const CalendarPage = lazy(() =>
   import('../../pages/CalendarPage/CalendarPage')
 );
 
-// import MainPage from '../../pages/MainPage';
-// import RegisterPage from '../../pages/RegisterPage';
-// import LoginPage from '../../pages/LoginPage';
-// import NotFound from '../../pages/NotFound';
-// import AccountPage from '../AccountPage/AccountPageLayout';
-// import StatisticsPage from '../../pages/StatisticsPage';
-
-// import CalendarPage from '../../pages/CalendarPage/CalendarPage';
-
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth(); //loading
@@ -44,7 +35,6 @@ export const App = () => {
   const isFetchingCurrentUser = useSelector(
     state => state.auth.isFetchingCurrentUser
   );
-  console.log('isFetchingCurrentUser', isFetchingCurrentUser);
 
   return (
     <>
