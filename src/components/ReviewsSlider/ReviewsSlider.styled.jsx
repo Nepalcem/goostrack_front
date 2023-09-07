@@ -113,8 +113,7 @@ export const ArrowWrapper = styled.div`
 
 export const ArrowLeft = styled.div`
   transform: scale(-1, 1);
-  margin-right: 10px;
-  padding-right: 10px;
+  padding-left: 10px;
   padding-top: 30px;
   padding-bottom: 30px;
   cursor: pointer;

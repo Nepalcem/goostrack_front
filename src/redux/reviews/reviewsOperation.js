@@ -17,7 +17,7 @@ export const fetchReviews = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get('/reviews');
-    
+
       return response.data.reviews;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -47,36 +47,59 @@ export const fetchReviewByOwner = createAsyncThunk(
 
 export const addReview = createAsyncThunk(
   'reviews/add',
-  async (review, { rejectWithValue }) => {
+  async ({ rating, comment }, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue('Oops');
+    }
+
+    token.set(persistedToken);
     try {
-      const response = await axios.post('/reviews/own', review);
-      return response.data;
+      const { data } = await axios.post('/reviews/own', { rating, comment });
+      return data.reviews[0];
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const updateReview = createAsyncThunk(
   'reviews/update',
-  async ({ id, updatedReview }, { rejectWithValue }) => {
+  async ({ rating, comment }, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue('Oops');
+    }
+
+    token.set(persistedToken);
+
     try {
-      const response = await axios.patch(`/reviews/own/${id}`, updatedReview);
+      const response = await axios.patch('/reviews/own', { rating, comment });
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteReview = createAsyncThunk(
   'reviews/delete',
-  async (id, { rejectWithValue }) => {
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue('Oops');
+    }
+
+    token.set(persistedToken);
+
     try {
-      await axios.delete(`/reviews/own/${id}`);
-      return id;
+      await axios.delete('/reviews/own');
+      return;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

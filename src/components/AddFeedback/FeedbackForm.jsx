@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { FaStar } from 'react-icons/fa';
 import { BiPencil } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
-import { toast } from 'react-toastify';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -34,16 +34,19 @@ import {
 
 const FeedbackForm = ({ toggleModal }) => {
   const data = useSelector(selectOwnerReviews);
-  
 
   const dispatch = useDispatch();
 
+  // console.log('data:',data);
+  // console.log('type of data:',typeof(data));
+  // console.log(!data);
+  // console.log(data.length);
   const [isEditing, setIsEditing] = useState(false);
   const [open, setOpen] = useState(false);
 
   const feedbackValidationSchema = yup.object().shape({
     rating: yup.number().min(1).max(5).required('Leave your rating'),
-    text: yup
+    comment: yup
       .string()
       .trim()
       .notOneOf([' '])
@@ -52,21 +55,21 @@ const FeedbackForm = ({ toggleModal }) => {
   });
 
   const initialValues = {
-    rating: data.length > 0 ? data[0].rating : 5,
-    comment: data.length > 0 ? data[0].comment : '',
+    rating: data.rating || 0,
+    comment: data.comment || '',
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
+   const handleClose = () => {
     setOpen(false);
   };
 
   const handleCloseYes = actions => {
-    dispatch(deleteReview({ _id: data[0]._id }));
-    toast.info('Review deleted');
+    dispatch(deleteReview());
+    Notify.info('Review deleted');
     setOpen(false);
     toggleModal();
   };
@@ -77,18 +80,17 @@ const FeedbackForm = ({ toggleModal }) => {
 
     onSubmit: async values => {
       try {
-        if (isEditing && data.length > 0) {
-          await dispatch(updateReview({ ...values, _id: data[0]._id }));
-
-          toast.success('Review updated successfully');
-        } else {
-         
-          await dispatch(addReview(values));
-          toast.success('Review created successfully');
-        }
+      if (Object.keys(data).length === 0) {
+        await dispatch(addReview(values));
+        Notify.success('Review created successfully');
+      } 
+      if (Object.keys(data).length > 0) {
+        await dispatch(updateReview(values));
+        Notify.success('Review updated successfully');
+      }
         toggleModal();
       } catch (error) {
-        toast.error('Oops, something went wrong...');
+        Notify.error('Oops, something went wrong...');
       }
     },
   });
@@ -126,14 +128,14 @@ const FeedbackForm = ({ toggleModal }) => {
       <FeedbackWrapper>
         <TitleWrapper>
           <NameLabel>Review</NameLabel>
-          {data && data.length > 0 && (
+          {Object.keys(data).length > 0 && (
             <IconWrapper>
-              <IconButton type="button" onClick={() => setIsEditing(true)}>
+              <IconButton type="button" onClick={() => setIsEditing(prevIsEditing => !prevIsEditing)}>
                 <CircleIcon backgroundColor="#E3F3FF">
                   <BiPencil size={20} color={'#3E85F3'} />
                 </CircleIcon>
               </IconButton>
-              <IconButton type="button" onClick={handleClickOpen}>
+              <IconButton type="button" onClick={handleCloseYes}>
                 <CircleIcon backgroundColor="rgba(234, 61, 101, 0.2)">
                   <RiDeleteBinLine size={20} color={'#EA3D65'} />
                 </CircleIcon>
@@ -145,18 +147,19 @@ const FeedbackForm = ({ toggleModal }) => {
         <InputFeedback
           type="text"
           rows="7"
-          name="text"
-          value={formik.values.text}
+          name="comment"
+          value={formik.values.comment}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           placeholder="Enter text"
-          hasError={!!formik.errors.text && !!formik.touched.text}
+          hasError={!!formik.errors.comment && !!formik.touched.comment}
+          disabled={!isEditing && Object.keys(data).length !== 0}
         />
-        {formik.errors.text && formik.touched.text && (
-          <ErrorsMessage>{formik.errors.text}</ErrorsMessage>
+        {formik.errors.comment && formik.touched.comment && (
+          <ErrorsMessage>{formik.errors.comment}</ErrorsMessage>
         )}
       </FeedbackWrapper>
-      {(!data || data.length === 0) && (
+      {Object.keys(data).length === 0 && (
         <div>
           <ModalButton
             type="submit"
@@ -170,7 +173,7 @@ const FeedbackForm = ({ toggleModal }) => {
           </ModalButton>
         </div>
       )}
-      {data && data.length > 0 && isEditing && (
+      {isEditing && (
         <div>
           <ModalButton
             type="submit"

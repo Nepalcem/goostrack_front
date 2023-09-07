@@ -13,6 +13,7 @@ const initialState = {
   user: { username: '', email: '' },
   token: null,
   isLoggedIn: false,
+  isFetchingCurrentUser: true,
 };
 
 // слайс автентифікації
@@ -36,10 +37,19 @@ const authSlise = createSlice({
         state.token = '';
         state.isLoggedIn = false;
       })
-      //set Current User
+      //set Current User pending
+      .addCase(authOperations.fetchCurrentUser.pending, state => {
+        state.isFetchingCurrentUser = true;
+      })
+      //set Current User fulfilled
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isFetchingCurrentUser = false;
+      })
+      //set Current User rejected
+      .addCase(authOperations.fetchCurrentUser.rejected, state => {
+        state.isFetchingCurrentUser = false;
       })
       // PATCH Current User
       .addCase(authOperations.patchCurrentUser.fulfilled, (state, action) => {

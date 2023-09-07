@@ -12,6 +12,7 @@ const reviewsSlice = createSlice({
   initialState: {
     items: [],
     ownerReviews: [],
+    isFetchingReview: false,
     error: null,
   },
   extraReducers: builder => {
@@ -19,18 +20,28 @@ const reviewsSlice = createSlice({
       .addCase(fetchReviews.fulfilled, (state, action) => {
         state.items = action.payload;
         state.error = null;
+        state.isFetchingReview = false;
+      })
+      .addCase(fetchReviews.pending, (state, action) => {
+        state.isFetchingReview = true;
       })
       .addCase(fetchReviews.rejected, (state, action) => {
         state.items = [];
+        state.isFetchingReview = false;
         state.error = action.error.message;
       })
       .addCase(fetchReviewByOwner.fulfilled, (state, action) => {
         state.ownerReviews = action.payload;
         state.error = null;
+        state.isFetchingReview = false;
+      })
+      .addCase(fetchReviewByOwner.pending, (state, action) => {
+        state.isFetchingReview = true;
       })
       .addCase(fetchReviewByOwner.rejected, (state, action) => {
         state.ownerReviews = [];
         state.error = action.error.message;
+        state.isFetchingReview = false;
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.items.push(action.payload);
