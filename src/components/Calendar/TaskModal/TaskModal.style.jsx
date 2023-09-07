@@ -95,9 +95,9 @@ export const StyledFormikInput = styled(Field)`
   &::-webkit-calendar-picker-indicator {
     cursor: pointer;
 
-  &:hover {
-  opacity: 0.8;
-}
+    &:hover {
+      opacity: 0.8;
+    }
   }
   // &::-webkit-calendar-picker-indicator {
   //   display: none;
@@ -214,4 +214,9 @@ export const RadioInputRed = styled(Field)`
   :checked {
     outline: 3px solid rgba(234, 61, 101, 0.5);
   }
+`;
+
+export const ValidationError = styled.div`
+  font-size: 12px;
+  color: red;
 `;

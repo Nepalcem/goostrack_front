@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask, updateTask } from 'redux/tasks/tasksOperation';
+import { useState } from 'react';
 
 // Бібліотека формік
 import { Formik, Form } from 'formik';
@@ -22,6 +23,7 @@ import {
   RadioInputBlue,
   RadioInputYellow,
   RadioInputRed,
+  ValidationError,
 } from './TaskModal.style';
 
 import CloseIco from '../../../images/svg/x-close.svg';
@@ -40,7 +42,10 @@ const TaskModal = ({
   currentTask,
 }) => {
   const dispatch = useDispatch();
- 
+
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(0);
+
   // початкові значення полів форми
   let initialValues;
   if (operation === 'create') {
@@ -96,7 +101,43 @@ const TaskModal = ({
       handleToggle();
     }
   };
+  /////////
+  const validateTitle = value => {
+    let error;
+    if (value === '') {
+      error = 'Title required';
+    }
+    return error;
+  };
+  /////
+  // сохраняем start time todo в state
+  const validateStartTime = value => {
+    const hour = value.slice(0, 2);
+    const minute = value.slice(3, 5);
+    const start = parseInt(hour) * 60 + parseInt(minute);
 
+    setStartTime(start);
+    let error;
+    if (endTime - startTime <= 0) {
+      error = 'Start time is greater than end time';
+    }
+    return error;
+  };
+  // валидация EndTime > StartTime
+  const validateEndTime = value => {
+    const hour = value.slice(0, 2);
+    const minute = value.slice(3, 5);
+    const end = parseInt(hour) * 60 + parseInt(minute);
+
+    setEndTime(end);
+
+    let error;
+    if (endTime - startTime <= 0) {
+      error = 'End time is less than start time';
+    }
+    return error;
+  };
+  /////////////
   return createPortal(
     <Backdrop onClick={backdropClick}>
       <ModalContainer>
@@ -105,59 +146,83 @@ const TaskModal = ({
         </CloseButton>
 
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-          <Form autoComplete="off">
-            <Label htmlFor="title">
-              Title
-              <StyledFormikInput
-                type="text"
-                name="title"
-                placeholder="Enter text"
-              />
-            </Label>
-            <TimeBlock>
-              <Label htmlFor="start">
-                Start
-                <StyledFormikInput type="time" name="start" />
+          {({ errors, touched }) => (
+            <Form autoComplete="off">
+              <Label htmlFor="title">
+                Title
+                <StyledFormikInput
+                  type="text"
+                  name="title"
+                  placeholder="Enter text"
+                  validate={validateTitle}
+                />
+                {errors.title && touched.title ? (
+                  <ValidationError>{errors.title}</ValidationError>
+                ) : null}
               </Label>
+              <TimeBlock>
+                <Label htmlFor="start">
+                  Start
+                  <StyledFormikInput
+                    type="time"
+                    name="start"
+                    validate={validateStartTime}
+                  />
+                  {errors.start && touched.start ? (
+                    <ValidationError>{errors.start}</ValidationError>
+                  ) : null}
+                </Label>
 
-              <Label htmlFor="end">
-                End
-                <StyledFormikInput type="time" name="end" />
-              </Label>
-            </TimeBlock>
+                <Label htmlFor="end">
+                  End
+                  <StyledFormikInput
+                    type="time"
+                    name="end"
+                    validate={validateEndTime}
+                  />
+                  {errors.end && touched.end ? (
+                    <ValidationError>{errors.end}</ValidationError>
+                  ) : null}
+                </Label>
+              </TimeBlock>
 
-            <RadioBlock>
-              <RadioLabel>
-                <RadioInputBlue type="radio" name="priority" value="low" />
-                Low
-              </RadioLabel>
-              <RadioLabel>
-                <RadioInputYellow type="radio" name="priority" value="medium" />
-                Medium
-              </RadioLabel>
-              <RadioLabel>
-                <RadioInputRed type="radio" name="priority" value="high" />
-                High
-              </RadioLabel>
-            </RadioBlock>
+              <RadioBlock>
+                <RadioLabel>
+                  <RadioInputBlue type="radio" name="priority" value="low" />
+                  Low
+                </RadioLabel>
+                <RadioLabel>
+                  <RadioInputYellow
+                    type="radio"
+                    name="priority"
+                    value="medium"
+                  />
+                  Medium
+                </RadioLabel>
+                <RadioLabel>
+                  <RadioInputRed type="radio" name="priority" value="high" />
+                  High
+                </RadioLabel>
+              </RadioBlock>
 
-            <BlockButton>
-              <EditButton type="submit">
-                {operation === 'create' && (
-                  <AddTasks src={PlusButton} alt="add button" />
-                )}
-                {operation === 'edit' && (
-                  <AddTasks src={EditButtonIco} alt="edit button" />
-                )}
-                {operation === 'create' && 'Add'}
-                {operation === 'edit' && 'Edit'}
-              </EditButton>
+              <BlockButton>
+                <EditButton type="submit">
+                  {operation === 'create' && (
+                    <AddTasks src={PlusButton} alt="add button" />
+                  )}
+                  {operation === 'edit' && (
+                    <AddTasks src={EditButtonIco} alt="edit button" />
+                  )}
+                  {operation === 'create' && 'Add'}
+                  {operation === 'edit' && 'Edit'}
+                </EditButton>
 
-              <CancelButton type="button" onClick={handleToggle}>
-                Cancel
-              </CancelButton>
-            </BlockButton>
-          </Form>
+                <CancelButton type="button" onClick={handleToggle}>
+                  Cancel
+                </CancelButton>
+              </BlockButton>
+            </Form>
+          )}
         </Formik>
       </ModalContainer>
     </Backdrop>,
