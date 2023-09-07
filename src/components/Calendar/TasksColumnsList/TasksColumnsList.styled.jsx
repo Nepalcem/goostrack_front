@@ -3,13 +3,35 @@ import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 
 export const MainTasksContainer = styled.div`
-  overflow-x: scroll;
+
   display: flex;
   gap: 20px;
-  /* overflow: hidden; */
+  // overflow: hidden; 
 
   padding-bottom: 34px;
   margin-top: 14px;
+
+  overflow-x: scroll;
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    // background:transparent
+    background: var(--scrollbar-track);
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    height: 112px;
+    border-radius: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7c7c7c;
+  }
 
   @media screen and (min-width: 768px) {
     gap: 16px;

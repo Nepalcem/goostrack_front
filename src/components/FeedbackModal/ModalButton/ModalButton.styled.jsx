@@ -18,6 +18,10 @@ export const Button = styled.button`
   :not(:last-child) {
     margin-right: 8px;
   }
+
+  &:hover{
+    opacity: 0.8;
+    }
   @media (min-width: 768px) {
     padding-top: 15px;
     padding-bottom: 15px;

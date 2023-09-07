@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StarWrapper = styled.div`
   margin-bottom: 20px;
-
+  
   @media (min-width: 768px) {
     margin-bottom: 24px;
   }
@@ -19,12 +19,13 @@ const NameLabel = styled.label`
 `;
 
 const InputStars = styled.input`
+  cursor: pointer;
   display: none;
 `;
 
+
 const FeedbackWrapper = styled.div`
   margin-bottom: 14px;
-
   @media (min-width: 768px) {
     margin-bottom: 18px;
   }
@@ -32,7 +33,6 @@ const FeedbackWrapper = styled.div`
 
 const InputFeedback = styled.textarea`
   resize: none;
-  background-color: var(--color-textar);
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 14px;
@@ -40,7 +40,7 @@ const InputFeedback = styled.textarea`
   border: ${props => (props.hasError ? '1px solid #EA3D65' : 'none')};
   border-radius: 8px;
   width: 100%;
-  color: var(--color-text-textar);
+  background-color: var(--color-border-profil);
   font-family: Inter;
   font-size: 14px;
   line-height: 1.29;
@@ -87,6 +87,8 @@ const CircleIcon = styled.div`
 
 const IconButton = styled.div`
   border: none;
+
+
 `;
 
 export {

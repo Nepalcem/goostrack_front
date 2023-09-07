@@ -91,9 +91,10 @@ const patchCurrentUser = createAsyncThunk(
     try {
      
       const response = await axios.patch('/users/edit', userData);
-      
+      Notify.success(`The information is redacted!`);
       return response.data;
     } catch (error) {
+      Notify.failure(`Error! Try again!`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
