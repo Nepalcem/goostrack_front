@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import defaultProfileAvatar from '../../images/accountPage/tablet-avatar-icon.png';
@@ -61,28 +61,35 @@ const userValidationSchema = Yup.object().shape({
 const AccountPageLayout = () => {
   const user = useSelector(state => state.auth.user);
   const dispatch = useDispatch();
-  const [formattedBirthday, setFormattedBirthday] = useState('');
+  // const [formattedBirthday, setFormattedBirthday] = useState('');
 
   // Текст заголовку цієї сторінки
   useEffect(() => {
     dispatch(editTitle('User Profile'));
   });
 
-  useEffect(() => {
-    // Check if user.birthday is available and format it
-    if (user.birthday) {
-      const formatted = format(parseISO(user.birthday), 'yyyy-MM-dd');
-      setFormattedBirthday(formatted);
-    }
-  }, [user.birthday]);
+const formatBirthday = (birthday) => {
+  if (birthday) {
+  const formatted = format(parseISO(user.birthday), 'yyyy-MM-dd');
+  return formatted
+  }
+}
 
   const submitHandler = (values, actions) => {
-
+    // console.log(user.avatarURL);
     const formData = new FormData();
 
     if (values.file) {
       formData.append('avatarURL', values.file);
-    } else if (!user.avatarURL) {
+    } 
+    // else if (user.avatarURL && !values.file) {
+    //   const defaultAvatarBlob = new Blob([user.avatarURL], {
+    //     type: 'image/png',
+    //   });
+    //   console.log(defaultAvatarBlob);
+    //   formData.append('avatarURL', defaultAvatarBlob);
+    // } 
+    else if (!user.avatarURL)  {
       const defaultAvatarBlob = new Blob([defaultProfileAvatar], {
         type: 'image/png',
       });
@@ -90,7 +97,7 @@ const AccountPageLayout = () => {
     }
     formData.append('username', values.username);
     formData.append('email', values.email);
-    formData.append('birthday', format(values.birthday, 'yyyy-MM-dd'));
+    formData.append('birthday' ,typeof values.birthday === 'string' ? values.birthday : format(values.birthday, 'yyyy-MM-dd'));
     formData.append('phone', values.phone);
     formData.append('skype', values.skype);
 
@@ -111,7 +118,7 @@ const AccountPageLayout = () => {
         initialValues={{
           file: null,
           username: user.username,
-          birthday: formattedBirthday || new Date(),
+          birthday: formatBirthday(user.birthday) || new Date(),
           email: user.email,
           phone: user.phone || '+380931112233',
           skype: user.skype || 'SkypeNumber',
@@ -194,6 +201,7 @@ const AccountPageLayout = () => {
                           // selected={field.value}
                           selected={new Date(values.birthday)}
                           onChange={date => {
+                            // console.log(date);
                             setFieldValue('birthday', date);
                             //   format(date, 'yyyy-MM-dd')
                             // ); // Log the selected date
