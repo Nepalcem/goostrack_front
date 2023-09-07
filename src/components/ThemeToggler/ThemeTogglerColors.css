@@ -46,9 +46,18 @@ html[data-theme='dark'] {
 
   --scrollbar-thumb: #171820;
   --scrollbar-track: #2d3037;
+  --color-white-modal-feed: #171820;
+  --color-textar: #171820;
+  --color-text-textar: #ffffff;
+  --border-textar: #343434;
+  --color-white-close-btn: #ffffff;
 }
 
 html[data-theme='light'] {
+  --color-white-close-btn: #111111;
+  --color-white-modal-feed: #ffffff;
+  --color-text-textar: #343434;
+  --color-textar: #f6f6f6;
   --main-background-color: #f7f6f9;
   --color-text-pop: #343434;
   --color-btn-wrapper: #ffffff;

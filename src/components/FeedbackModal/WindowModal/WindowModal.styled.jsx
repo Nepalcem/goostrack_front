@@ -5,7 +5,7 @@ export const ModalWindow = styled.div`
   max-height: calc(100vh - 48px);
   width: 295px;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: var(--color-white-modal-feed);
   position: relative;
 
   @media (min-width: 768px) {

@@ -32,7 +32,7 @@ const FeedbackWrapper = styled.div`
 
 const InputFeedback = styled.textarea`
   resize: none;
-  background-color: #f6f6f6;
+  background-color: var(--color-textar);
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 14px;
@@ -40,14 +40,14 @@ const InputFeedback = styled.textarea`
   border: ${props => (props.hasError ? '1px solid #EA3D65' : 'none')};
   border-radius: 8px;
   width: 100%;
-  color: #343434;
+  color: var(--color-text-textar);
   font-family: Inter;
   font-size: 14px;
   line-height: 1.29;
   font-weight: 600;
 
   ::placeholder {
-    color: #343434;
+    color: var(--color-text-textar);
     font-size: 14px;
     line-height: 1.29;
     font-weight: 600;
