@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import HeaderBackground from '../../images/mainPageImg/desktop/Calendar_and_task_list_background_optimized.jpg';
 
 export const Container = styled.div`
   /*----Базовий стиль для мобілки 375 - 767 (адаптивний)----*/
@@ -10,6 +11,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 24px;
+
+  background-image: url(${HeaderBackground});
+background-repeat: no-repeat;
+background-position: top;
+background-size: cover;
+max-width: 100%;
+/* border-radius: 100px; */
+
 
   /*----Стиль для планшета 768-1440 (адаптивний)----*/
   @media screen and (min-width: 768px) {

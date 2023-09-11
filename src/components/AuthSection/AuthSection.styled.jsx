@@ -4,6 +4,7 @@ import { ReactSVG } from 'react-svg';
 import { primaryColor, whiteColor } from 'utils/variables';
 import { Link } from 'react-router-dom';
 
+
 export const LoginIco = styled(ReactSVG)`
   stroke: ${primaryColor};
   width: 18px;
@@ -11,13 +12,16 @@ export const LoginIco = styled(ReactSVG)`
 `;
 
 export const AuthSectionBlock = styled.section`
-  background-color: ${primaryColor};
+
+margin-bottom: 60px;
+  /* background-color: ${primaryColor}; */
 `;
 
 export const AuthSectionContainer = styled(Container)`
-  height: 812px;
+  /* height: 812px; */
   align-items: center;
-  padding-top: 256px;
+  /* padding-top: 256px; */
+  padding: 80px 0px;
 
   /*----Стиль для планшета 768-1440 (адаптивний)----*/
   @media screen and (min-width: 768px) {
