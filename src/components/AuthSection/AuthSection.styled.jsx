@@ -61,8 +61,7 @@ export const HeroText = styled.h1`
   font-weight: 700;
 
   color: ${whiteColor};
-  text-shadow: 0px 9.399999618530273px 57.6875px rgba(0, 0, 0, 0.04),
-    0px 47px 355px rgba(0, 0, 0, 0.07);
+  text-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   /*----Стиль для планшета 768-1440 (адаптивний)----*/
   @media screen and (min-width: 768px) {
