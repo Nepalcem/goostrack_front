@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Container } from '../App/App.styled';
+import { HeaderContainer } from '../App/App.styled';
 import { ReactSVG } from 'react-svg';
 import { primaryColor, whiteColor } from 'utils/variables';
 import { Link } from 'react-router-dom';
@@ -14,10 +14,13 @@ export const LoginIco = styled(ReactSVG)`
 export const AuthSectionBlock = styled.section`
 
 margin-bottom: 60px;
+@media screen and (min-width: 1024px) {
+margin-bottom: 0px;
+}
   /* background-color: ${primaryColor}; */
 `;
 
-export const AuthSectionContainer = styled(Container)`
+export const AuthSectionContainer = styled(HeaderContainer)`
   /* height: 812px; */
   align-items: center;
   /* padding-top: 256px; */
@@ -25,21 +28,28 @@ export const AuthSectionContainer = styled(Container)`
 
   /*----Стиль для планшета 768-1440 (адаптивний)----*/
   @media screen and (min-width: 768px) {
-    height: 1024px;
+    /* height: 1024px; */
+    padding: 100px 0px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    /* height: 1024px; */
+    padding: 80px 0px 90px 0px;
+
   }
 
   /*----Стиль для компа від 1440 (адаптивний)----*/
   @media screen and (min-width: 1440px) {
-    height: 770px;
+    /* height: 770px; */
   }
 `;
 
 export const Img = styled.img`
-  width: 142px;
+  /* width: 142px; */
 
   /*----Стиль для планшета 768-1440 (адаптивний)----*/
   @media screen and (min-width: 768px) {
-    width: 150px;
+    /* width: 150px; */
   }
 `;
 

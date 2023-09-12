@@ -17,7 +17,7 @@ const AuthSection = () => {
     <AuthSectionBlock>
       <AuthSectionContainer>
         <Img src={GooseSVG} />
-        <HeroText>GooseTrack</HeroText>
+        <HeroText>Goosendar</HeroText>
         <AuthWrapper>
           <SignUpLink to="/register">Sign up</SignUpLink>
 
