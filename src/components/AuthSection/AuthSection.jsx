@@ -7,6 +7,7 @@ import {
   AuthWrapper,
   LoginLink,
   SignUpLink,
+  RegisterIcon,
 } from './AuthSection.styled';
 
 import LoginSVG from '../../images/svg/log-in.svg';
@@ -19,7 +20,7 @@ const AuthSection = () => {
         <Img src={GooseSVG} />
         <HeroText>Goosendar</HeroText>
         <AuthWrapper>
-          <SignUpLink to="/register">Sign up</SignUpLink>
+          <SignUpLink to="/register">Sign up <RegisterIcon/></SignUpLink>
 
           <LoginLink to="/login">
             Log in

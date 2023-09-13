@@ -3,9 +3,16 @@ import { HeaderContainer } from '../App/App.styled';
 import { ReactSVG } from 'react-svg';
 import { primaryColor, whiteColor } from 'utils/variables';
 import { Link } from 'react-router-dom';
+import { FaUserPlus } from 'react-icons/fa';
 
 
 export const LoginIco = styled(ReactSVG)`
+  stroke: ${primaryColor};
+  width: 18px;
+  height: 18px;
+`;
+
+export const RegisterIcon = styled(FaUserPlus)`
   stroke: ${primaryColor};
   width: 18px;
   height: 18px;
@@ -114,12 +121,20 @@ export const LoginLink = styled(Link)`
 `;
 
 export const SignUpLink = styled(Link)`
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 16px;
+  padding: 14px 32px;
+  align-items: center;
+
   color: ${whiteColor};
   cursor: pointer;
   font-weight: 700;
   line-height: 14px;
   font-family: Inter;
   font-size: 12px;
+  background-color: ${primaryColor};
 
   &:hover{
     opacity: 0.8;

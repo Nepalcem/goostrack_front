@@ -49,7 +49,7 @@ export const ReviewWrapper = styled.div`
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 16px;
   /* width: 100%; */
   height: 200px;
   @media (min-width: 375px) {
