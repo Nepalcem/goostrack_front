@@ -15,6 +15,7 @@ export const Button = styled.button`
   background-color: #3e85f3;
   &:hover {
     cursor: pointer;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   @media (min-width: 768px) {
     padding-top: 12px;

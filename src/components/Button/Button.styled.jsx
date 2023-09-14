@@ -31,6 +31,7 @@ export const ButtonStyled = styled.button`
 
   &:hover {
     background-color: ${primaryColor};
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
   @media screen and (min-width: 768px) {

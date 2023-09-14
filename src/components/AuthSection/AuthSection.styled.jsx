@@ -115,8 +115,7 @@ export const LoginLink = styled(Link)`
   cursor: pointer;
 
   &:hover{
-    opacity: 0.8;
-    // background-color: #d7e3f1;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 `;
 
@@ -137,8 +136,7 @@ export const SignUpLink = styled(Link)`
   background-color: ${primaryColor};
 
   &:hover{
-    opacity: 0.8;
-    // color: #3f5069;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   @media screen and (min-width: 768px) {
     line-height: 18px;
